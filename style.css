@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  color: #111;
+}
+
+#wrapper {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.healine {
+  text-align: center;
+  margin: 40px 0;
+}
+
+h3 {
+  font-size: 32px;
+  color: red;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: 600;
+}
+
+ul.product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ul.product li {
+  flex-basis: 25%;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+ul.product li img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul.product li .product-info {
+  padding: 20px 0;
+}
+
+ul.product li .product-info a {
+  display: block;
+  text-decoration: none;
+}
+
+ul.product li .product-info a.product-cat {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #9e9e9e;
+  padding: 3px 0;
+}
+
+ul.product li .product-info a.product-name {
+  color: #334862;
+  padding: 3px 0;
+}
+
+ul.product li .product-info .product-price {
+  color: #111;
+  padding: 2px 0;
+  font-weight: 600;
+}
+
+ul.product li .product-top {
+  position: relative;
+  overflow: hidden;
+}
+
+ul.product li .product-top a.buy-now {
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  background-color: #446084;
+  color: #fff;
+  padding: 10px 0;
+  bottom: -41px;
+  position: absolute;
+  width: 100%;
+  transition: 0.25s ease-in-out;
+  opacity: 0.85;
+}
+
+ul.product li:hover a.buy-now {
+  bottom: 0;
+}
+
+ul.product li .product-top .product-thumb {
+  display: block;
+}
+
+ul.product li:hover .product-top .product-thumb img {
+  filter: opacity(80%);
+}
+
+ul.product li .product-top .product-thumb img {
+  display: block;
+}
+
+nav {
+  background-color: #273c75;
+}
+
+#main-menu {
+  display: flex;
+}
+
+nav #main-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 8px 15px;
+}
+
+nav #main-menu li:hover a {
+  background: #c23616;
+  transition: all 0.3s;
+}
+
+#tongle {
+  display: none;
+  background: #353b48;
+  color: #fff;
+  text-align: right;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  #main-menu {
+    flex-direction: column;
+    text-align: center;
+  }
+  #tongle {
+    display: block;
+  }
+  nav {
+    display: none;
+  }
+}
