@@ -112,14 +112,7 @@ nav #main-menu > li:hover > a::before {
   width: 100%;
 }
 
-#tongle {
-  display: none;
-  background: #353b48;
-  color: #fff;
-  text-align: right;
-  padding: 10px;
-  font-size: 20px;
-}
+
 
 /* Main Content */
 #main-container {
@@ -244,16 +237,4 @@ ul.product li:hover .product-top .product-thumb img {
   right: 0;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 1000px) {
-  #main-menu {
-      flex-direction: column;
-      text-align: center;
-  }
-  #tongle {
-      display: block;
-  }
-  nav {
-      display: none;
-  }
-}
+
