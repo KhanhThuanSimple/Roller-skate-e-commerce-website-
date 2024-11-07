@@ -113,9 +113,20 @@ nav #main-menu > li:hover > a::before {
   width: 100%;
 }
 
+/* Footer */
+#footer {
+  background-color: #f3f2ec;
+  text-align: center;
+  padding: 10px;
+  border-top: 2px solid #8e8d8a;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+} 
 
 
-/* Main Content */
+/* Main Content sanpham */ 
 #main-container {
   max-width: 960px;
   margin: 0 auto;
@@ -225,17 +236,71 @@ ul.product li .product-top .product-thumb {
 ul.product li:hover .product-top .product-thumb img {
   filter: opacity(80%);
 }
+.container1 {
+  min-height: 100vh;
+  background: #f3f2ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-/* Footer */
-#footer {
-  background-color: #f3f2ec;
-  text-align: center;
-  padding: 10px;
-  border-top: 2px solid #8e8d8a;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+}
+.gallery-display-area {
+  overflow: hidden;
+  height: 820px;
+  width: 1080px;
+  margin: 0 auto;
 }
 
+
+.gallery-wrap {
+ width: 500%;
+ animation: slideShow 16s infinite;
+}
+
+.image {
+  float: left;
+  height: 628px;
+  width: 1080px;
+  display: flex;
+  top: 1px;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-reflect:  below 1px -webkit-gradient(linear,right top ,right bottom,form(transparent),to(rgba(255,255,255,0.3)));
+}
+
+@keyframes slideShow {
+  20% {
+    margin-left: 0;
+  }
+
+  30% {
+    margin-left: -100;
+  }
+
+  40% {
+    margin-left: -100%;
+  }
+
+  50% {
+    margin-left: -200%;
+  }
+
+  60% {
+    margin-left: -200%;
+  }
+
+  70% {
+    margin-left: -300%;
+  }
+  80% {
+    margin-left: -300%;
+  }
+  90% {
+    margin-left: -400%;
+  }
+  100% {
+    margin-left: -400%;
+  }
+}
 
