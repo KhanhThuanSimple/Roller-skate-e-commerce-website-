@@ -113,17 +113,55 @@ nav #main-menu > li:hover > a::before {
   width: 100%;
 }
 
-/* Footer */
+
 #footer {
   background-color: #f3f2ec;
+  height: auto;
+  width: 100%;
   text-align: center;
-  padding: 10px;
-  border-top: 2px solid #8e8d8a;
-  position: fixed;
+  position: static;
   bottom: 0;
   left: 0;
   right: 0;
-} 
+  border-top: 2px solid #8e8d8a;
+  /* border-bottom: 2px solid #8e8d8a; */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+  text-align: left;
+}
+
+.footer-section h2 {
+  margin-bottom: 10px;
+}
+.footer-section .social-link{
+  display: flex;
+  justify-content: center;
+}
+
+.footer-section .social-link a {
+  color: #333;
+  text-decoration: none;
+  justify-content: center;
+  justify-items: center;
+  display: flex;
+  padding: 5px 10px;
+}
+
+.footer-section a:hover {
+  color: #000;
+}
 
 
 /* Main Content sanpham */ 
@@ -143,14 +181,14 @@ nav #main-menu > li:hover > a::before {
   margin: 40px 0;
 }
 
-h3 {
-  font-size: 32px;
+h4 {
+  font-size: 18px;
   color: black;
   padding: 10px 20px;
   text-transform: uppercase;
   display: inline-block;
   font-weight: 600;
-  margin-top: 70px;
+top: 0%;
 }
 
 ul.product {
