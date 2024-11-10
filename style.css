@@ -237,5 +237,25 @@ ul.product li:hover .product-top .product-thumb img {
   left: 0;
   right: 0;
 }
+.input-common{
+  min-height: 30px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #b8b8b8;
+ width: 100%;
+ padding: 3px;
+}
+
+.button-orange{
+  min-height: 30px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid orange;
+  background-color: orange;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #fff;
+}
 
 
