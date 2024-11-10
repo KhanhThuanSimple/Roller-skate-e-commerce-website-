@@ -1,0 +1,168 @@
+.container1 {
+  min-height: 100vh;
+  background: #f3f2ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gallery-display-area {
+  overflow: hidden;
+  height: 820px;
+  width: 1080px;
+  margin: 0 auto;
+  top: 0%; 
+}
+
+.gallery-wrap {
+  width: 500%;
+  animation: slideShow 12s infinite;
+}
+
+.image {
+  float: left;
+  height: 628px;
+  width: 1080px;
+  display: flex;
+  top: 0px;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-reflect: below 1px -webkit-gradient(linear, right top, right bottom, from(transparent), to(rgba(255, 255, 255, 0.3)));
+}
+
+@keyframes slideShow {
+  20% {
+    margin-left: 0;
+  }
+
+  30% {
+    margin-left: -100%;
+  }
+
+  40% {
+    margin-left: -200%;
+  }
+
+  50% {
+    margin-left: -300%;
+  }
+
+  60% {
+    margin-left: -400%;
+  }
+
+  100% {
+    margin-left: -500%;
+  }
+}
+
+#main-container-index {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+}
+
+#main-contain-index-sidebar {
+  flex-basis: 30%;
+  padding: 15px;
+}
+
+.healine-index {
+  text-align: center;
+  margin: 40px 0;
+}
+
+h3 {
+  font-size: 32px;
+  color: black;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: 600;
+  margin-top: 70px;
+}
+
+ul.product-index {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ul.product-index li {
+  flex-basis: 25%;
+  padding: 0 15px;
+  box-sizing: border-box;
+  height: 450px;
+}
+
+ul.product-index li img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+ul.product-index li .product-info-index {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 100px;
+}
+
+ul.product-index li .product-info-index a {
+  display: block;
+}
+
+ul.product-index li .product-info-index a.product-cat-index {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: black;
+  padding: 3px 0;
+}
+
+ul.product-index li .product-info-index a.product-name-index {
+  color: #74642F;
+  padding: 3px 0;
+}
+
+ul.product-index li .product-info-index .product-price-index {
+  color: #74642F;
+  padding: 2px 0;
+  font-weight: 600;
+}
+
+ul.product-index li .product-top-index {
+  position: relative;
+  overflow: hidden;
+}
+
+ul.product-index li .product-top-index a.buy-now-index {
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  background-color: #446084;
+  color: #fff;
+  padding: 10px 0;
+  bottom: -45px;
+  position: absolute;
+  width: 100%;
+  transition: 0.25s ease-in-out;
+  opacity: 0.85;
+}
+
+ul.product-index li:hover a.buy-now-index {
+  bottom: 0;
+}
+
+ul.product-index li .product-top-index .product-thumb-index {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul.product-index li:hover .product-top-index .product-thumb-index img {
+  filter: opacity(80%);
+}
