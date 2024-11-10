@@ -3,7 +3,7 @@
     position: relative;
 
 }
-.login-container form{
+ form{
     width: 300px;
     height: max-content;
     background-color: white;
@@ -16,35 +16,35 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.login-container  .img-banner{
+  .img-banner{
     width: 100vw;
     height: 100vh;
     object-fit: cover;
     background-color: rgba(#000, #000, #000, 0.6);
 }
-.login-container  .logo img{
+  .logo img{
     width:70px;
     height: 70px;
    
 
 }
-.login-container  .flex-row{
+  .flex-row{
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
-.login-container  .flex-colunm{
+  .flex-colunm{
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.login-container .flex-1{
+ .flex-1{
     flex: 1;
 }
 
-.login-container .mask{
+ .mask{
     position: fixed;
     bottom: 0;
     right: 0;

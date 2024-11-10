@@ -5,47 +5,39 @@
     padding-right: 100px;
     padding-bottom: 60px;
 }
-
-.contact-container .contact-info{
+ .contact-info{
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
-
-.contact-container .contact-info .info{
+ .contact-info .info{
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
-
-.contact-container .contact-info .support{
+ .contact-info .support{
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 30px;
-}
-.contact-container .content{
+} .content{
     display: flex;
     flex-direction: column;
     gap: 30px;
-}
-.contact-container .item-content p{
+} .item-content p{
     font-size: 16px;
     color: #000;
 }
-
-.contact-container .item-content div{
+ .item-content div{
     font-size: 16px;
     color: #b8b8b8;
 
-}
-.contact-container .form-support form{
+} .form-support form{
     display: flex;
     flex-direction: column;
     gap: 30px;
-}
-.contact-container .flex-row{
+} .flex-row{
     display: flex;
     flex-direction: row;
     gap: 30px;
@@ -56,11 +48,9 @@
     flex-direction: column;
     gap: 30px;
 }
-
-.contact-container .flex-1{
+ .flex-1{
     flex: 1;
-}
-.contact-container .contact-banner img{
+} .contact-banner img{
     width: 100%;
     object-fit: contain;
     border-radius: 5px;
