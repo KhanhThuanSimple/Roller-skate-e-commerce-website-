@@ -376,12 +376,20 @@ ul.product-index li:hover .product-top-index .product-thumb-index img {
   border-radius: 5px;
   border: 1px solid orange;
   background-color: orange;
-  padding: 5px;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
   color: #fff;
+  font-size: 16px;
+  font-weight: 500px;
+  cursor: pointer;
 }
 
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .gallery-wrap {
  width: 500%;
@@ -432,5 +440,15 @@ ul.product-index li:hover .product-top-index .product-thumb-index img {
   100% {
     margin-left: -400%;
   }
+}
+
+.text-14{
+  font-size: 16px;
+  color: #171717;
+}
+
+.text-link{
+  font-size: 14px;
+  color: #056bf1;
 }
 
