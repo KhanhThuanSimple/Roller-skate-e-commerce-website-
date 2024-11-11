@@ -1,4 +1,31 @@
+<<<<<<< HEAD
 /* * Main Content sanpham */  
+=======
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Body */
+body {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  color: #2b2b2b; 
+  background-color: #f3f2ec;
+}
+
+#wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Main Content sanpham */ 
+>>>>>>> khanhthuan
 #main-container {
   max-width: 960px;
   margin: 0 auto;
@@ -15,7 +42,7 @@
   margin: 40px 0;
 }
 
-h4 {
+h3 {
   font-size: 18px;
   color: black;
   padding: 10px 20px;

@@ -145,9 +145,12 @@ nav #main-menu > li:hover > a::before {
 /* Footer */
 #footer {
   background-color: #f3f2ec;
-  padding: 20px 0; /* Thêm khoảng trống phía trên và dưới */
+  padding: 20px 0; 
   text-align: center;
+  justify-items: center;
   border-top: 2px solid #8e8d8a;
+  width: 100%;
+  box-sizing: border-box; 
 }
 
 .footer-container {
@@ -155,13 +158,13 @@ nav #main-menu > li:hover > a::before {
   justify-content: space-between;
   align-items: flex-start; 
   flex-wrap: wrap; 
-  padding: 20px;
+  padding: 2px;
 }
 
 .footer-section {
   flex: 1;
   margin: 10px;
-  min-width: 200px;
+  min-width: 300px;
   text-align: left;
 }
 
@@ -185,6 +188,7 @@ nav #main-menu > li:hover > a::before {
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 0px 15px;
 
 }
 .gallery-display-area {
