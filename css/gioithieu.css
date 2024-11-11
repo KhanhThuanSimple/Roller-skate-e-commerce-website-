@@ -1,0 +1,320 @@
+/* css-index */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Body */
+body {
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    color: #2b2b2b;
+    background-color: #f3f2ec;
+}
+
+#wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+#header {
+    background-color: #f3f2ec;
+    height: 100px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    border-bottom: 2px solid #8e8d8a;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+a#logo img {
+    padding: 5px 0;
+    width: 80px;
+}
+
+#main-menu {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    padding: 0;
+}
+
+#main-menu li {
+    position: relative;
+    margin-left: 15px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #F8A330;
+    color: #F9FFFF;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: -40%; /* Đặt tooltip ở phía trên icon */
+    left: 50%;
+    margin-left: -60px; /* Để căn giữa tooltip */
+    opacity: 0;
+    transition: opacity 0.8s;
+}
+
+/* Hiển thị tooltip khi hover */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+nav #main-menu li a {
+    color: #777777;
+    display: block;
+    padding: 15px 18px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* Sub-menu styling */
+#main-menu ul.sub-menu {
+    position: absolute;
+    background: #dddddd;
+    padding: 15px 0;
+    display: none;
+    width: 200px;
+}
+
+#main-menu li:hover > ul.sub-menu {
+    display: block;
+}
+
+#main-menu ul.sub-menu a {
+    padding: 10px 20px;
+    color: #2b2b2b;
+    border-bottom: 1px solid #8e8d8a;
+}
+
+#main-menu ul.sub-menu li:last-child a {
+    border: none;
+}
+
+nav #main-menu > li > a {
+    position: relative;
+}
+
+nav #main-menu > li > a::before {
+    content: "";
+    height: 4px;
+    width: 0%;
+    background: #daa556;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    transition: all 0.3s;
+}
+
+nav #main-menu li:hover a {
+    transition: all 0.3s;
+}
+
+nav #main-menu > li:hover > a::before {
+    width: 100%;
+}
+
+/* Footer */
+#footer {
+    background-color: #f3f2ec;
+    padding: 20px 0; /* Thêm khoảng trống phía trên và dưới */
+    text-align: center;
+    border-top: 2px solid #8e8d8a;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px;
+    min-width: 200px;
+    text-align: left;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.footer-section p, .footer-section a {
+    color: #2b2b2b;
+}
+
+.footer-section .social-link {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footer-section .social-link a {
+    color: #2b2b2b;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.gallery-display-area {
+    overflow: hidden;
+    height: 820px;
+    width: 1080px;
+    margin: 0 auto;
+}
+
+
+.gallery-wrap {
+    width: 500%;
+    animation: slideShow 16s infinite;
+}
+
+.image {
+    float: left;
+    height: 628px;
+    width: 1080px;
+    display: flex;
+    top: 1px;
+    justify-content: center;
+    align-items: center;
+/ / -webkit-box-reflect: below 1 px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
+}
+
+@keyframes slideShow {
+    20% {
+        margin-left: 0;
+    }
+
+    30% {
+        margin-left: -100%;
+    }
+
+    40% {
+        margin-left: -100%;
+    }
+
+    50% {
+        margin-left: -200%;
+    }
+
+    60% {
+        margin-left: -200%;
+    }
+
+    70% {
+        margin-left: -300%;
+    }
+    80% {
+        margin-left: -300%;
+    }
+    90% {
+        margin-left: -400%;
+    }
+    100% {
+        margin-left: -400%;
+    }
+}
+
+/* Phần Main giới thiệu*/
+/*body phan gioithieu*/
+#bodyGT {
+/ / background-color: red;
+    color: black;
+    text-align: justify;
+    height: 2000px;
+    width: 100%;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+/*Phan muc 2. Lich su hinh thanh % phat trien*/
+.timeline {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.event {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.date {
+    width: 150px;
+    font-weight: bold;
+    color: black;
+}
+
+.description {
+    flex: 1;
+    color: black;
+}
+
+.highlight {
+    font-weight: bold;
+    color: black;
+}
+
+/*css cho tung doan van nho trong phan GT*/
+.doanVan {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+h4 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/*Phan muc 4. Slogan*/
+
+h5 {
+    margin: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sloganBig{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  //  max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+
+}
