@@ -62,7 +62,7 @@ ul.product li {
   flex-basis: 25%;
   padding: 0 15px;
   box-sizing: border-box;
-  height: 450px;
+  height: 400px;
 }
 
 ul.product li img {
@@ -115,7 +115,7 @@ ul.product li .product-top a.buy-now {
   background-color: #446084;
   color: #fff;
   padding: 10px 0;
-  bottom: -41px;
+  bottom: -40px;
   position: absolute;
   width: 100%;
   transition: 0.25s ease-in-out;
