@@ -71,11 +71,11 @@ table th, table td {
 }
 
 table th {
-    background-color: #3498db;
+    background-color: #5c3a3a;
     color: white;
 }
 
-button.btn {
+/* button.btn {
     background-color: #3498db;
     color: white;
     padding: 10px 20px;
@@ -83,7 +83,7 @@ button.btn {
     cursor: pointer;
     border-radius: 5px;
     margin-bottom: 20px;
-}
+} */
 
 button.btn:hover {
     background-color: #2980b9;
@@ -100,6 +100,7 @@ button.btn:hover {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
+
 }
 
 .modal-content {
@@ -107,7 +108,7 @@ button.btn:hover {
     margin: 15% auto;
     padding: 20px;
     border-radius: 10px;
-    width: 80%;
+    width: 50%;
     max-width: 500px;
 }
 
@@ -165,3 +166,25 @@ button.btn:hover {
  .flex-1{
     flex: 1;
 }
+.button-orange{
+    min-height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid orange;
+    background-color: orange;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500px;
+    cursor: pointer;
+  }
+
+  .flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  

@@ -40,50 +40,63 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Giày Thể Thao Nike</td>
+                            <td>abc@gmail.com</td>
                             <td>50</td>
-                            <td>Bị khóa</td>
+                            <td> Tài khoản bị khóa</td>
                             <td>
-                                <button class="btn">Sửa</button>
-                                <button class="btn">Cập nhật</button>
+                                <button class="button-orange">Sửa</button>
+                                <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Giày Công Sở Gucci</td>
+                            <td>abc@gmail.com</td>
                             <td>30</td>
+                            <td>Tài khoản mới</td>
                             <td>
-                                <button class="btn">Sửa</button>
-                                <button class="btn">Cập nhật</button>
+                                <button class="button-orange">Sửa</button>
+                                <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Giày Nữ Adidas</td>
+                            <td>abc@gmail.com</td>
                             <td>20</td>
+                            <td>Tài khoản đang hoạt động</td>
                             <td>
-                                <button class="btn">Sửa</button>
-                                <button class="btn">Cập nhật</button>
+                                <button class="button-orange">Sửa</button>
+                                <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <tr>
                             <td>4</td>
+                            <td>abc@gmail.com</td>
+                            <td>40</td>
+                            <td>Tài khoản bị khóa tạm thời</td>
+                            <td>
+                                <button class="button-orange">Sửa</button>
+                                <button class="button-orange">Cập nhật</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
                             <td>Giày Nam Puma</td>
                             <td>40</td>
+                            <td>Tài khoản bị đóng</td>
                             <td>
-                                <button class="btn">Sửa</button>
-                                <button class="btn">Xóa</button>
+                                <button class="button-orange">Sửa</button>
+                                <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <!-- Các khách hàng sẽ được hiển thị ở đây -->
                     </tbody>
                     <div class="pagination flex-row">
                         <div class="flex-1">
-                            <button id="prevPage" class="btn-pagination">Previous</button>
+                            <button id="prevPage" class= "button-orange">Previous</button>
                             <span id="pageNumber">1</span> / <span id="totalPages">1</span>
-                            <button id="nextPage" class="btn-pagination">Next</button>
+                            <button id="nextPage" class="button-orange">Next</button>
                         </div>
-                        <button class="btn" onclick="openProductForm()">Thêm Sản phẩm</button>
+                        <button class="button-orange" onclick="openProductForm()">Thêm Sản phẩm</button>
                     </div>
 
                 </table>
@@ -93,11 +106,24 @@
 
     <!-- Product Form Modal -->
     <div id="productModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" >
             <span class="close-btn" onclick="closeProductForm()">&times;</span>
             <h2>Thêm Sản phẩm</h2>
-            <form id="productForm">
-                <label for="productName">Tên sản phẩm:</label>
+            <form action="post">
+                <div>
+                    <input type="text" placeholder=" Tên sản phảm">
+                </div>
+                <div>
+                    <input type="text" placeholder="Giá">
+                </div>
+                <div>
+                    <input type="text" placeholder="Mô tả">
+                </div>
+                <div class="flex-center">
+                    <button >Lưu sản phẩm</button>
+                </div>
+
+                <!-- <label for="productName">Tên sản phẩm:</label>
                 <input type="text" id="productName" name="productName" required>
 
                 <label for="productPrice">Giá:</label>
@@ -114,7 +140,7 @@
                 <label for="productDescription">Mô tả:</label>
                 <textarea id="productDescription" name="productDescription" rows="4"></textarea>
 
-                <button type="submit">Lưu Sản phẩm</button>
+                <button type="submit">Lưu Sản phẩm</button> -->
             </form>
         </div>
     </div>
