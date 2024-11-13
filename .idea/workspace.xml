@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18f31ae0-0480-476b-abbd-c020c5c3992e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/gioithieu.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/gioithieu.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gioithieu.html" beforeDir="false" afterPath="$PROJECT_DIR$/gioithieu.html" afterDir="false" />
     </list>
@@ -31,20 +32,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "huyennhu",
-    "last_opened_file_path": "D:/GitHubNhanhHuyenNhuLTW/DoAnLTW",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;huyennhu&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitHubNhanhHuyenNhuLTW/DoAnLTW&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -62,7 +63,9 @@
       <updated>1731073344994</updated>
       <workItem from="1731073346023" duration="4757000" />
       <workItem from="1731293964994" duration="18913000" />
-      <workItem from="1731331191146" duration="3636000" />
+      <workItem from="1731331191146" duration="5144000" />
+      <workItem from="1731478188225" duration="259000" />
+      <workItem from="1731500175334" duration="570000" />
     </task>
     <servers />
   </component>
