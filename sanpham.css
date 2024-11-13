@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-/* * Main Content sanpham */  
-=======
+
 * {
   margin: 0;
   padding: 0;
@@ -25,7 +23,7 @@ body {
 }
 
 /* Main Content sanpham */ 
->>>>>>> khanhthuan
+
 #main-container {
   max-width: 960px;
   margin: 0 auto;
@@ -39,23 +37,25 @@ body {
 
 .healine {
   text-align: center;
-  margin: 40px 0;
+  margin: 120px auto auto auto;
 }
 
-h3 {
+.healine h3 {
   font-size: 18px;
   color: black;
-  padding: 10px 20px;
+  padding: -20px 20px;
   text-transform: uppercase;
   display: inline-block;
   font-weight: 600;
-top: 0%;
+  line-height: 1.5; 
+  margin-top: 30px;
 }
 
 ul.product {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 25px;
 }
 
 ul.product li {
