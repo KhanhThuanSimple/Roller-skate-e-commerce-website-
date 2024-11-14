@@ -35,6 +35,7 @@ body {
   padding: 15px;
 }
 
+
 .healine {
   text-align: center;
   margin: 120px auto auto auto;
@@ -50,6 +51,59 @@ body {
   line-height: 1.5; 
   margin-top: 30px;
 }
+
+
+.sort-buttons {
+  position: relative;
+  display: flex; 
+  justify-content: flex-end; 
+  margin: 20px 0;
+}
+
+.sort-buttons button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 7px 15px;
+  border: none;
+  cursor: pointer;
+  margin-top: 5px ;
+}
+
+.sort-buttons button:hover {
+  background-color: #53436b;
+}
+
+.sort-buttons .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right: 0; 
+  margin-top: 32px;
+}
+
+.sort-buttons .dropdown-content button {
+  background-color: #f9f9f9;
+  color: black;
+  padding: 10px 20px;
+  text-align: left;
+  border: none;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.sort-buttons .dropdown-content button:hover {
+  background-color: #2f4245;
+}
+
+.sort-buttons:hover .dropdown-content {
+  display: block;
+}
+
+
 
 ul.product {
   display: flex;
