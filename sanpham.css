@@ -168,13 +168,14 @@ ul.product li .product-top a.buy-now {
   display: block;
   background-color: #446084;
   color: #fff;
-  padding: 10px 0;
-  bottom: -40px;
+  padding: 5px 0;
+  bottom: -42px;
   position: absolute;
   width: 100%;
   transition: 0.25s ease-in-out;
   opacity: 0.85;
 }
+
 
 ul.product li:hover a.buy-now {
   bottom: 0;
