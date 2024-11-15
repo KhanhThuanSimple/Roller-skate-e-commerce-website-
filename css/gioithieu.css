@@ -254,7 +254,7 @@ nav #main-menu > li:hover > a::before {
 / / background-color: red;
     color: black;
     text-align: justify;
-    height: 1700px;
+    height: 2100px;
     width: 100%;
     margin-top: 100px;
     margin-left: auto;
@@ -320,4 +320,40 @@ p {
     margin-bottom: 10px;
     margin-top: 10px;
 
+}
+/* css cho phan box dia chi*/
+
+.ndung{
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+.box {
+    border: solid #ddd;
+    padding: 10px;
+    width: 250px;
+    text-align: justify;
+    font-family: Arial, sans-serif;
+}
+.box h3 {
+    color: red;
+    font-size: 20px;
+    margin: 0;
+}
+.box a {
+    color: #F8A330;
+    font-size: 15px;
+    float: right;
+    text-decoration: none;
+    margin-top: -20px;
+}
+.box p {
+    font-size: 18px;
+    color: black;
+    margin-top: 10px;
+}
+.box-cont{
+    display: flex;
+    gap: 17px;
+    padding: 20px;
 }
