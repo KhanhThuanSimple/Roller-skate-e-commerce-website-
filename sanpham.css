@@ -1,4 +1,29 @@
-/* * Main Content sanpham */  
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Body */
+body {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  color: #2b2b2b; 
+  background-color: #f3f2ec;
+}
+
+#wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Main Content sanpham */ 
+
 #main-container {
   max-width: 960px;
   margin: 0 auto;
@@ -10,32 +35,88 @@
   padding: 15px;
 }
 
+
 .healine {
   text-align: center;
-  margin: 40px 0;
+  margin: 120px auto auto auto;
 }
 
-h4 {
+.healine h3 {
   font-size: 18px;
   color: black;
-  padding: 10px 20px;
+  padding: -20px 20px;
   text-transform: uppercase;
   display: inline-block;
   font-weight: 600;
-top: 0%;
+  line-height: 1.5; 
+  margin-top: 30px;
 }
+
+
+.sort-buttons {
+  position: relative;
+  display: flex; 
+  justify-content: flex-end; 
+  margin: 20px 0;
+}
+
+.sort-buttons button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 7px 15px;
+  border: none;
+  cursor: pointer;
+  margin-top: 5px ;
+}
+
+.sort-buttons button:hover {
+  background-color: #53436b;
+}
+
+.sort-buttons .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right: 0; 
+  margin-top: 32px;
+}
+
+.sort-buttons .dropdown-content button {
+  background-color: #f9f9f9;
+  color: black;
+  padding: 10px 20px;
+  text-align: left;
+  border: none;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.sort-buttons .dropdown-content button:hover {
+  background-color: #2f4245;
+}
+
+.sort-buttons:hover .dropdown-content {
+  display: block;
+}
+
+
 
 ul.product {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 25px;
 }
 
 ul.product li {
   flex-basis: 25%;
   padding: 0 15px;
   box-sizing: border-box;
-  height: 450px;
+  height: 400px;
 }
 
 ul.product li img {
@@ -87,13 +168,14 @@ ul.product li .product-top a.buy-now {
   display: block;
   background-color: #446084;
   color: #fff;
-  padding: 10px 0;
-  bottom: -41px;
+  padding: 5px 0;
+  bottom: -42px;
   position: absolute;
   width: 100%;
   transition: 0.25s ease-in-out;
   opacity: 0.85;
 }
+
 
 ul.product li:hover a.buy-now {
   bottom: 0;

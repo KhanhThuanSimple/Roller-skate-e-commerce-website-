@@ -5,9 +5,134 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18f31ae0-0480-476b-abbd-c020c5c3992e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/admin/admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/admin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (16).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (25).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (26).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (27).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (28).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (29).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (30).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (31).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (32).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (33).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (34).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (35).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (36).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (37).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (38).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (39).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (40).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (41).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (42).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (43).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (44).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (45).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (46).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (47).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (48).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (49).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon (9).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patinnguoilon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (16).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (25).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (26).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (27).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (28).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (29).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (30).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (31).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (32).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem (9).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/patintreem.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (10).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (11).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (12).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (13).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (14).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (15).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (16).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (17).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (18).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (19).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (20).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (21).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (22).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (23).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (5).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (8).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien (9).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/phukien4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lichsu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sanphamphukien.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/gioithieu.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/gioithieu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canhan.html" beforeDir="false" afterPath="$PROJECT_DIR$/canhan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/lienhe.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/lienhe.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/giohang.html" beforeDir="false" afterPath="$PROJECT_DIR$/giohang.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gioithieu.html" beforeDir="false" afterPath="$PROJECT_DIR$/gioithieu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lienhe.html" beforeDir="false" afterPath="$PROJECT_DIR$/lienhe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sanpham.css" beforeDir="false" afterPath="$PROJECT_DIR$/sanpham.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sanpham.html" beforeDir="false" afterPath="$PROJECT_DIR$/sanpham.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sanphamnguoilon.html" beforeDir="false" afterPath="$PROJECT_DIR$/sanphamnguoilon.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sanphamtreem.html" beforeDir="false" afterPath="$PROJECT_DIR$/sanphamtreem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +160,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;huyennhu&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging huyennhu&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/GitHubNhanhHuyenNhuLTW/DoAnLTW&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -67,7 +192,8 @@
       <workItem from="1731478188225" duration="259000" />
       <workItem from="1731500175334" duration="3618000" />
       <workItem from="1731641114790" duration="50000" />
-      <workItem from="1731671947030" duration="2915000" />
+      <workItem from="1731671947030" duration="3876000" />
+      <workItem from="1731675873342" duration="20000" />
     </task>
     <servers />
   </component>

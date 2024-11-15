@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Shop Giày Partin</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Admin Dashboard</h2>
+            <ul>
+                <li><a href="#products">Tài khoản</a></li>
+                <li><a href="#orders">Đơn hàng</a></li>
+                <li><a href="#customers">Khách hàng</a></li>
+                <li><a href="#inventory">Kho hàng</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Section: Khách hàng -->
+            <section id="customers">
+                <h3>Quản lý Tài khoản</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Họ & tên</th>
+                            <th>Email</th>
+                            <th>password</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Giày Thể Thao Nike</td>
+                            <td>50</td>
+                            <td>Bị khóa</td>
+                            <td>
+                                <button class="btn">Sửa</button>
+                                <button class="btn">Cập nhật</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Giày Công Sở Gucci</td>
+                            <td>30</td>
+                            <td>
+                                <button class="btn">Sửa</button>
+                                <button class="btn">Cập nhật</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Giày Nữ Adidas</td>
+                            <td>20</td>
+                            <td>
+                                <button class="btn">Sửa</button>
+                                <button class="btn">Cập nhật</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Giày Nam Puma</td>
+                            <td>40</td>
+                            <td>
+                                <button class="btn">Sửa</button>
+                                <button class="btn">Xóa</button>
+                            </td>
+                        </tr>
+                        <!-- Các khách hàng sẽ được hiển thị ở đây -->
+                    </tbody>
+                    <div class="pagination flex-row">
+                        <div class="flex-1">
+                            <button id="prevPage" class="btn-pagination">Previous</button>
+                            <span id="pageNumber">1</span> / <span id="totalPages">1</span>
+                            <button id="nextPage" class="btn-pagination">Next</button>
+                        </div>
+                        <button class="btn" onclick="openProductForm()">Thêm Sản phẩm</button>
+                    </div>
+
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Product Form Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeProductForm()">&times;</span>
+            <h2>Thêm Sản phẩm</h2>
+            <form id="productForm">
+                <label for="productName">Tên sản phẩm:</label>
+                <input type="text" id="productName" name="productName" required>
+
+                <label for="productPrice">Giá:</label>
+                <input type="number" id="productPrice" name="productPrice" required>
+
+                <label for="productCategory">Danh mục:</label>
+                <select id="productCategory" name="productCategory">
+                    <option value="1">Giày thể thao</option>
+                    <option value="2">Giày công sở</option>
+                    <option value="3">Giày nữ</option>
+                    <option value="4">Giày nam</option>
+                </select>
+
+                <label for="productDescription">Mô tả:</label>
+                <textarea id="productDescription" name="productDescription" rows="4"></textarea>
+
+                <button type="submit">Lưu Sản phẩm</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
