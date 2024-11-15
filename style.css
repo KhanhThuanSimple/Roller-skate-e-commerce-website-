@@ -9,8 +9,7 @@ ul {
   list-style-type: none;
 }
 .container{
-  /* margin: 5px auto 10px 15px;
-   */
+ 
    margin-right: 25px;
    margin-left: 15px;
 }
@@ -101,18 +100,19 @@ a#logo img {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 150px; /* Tăng chiều rộng để phù hợp với nội dung dài hơn */
-  background-color: #F8A330;
-  color: #FFF; /* Sửa màu chữ thành trắng để dễ đọc hơn trên nền màu */
+  width: 55px; /* Tăng chiều rộng để phù hợp với nội dung dài hơn */
+  background-color: #FFF;
+  color: #2b2b2b; /* Sửa màu chữ thành trắng để dễ đọc hơn trên nền màu */
   text-align: center;
   border-radius: 5px;
   padding: 8px; /* Tăng padding để nội dung thoáng hơn */
   position: absolute;
   z-index: 1;
-  bottom: 60%; /* Đặt tooltip ở phía trên icon */
+  bottom: 72%; /* Đặt tooltip ở phía trên icon */
   left: 50%;
-  margin-left: -75px; /* Để căn giữa tooltip */
+  margin-left: -25px; /* Để căn giữa tooltip */
   opacity: 0;
+  font-size: 9px;
   transition: opacity 0.3s ease-in-out; /* Giảm thời gian chuyển đổi để tooltip hiện ra nhanh hơn */
 }
 
@@ -121,16 +121,6 @@ a#logo img {
   opacity: 1;
 }
 
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%; /* Mũi tên ở phía dưới tooltip */
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #F8A330 transparent transparent transparent; /* Mũi tên màu giống nền tooltip */
-}
 
 
 nav #main-menu li a {
@@ -140,18 +130,13 @@ nav #main-menu li a {
   text-decoration: none;
   font-size: 15px;
 }
-
-/* Sub-menu styling */
 #main-menu ul.sub-menu {
   position: absolute;
   background: #dddddd;
-  padding: 8px 0px;
+  padding: 2px 2px 0px 0px; 
   display: none;
-  width: 250px;
-  justify-content: center;
-  justify-items: center;
+  list-style-type: none; 
 }
-
 #main-menu li:hover > ul.sub-menu {
   display: block;
 }
@@ -159,18 +144,20 @@ nav #main-menu li a {
 #main-menu ul.sub-menu a {
   padding: 10px 20px;
   color: #2b2b2b;
-  /* border-bottom: 1px solid rgb(156, 138, 138); */
   text-align: center;
   position: relative;
   display: block;
   transition: color 0.3s ease;
+  font-size: 12px;
+  width: 170px;
+
 }
 
 #main-menu ul.sub-menu a::before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 4px;
+  height: 2px;
   bottom: 0;
   left: 0;
   background: #daa556;
