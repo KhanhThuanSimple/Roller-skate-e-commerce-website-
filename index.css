@@ -118,19 +118,32 @@ ul.product-index li .product-info-index a {
 ul.product-index li .product-info-index a.product-cat-index {
   font-size: 11px;
   text-transform: uppercase;
-  color: black;
-  padding: 3px 0;
+  color: #74642F;
+  margin-top: 0px;
+  padding: 1px 0;
+  text-align: center;
+  height: 20px; /* Đặt chiều cao cố định cho phần nhãn hiệu */
+  line-height: 10px; /* Căn giữa nội dung theo chiều dọc */
 }
 
 ul.product-index li .product-info-index a.product-name-index {
-  color: #74642F;
+  color: rgb(37, 32, 32);
   padding: 3px 0;
+  height: 70px; /* Đặt chiều cao cố định cho tên sản phẩm */
+  line-height: 20px; /* Căn giữa nội dung theo chiều dọc */
+  text-decoration: none; /* Tắt gạch chân chữ */
+  
+ 
 }
 
 ul.product-index li .product-info-index .product-price-index {
   color: #74642F;
   padding: 2px 0;
   font-weight: 600;
+  height: 40px; /* Đặt chiều cao cố định cho giá */
+  line-height: 5px; /* Căn giữa nội dung theo chiều dọc */
+  text-align: center;
+
 }
 
 ul.product-index li .product-top-index {
