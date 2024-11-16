@@ -99,7 +99,7 @@ body {
   background-color: #2f4245;
 }
 
-.sort-buttons:hover .dropdown-content {
+.sort-buttons:hover  .dropdown-content {
   display: block;
 }
 
