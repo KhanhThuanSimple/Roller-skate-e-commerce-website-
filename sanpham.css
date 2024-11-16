@@ -56,8 +56,9 @@ body {
 .sort-buttons {
   position: relative;
   display: flex; 
-  justify-content: flex-end; 
-  margin: 20px 0;
+  /* justify-content: flex-end;  */
+  margin: 2px 2px 0px -5px;
+  float: right;
 }
 
 .sort-buttons button {
@@ -67,6 +68,7 @@ body {
   border: none;
   cursor: pointer;
   margin-top: 5px ;
+ 
 }
 
 .sort-buttons button:hover {
@@ -88,12 +90,13 @@ body {
 .sort-buttons .dropdown-content button {
   background-color: #f9f9f9;
   color: black;
-  padding: 10px 20px;
+  padding: 5px 10px; /* Giảm padding để nút nhỏ hơn */
   text-align: left;
   border: none;
   display: block;
   width: 100%;
   cursor: pointer;
+  font-size: 14px; /* Giảm font size để phù hợp với nút chính */
 }
 
 .sort-buttons .dropdown-content button:hover {
@@ -103,6 +106,7 @@ body {
 .sort-buttons:hover  .dropdown-content {
   display: block;
 }
+
 
 
 
