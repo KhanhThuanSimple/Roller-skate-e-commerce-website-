@@ -61,7 +61,7 @@ body {
 }
 
 .sort-buttons button {
-  background-color: #4CAF50;
+  background-color: #daa556;
   color: white;
   padding: 7px 15px;
   border: none;
@@ -70,7 +70,8 @@ body {
 }
 
 .sort-buttons button:hover {
-  background-color: #53436b;
+  background-color: #f1eeea;
+  color: black;
 }
 
 .sort-buttons .dropdown-content {
@@ -79,9 +80,9 @@ body {
   background-color: #f9f9f9;
   min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 999;
   right: 0; 
-  margin-top: 32px;
+  margin-top: 30px;
 }
 
 .sort-buttons .dropdown-content button {
@@ -96,10 +97,10 @@ body {
 }
 
 .sort-buttons .dropdown-content button:hover {
-  background-color: #2f4245;
+  background-color: #daa556;
 }
 
-.sort-buttons:hover .dropdown-content {
+.sort-buttons:hover  .dropdown-content {
   display: block;
 }
 
@@ -141,19 +142,32 @@ ul.product li .product-info a {
 ul.product li .product-info a.product-cat {
   font-size: 11px;
   text-transform: uppercase;
-  color: black;
-  padding: 3px 0;
+  color: #74642F;
+  margin-top: 0px;
+  padding: 1px 0;
+  text-align: center;
+  height: 20px; /* Đặt chiều cao cố định cho phần nhãn hiệu */
+  line-height: 10px; /* Căn giữa nội dung theo chiều dọc */
 }
 
 ul.product li .product-info a.product-name {
-  color: #74642F;
+  color: rgb(37, 32, 32);
   padding: 3px 0;
+  height: 70px; /* Đặt chiều cao cố định cho tên sản phẩm */
+  line-height: 20px; /* Căn giữa nội dung theo chiều dọc */
+  text-decoration: none; /* Tắt gạch chân chữ */
+  
+ 
 }
 
 ul.product li .product-info .product-price {
   color: #74642F;
   padding: 2px 0;
   font-weight: 600;
+  height: 40px; /* Đặt chiều cao cố định cho giá */
+  line-height: 5px; /* Căn giữa nội dung theo chiều dọc */
+  text-align: center;
+
 }
 
 ul.product li .product-top {
