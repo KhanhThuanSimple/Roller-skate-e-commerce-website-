@@ -15,10 +15,11 @@
         <aside class="sidebar">
             <h2>Admin Dashboard</h2>
             <ul>
-                <li><a href="./user.html">Tài khoản</a></li>
+                <li><a href="./user.html">Tài khoản Admin</a></li>
                 <li><a href="./order.html">Đơn hàng</a></li>
                 <li><a href="./customer.html">Khách hàng</a></li>
-                <li><a href="#inventory">Sản phẩm</a></li>
+                <li><a class="background-active" href="./product.html">Sản phẩm</a></li>
+                <li><a href="./nhaphang.html">Nhập hàng</a></li>
             </ul>
         </aside>
 
@@ -115,9 +116,9 @@
                     </tbody>
                     <div class="pagination flex-row">
                         <div class="flex-1">
-                            <button id="prevPage" class= "button-orange" type="button" onclick="window.location.href='customer.html'">Previous</button>
+                            <button id="prevPage" class= "button-black" type="button" onclick="window.location.href='customer.html'">Trước</button>
                             <span id="pageNumber">4</span> / <span id="totalPages">4</span>
-                            <button id="nextPage" class="button-orange"type="button" onclick="window.location.href='inventory.html'">Next</button>
+                            <button id="SauPage" class="button-black"type="button" onclick="window.location.href='inventory.html'">Sau</button>
                         </div>
                         <button class="button-orange" onclick="openProductForm()">Thêm Sản Phẩm</button>
                     </div>
@@ -144,9 +145,7 @@
                 <div>
                     <input class="input-common" type="number" placeholder="Giá">
                 </div>
-                <div>
-                    <input class="input-common" type="number" placeholder="Số lượng tồn">
-                </div>
+               
                 <div>
                     
                     <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
@@ -158,25 +157,7 @@
 
                 
             </form>
-                <!-- <label for="productName">Tên sản phẩm:</label>
-                <input type="text" id="productName" name="productName" required>
-
-                <label for="productPrice">Giá:</label>
-                <input type="number" id="productPrice" name="productPrice" required>
-
-                <label for="productCategory">Danh mục:</label>
-                <select id="productCategory" name="productCategory">
-                    <option value="1">Giày thể thao</option>
-                    <option value="2">Giày công sở</option>
-                    <option value="3">Giày nữ</option>
-                    <option value="4">Giày nam</option>
-                </select>
-
-                <label for="productDescription">Mô tả:</label>
-                <textarea id="productDescription" name="productDescription" rows="4"></textarea>
-
-                <button type="submit">Lưu Sản phẩm</button> -->
-            </form>
+               
         </div>
     </div>
 

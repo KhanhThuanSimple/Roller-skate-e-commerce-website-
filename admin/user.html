@@ -16,10 +16,11 @@
         <aside class="sidebar">
             <h2>Admin Dashboard</h2>
             <ul >
-                <li ><a href="#products">Tài khoản Amin</a></li>
+                <li ><a class="background-active" href="#products">Tài khoản Amin</a></li>
                 <li><a href="./order.html">Đơn hàng</a></li>
                 <li><a href="./customer.html">Khách hàng</a></li>
-                <li><a href="./product.html">Kho hàng</a></li>
+                <li><a href="./product.html">Sản phẩm</a></li>
+                <li><a href="./nhaphang.html">Nhập hàng</a></li>
             </ul>
         </aside>
 
@@ -94,9 +95,9 @@
                     </tbody>
                     <div class="pagination flex-row">
                         <div class="flex-1">
-                            <button id="prevPage" class= "button-orange">Previous</button>
+                            <button id="prevPage" class= "button-black">Trước</button>
                             <span id="pageNumber">1</span> / <span id="totalPages">4</span>
-                            <button id="nextPage" class="button-orange" type="button" onclick="window.location.href='order.html'">Next</button>
+                            <button id="SauPage" class="button-black" type="button" onclick="window.location.href='order.html'">Sau</button>
                         </div>
                         <button class="button-orange" onclick="openProductForm()">Thêm Tài Khoản</button>
                     </div>

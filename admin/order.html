@@ -18,10 +18,11 @@
         <aside class="sidebar">
             <h2>Admin Dashboard</h2>
             <ul>
-                <li><a href="./user.html">Tài khoản</a></li>
-                <li><a href="./order.html">Đơn hàng</a></li>
+                <li><a href="./user.html">Tài khoản Admin</a></li>
+                <li><a class="background-active" href="./order.html">Đơn hàng</a></li>
                 <li><a href="./customer.html">Khách hàng</a></li>
-                <li><a href="./product.html">Kho hàng</a></li>
+                <li><a href="./product.html">Sản phẩm</a></li>
+                <li><a href="./nhaphang.html">Nhập hàng</a></li>
             </ul>
         </aside>
 
@@ -130,11 +131,11 @@
 
                     <div class="pagination flex-row">
                         <div class="flex-1">
-                            <button id="prevPage" class="button-orange" type="button"
-                                onclick="window.location.href='user.html'">Previous</button>
+                            <button id="prevPage" class="button-black" type="button"
+                                onclick="window.location.href='user.html'">Trước</button>
                             <span id="pageNumber">2</span> / <span id="totalPages">4</span>
-                            <button id="nextPage" class="button-orange" type="button"
-                                onclick="window.location.href='customer.html'">Next</button>
+                            <button id="SauPage" class="button-black" type="button"
+                                onclick="window.location.href='customer.html'">Sau</button>
                         </div>
 
                     </div>
@@ -189,9 +190,10 @@
                                     <td>120</td>
 
                                     <td>
-                                        <button style="border:none;background-color: unset"><i
-                                                class="fa-solid fa-pen-to-square"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                        <button style="border:none;background-color: unset" type="button"  onclick="openProductFormDetail()">
+                                            <i class="fa-solid fa-pen-to-square"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                        </button>
                                         <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
                                                 style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                                     </td>
@@ -204,10 +206,11 @@
 
                                     <td>120</td>
                                     <td>
-                                        <button style="border:none;background-color: unset"><i
-                                                class="fa-solid fa-pen-to-square"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                        <button onclick="openProductFormDetail()"
+                                        <button style="border:none;background-color: unset" type="button"  onclick="openProductFormDetail()">
+                                            <i class="fa-solid fa-pen-to-square"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                        </button>
+                                        <button 
                                             style="border:none;background-color: unset"><i class="fa-solid fa-trash"
                                                 style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                                     </td>
@@ -220,9 +223,10 @@
                                     <td>200</td>
 
                                     <td>
-                                        <button style="border:none;background-color: unset"><i
-                                                class="fa-solid fa-pen-to-square"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                        <button style="border:none;background-color: unset" type="button"  onclick="openProductFormDetail()">
+                                            <i class="fa-solid fa-pen-to-square"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                        </button>
                                         <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
                                                 style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                                     </td>
@@ -236,10 +240,11 @@
                                     <td>100</td>
 
                                     <td>
-                                        <button style="border:none;background-color: unset"><i
-                                                class="fa-solid fa-pen-to-square"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                        <button onclick="openProductFormDetail()"
+                                        <button style="border:none;background-color: unset" type="button"  onclick="openProductFormDetail()">
+                                            <i class="fa-solid fa-pen-to-square"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                        </button>
+                                        <button 
                                             style="border:none;background-color: unset"><i class="fa-solid fa-trash"
                                                 style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                                     </td>
@@ -248,11 +253,11 @@
                             </tbody>
                             <div class="pagination flex-row">
                                 <!-- <div class="flex-1">
-                                    <button id="prevPage" class="button-orange" type="button"
-                                        onclick="window.location.href='customer.html'">Previous</button>
+                                    <button id="prevPage" class="button-black" type="button"
+                                        onclick="window.location.href='customer.html'">Trước</button>
                                     <span id="pageNumber">4</span> / <span id="totalPages">4</span>
-                                    <button id="nextPage" class="button-orange" type="button"
-                                        onclick="window.location.href='inventory.html'">Next</button>
+                                    <button id="SauPage" class="button-orange" type="button"
+                                        onclick="window.location.href='inventory.html'">Sau</button>
                                 </div> -->
                                 <!-- <button class="button-orange" onclick="openProductForm()">Thêm Sản Phẩm</button> -->
                             </div>
@@ -269,18 +274,18 @@
                     <span class="close-btn" onclick="closeProductFormDetail()">&times;</span>
 
                     <form action="post" class="flex-colunm">
-                        <h2>Thêm tài khoản</h2>
+                        <h2>Chỉnh sửa sản phẩm</h2>
                         <div>
-                            <input class="input-common" type="text" placeholder=" Tên ">
+                            <input class="input-common" type="text" placeholder=" Họ & tên ">
                         </div>
                         <div>
-                            <input class="input-common" type="email" placeholder=" Giá">
+                            <input class="input-common" type="email" placeholder=" Email">
                         </div>
                         <div>
-                            <input class="input-common" type="password" placeholder="Số lượng">
+                            <input class="input-common" type="password" placeholder="Mật khẩu">
                         </div>
                         <div class="flex-center">
-                            <button class="button-orange">Lưu tài khoản</button>
+                            <button class="button-orange">Lưu sản phẩm</button>
                         </div>
 
 
