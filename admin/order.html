@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Shop Giày Partin</title>
     <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -49,9 +51,14 @@
                             <td>Đã thanh toán</td>
 
                             <td> Đặt hàng</td>
-                             <td class="flex-row" >
-                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            <td>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
+                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
+                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
+                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -60,9 +67,14 @@
                             <td>130.000</td>
                             <td>Đã thanh toán</td>
                             <td>Xác nhận đơn hàng</td>
-                             <td class="flex-row" >
-                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            <td>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
+                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
+                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
+                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -71,9 +83,14 @@
                             <td>180.000</td>
                             <td>Chúa thanh toán</td>
                             <td>Đang xử lí </td>
-                             <td class="flex-row" >
-                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            <td>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
+                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
+                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
+                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -82,9 +99,14 @@
                             <td>400.000</td>
                             <td>Đã thanh toán</td>
                             <td>Đang lấy hàng</td>
-                             <td class="flex-row" >
-                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            <td>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
+                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
+                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
+                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -93,28 +115,182 @@
                             <td>560.000</td>
                             <td>Chưa thanh toán</td>
                             <td>Đang giao hàng</td>
-                             <td class="flex-row" >
-                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            <td>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
+                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
+                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
+                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                </button>
                             </td>
                         </tr>
                         <!-- Các khách hàng sẽ được hiển thị ở đây -->
                     </tbody>
+
                     <div class="pagination flex-row">
                         <div class="flex-1">
-                            <button id="prevPage" class= "button-orange" type="button" onclick="window.location.href='user.html'">Previous</button>
+                            <button id="prevPage" class="button-orange" type="button"
+                                onclick="window.location.href='user.html'">Previous</button>
                             <span id="pageNumber">2</span> / <span id="totalPages">4</span>
-                            <button id="nextPage" class="button-orange" type="button" onclick="window.location.href='customer.html'">Next</button>
+                            <button id="nextPage" class="button-orange" type="button"
+                                onclick="window.location.href='customer.html'">Next</button>
                         </div>
-                        
+
                     </div>
 
                 </table>
             </section>
+            <div id="productModal" class="modal">
+                <div class="modal-order">
+                    <span class="close-btn" onclick="closeProductForm()">&times;</span>
+
+                    <form action="post" class="flex-colunm">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Hình ảnh</th>
+
+                                    <th>Giá</th>
+
+
+                                    <th>Số lượng </th>
+                                    <th>Hành động</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>TSM1</td>
+                                    <td>Flying Eagle</td>
+                                    <td class="image"> <img src="../image/CR3.png" alt=""></td>
+
+                                    <td>2.500.000</td>
+
+                                    <td>120</td>
+
+                                    <td>
+                                        <button style="border:none;background-color: unset" type="button"  onclick="openProductFormDetail()">
+                                            <i class="fa-solid fa-pen-to-square"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                        </button>
+                                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>TSM2</td>
+                                    <td>Giày patin TSM2</td>
+                                    <td class="image"> <img src="../image/MS1.png" alt=""></td>
+                                    <td>1.200.000</td>
+
+                                    <td>120</td>
+
+                                    <td>
+                                        <button style="border:none;background-color: unset"><i
+                                                class="fa-solid fa-pen-to-square"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>TSM3</td>
+                                    <td>Giày patin TSM3</td>
+                                    <td class="image"> <img src="../image/EGLS1.png" alt=""></td>
+                                    <td>1.260.000</td>
+
+                                    <td>120</td>
+                                    <td>
+                                        <button style="border:none;background-color: unset"><i
+                                                class="fa-solid fa-pen-to-square"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                        <button onclick="openProductFormDetail()"
+                                            style="border:none;background-color: unset"><i class="fa-solid fa-trash"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                    </td>
+                                <tr>
+                                    <td>S6S</td>
+                                    <td>Giày patin S6S</td>
+                                    <td class="image"> <img src="../image/CR2.png" alt=""></td>
+                                    <td>2.590.000</td>
+
+                                    <td>200</td>
+
+                                    <td>
+                                        <button style="border:none;background-color: unset"><i
+                                                class="fa-solid fa-pen-to-square"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>M52</td>
+                                    <td>Giày patin M52</td>
+                                    <td class="image"> <img src="../image/CR3.png" alt=""></td>
+                                    <td>1.990.000</td>
+
+                                    <td>100</td>
+
+                                    <td>
+                                        <button style="border:none;background-color: unset"><i
+                                                class="fa-solid fa-pen-to-square"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                        <button onclick="openProductFormDetail()"
+                                            style="border:none;background-color: unset"><i class="fa-solid fa-trash"
+                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Các khách hàng sẽ được hiển thị ở đây -->
+                            </tbody>
+                            <div class="pagination flex-row">
+                                <!-- <div class="flex-1">
+                                    <button id="prevPage" class="button-orange" type="button"
+                                        onclick="window.location.href='customer.html'">Previous</button>
+                                    <span id="pageNumber">4</span> / <span id="totalPages">4</span>
+                                    <button id="nextPage" class="button-orange" type="button"
+                                        onclick="window.location.href='inventory.html'">Next</button>
+                                </div> -->
+                                <!-- <button class="button-orange" onclick="openProductForm()">Thêm Sản Phẩm</button> -->
+                            </div>
+
+                        </table>
+
+
+                    </form>
+                </div>
+
+            </div>
+            <div id="productModalDetail" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeProductFormDetail()">&times;</span>
+
+                    <form action="post" class="flex-colunm">
+                        <h2>Thêm tài khoản</h2>
+                        <div>
+                            <input class="input-common" type="text" placeholder=" Tên ">
+                        </div>
+                        <div>
+                            <input class="input-common" type="email" placeholder=" Giá">
+                        </div>
+                        <div>
+                            <input class="input-common" type="password" placeholder="Số lượng">
+                        </div>
+                        <div class="flex-center">
+                            <button class="button-orange">Lưu tài khoản</button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
         </main>
     </div>
 
-    
+
 
     <script src="admin.js"></script>
 </body>

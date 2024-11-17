@@ -49,7 +49,7 @@ body {
 }
 
 .sidebar ul li a:hover {
-    background-color: #1abc9c;
+    background-color: orange;
 }
 
 .main-content {
@@ -112,8 +112,16 @@ button.btn:hover {
     margin: 15% auto;
     padding: 20px;
     border-radius: 10px;
-    width: 50%;
+    width: 90%;
     max-width: 500px;
+}
+.modal-order {
+    background-color: white;
+    margin: 3% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1000px;
 }
 
 .close-btn {
