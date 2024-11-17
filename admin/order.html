@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Shop Giày Partin</title>
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -17,7 +19,7 @@
                 <li><a href="./user.html">Tài khoản</a></li>
                 <li><a href="./order.html">Đơn hàng</a></li>
                 <li><a href="./customer.html">Khách hàng</a></li>
-                <li><a href="./inventory.html">Kho hàng</a></li>
+                <li><a href="./product.html">Kho hàng</a></li>
             </ul>
         </aside>
 
@@ -33,7 +35,9 @@
                             <th>ID đơn hàng</th>
                             <th>Khách Hàng</th>
                             <th>Tổng Tiền</th>
-                            <th>Trạng thái</th>
+                            <th>Trạng thái thanh toán</th>
+
+                            <th>Trạng thái giao hàng</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
@@ -42,50 +46,56 @@
                             <td>01</td>
                             <td>Nguyễn Văn A</td>
                             <td>160.000</td>
+                            <td>Đã thanh toán</td>
+
                             <td> Đặt hàng</td>
-                            <td>
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
+                             <td class="flex-row" >
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </td>
                         </tr>
                         <tr>
                             <td>02</td>
                             <td>Nguyễn Văn Hậu</td>
                             <td>130.000</td>
+                            <td>Đã thanh toán</td>
                             <td>Xác nhận đơn hàng</td>
-                            <td>
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
+                             <td class="flex-row" >
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </td>
                         </tr>
                         <tr>
                             <td>03</td>
                             <td>Trần Mai Anh</td>
                             <td>180.000</td>
+                            <td>Chúa thanh toán</td>
                             <td>Đang xử lí </td>
-                            <td>
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
+                             <td class="flex-row" >
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </td>
                         </tr>
                         <tr>
                             <td>04</td>
                             <td>Phạm Thị Hồng</td>
                             <td>400.000</td>
+                            <td>Đã thanh toán</td>
                             <td>Đang lấy hàng</td>
-                            <td>
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
+                             <td class="flex-row" >
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </td>
                         </tr>
                         <tr>
                             <td>05</td>
                             <td>Nguyễn Cao Thắng</td>
                             <td>560.000</td>
+                            <td>Chưa thanh toán</td>
                             <td>Đang giao hàng</td>
-                            <td>
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
+                             <td class="flex-row" >
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </td>
                         </tr>
                         <!-- Các khách hàng sẽ được hiển thị ở đây -->
@@ -96,7 +106,7 @@
                             <span id="pageNumber">2</span> / <span id="totalPages">4</span>
                             <button id="nextPage" class="button-orange" type="button" onclick="window.location.href='customer.html'">Next</button>
                         </div>
-                        <button class="button-orange" onclick="openProductForm()">Thêm Đơn Hàng</button>
+                        
                     </div>
 
                 </table>
@@ -104,46 +114,7 @@
         </main>
     </div>
 
-    <!-- Product Form Modal -->
-    <div id="productModal" class="modal">
-        <div class="modal-content" >
-            <span class="close-btn" onclick="closeProductForm()">&times;</span>
-            <h2>Thêm Sản phẩm</h2>
-            <form action="post">
-                <div>
-                    <input type="text" placeholder=" Tên sản phảm">
-                </div>
-                <div>
-                    <input type="text" placeholder="Giá">
-                </div>
-                <div>
-                    <input type="text" placeholder="Mô tả">
-                </div>
-                <div class="flex-center">
-                    <button >Lưu sản phẩm</button>
-                </div>
-
-                <!-- <label for="productName">Tên sản phẩm:</label>
-                <input type="text" id="productName" name="productName" required>
-
-                <label for="productPrice">Giá:</label>
-                <input type="number" id="productPrice" name="productPrice" required>
-
-                <label for="productCategory">Danh mục:</label>
-                <select id="productCategory" name="productCategory">
-                    <option value="1">Giày thể thao</option>
-                    <option value="2">Giày công sở</option>
-                    <option value="3">Giày nữ</option>
-                    <option value="4">Giày nam</option>
-                </select>
-
-                <label for="productDescription">Mô tả:</label>
-                <textarea id="productDescription" name="productDescription" rows="4"></textarea>
-
-                <button type="submit">Lưu Sản phẩm</button> -->
-            </form>
-        </div>
-    </div>
+    
 
     <script src="admin.js"></script>
 </body>

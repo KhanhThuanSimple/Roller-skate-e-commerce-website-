@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Shop Giày Partin</title>
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -17,7 +18,7 @@
                 <li><a href="./user.html">Tài khoản</a></li>
                 <li><a href="./order.html">Đơn hàng</a></li>
                 <li><a href="./customer.html">Khách hàng</a></li>
-                <li><a href="#inventory">Kho hàng</a></li>
+                <li><a href="#inventory">Sản phẩm</a></li>
             </ul>
         </aside>
 
@@ -54,9 +55,9 @@
                             <td>120</td>
 
                             
-                            <td>
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
+                            <td class="flex-row" >
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </td>
                         </tr>
                         <tr>
@@ -67,9 +68,9 @@
                             <td>15</td>
                             <td>120</td>
                             
-                            <td>
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
+                            <td class="flex-row" >
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </td>
                         </tr>
                         <tr>
@@ -80,9 +81,9 @@
                             <td>20</td>
                             <td>120</td>
                             
-                            <td>
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
+                            <td class="flex-row" >
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </td>
                         <tr>
                             <td>S6S</td>
@@ -92,9 +93,9 @@
                             <td>20</td>
                             <td>200</td>
                             
-                            <td>
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
+                            <td class="flex-row" >
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </td>
                         </tr>
                         <tr>
@@ -105,9 +106,9 @@
                             <td>25</td>
                             <td>100</td>
                             
-                            <td class="flex-row">
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
+                            <td class="flex-row" >
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                 <i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </td>
                         </tr>
                         <!-- Các khách hàng sẽ được hiển thị ở đây -->
@@ -130,21 +131,33 @@
     <div id="productModal" class="modal">
         <div class="modal-content" >
             <span class="close-btn" onclick="closeProductForm()">&times;</span>
-            <h2>Thêm Sản phẩm</h2>
-            <form action="post">
-                <div>
-                    <input type="text" placeholder=" Tên sản phảm">
+           
+            <form action="post" class="flex-colunm" >
+                <h2>Thêm sản phẩm</h2>
+                <div >
+                    <input  class="input-common" type="text" placeholder=" ID sản phẩm">
                 </div>
                 <div>
-                    <input type="text" placeholder="Giá">
+                    <input class="input-common"  type="email" placeholder=" Tên sản phẩm">
+                </div>
+                
+                <div>
+                    <input class="input-common" type="number" placeholder="Giá">
                 </div>
                 <div>
-                    <input type="text" placeholder="Mô tả">
+                    <input class="input-common" type="number" placeholder="Số lượng tồn">
                 </div>
-                <div class="flex-center">
-                    <button >Lưu sản phẩm</button>
+                <div>
+                    
+                    <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
+                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" style="visibility: hidden;" />
+                </div>
+                <div  class="flex-center">
+                    <button class="button-orange">Lưu tài khoản</button>
                 </div>
 
+                
+            </form>
                 <!-- <label for="productName">Tên sản phẩm:</label>
                 <input type="text" id="productName" name="productName" required>
 
@@ -168,6 +181,17 @@
     </div>
 
     <script src="admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const icon = document.querySelector('.fa-image');
+    const fileInput = document.getElementById('avatar');
+
+    icon.addEventListener('click', function() {
+        fileInput.click();
+    });
+});
+
+    </script>
 </body>
 
 </html>
