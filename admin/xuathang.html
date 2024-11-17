@@ -15,12 +15,13 @@
         <aside class="sidebar">
             <h2>Admin Dashboard</h2>
             <ul>
-                <li><a href="./user.html">Tài khoản Admin</a></li>
+                <li><a  href="./user.html">Tài khoản Admin</a></li>
                 <li><a href="./order.html">Đơn hàng</a></li>
                 <li><a href="./customer.html">Khách hàng</a></li>
-                <li><a class="background-active" href="./product.html">Sản phẩm</a></li>
-                <li><a href="./nhaphang.html">Nhập hàng</a></li>
-                <li><a href="./xuathang.html">Xuất hàng</a></li>
+                <li><a href="./product.html">Sản phẩm</a></li>
+                <li><a  href="./nhaphang.html">Nhập Hàng</a></li>
+                <li><a class="background-active" href="./xuathang.html">Xuất hàng</a></li>
+
 
             </ul>
         </aside>
@@ -29,33 +30,35 @@
         <main class="main-content">
             <!-- Section: Khách hàng -->
             <section id="customers">
-                <h3>Quản Lý Sản Phẩm</h3>
+                <h3>Quản Lý Xuất Hàng</h3>
 
                 <table>
                     <thead>
                         <tr>
+                            <th>ID đơn hàng</th>
                             <th>ID sản phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
 
-                            <th>Giá</th>
-                            <th>Số lượng chờ giao hàng</th>
+                            <th>Giá Nhập</th>
+                            <th>Số Lượng Xuất</th>
 
 
-                            <th>Số lượng tồn</th>
+                           
                             <th>Hành động</th>
                             
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>01</td>
                             <td>TSM1</td>
                             <td>Flying Eagle</td>
                             <td class="image"> <img src="../image/CR3.png" alt=""></td>
 
                             <td>2.500.000</td>
                             <td>30</td>
-                            <td>120</td>
+                           
 
                             
                             <td>
@@ -64,12 +67,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>02</td>
                             <td>TSM2</td>
                             <td>Giày patin TSM2</td>
                             <td class="image"> <img src="../image/MS1.png" alt=""></td>
                             <td>1.200.000</td>
                             <td>15</td>
-                            <td>120</td>
+                          
                             
                             <td>
                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
@@ -77,24 +81,26 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>03</td>
                             <td>TSM3</td>
                             <td>Giày patin TSM3</td>
                             <td class="image"> <img src="../image/EGLS1.png" alt=""></td>
                             <td>1.260.000</td>
                             <td>20</td>
-                            <td>120</td>
+                          
                             
                             <td>
                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                                  <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                             </td>
                         <tr>
+                            <td>04</td>
                             <td>S6S</td>
                             <td>Giày patin S6S</td>
                             <td class="image"> <img src="../image/CR2.png" alt=""></td>
                             <td>2.590.000</td>
                             <td>20</td>
-                            <td>200</td>
+                           
                             
                             <td>
                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
@@ -102,12 +108,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>05</td>
                             <td>M52</td>
                             <td>Giày patin M52</td>
                             <td class="image"> <img src="../image/CR3.png" alt=""></td>
                             <td>1.990.000</td>
                             <td>25</td>
-                            <td>100</td>
+                           
                             
                             <td>
                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
@@ -119,7 +126,7 @@
                     <div class="pagination flex-row">
                         <div class="flex-1">
                             <button id="prevPage" class= "button-black" type="button" onclick="window.location.href='customer.html'">Trước</button>
-                            <span id="pageNumber">4</span> / <span id="totalPages">4</span>
+                            <span id="pageNumber">6</span> / <span id="totalPages">6</span>
                             <button id="SauPage" class="button-black"type="button" onclick="window.location.href='inventory.html'">Sau</button>
                         </div>
                         <button class="button-orange" onclick="openProductForm()">Thêm Sản Phẩm</button>
@@ -145,16 +152,16 @@
                 </div>
                 
                 <div>
-                    <input class="input-common" type="number" placeholder="Giá">
+                    <input class="input-common" type="number" placeholder="Giá xuất">
                 </div>
                
                 <div>
-                    
-                    <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
-                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" style="visibility: hidden;" />
+                    <input class="input-common" type="number" placeholder="Số lượng xuất">
+                    <!-- <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
+                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" style="visibility: hidden;" /> -->
                 </div>
                 <div  class="flex-center">
-                    <button class="button-orange">Lưu tài khoản</button>
+                    <button class="button-orange">Lưu </button>
                 </div>
 
                 
