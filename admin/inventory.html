@@ -14,10 +14,10 @@
         <aside class="sidebar">
             <h2>Admin Dashboard</h2>
             <ul>
-                <li><a href="#products">Tài khoản</a></li>
+                <li><a href="./user.html">Tài khoản</a></li>
                 <li><a href="./order.html">Đơn hàng</a></li>
                 <li><a href="./customer.html">Khách hàng</a></li>
-                <li><a href="./inventory.html">Kho hàng</a></li>
+                <li><a href="#inventory">Kho hàng</a></li>
             </ul>
         </aside>
 
@@ -25,64 +25,63 @@
         <main class="main-content">
             <!-- Section: Khách hàng -->
             <section id="customers">
-                <h3>Quản lý Tài khoản</h3>
+                <h3>Quản lý kho hàng</h3>
 
                 <table>
                     <thead>
                         <tr>
-                            <th>Họ & tên</th>
-                            <th>Email</th>
-                            <th>password</th>
-                            <th>Trạng thái</th>
-                            <th>Thao tác</th>
+                            <th>ID sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng tồn</th>
+                            <th>Hành động</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>abc@gmail.com</td>
-                            <td>50</td>
-                            <td> Tài khoản bị khóa</td>
+                            <td>TSM1</td>
+                            <td>Giày patin TSM1</td>
+                            <td>200</td>
+                            
                             <td>
                                 <button class="button-orange">Sửa</button>
                                 <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <tr>
-                            <td>2</td>
-                            <td>abc@gmail.com</td>
-                            <td>30</td>
-                            <td>Tài khoản mới</td>
+                            <td>TSM2</td>
+                            <td>Giày patin TSM2</td>
+                            <td>120</td>
+                            
                             <td>
                                 <button class="button-orange">Sửa</button>
                                 <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <tr>
-                            <td>3</td>
-                            <td>abc@gmail.com</td>
-                            <td>20</td>
-                            <td>Tài khoản đang hoạt động</td>
+                            <td>TSM3</td>
+                            <td>Giày patin TSM3</td>
+                            <td>130</td>
+                            
+                            <td>
+                                <button class="button-orange">Sửa</button>
+                                <button class="button-orange">Cập nhật</button>
+                            </td>
+                        <tr>
+                            <td>S6S</td>
+                            <td>Giày patin S6S</td>
+                            <td>200</td>
+                            
                             <td>
                                 <button class="button-orange">Sửa</button>
                                 <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <tr>
-                            <td>4</td>
-                            <td>abc@gmail.com</td>
-                            <td>40</td>
-                            <td>Tài khoản bị khóa tạm thời</td>
-                            <td>
-                                <button class="button-orange">Sửa</button>
-                                <button class="button-orange">Cập nhật</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>abc@gmail.com</td>
-                            <td>40</td>
-                            <td>Tài khoản bị đóng</td>
+                            <td>M52</td>
+                            <td>Giày patin M52</td>
+                            <td>100</td>
+                            
                             <td>
                                 <button class="button-orange">Sửa</button>
                                 <button class="button-orange">Cập nhật</button>
@@ -92,11 +91,11 @@
                     </tbody>
                     <div class="pagination flex-row">
                         <div class="flex-1">
-                            <button id="prevPage" class= "button-orange">Previous</button>
-                            <span id="pageNumber">1</span> / <span id="totalPages">1</span>
-                            <button id="nextPage" class="button-orange" type="button" onclick="window.location.href='order.html'">Next</button>
+                            <button id="prevPage" class= "button-orange" type="button" onclick="window.location.href='customer.html'">Previous</button>
+                            <span id="pageNumber">1</span> / <span id="totalPages">2</span>
+                            <button id="nextPage" class="button-orange"type="button" onclick="window.location.href='inventory.html'">Next</button>
                         </div>
-                        <button class="button-orange" onclick="openProductForm()">Thêm Tài Khoản</button>
+                        <button class="button-orange" onclick="openProductForm()">Thêm Sản Phẩm</button>
                     </div>
 
                 </table>
@@ -108,7 +107,7 @@
     <div id="productModal" class="modal">
         <div class="modal-content" >
             <span class="close-btn" onclick="closeProductForm()">&times;</span>
-            <h2>Thêm tài khoản</h2>
+            <h2>Thêm Sản phẩm</h2>
             <form action="post">
                 <div>
                     <input type="text" placeholder=" Tên sản phảm">

@@ -14,7 +14,7 @@
         <aside class="sidebar">
             <h2>Admin Dashboard</h2>
             <ul>
-                <li><a href="#products">Tài khoản</a></li>
+                <li><a href="./user.html">Tài khoản</a></li>
                 <li><a href="./order.html">Đơn hàng</a></li>
                 <li><a href="./customer.html">Khách hàng</a></li>
                 <li><a href="./inventory.html">Kho hàng</a></li>
@@ -25,64 +25,64 @@
         <main class="main-content">
             <!-- Section: Khách hàng -->
             <section id="customers">
-                <h3>Quản lý Tài khoản</h3>
+                <h3>Quản lý Đơn Hàng</h3>
 
                 <table>
                     <thead>
                         <tr>
-                            <th>Họ & tên</th>
-                            <th>Email</th>
-                            <th>password</th>
+                            <th>ID đơn hàng</th>
+                            <th>Khách Hàng</th>
+                            <th>Tổng Tiền</th>
                             <th>Trạng thái</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>abc@gmail.com</td>
-                            <td>50</td>
-                            <td> Tài khoản bị khóa</td>
+                            <td>01</td>
+                            <td>Nguyễn Văn A</td>
+                            <td>160.000</td>
+                            <td> Đặt hàng</td>
                             <td>
                                 <button class="button-orange">Sửa</button>
                                 <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <tr>
-                            <td>2</td>
-                            <td>abc@gmail.com</td>
-                            <td>30</td>
-                            <td>Tài khoản mới</td>
+                            <td>02</td>
+                            <td>Nguyễn Văn Hậu</td>
+                            <td>130.000</td>
+                            <td>Xác nhận đơn hàng</td>
                             <td>
                                 <button class="button-orange">Sửa</button>
                                 <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <tr>
-                            <td>3</td>
-                            <td>abc@gmail.com</td>
-                            <td>20</td>
-                            <td>Tài khoản đang hoạt động</td>
+                            <td>03</td>
+                            <td>Trần Mai Anh</td>
+                            <td>180.000</td>
+                            <td>Đang xử lí </td>
                             <td>
                                 <button class="button-orange">Sửa</button>
                                 <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <tr>
-                            <td>4</td>
-                            <td>abc@gmail.com</td>
-                            <td>40</td>
-                            <td>Tài khoản bị khóa tạm thời</td>
+                            <td>04</td>
+                            <td>Phạm Thị Hồng</td>
+                            <td>400.000</td>
+                            <td>Đang lấy hàng</td>
                             <td>
                                 <button class="button-orange">Sửa</button>
                                 <button class="button-orange">Cập nhật</button>
                             </td>
                         </tr>
                         <tr>
-                            <td>5</td>
-                            <td>abc@gmail.com</td>
-                            <td>40</td>
-                            <td>Tài khoản bị đóng</td>
+                            <td>05</td>
+                            <td>Nguyễn Cao Thắng</td>
+                            <td>560.000</td>
+                            <td>Đang giao hàng</td>
                             <td>
                                 <button class="button-orange">Sửa</button>
                                 <button class="button-orange">Cập nhật</button>
@@ -92,11 +92,11 @@
                     </tbody>
                     <div class="pagination flex-row">
                         <div class="flex-1">
-                            <button id="prevPage" class= "button-orange">Previous</button>
-                            <span id="pageNumber">1</span> / <span id="totalPages">1</span>
-                            <button id="nextPage" class="button-orange" type="button" onclick="window.location.href='order.html'">Next</button>
+                            <button id="prevPage" class= "button-orange" type="button" onclick="window.location.href='user.html'">Previous</button>
+                            <span id="pageNumber">1</span> / <span id="totalPages">2</span>
+                            <button id="nextPage" class="button-orange" type="button" onclick="window.location.href='customer.html'">Next</button>
                         </div>
-                        <button class="button-orange" onclick="openProductForm()">Thêm Tài Khoản</button>
+                        <button class="button-orange" onclick="openProductForm()">Thêm Đơn Hàng</button>
                     </div>
 
                 </table>
@@ -108,7 +108,7 @@
     <div id="productModal" class="modal">
         <div class="modal-content" >
             <span class="close-btn" onclick="closeProductForm()">&times;</span>
-            <h2>Thêm tài khoản</h2>
+            <h2>Thêm Sản phẩm</h2>
             <form action="post">
                 <div>
                     <input type="text" placeholder=" Tên sản phảm">
