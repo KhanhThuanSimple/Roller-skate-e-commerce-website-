@@ -12,6 +12,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="giohang.css">
 </head>
 <body>
     <div id="wrapper">
@@ -49,9 +50,46 @@
         
 
         <!-- Main Content Section -->
-        <main class="container">
-            <!-- Nội dung chính của trang sẽ được đặt ở đây -->
-        </main>
+        <div class="container">
+<div class="cart-container">
+    <div class="cart-part">
+        <div class="cart-img">
+            <img src="image/ENGLE X3.png" alt="engle">
+        </div>
+        <div class="cart-desc">
+            <h3>
+                Giay Engle
+            </h3>
+
+        </div>
+        <div class="cart-quantity">
+            <input type="number" id="quantity" min="0">
+        </div>
+        <div class="cart-price">
+            <h4>1.400.000 d</h4>
+        </div>
+        <div class="cart-total"><h4>
+            2.000.000đ
+        </h4></div>
+        <div class="cart-remove">
+            <button>Remove</button>
+        </div>
+    </div>
+</div>
+<div class="cart-summary">
+    <div class="product-total"><h2>total-product <span id="total">1000.000</span></h2></div>
+<div class="product-checkout"><a href="#" class="checkout">checkout</a></div>
+<button class="removeAll">Clear Cart</button>
+</div>
+<!-- <div class="cart-emty">
+    <h2>Không Có Sản Phẩm nào!</h2>
+    <a href="index.html">
+        <button class="HomeBtn">Back to home</button>
+    </a>
+</div> -->
+
+            <script src="giohang.js"></script>
+        </div>
 
         <!-- Footer Section -->
         <footer id="footer">
@@ -78,3 +116,5 @@
     </div>
 </body>
 </html>
+
+
