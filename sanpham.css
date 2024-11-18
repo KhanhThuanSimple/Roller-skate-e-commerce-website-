@@ -179,24 +179,35 @@ ul.product li .product-top {
   overflow: hidden;
 }
 
-ul.product li .product-top a.buy-now {
+ul.product li .product-top .button-container{
+  display: flex;
+  position: absolute;
+  bottom: -65px;
+  width: 100%;
+  transition: 0.25s ease-in-out;
+  opacity: 0.85;
+  text-align: center;
+  font-size: 10px;
+}
+
+ul.product li:hover .product-top .button-container {
+  bottom: 0;
+}
+
+ul.product li .product-top a.buy-now,
+ul.product li .product-top a.view-details {
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
   display: block;
   background-color: #446084;
   color: #fff;
-  padding: 5px 0;
-  bottom: -42px;
-  position: absolute;
-  width: 100%;
-  transition: 0.25s ease-in-out;
-  opacity: 0.85;
+  padding: 10px 0;
+  flex: 1;
 }
 
-
-ul.product li:hover a.buy-now {
-  bottom: 0;
+ul.product li .product-top a.view-details{
+  background-color: #5a7ba8; /* Màu khác cho nút "Xem Chi Tiết" */
 }
 
 ul.product li .product-top .product-thumb {
