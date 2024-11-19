@@ -254,7 +254,7 @@ nav #main-menu > li:hover > a::before {
 / / background-color: red;
     color: black;
     text-align: justify;
-    height: 800px;
+    height: 700px;
     width: 100%;
     margin-top: 100px;
     margin-left: auto;
@@ -264,7 +264,7 @@ nav #main-menu > li:hover > a::before {
 
 .flex-container {
     display: flex;
-    height: 800px;
+    height: 700px;
     width: 100%;
     background-color: #f3f2ec;
     padding: 0;
@@ -275,15 +275,15 @@ nav #main-menu > li:hover > a::before {
 .left-cn {
     width: 30%;
 / / background-color: black;
-    height: 780px;
+    height: 600px;
 }
 
-h3{
+h3 {
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-h3 a{
+h3 a {
     text-decoration: none;
     color: black;
 }
@@ -304,11 +304,135 @@ h3 a{
 
 }
 
-.right-cn {
-    flex-grow: 1;
-/ / background-color: peru;
-    height: 780px;
+/* avtatr*/
+.flex-avtar {
+    display: flex;
+    padding: 20px;
 }
+
+.avatar {
+    width: 20%;
+}
+
+.avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Bo tròn */
+}
+
+.In4Avt {
+    flex: 1;
+    margin-left: 0;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.suaHoSo {
+    text-decoration: none;
+    color: black;
+}
+
+
+/*css right-cn*/
+.right-cn {
+    flex: 1;
+    background-color: white;
+    height: 500px;
+}
+
+.head-rightcn {
+    height: 15%;
+/ / background-color: red;
+    padding: 10px;
+}
+
+.head-rightcn p {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.head-rightcn .pHoSo {
+    color: #8e8d8a;
+    font-size: 20px;
+}
+
+
+.bot-rightcn {
+//    background-color: red;
+    height: 425px;
+}
+
+/*css phan thong tin kh*/
+.formThongTinCaNhan {
+    width: 100%;
+    max-width: 700px;
+    height: 400px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+ //   background-color: red;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+label {
+    flex: 1;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+    input[type="text"] {
+        flex: 2;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+span {
+    flex: 2;
+    font-size: 18px;
+}
+
+a {
+    color: #F8A330;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input[type="radio"] {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.nutLuu {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #F8A330;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+
 
 
 
