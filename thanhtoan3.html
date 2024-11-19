@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="css/lienhe.css">
+</head>
+<body >
+    <div class="flex-row thanhtoan">
+        <div class=" thanhtoan-left flex-colunm flex-1">
+            <div>
+                <div>
+                    <h2 class="thanhtoan-title"> THÔNG TIN THANH TOÁN</h2>
+        
+                </div>
+                <div class="form-support">
+                    <form action="post">
+                        <div>
+                          <input class="input-common" type="text" placeholder="Tên của bạn">
+                        </div>
+                        <div class="flex-row">
+                          <div class="flex-1"> 
+                            <input class="input-common" type="email" placeholder="Email của bạn">
+            
+                          </div>
+                          <div class="flex-1">
+                            <input class="input-common" type="text" placeholder="Số điện thoại của bạn">
+                          </div>
+                        </div>
+                        <div>
+                         
+                          <textarea rows="4" class="input-common"  placeholder="Địa chỉ"></textarea>
+            
+                        </div>
+                     
+            
+                      </form>
+                </div>
+               
+                  
+            </div>
+            <div>
+                <div class="thanhtoan-title">
+                    <h2>THÔNG TIN BỔ SUNG</h2>
+                </div>
+                <div>
+                    <label for="element_id">Ghi chú đơn hàng(tùy chọn)</label>
+                    <!-- <input type="text" id="element_id" name="element_name"> -->
+                    <textarea rows="4" class="input-common"  placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng cụ thể hơn"></textarea>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="thanhtoan-right flex-1 ">
+            <div class="thanhtoan-title">
+                <h2>ĐƠN HÀNG CỦA BẠN</h2>
+            </div>
+            <div class="info-product">
+                <div class="flex-row">
+                    <div class="flex-1">
+                        <h3>SẢN PHẨM</h3>
+                    </div>
+                    <div class="flex-1"> 
+                        <h3>TẠM TÍNH</h3>
+                    </div>
+                </div>
+                <div class="item-content flex-row">
+                    <div class="flex-1 ">
+                        <h4>Giày Patin Trẻ em Centosy <br> Lion 3 Màu Đen/Hồng <br> Xanh X1 <br> Màu sắc: Đỏ <br> Kích cở: L </h4>
+                        <!-- <div class="flex-row">
+                            <h4>Xanh</h4>
+                            <h4>X 1</h4>
+                        </div>
+                        <div>
+                            <h4>Màu sắc</h4>
+                            <h4>Đỏ</h4>
+                        </div>
+                        <div>
+                            <h4>Kích cỡ</h4>
+                            <h4>L</h4>
+                        </div> -->
+                    </div>
+                    <div class="flex-1"> <h4> 1.760.000</h4></div>
+                </div>
+                <div class="flex-row">
+                    <div class="flex-1">
+                        <h4>Tạm tính</h4>
+                    </div>
+                    <div class="flex-1">
+                       <h5 style="color: red;">1.760.000</h4>
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div class="flex-1">
+                        <h4>Tổng</h4>
+                    </div>
+                    <div class="flex-1">
+                       <h4 style="color: red;">1.760.000</h4>
+                    </div>
+    
+                </div>
+            </div>
+            <div>
+                <div>
+                    <div class="form-group-thanhtoan">
+                        <label for="payment-method">Phương thức thanh toán</label>
+                        <select id="payment-method" name="payment-method" required>
+                          <option value="">Chọn phương thức thanh toán</option>
+                          <option value="credit-card">Thẻ tín dụng</option>
+                          <option value="paypal">Thanh toán khi nhận hàng</option>
+                          <option value="bank-transfer">Chuyển khoản ngân hàng</option>
+                        </select>
+                      </div>
+                </div>
+                
+                <div class=>
+                    <button type="button"  class="button-orange">Đặt hàng</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    
+    
+</body>
+</html>
