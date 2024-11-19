@@ -38,7 +38,7 @@ body {
 
 .healine {
   text-align: center;
-  margin: 120px auto auto auto;
+  margin: 10px auto auto auto;
 }
 
 .healine h3 {
@@ -218,4 +218,125 @@ ul.product li .product-top .product-thumb {
 
 ul.product li:hover .product-top .product-thumb img {
   filter: opacity(80%);
+}
+/* Modal Wrapper */
+/* Modal container */
+.modal {
+  display: none; /* Ẩn modal mặc định */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+  padding-top: 60px;
+  overflow: auto;
+}
+
+/* Nội dung modal */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto; /* Giảm khoảng cách từ trên xuống */
+  padding: 30px; /* Giảm padding để modal nhỏ hơn */
+  border-radius: 8px; /* Bo góc modal */
+  width: 40%; /* Giảm kích thước modal */
+  max-width: 600px; /* Giới hạn chiều rộng tối đa */
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng cho modal */
+}
+
+/* Nút đóng modal */
+.close {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: -3px;
+}
+
+.close:hover,
+.close:focus {
+  color: #a00;
+  text-decoration: none;
+}
+
+/* Hình ảnh sản phẩm trong modal */
+.modal img {
+  width: 80%; /* Giảm kích thước hình ảnh */
+  height: auto;
+  margin-top: 20px;
+  border-radius: 8px; /* Bo góc ảnh */
+}
+
+/* Giá sản phẩm */
+.modal .modal-price {
+  font-size: 18px; /* Giảm kích thước chữ */
+  color: #ff6600;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Phần chứa các nút */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.buttons-container a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #256eff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.buttons-container a:hover {
+  background-color: #1e56d8;
+}
+
+.buttons-container a.add-to-cart {
+  background-color: #f64749;
+}
+
+.buttons-container a.add-to-cart:hover {
+  background-color: #d03636;
+}
+
+/* Nút Mua ngay và Thêm vào giỏ hàng */
+.modal .buy-now,
+.modal .add-to-cart {
+  display: inline-block;
+  text-align: center;
+  background-color: #446084;
+  color: #fff;
+  margin-top: 7px;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  width: 40%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal .buy-now:hover,
+.modal .add-to-cart:hover {
+  background-color: #5a7ba8;
+  transform: translateY(-3px); /* Hiệu ứng phóng lên khi hover */
+}
+
+.modal .buy-now:active,
+.modal .add-to-cart:active {
+  transform: translateY(1px); /* Hiệu ứng khi nhấn */
+}
+
+.modal .buy-now:focus,
+.modal .add-to-cart:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
