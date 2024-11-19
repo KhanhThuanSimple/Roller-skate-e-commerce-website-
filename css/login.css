@@ -1,6 +1,7 @@
 .login-container{
     min-height: 100vh;
     position: relative;
+  
 
 }
  form{
@@ -17,12 +18,15 @@
 }
 
   .img-banner{
-    width: 100vw;
+    
+    max-width: 100%;
+    /* width: 100vw; */
     height: 100vh;
     object-fit: cover;
     background-color: rgba(#000, #000, #000, 0.6);
 }
   .logo img{
+    margin-top: -8px;
     width:70px;
     height: 70px;
    
