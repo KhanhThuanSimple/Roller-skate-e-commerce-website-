@@ -1,42 +1,33 @@
+
+/* Điều chỉnh thêm để slide show bắt đầu ngay dưới header */
 .container1 {
-  min-height: 100vh;
+  min-height: auto;
   background: #f3f2ec;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+margin-top: -90px;
+  padding-top: -10px; /* Đảm bảo khoảng cách từ trên xuống, có thể điều chỉnh tùy theo header */
 }
-
 .gallery-display-area {
   overflow: hidden;
-  height: 820px;
+  height: 700px;;
   width: 1080px;
-  margin: 0 auto;
-  top: 0%; 
+  margin: 0px auto 0;  
 }
 
 .gallery-wrap {
-  width: 500%;
-  animation: slideShow 14s infinite;
-}
-
-.image {
-  float: left;
-  height: 628px;
-  width: 1080px;
-  display: flex;
-  top: 0px;
-  justify-content: center;
-  align-items: center;
-  -webkit-box-reflect: below 1px -webkit-gradient(linear, right top, right bottom, from(transparent), to(rgba(255, 255, 255, 0.3)));
+  width: 600%;
+  animation: slideShow 26s infinite ease-in-out;  
 }
 
 @keyframes slideShow {
-  20% {
+  0%, 100% {
     margin-left: 0;
   }
 
-  30% {
+  20% {
     margin-left: -100%;
   }
 
@@ -44,11 +35,11 @@
     margin-left: -200%;
   }
 
-  50% {
+  60% {
     margin-left: -300%;
   }
 
-  60% {
+  80% {
     margin-left: -400%;
   }
 
@@ -56,6 +47,17 @@
     margin-left: -500%;
   }
 }
+
+.image {
+  float: left;
+  height: 628px;
+  width: 1080px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-reflect: below 1px -webkit-gradient(linear, right top, right bottom, from(transparent), to(rgba(255, 255, 255, 0.3)));
+}
+
 
 #main-container-index {
   max-width: 960px;
@@ -70,17 +72,17 @@
 
 .healine-index {
   text-align: center;
-  margin: 40px 0;
+  margin: -10px 0;
 }
 
 h3 {
-  font-size: 32px;
-  color: black;
+  font-size: 25px;
+  color: #ff6600;
   padding: 10px 20px;
   text-transform: uppercase;
   display: inline-block;
   font-weight: 600;
-  margin-top: 70px;
+  margin-top: -90px;
 }
 
 ul.product-index {
