@@ -334,6 +334,7 @@ h3 a {
     flex: 1;
     background-color: white;
     height: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 
@@ -341,12 +342,14 @@ h3 a {
     text-decoration: none;
     color: black;
 }
+
 /*css right-cn*/
 
 .head-rightcn {
     height: 15%;
 / / background-color: red;
     padding: 10px;
+
 }
 
 .head-rightcn p {
@@ -361,7 +364,7 @@ h3 a {
 
 
 .bot-rightcn {
-//    background-color: red;
+/ / background-color: red;
     height: 425px;
 }
 
@@ -373,7 +376,7 @@ h3 a {
     margin: 20px auto;
     font-family: Arial, sans-serif;
     color: #333;
- //   background-color: red;
+/ / background-color: red;
 }
 
 .form-group {
@@ -390,12 +393,12 @@ label {
     font-weight: bold;
 }
 
-    input[type="text"] {
-        flex: 2;
-        padding: 5px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
+input[type="text"] {
+    flex: 2;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
 
 span {
     flex: 2;
