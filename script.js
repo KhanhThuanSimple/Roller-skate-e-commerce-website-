@@ -1,40 +1,31 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Lấy tất cả các nút "Xem Chi Tiết" và ảnh sản phẩm
-    const viewDetailsBtns = document.querySelectorAll('.view-details');
-    const productThumbs = document.querySelectorAll('.product-thumb');
-    
-    // Lấy modal và các phần tử đóng
-    const modal = document.getElementById('productModal');
-    const closeModalBtn = document.querySelector('.close');
-  
-    // Hàm mở modal
-    function openModal() {
-      modal.style.display = 'block';  // Hiển thị modal
+// Lấy phần modal
+var modal = document.getElementById("productModal");
+
+// Lấy nút "Đặt hàng nhanh" và nút "Open Modal"
+var quickOrderBtn = document.getElementById("quickOrderBtn");
+var openModalBtn = document.getElementById("myBtn");
+
+// Lấy phần "close" để đóng modal
+var closeModal = document.getElementsByClassName("close")[0];
+
+// Mở modal khi nhấn vào nút "Đặt hàng nhanh"
+quickOrderBtn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Mở modal khi nhấn vào nút "Open Modal"
+openModalBtn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Đóng modal khi nhấn vào dấu 'x'
+closeModal.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Đóng modal khi nhấn ra ngoài modal
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
-  
-    // Hàm đóng modal
-    function closeModal() {
-      modal.style.display = 'none';  // Ẩn modal
-    }
-  
-    // Mở modal khi click vào nút "Xem Chi Tiết"
-    viewDetailsBtns.forEach(button => {
-      button.addEventListener('click', openModal);
-    });
-  
-    // Mở modal khi click vào ảnh sản phẩm
-    productThumbs.forEach(thumb => {
-      thumb.addEventListener('click', openModal);
-    });
-  
-    // Đóng modal khi click vào nút "x"
-    closeModalBtn.addEventListener('click', closeModal);
-  
-    // Đóng modal khi click ra ngoài modal
-    window.addEventListener('click', function(event) {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-  });
-  
+}
