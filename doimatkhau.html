@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>CaNhan Page</title>
+    <meta charset="UTF-8">
+    <title> Doi Mat Khau Page</title>
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -11,7 +10,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="css/canhan.css">
+    <link rel="stylesheet" href="css/doimatkhau.css">
 </head>
 <body>
 <div id="wrapper">
@@ -41,13 +40,13 @@
                 <li class="tooltip" id="personal-menu">
                     <a href="#" title="Cá nhân"><i class="fas fa-user"></i></a>
                     <span class="tooltiptext">Cá nhân</span>
-<!--                    <ul class="sub-menu" id="personal-submenu">-->
-<!--                        <li class="logged-in"><a href="lichsu.html">Lịch Sử Đơn Hàng</a></li>-->
-<!--                        <li class="logged-in"><a href="thongtin.html">Thông Tin Khách Hàng</a></li>-->
-<!--                        <li class="logged-in"><a href="#" id="login.html">Đăng Xuất</a></li>-->
-<!--                        <li class="logged-out"><a href="login.html">Đăng Nhập</a></li>-->
-<!--                        <li class="logged-out"><a href="register.html">Đăng Ký</a></li>-->
-<!--                    </ul>-->
+                    <!--                    <ul class="sub-menu" id="personal-submenu">-->
+                    <!--                        <li class="logged-in"><a href="lichsu.html">Lịch Sử Đơn Hàng</a></li>-->
+                    <!--                        <li class="logged-in"><a href="thongtin.html">Thông Tin Khách Hàng</a></li>-->
+                    <!--                        <li class="logged-in"><a href="#" id="login.html">Đăng Xuất</a></li>-->
+                    <!--                        <li class="logged-out"><a href="login.html">Đăng Nhập</a></li>-->
+                    <!--                        <li class="logged-out"><a href="register.html">Đăng Ký</a></li>-->
+                    <!--                    </ul>-->
                 </li>
             </ul>
         </nav>
@@ -80,7 +79,7 @@
                     <h3>QUẢN LÝ TÀI KHOẢN</h3>
                     <ul>
                         <li><a href="canhan.html"> Hồ Sơ Cá Nhân</a></li>
-                        <li><a href="doimatkhau.html"> Đổi Mật Khẩu</a></li>
+                        <li><a href="doimatkhau .html"> Đổi Mật Khẩu</a></li>
                     </ul>
                     <h3>QUẢN LÝ GIAO DỊCH</h3>
                     <ul>
@@ -91,50 +90,23 @@
                 <div class="right-cn">
                     <!-- Hồ sơ cá nhân - auto khi bật bào tcn-->
                     <div class="head-rightcn">
-                        <p> Hồ Sơ Của Tôi </p>
-                        <div class="pHoSo">Quản lý thông tin hồ sơ để bảo mật tài khoản</div>
+                        <p> Đổi mật khẩu </p>
+                        <div class="pmk">Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu với người khác</div>
                         <hr class="nganCachHead">
                     </div>
 
                     <div class="bot-rightcn">
-
-                        <div class="formThongTinCaNhan">
-                            <div class="form-group">
-                                <label>Tên đăng nhập</label>
-                                <span>User1</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Tên</label>
-                                <input type="text" id="name" value="Nhu">
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <span>ndangthihuyen@gmail.com</span>
-                                <a href="#">Thay Đổi</a>
-                            </div>
-                            <div class="form-group">
-                                <label>Số điện thoại</label>
-                                <span>0372170331</span>
-                                <a href="#">Thay Đổi</a>
-                            </div>
-                            <div class="form-group">
-                                <label>Giới tính</label>
-                                <input type="radio" id="male" name="gender" value="male">
-                                <label for="male">Nam</label>
-                                <input type="radio" id="female" name="gender" value="female" checked>
-                                <label for="female">Nữ</label>
-                                <input type="radio" id="other" name="gender" value="other">
-                                <label for="other">Khác</label>
-                            </div>
-                            <div class="form-group">
-                                <label>Ngày sinh</label>
-                                <span>12/11/2004</span>
-                                <a href="#">Thay Đổi</a>
-                            </div>
-                            <button class="nutLuu">Lưu</button>
+                        <div class="mkGroup">
+                            <label for="matKhauMoi">Mật khẩu mới</label>
+                            <input type="password" id="matKhauMoi" placeholder="Nhập mật khẩu...">
                         </div>
-
+                        <div class="mkGroup">
+                            <label for="xacNhanMK">Xác nhận mật khẩu</label>
+                            <input type="password" id="xacNhanMK" placeholder="Nhập mật khẩu...">
+                        </div>
                     </div>
+
+
                 </div>
 
 
@@ -168,5 +140,11 @@
         </div>
     </footer>
 </div>
+</body>
+</html>
+</title>
+</head>
+<body>
+
 </body>
 </html>
