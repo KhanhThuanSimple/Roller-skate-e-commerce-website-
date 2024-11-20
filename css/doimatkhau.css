@@ -415,9 +415,33 @@ h3 a {
 
 
 .bot-rightcn {
-/ / background-color: red;
+ //    background-color: red;
     height: 425px;
+ //   flex-direction: column;
 }
+.mkGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+label {
+    width: 150px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.mkGroup input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 50px;
+    margin-right: calc(100% - 500px);
+}
+
 
 
 
