@@ -408,82 +408,41 @@ h3 a {
     font-weight: bold;
 }
 
-.head-rightcn .pHoSo {
+.head-rightcn .pmk {
     color: #8e8d8a;
     font-size: 20px;
 }
 
 
 .bot-rightcn {
-/ / background-color: red;
+ //    background-color: red;
     height: 425px;
+ //   flex-direction: column;
 }
-
-/*css phan thong tin kh*/
-.formThongTinCaNhan {
-    width: 100%;
-    max-width: 700px;
-    height: 400px;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-    color: #333;
-/ / background-color: red;
-}
-
-.form-group {
-    margin-bottom: 15px;
+.mkGroup {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-left: 30px;
 }
 
 label {
+    width: 200px;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.mkGroup input {
     flex: 1;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-input[type="text"] {
-    flex: 2;
     padding: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 4px;
+    width: 50px;
+    margin-right: calc(100% - 500px);
 }
 
-span {
-    flex: 2;
-    font-size: 18px;
-}
 
-a {
-    color: #F8A330;
-    text-decoration: none;
-    font-size: 18px;
-    margin-left: 5px;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-input[type="radio"] {
-    margin-left: 10px;
-    margin-right: 5px;
-}
-
-.nutLuu {
-    display: block;
-    width: 100%;
-    padding: 10px 15px;
-    background-color: #F8A330;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-}
 
 
 
