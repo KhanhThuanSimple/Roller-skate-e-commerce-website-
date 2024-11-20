@@ -1,122 +1,191 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pay</title>
-    
-    <link rel="stylesheet" href="css/lienhe.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
    
-</head>
-<body >
-    <div class="flex-row thanhtoan">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/lienhe.css">
+  </head>
+  <body>
+    <div class="flex-colunm">
+      
+        <header id="header">
+            <nav class="container">
+                <a href="index.html" id="logo"><img src="image/logo1.png" alt="logo"></a>
+                <form id="search-form" action="search.html" method="get">
+                  <input type="text" name="query" placeholder="Tìm kiếm...">
+                  <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+                <ul id="main-menu">
+                    <li><a href="index.html">TRANG CHỦ</a></li>
+                    <li>
+                        <a href="sanpham.html"> SẢN PHẨM</a>
+                        <ul class="sub-menu">
+                            <li><a href="sanphamnguoilon.html">Giày Patin Người Lớn</a></li>
+                            <li><a href="sanphamtreem.html">Giày Patin Trẻ Em</a></li>
+                            <li><a href="sanphamphukien.html">Phụ Kiện Giày Patin</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
+                    <li><a href="lienhe.html">LIÊN HỆ</a></li>
+                    <li class="tooltip">
+                        <a href="giohang.html" title="Giỏ hàng"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <span class="tooltiptext">Giỏ hàng</span>
+                    </li>
+                    <li class="tooltip">
+                        <a href="canhan.html" title="Cá nhân"><i class="fa-solid fa-user"></i></a>
+                        <span class="tooltiptext">Cá nhân</span>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div>
+            <div class="flex-row thanhtoan">
        
-        <div class=" thanhtoan-left flex-colunm flex-1">
-            <div>
-                <div>
-                    <h2 class="thanhtoan-title"> THÔNG TIN THANH TOÁN</h2>
-        
-                </div>
-                <div class="form-support">
-                    <form action="post">
+                <div class=" thanhtoan-left flex-colunm flex-1">
+                    <div class=" flex-colunm">
                         <div>
-                          <input class="input-common" type="text" placeholder="Tên của bạn">
+                            <h2 class="thanhtoan-title"> THÔNG TIN THANH TOÁN</h2>
+                
+                        </div>
+                        <div class="form-support">
+                            <form action="post">
+                                <div>
+                                  <input class="input-common" type="text" placeholder="Tên của bạn">
+                                </div>
+                                <div class="flex-row">
+                                  <div class="flex-1"> 
+                                    <input class="input-common" type="email" placeholder="Email của bạn">
+                    
+                                  </div>
+                                  <div class="flex-1">
+                                    <input class="input-common" type="text" placeholder="Số điện thoại của bạn">
+                                  </div>
+                                </div>
+                                <div>
+                                 
+                                  <textarea rows="4" class="input-common"  placeholder="Địa chỉ"></textarea>
+                    
+                                </div>
+                             
+                    
+                              </form>
+                        </div>
+                       
+                          
+                    </div>
+                    <div class="flex-colunm">
+                        <div >
+                            <h2 class="thanhtoan-title">THÔNG TIN BỔ SUNG</h2>
+                        </div>
+                        <div>
+                            <label for="element_id">Ghi chú đơn hàng(tùy chọn)</label>
+                            <!-- <input type="text" id="element_id" name="element_name"> -->
+                            <textarea rows="4" class="input-common"  placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng cụ thể hơn"></textarea>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="thanhtoan-right flex-1 flex-colunm ">
+                    <div class="thanhtoan-title">
+                        <h2 class="thanhtoan-title " >ĐƠN HÀNG CỦA BẠN</h2>
+                    </div>
+                    <div class="info-product flex-colunm ">
+                        <div class="flex-row">
+                            <div class="flex-1">
+                                <h3>SẢN PHẨM</h3>
+                            </div>
+                            <div class="flex-1"> 
+                                <h3>TẠM TÍNH</h3>
+                            </div>
+                        </div>
+                        <div class="item-content flex-row">
+                            <div class="flex-1 ">
+                                <h4>Giày Patin Trẻ em Centosy <br> Lion 3 Màu Đen/Hồng <br> Xanh X1 <br> Màu sắc: Đỏ <br> Kích cở: L </h4>
+                                
+                            </div>
+                            <div class="flex-1"> <h4> 1.760.000</h4></div>
                         </div>
                         <div class="flex-row">
-                          <div class="flex-1"> 
-                            <input class="input-common" type="email" placeholder="Email của bạn">
-            
-                          </div>
-                          <div class="flex-1">
-                            <input class="input-common" type="text" placeholder="Số điện thoại của bạn">
-                          </div>
+                            <div class="flex-1">
+                                <h4>Tạm tính</h4>
+                            </div>
+                            <div class="flex-1">
+                               <h5 style="color: red;">1.760.000</h4>
+                            </div>
                         </div>
+                        <div class="flex-row">
+                            <div class="flex-1">
+                                <h4>Tổng</h4>
+                            </div>
+                            <div class="flex-1">
+                               <h4 style="color: red;">1.760.000</h4>
+                            </div>
+            
+                        </div>
+                    </div>
+                    <div >
                         <div>
-                         
-                          <textarea rows="4" class="input-common"  placeholder="Địa chỉ"></textarea>
-            
+                            <div class="form-group-thanhtoan flex-row">
+                                <!-- <h4>Phương thức thanh toán</h4> -->
+                                <label class="input-common" for="payment-method">Phương thức thanh toán</label>
+                                <select class="input-common" id="payment-method" name="payment-method" required>
+                                  <option class="input-common"  value="">Chọn phương thức thanh toán</option>
+                                  <option class="input-common"  value="credit-card">Thẻ tín dụng</option>
+                                  <option class="input-common"  value="paypal">Thanh toán khi nhận hàng</option>
+                                  <option class="input-common"  value="bank-transfer">Chuyển khoản ngân hàng</option>
+                                </select>
+                              </div>
                         </div>
-                     
-            
-                      </form>
-                </div>
-               
-                  
-            </div>
-            <div>
-                <div >
-                    <h2 class="thanhtoan-title">THÔNG TIN BỔ SUNG</h2>
-                </div>
-                <div>
-                    <label for="element_id">Ghi chú đơn hàng(tùy chọn)</label>
-                    <!-- <input type="text" id="element_id" name="element_name"> -->
-                    <textarea rows="4" class="input-common"  placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng cụ thể hơn"></textarea>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="thanhtoan-right flex-1 ">
-            <div class="thanhtoan-title">
-                <h2 class="thanhtoan-title " !important>ĐƠN HÀNG CỦA BẠN</h2>
-            </div>
-            <div class="info-product">
-                <div class="flex-row">
-                    <div class="flex-1">
-                        <h3>SẢN PHẨM</h3>
-                    </div>
-                    <div class="flex-1"> 
-                        <h3>TẠM TÍNH</h3>
-                    </div>
-                </div>
-                <div class="item-content flex-row">
-                    <div class="flex-1 ">
-                        <h4>Giày Patin Trẻ em Centosy <br> Lion 3 Màu Đen/Hồng <br> Xanh X1 <br> Màu sắc: Đỏ <br> Kích cở: L </h4>
                         
-                    </div>
-                    <div class="flex-1"> <h4> 1.760.000</h4></div>
-                </div>
-                <div class="flex-row">
-                    <div class="flex-1">
-                        <h4>Tạm tính</h4>
-                    </div>
-                    <div class="flex-1">
-                       <h5 style="color: red;">1.760.000</h4>
+                        <div class="thanhtoan-bt">
+                            <button  type="button"  class="button-orange ">Đặt hàng</button>
+        
+                        </div>
                     </div>
                 </div>
-                <div class="flex-row">
-                    <div class="flex-1">
-                        <h4>Tổng</h4>
-                    </div>
-                    <div class="flex-1">
-                       <h4 style="color: red;">1.760.000</h4>
-                    </div>
-    
-                </div>
+        
             </div>
-            <div >
-                <div>
-                    <div class="form-group-thanhtoan flex-row">
-                        <!-- <h4>Phương thức thanh toán</h4> -->
-                        <label class="input-common" for="payment-method">Phương thức thanh toán</label>
-                        <select class="input-common" id="payment-method" name="payment-method" required>
-                          <option class="input-common"  value="">Chọn phương thức thanh toán</option>
-                          <option class="input-common"  value="credit-card">Thẻ tín dụng</option>
-                          <option class="input-common"  value="paypal">Thanh toán khi nhận hàng</option>
-                          <option class="input-common"  value="bank-transfer">Chuyển khoản ngân hàng</option>
-                        </select>
-                      </div>
-                </div>
-                
-                <div class="thanhtoan-bt">
-                    <button  type="button"  class="button-orange ">Đặt hàng</button>
 
+        </div>
+        
+        
+      
+      
+       
+
+      <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Chính sách</h4>
+                <p>Chính sách chăm sóc khách hàng.<br>Chính sách đổi trả.<br>Chính sách thanh toán.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên hệ:</h4>
+                <p>Email: NTN@company.com</p>
+                <p>Điện thoại: 123-456-789</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo dõi chúng tôi</h4>
+                <div class="social-link">
+                    <p><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></p>
+                    <p><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></p>
+                    <p><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></p>
                 </div>
             </div>
         </div>
-
+       </footer>
     </div>
-    
-    
-    
-</body>
+  </body>
 </html>
