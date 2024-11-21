@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Tiết Đơn Hàng</title>
+  <link rel="stylesheet" href="css/chitietdonhang.css">
+</head>
+<body>
+<div class="order-detail">
+  <h1>Chi Tiết Đơn Hàng</h1>
+  <div class="order-info">
+    <p><strong>Mã đơn hàng:</strong> #12345</p>
+    <p><strong>Ngày đặt:</strong> 12/11/2024</p>
+    <p><strong>Trạng thái:</strong> <span class="status pending">Đang xử lý</span></p>
+    <p><strong>Tổng tiền:</strong> 500.000 đ</p>
+  </div>
+  <table class="product-table">
+    <thead>
+    <tr>
+      <th>Sản phẩm</th>
+      <th>Số lượng</th>
+      <th>Giá</th>
+      <th>Tổng</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Sản phẩm A</td>
+      <td>2</td>
+      <td>100.000 đ</td>
+      <td>200.000 đ</td>
+    </tr>
+    <tr>
+      <td>Sản phẩm B</td>
+      <td>1</td>
+      <td>300.000 đ</td>
+      <td>300.000 đ</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="3"><strong>Tổng cộng:</strong></td>
+      <td><strong>500.000 đ</strong></td>
+    </tr>
+    </tfoot>
+  </table>
+  <button onclick="window.history.back();" class="back-button">Quay lại</button>
+</div>
+</body>
+</html>
