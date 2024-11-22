@@ -216,16 +216,7 @@
     width: 90%;
     max-width: 500px;
   }
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(49, 28, 28, 0.5); /* Màu nền mờ */
-    z-index: 1000; /* Thấp hơn thông báo nhưng cao hơn nền */
-    backdrop-filter: blur(9px); /* Làm mờ nền */
-  }
+  
   
   .close-button {
     float: right; /* Đẩy nút sang bên phải */
@@ -236,6 +227,7 @@
     border-radius: 5px; /* Đường viền bo tròn */
     cursor: pointer; /* Thay đổi con trỏ khi di chuột vào button */
   }
+  
   
 
 

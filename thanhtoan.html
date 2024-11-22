@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8" />
@@ -111,7 +112,8 @@
                         <div class="item-content flex-row">
                             <div class="flex-1 ">
                                 <h4>Giày Patin Trẻ em Centosy <br> Lion 3 Màu Đen/Hồng <br> Xanh X1 <br> Màu sắc: Đỏ
-                                    <br> Kích cở: L </h4>
+                                    <br> Kích cở: L
+                                </h4>
 
                             </div>
                             <div class="flex-1">
@@ -149,11 +151,10 @@
                                 </select>
                             </div>
                         </div>
+                        <div id="overlay" class="overlay" style="display: none;"></div>
 
                         <div class="thanhtoan-bt">
-                           
-                            <button class="button-orange" >Đặt hàng</button>
-                            
+                            <button class="button-orange" onclick="openPayForm()">Đặt hàng</button>
                         </div>
                     </div>
                 </div>
@@ -162,19 +163,12 @@
 
         </div>
         <div id="payModal" class="success-message modal-content" style="display: none;">
-           
+
             <h2>Mua hàng thành công!</h2>
             <p>Đơn hàng của bạn đã được đặt thành công. Cảm ơn bạn!</p>
-            <button class="close-button" >Đóng</button>
-            
+            <button class="close-button" onclick="closePayForm()">Đóng</button>
+
         </div>
-
-      
-      
-      
-
-
-
 
 
 
@@ -204,9 +198,11 @@
             </div>
         </footer>
     </div>
-  
-   
-    
+    <script src="thanhtoan.js"> </script>
+
+
+
+
 
 
 </body>
