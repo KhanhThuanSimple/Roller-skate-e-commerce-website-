@@ -194,6 +194,7 @@ nav #main-menu li:hover a {
 nav #main-menu > li:hover > a::before {
     width: 100%;
 }
+
 /* Footer */
 #footer {
     background-color: #f3f2ec;
@@ -299,112 +300,194 @@ nav #main-menu > li:hover > a::before {
     }
 }
 
-/* Phần Main giới thiệu*/
-/*body phan gioithieu*/
-#bodyGT {
+/* Phần Main cá nhân*/
+/*body phan ca nhan*/
+#bodyCN {
 / / background-color: red;
     color: black;
     text-align: justify;
-    height: 1700px;
+    height: 700px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
 }
 
-/*Phan muc 2. Lich su hinh thanh % phat trien*/
-.timeline {
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.event {
+.flex-container {
     display: flex;
-    margin-bottom: 20px;
-}
-
-.date {
-    width: 150px;
-    font-weight: bold;
-    color: black;
-}
-
-.description {
-    flex: 1;
-    color: black;
-}
-
-.highlight {
-    font-weight: bold;
-    color: black;
-}
-
-/*css cho tung doan van nho trong phan GT*/
-
-
-h4 {
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-/*Phan muc 4. Slogan*/
-
-h5 {
-    margin: 10px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.sloganBig {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-/ / max-width: 800 px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-
-}
-
-p {
-    margin-bottom: 10px;
-    margin-top: 10px;
-
-}
-/* css cho phan box dia chi*/
-
-.ndung{
-    text-align: center;
-    font-weight: bold;
-    padding: 10px;
-}
-.box {
-    border: solid #ddd;
-    padding: 10px;
-    width: 250px;
-    text-align: justify;
-    font-family: Arial, sans-serif;
-}
-.box h3 {
-
-    color: red;
-    font-size: 20px;
+    height: 700px;
+    width: 100%;
+    background-color: #f3f2ec;
+    padding: 0;
     margin: 0;
 }
-.box a {
-    color: #F8A330;
-    font-size: 15px;
-    float: right;
+
+/*css left-cn*/
+.left-cn {
+    width: 30%;
+/ / background-color: black;
+    height: 600px;
+}
+
+h3 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h3 a {
     text-decoration: none;
-    margin-top: -20px;
-}
-.box p {
-    font-size: 18px;
     color: black;
-    margin-top: 10px;
 }
-.box-cont{
+
+.left-cn ul {
+    margin: 10px;
+}
+
+.left-cn ul li {
+    padding: 10px;
+    marrgin-top: 10px;
+}
+
+.left-cn ul li a {
+    text-decoration: none;
+    display: block;
+    color: #F8A330;
+
+}
+
+/* avtatr*/
+.flex-avtar {
     display: flex;
-    gap: 17px;
     padding: 20px;
 }
+
+.avatar {
+    width: 20%;
+}
+
+.avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Bo tròn */
+}
+
+.In4Avt {
+    flex: 1;
+    margin-left: 0;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.right-cn {
+    flex: 1;
+    background-color: white;
+    height: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.suaHoSo {
+    text-decoration: none;
+    color: black;
+}
+
+/*css right-cn*/
+
+.head-rightcn {
+    height: 15%;
+/ / background-color: red;
+    padding: 10px;
+
+}
+
+.head-rightcn p {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.head-rightcn .pHoSo {
+    color: #8e8d8a;
+    font-size: 20px;
+}
+
+
+.bot-rightcn {
+/ / background-color: red;
+    height: 425px;
+}
+
+.order-history {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-info p {
+    margin: 5px 0;
+}
+
+.status {
+    font-weight: bold;
+    color: #555;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.status.pending {
+    background-color: #ffedcc;
+    color: orange;
+}
+
+.status.delivered {
+    background-color: #dff0d8;
+    color: green;
+}
+
+.btn-detail {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-detail:hover {
+    background-color: darkorange;
+}
+.dangxuat{
+    display: block;
+    width: 150px;
+    padding: 10px 15px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.dangxuat:hover {
+    background-color: darkorange;
+}
+
+
+
+
+
+
+
