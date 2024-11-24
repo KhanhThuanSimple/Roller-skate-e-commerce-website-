@@ -317,7 +317,7 @@ img {
   
   /* Giá sản phẩm */
   .modal .modal-price {
-    font-size: 18px; /* Giảm kích thước chữ */
+    font-size: 13px; /* Giảm kích thước chữ */
     color: #ff6600;
     font-weight: bold;
     margin-top: 5px;
@@ -336,7 +336,7 @@ img {
     padding: 10px 20px;
     border-radius: 5px;
     border: none; /* Bỏ border mặc định của button */
-    font-size: 12px; /* Cỡ chữ */
+    font-size: 13px; /* Cỡ chữ */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s ease-in-out; /* Thêm hiệu ứng khi hover */
@@ -377,7 +377,7 @@ img {
     width: 100%; /* Chiếm toàn bộ chiều rộng của modal */
     border: 1px solid #ccc;
     border-radius: 5px; /* Bo góc */
-    font-size: 12px;
+    font-size: 13px;
     background-color: #f9f9f9;
     transition: border-color 0.3s;
   }
