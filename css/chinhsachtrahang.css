@@ -299,112 +299,57 @@ nav #main-menu > li:hover > a::before {
     }
 }
 
-/* Phần Main giới thiệu*/
-/*body phan gioithieu*/
-#bodyGT {
-/ / background-color: red;
-    color: black;
-    text-align: justify;
-    height: 1700px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-}
+/* Phần Main chính sách trả hàng*/
 
-/*Phan muc 2. Lich su hinh thanh % phat trien*/
-.timeline {
+.bodyCSTH {
+    width: 80%;
     margin: 0 auto;
     padding: 20px;
 }
 
-.event {
-    display: flex;
+h1 {
+    font-size: 24px;
+    color: orange;
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.date {
-    width: 150px;
-    font-weight: bold;
-    color: black;
-}
-
-.description {
-    flex: 1;
-    color: black;
-}
-
-.highlight {
-    font-weight: bold;
-    color: black;
-}
-
-/*css cho tung doan van nho trong phan GT*/
-
-
-h4 {
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-/*Phan muc 4. Slogan*/
-
-h5 {
-    margin: 10px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.sloganBig {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-/ / max-width: 800 px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-
-}
-
-p {
-    margin-bottom: 10px;
-    margin-top: 10px;
-
-}
-/* css cho phan box dia chi*/
-
-.ndung{
-    text-align: center;
-    font-weight: bold;
-    padding: 10px;
-}
-.box {
-    border: solid #ddd;
-    padding: 10px;
-    width: 250px;
-    text-align: justify;
-    font-family: Arial, sans-serif;
-}
-.box h3 {
-
-    color: red;
+h2 {
     font-size: 20px;
-    margin: 0;
+    color:orange;
+    margin-bottom: 10px;
 }
-.box a {
-    color: #F8A330;
-    font-size: 15px;
-    float: right;
-    text-decoration: none;
-    margin-top: -20px;
-}
-.box p {
+
+h3 {
     font-size: 18px;
-    color: black;
-    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #333;
 }
-.box-cont{
-    display: flex;
-    gap: 17px;
-    padding: 20px;
+
+ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+ul li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+ul li:before {
+    position: absolute;
+    left: 0;
+    color: orange;
+    font-weight: bold;
+}
+
+ul ul li:before {
+    content: "•";
+    color: black;
+}
+
+ul ul {
+    margin-top: 10px;
+    padding-left: 20px;
 }
