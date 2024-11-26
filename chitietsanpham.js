@@ -23,14 +23,6 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Đóng modal khi nhấn vào nút đóng (X)
-const closeBtn = document.querySelector('.close');
-if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-        const modal = document.querySelector('.modal');
-        modal.style.display = 'none'; // Đóng modal
-    });
-}
 
 // Đóng modal khi nhấn vào nút 'Tiếp tục mua hàng'
 const continueShoppingBtn = document.querySelector('.btn-continue-shopping');
@@ -41,5 +33,25 @@ if (continueShoppingBtn) {
     });
 }
 
-// Đảm bảo khi thay đổi kích thước màn hình, hình ảnh sẽ được di chuyển đúng
 window.addEventListener('resize', slideImage);
+document.getElementById("first").addEventListener("click", function() {
+    window.location.href = "giohang.html";  // Chuyển hướng đến trang giohang.html
+});
+document.getElementById("thanhtoan").addEventListener("click", function() {
+    window.location.href = "thanhtoan.html";  // Chuyển hướng đến trang thantoan.html
+});
+
+document.getElementById("last").addEventListener("click", function() {
+    document.getElementById("productModal").style.display = "block";  // Mở modal
+});
+
+document.querySelector(".close").addEventListener("click", function() {
+    document.getElementById("productModal").style.display = "none";  // Đóng modal
+});
+
+window.addEventListener("click", function(event) {
+    const modal = document.getElementById("productModal");
+    if (event.target === modal) {
+        modal.style.display = "none"; // Đóng modal
+    }
+});

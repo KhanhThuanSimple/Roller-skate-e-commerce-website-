@@ -161,7 +161,7 @@ ul.product-index li .product-top-index .button-container-index {
   transition: 0.25s ease-in-out;
   opacity: 0.85;
   text-align: center;
-  font-size: 10px;
+  font-size: 13px;
 }
 
 ul.product-index li:hover .product-top-index .button-container-index {

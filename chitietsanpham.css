@@ -28,7 +28,7 @@ body {
 }
 
 #main-container {
-    margin-top: 170px; /* Ensure this is greater than or equal to the header height */
+    margin-top: 80px; /* Ensure this is greater than or equal to the header height */
     padding-bottom: 25px; /* Add padding to ensure spacing with the footer */
 }
 
@@ -174,8 +174,17 @@ img {
     margin: 1.5rem 0;
 }
 
-.purchase-info input,
-.purchase-info .btn {
+.purchase-info input {
+     border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+
+}
+.purchase-info  .btn  {
     border: 1.5px solid #ddd;
     border-radius: 25px;
     text-align: center;
@@ -183,13 +192,14 @@ img {
     outline: 0;
     margin-right: 0.2rem;
     margin-bottom: 1rem;
+    background-color: beige;
 }
 
 .purchase-info input {
     width: 60px;
 }
 
-.purchase-info .btn {
+.purchase-info   .btn {
     cursor: pointer;
     color: #fff;
 }
@@ -271,12 +281,13 @@ img {
   /* Nội dung modal */
   .modal-content {
     background-color: #fff;
-    margin: 5% auto; /* Giảm khoảng cách từ trên xuống */
+    margin: 3% auto; /* Giảm khoảng cách từ trên xuống */
     padding: 60px; /* Giảm padding để modal nhỏ hơn */
     border-radius: 8px; /* Bo góc modal */
     width: 50%; /* Kích thước modal */
     max-width: 600px; /* Giới hạn chiều rộng tối đa */
     text-align: center;
+    z-index: 999;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng cho modal */
   }
   
@@ -306,7 +317,7 @@ img {
   
   /* Giá sản phẩm */
   .modal .modal-price {
-    font-size: 18px; /* Giảm kích thước chữ */
+    font-size: 13px; /* Giảm kích thước chữ */
     color: #ff6600;
     font-weight: bold;
     margin-top: 5px;
@@ -325,7 +336,7 @@ img {
     padding: 10px 20px;
     border-radius: 5px;
     border: none; /* Bỏ border mặc định của button */
-    font-size: 12px; /* Cỡ chữ */
+    font-size: 13px; /* Cỡ chữ */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s ease-in-out; /* Thêm hiệu ứng khi hover */
@@ -366,7 +377,7 @@ img {
     width: 100%; /* Chiếm toàn bộ chiều rộng của modal */
     border: 1px solid #ccc;
     border-radius: 5px; /* Bo góc */
-    font-size: 12px;
+    font-size: 13px;
     background-color: #f9f9f9;
     transition: border-color 0.3s;
   }

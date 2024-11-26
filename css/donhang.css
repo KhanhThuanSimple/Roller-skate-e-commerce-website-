@@ -27,7 +27,6 @@ body {
     background-color: #f3f2ec;
     height: 100px;
     text-align: center;
-    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -87,6 +86,7 @@ a#logo img {
     position: relative;
     margin-left: 15px;
 }
+
 .tooltip {
     position: relative;
     display: inline-block;
@@ -116,8 +116,6 @@ a#logo img {
     opacity: 1;
 }
 
-
-
 nav #main-menu li a {
     color: #777777;
     display: block;
@@ -125,6 +123,7 @@ nav #main-menu li a {
     text-decoration: none;
     font-size: 15px;
 }
+
 #main-menu ul.sub-menu {
     position: absolute;
     background: #dddddd;
@@ -132,6 +131,7 @@ nav #main-menu li a {
     display: none;
     list-style-type: none;
 }
+
 #main-menu li:hover > ul.sub-menu {
     display: block;
 }
@@ -300,10 +300,9 @@ nav #main-menu > li:hover > a::before {
     }
 }
 
-/* Phần Main cá nhân*/
-/*body phan ca nhan*/
+/* Phần Main don hang*/
+/*body phan don hang*/
 #bodyCN {
-/ / background-color: red;
     color: black;
     text-align: justify;
     height: 700px;
@@ -400,7 +399,6 @@ h3 a {
     height: 15%;
 / / background-color: red;
     padding: 10px;
-
 }
 
 .head-rightcn p {
@@ -467,7 +465,8 @@ h3 a {
 .btn-detail:hover {
     background-color: darkorange;
 }
-.dangxuat{
+
+.dangxuat {
     display: block;
     width: 150px;
     padding: 10px 15px;
@@ -481,10 +480,90 @@ h3 a {
     margin-left: 20px;
     margin-top: 20px;
 }
+
 .dangxuat:hover {
     background-color: darkorange;
 }
 
+/*chitietdonhang*/
+
+#modal-CTDH1 {
+    display: none;
+}
+#modal-CTDH2 {
+    display: none;
+}
+.modal_chitietdh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+  //  background-color: red;
+
+}
+
+.modal_overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal_body {
+    width: 800px;
+    height: auto;
+    margin: 100px auto;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: orange;
+}
+
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.product-table th,
+.product-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.product-table th {
+    background-color: #f4f4f4;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+.back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: darkorange;
+}
 
 
 

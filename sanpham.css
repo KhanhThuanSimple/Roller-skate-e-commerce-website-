@@ -12,7 +12,7 @@ ul {
 /* Body */
 body {
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   color: #2b2b2b; 
   background-color: #f3f2ec;
 }
@@ -42,7 +42,7 @@ body {
 }
 
 .healine h3 {
-  font-size: 18px;
+  font-size: 25px;
   color: black;
   padding: -20px 20px;
   text-transform: uppercase;
@@ -96,7 +96,7 @@ body {
   display: block;
   width: 100%;
   cursor: pointer;
-  font-size: 14px; /* Giảm font size để phù hợp với nút chính */
+  font-size: 13px; /* Giảm font size để phù hợp với nút chính */
 }
 
 .sort-buttons .dropdown-content button:hover {
@@ -272,7 +272,7 @@ ul.product li:hover .product-top .product-thumb img {
 
 /* Giá sản phẩm */
 .modal .modal-price {
-  font-size: 18px; /* Giảm kích thước chữ */
+  font-size: 13px; /* Giảm kích thước chữ */
   color: #ff6600;
   font-weight: bold;
   margin-top: 20px;
@@ -357,7 +357,7 @@ ul.product li:hover .product-top .product-thumb img {
   color: #333;
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
-  font-size: 16px;
+  font-size: 13px;
   justify-content: center;
   justify-items: center;
  
