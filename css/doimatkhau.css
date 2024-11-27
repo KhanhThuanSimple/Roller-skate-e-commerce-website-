@@ -413,33 +413,11 @@ h3 a {
     font-size: 20px;
 }
 
-
 .bot-rightcn {
- //    background-color: red;
     height: 425px;
- //   flex-direction: column;
-}
-.mkGroup {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-top: 30px;
-    margin-left: 30px;
-}
-
-label {
-    width: 200px;
-    text-align: left;
-    margin-right: 10px;
-}
-
-.mkGroup input {
-    flex: 1;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 50px;
-    margin-right: calc(100% - 500px);
+    width: 80%;
+    margin-left: 50px;
+    margin-top: 50px;
 }
 
 .dangxuat{
@@ -460,6 +438,81 @@ label {
     background-color: darkorange;
 }
 
+/*css phần mật khẩu */
+/* Phần tiêu đề */
+.head-rightcn p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.pmk {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.nganCachHead {
+    margin-top: 10px;
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+}
+
+/* Nhóm nhập mật khẩu */
+.mkGroup {
+    margin-bottom: 20px;
+}
+
+.mkGroup label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Ô nhập mật khẩu */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-wrapper input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.input-wrapper input:focus {
+    border-color: #007bff;
+}
+
+/* Nút hiện/ẩn mật khẩu */
+.input-wrapper button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.input-wrapper button:hover {
+    background-color: #0056b3;
+}
+
+.input-wrapper button:active {
+    background-color: #00408f;
+}
 
 
 
