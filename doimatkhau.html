@@ -79,13 +79,13 @@
                     <h3>QUẢN LÝ TÀI KHOẢN</h3>
                     <ul>
                         <li><a href="canhan.html"> Hồ Sơ Cá Nhân</a></li>
-                        <li><a href="doimatkhau .html"> Đổi Mật Khẩu</a></li>
+                        <li><a href="doimatkhau.html"> Đổi Mật Khẩu</a></li>
                     </ul>
                     <h3>QUẢN LÝ GIAO DỊCH</h3>
                     <ul>
                         <li><a href="donhang.html">Đơn hàng của bạn</a></li>
                     </ul>
-                    <button id="DangXuat" class="dangxuat"> Đăng Xuất</button>
+                    <button id="DangXuat" class="dangxuat" onclick="moChacChanDX()"> Đăng Xuất</button>
                 </div>
 
 
@@ -126,7 +126,6 @@
     </main>
     <script src="doimatkhau.js"></script>
 
-
     <!-- Footer Section -->
     <footer id="footer">
         <div class="footer-container">
@@ -151,6 +150,16 @@
         </div>
     </footer>
 </div>
-<script src="canhan.js"></script>
+<div id="modal_dangxuat" class="modal_dangxuat">
+    <div class="modal_overlay"></div>
+    <div class="modal_body">
+        <h1>Bạn chắc chắn muốn đăng xuất? </h1>
+        <div class="button-dx">
+            <button onclick="dongChacChanDX()">Không</button>
+            <button id="chacChanDX">Có</button>
+        </div>
+    </div>
+</div>
 </body>
+<script src="canhan.js"></script>
 </html>
