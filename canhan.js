@@ -9,5 +9,5 @@ function dongChacChanDX() {
 
 // xử lí khi user chọn chắc chắn đăng xuất
 document.getElementById('chacChanDX').addEventListener('click', function () {
-    window.location.href = 'login.html';
+    window.location.href = 'indexfist.html';
 });
