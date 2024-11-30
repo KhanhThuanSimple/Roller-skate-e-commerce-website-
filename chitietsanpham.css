@@ -100,7 +100,7 @@ img {
     font-size: 0.9rem;
     display: inline-block;
     margin-bottom: 0.5rem;
-    background: #256eff;
+    background: orange;
     color: #fff;
     padding: 0 0.3rem;
     transition: all 0.5s ease;
@@ -130,12 +130,12 @@ img {
 }
 
 .last-price span {
-    color: #f64749;
+    color: orange;
     text-decoration: line-through;
 }
 
 .new-price span {
-    color: #256eff;
+    color: orange;
 }
 
 .product-detail h2 {
@@ -205,11 +205,11 @@ img {
 }
 
 .purchase-info .btn:first-of-type {
-    background: #256eff;
+    background: orange;
 }
 
 .purchase-info .btn:last-of-type {
-    background: #f64749;
+    background: orange;
 }
 
 .purchase-info .btn:hover {
