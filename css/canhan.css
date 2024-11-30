@@ -538,7 +538,7 @@ input[type="radio"] {
     margin: 100px auto;
     background: #fff;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 0.5px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -555,6 +555,7 @@ h1 {
     justify-content: space-between; /* Dàn đều hai nút sang hai bên */
     margin-top: 20px;
     height: 100px;
+
 }
 
 .button-dx button{
@@ -565,6 +566,8 @@ h1 {
     font-size: 16px;
     cursor: pointer;
     margin-top: 50px;
+    border: 0.5px solid black;
+    color: white;
 }
 
 button:hover{
