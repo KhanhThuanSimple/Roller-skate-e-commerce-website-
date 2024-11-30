@@ -1,42 +1,33 @@
+
+/* Điều chỉnh thêm để slide show bắt đầu ngay dưới header */
 .container1 {
-  min-height: 100vh;
+  min-height: auto;
   background: #f3f2ec;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+margin-top: -90px;
+  padding-top: -10px; /* Đảm bảo khoảng cách từ trên xuống, có thể điều chỉnh tùy theo header */
 }
-
 .gallery-display-area {
   overflow: hidden;
-  height: 820px;
+  height: 700px;;
   width: 1080px;
-  margin: 0 auto;
-  top: 0%; 
+  margin: 0px auto 0;  
 }
 
 .gallery-wrap {
-  width: 500%;
-  animation: slideShow 14s infinite;
-}
-
-.image {
-  float: left;
-  height: 628px;
-  width: 1080px;
-  display: flex;
-  top: 0px;
-  justify-content: center;
-  align-items: center;
-  -webkit-box-reflect: below 1px -webkit-gradient(linear, right top, right bottom, from(transparent), to(rgba(255, 255, 255, 0.3)));
+  width: 600%;
+  animation: slideShow 26s infinite ease-in-out;  
 }
 
 @keyframes slideShow {
-  20% {
+  0%, 100% {
     margin-left: 0;
   }
 
-  30% {
+  20% {
     margin-left: -100%;
   }
 
@@ -44,11 +35,11 @@
     margin-left: -200%;
   }
 
-  50% {
+  60% {
     margin-left: -300%;
   }
 
-  60% {
+  80% {
     margin-left: -400%;
   }
 
@@ -56,6 +47,17 @@
     margin-left: -500%;
   }
 }
+
+.image {
+  float: left;
+  height: 628px;
+  width: 1080px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-reflect: below 1px -webkit-gradient(linear, right top, right bottom, from(transparent), to(rgba(255, 255, 255, 0.3)));
+}
+
 
 #main-container-index {
   max-width: 960px;
@@ -70,17 +72,17 @@
 
 .healine-index {
   text-align: center;
-  margin: 40px 0;
+  margin: -10px 0;
 }
 
 h3 {
-  font-size: 32px;
-  color: black;
+  font-size: 25px;
+  color: #ff6600;
   padding: 10px 20px;
   text-transform: uppercase;
   display: inline-block;
   font-weight: 600;
-  margin-top: 70px;
+  margin-top: -90px;
 }
 
 ul.product-index {
@@ -116,21 +118,34 @@ ul.product-index li .product-info-index a {
 }
 
 ul.product-index li .product-info-index a.product-cat-index {
-  font-size: 11px;
+  font-size: 13px;
   text-transform: uppercase;
-  color: black;
-  padding: 3px 0;
+  color: #74642F;
+  margin-top: 0px;
+  padding: 1px 0;
+  text-align: center;
+  height: 20px; /* Đặt chiều cao cố định cho phần nhãn hiệu */
+  line-height: 10px; /* Căn giữa nội dung theo chiều dọc */
 }
 
 ul.product-index li .product-info-index a.product-name-index {
-  color: #74642F;
+  color: rgb(37, 32, 32);
   padding: 3px 0;
+  height: 70px; /* Đặt chiều cao cố định cho tên sản phẩm */
+  line-height: 20px; /* Căn giữa nội dung theo chiều dọc */
+  text-decoration: none; /* Tắt gạch chân chữ */
+  
+ 
 }
 
 ul.product-index li .product-info-index .product-price-index {
   color: #74642F;
   padding: 2px 0;
   font-weight: 600;
+  height: 40px; /* Đặt chiều cao cố định cho giá */
+  line-height: 5px; /* Căn giữa nội dung theo chiều dọc */
+  text-align: center;
+
 }
 
 ul.product-index li .product-top-index {
@@ -138,7 +153,23 @@ ul.product-index li .product-top-index {
   overflow: hidden;
 }
 
-ul.product-index li .product-top-index a.buy-now-index {
+ul.product-index li .product-top-index .button-container-index {
+  display: flex;
+  position: absolute;
+  bottom: -65px;
+  width: 100%;
+  transition: 0.25s ease-in-out;
+  opacity: 0.85;
+  text-align: center;
+  font-size: 13px;
+}
+
+ul.product-index li:hover .product-top-index .button-container-index {
+  bottom: 0;
+}
+
+ul.product-index li .product-top-index a.buy-now-index,
+ul.product-index li .product-top-index a.view-details-index {
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
@@ -146,15 +177,11 @@ ul.product-index li .product-top-index a.buy-now-index {
   background-color: #446084;
   color: #fff;
   padding: 10px 0;
-  bottom: -45px;
-  position: absolute;
-  width: 100%;
-  transition: 0.25s ease-in-out;
-  opacity: 0.85;
+  flex: 1;
 }
 
-ul.product-index li:hover a.buy-now-index {
-  bottom: 0;
+ul.product-index li .product-top-index a.view-details-index {
+  background-color: #5a7ba8; /* Màu khác cho nút "Xem Chi Tiết" */
 }
 
 ul.product-index li .product-top-index .product-thumb-index {

@@ -1,10 +1,11 @@
-.contact-container{
+.contact-container thanhtoan{
     margin-top: 120px;
     min-height: 100vh;
     padding-left: 100px;
     padding-right: 100px;
     padding-bottom: 60px;
 }
+
  .contact-info{
     display: flex;
     flex-direction: row;
@@ -109,4 +110,57 @@
     font-size: 14px;
     color: #056bf1;
   }
+  .form-group-thanhtoan{
+    margin-bottom: 15px;
+  }
+  
+
+option {
+    font-weight: normal;
+    display: block;
+    padding-block-start: 0px;
+    padding-block-end: 1px;
+    min-block-size: 1.2em;
+    padding-inline: 2px;
+    white-space: nowrap;
+}
+
+.thanhtoan-title{
+  display: block;
+  font-family: 'Arial', sans-serif;
+  font-size: 30px; /* Tăng kích thước chữ */
+  font-weight: bold; /* Làm chữ đậm */
+  color: #333;
+}
+.thanhtoan-right{
+  
+  margin-right: -80px;
+}
+.thanhtoan-left{
+  margin-left: 50px;
+}
+.thanhtoan{
+  display: flex;
+  flex-direction: row;
+  gap: 90px;
+}
+.form-group-thanhtoan label {
+  font-size: 16px; /* Tăng kích thước chữ */
+  font-weight: bold; /* Làm chữ đậm */
+  color: #333; /* Màu chữ tối hơn để dễ đọc */
+  font-family: 'Arial', sans-serif; /* Phông chữ phổ biến */
+
+  
+  letter-spacing: 0.5px;
+}
+.thanhtoan{
+  padding-left: 20%;
+  padding-right: 20%;
+}
+.thanhtoan-bt {
+  text-align: right;
+}
+
+
+
   

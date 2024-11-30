@@ -1,0 +1,394 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Main container styles */
+.main-content {
+    margin-top: 0px; /* Ensure this is greater than or equal to the header height */
+}
+
+.card-wrapper {
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px 15px; /* Add padding to the wrapper to ensure spacing */
+}
+
+#main-container {
+    margin-top: 80px; /* Ensure this is greater than or equal to the header height */
+    padding-bottom: 25px; /* Add padding to ensure spacing with the footer */
+}
+
+/* Product Card styles */
+img {
+    width: 100%;
+    display: block;
+}
+
+.img-display {
+    overflow: hidden;
+}
+
+.img-showcase {
+    display: flex;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+
+.img-showcase img {
+    min-width: 100%;
+}
+
+.img-select {
+    display: flex;
+}
+
+.img-item {
+    margin: 0.3rem;
+}
+
+.img-item:nth-child(1),
+.img-item:nth-child(2),
+.img-item:nth-child(3) {
+    margin-right: 0;
+}
+
+.img-item:hover {
+    opacity: 0.8;
+}
+
+.product-content {
+    padding: 2rem 1rem;
+}
+
+.product-title {
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: relative;
+    color: #12263a;
+    margin: 1rem 0;
+}
+
+.product-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 80px;
+    background: #12263a;
+}
+
+.product-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    background: #256eff;
+    color: #fff;
+    padding: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+
+.product-link:hover {
+    opacity: 0.9;
+}
+
+.product-rating {
+    color: #ffc107;
+}
+
+.product-rating span {
+    font-weight: 600;
+    color: #252525;
+}
+
+.product-price {
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.product-price span {
+    font-weight: 400;
+}
+
+.last-price span {
+    color: #f64749;
+    text-decoration: line-through;
+}
+
+.new-price span {
+    color: #256eff;
+}
+
+.product-detail h2 {
+    text-transform: capitalize;
+    color: #12263a;
+    padding-bottom: 0.6rem;
+}
+
+.product-detail p {
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    opacity: 0.8;
+}
+
+.product-detail ul {
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.product-detail ul li {
+    margin: 0;
+    list-style: none;
+    background: url(https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/checked.png) left center no-repeat;
+    background-size: 18px;
+    padding-left: 1.7rem;
+    margin: 0.4rem 0;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.product-detail ul li span {
+    font-weight: 400;
+}
+
+.purchase-info {
+    margin: 1.5rem 0;
+}
+
+.purchase-info input {
+     border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+
+}
+.purchase-info  .btn  {
+    border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+    background-color: beige;
+}
+
+.purchase-info input {
+    width: 60px;
+}
+
+.purchase-info   .btn {
+    cursor: pointer;
+    color: #fff;
+}
+
+.purchase-info .btn:first-of-type {
+    background: #256eff;
+}
+
+.purchase-info .btn:last-of-type {
+    background: #f64749;
+}
+
+.purchase-info .btn:hover {
+    opacity: 0.9;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #000;
+    border: 1px solid #000;
+    margin: 0 0.2rem;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.5s ease;
+}
+
+.social-links a:hover {
+    background: #000;
+    border-color: transparent;
+    color: #fff;
+}
+
+@media screen and (min-width: 992px) {
+    .card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+    }
+    .card-wrapper {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .product-imgs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .product-content {
+        padding-top: 0;
+    }
+}
+/* Modal container */
+/* Modal container */
+.modal {
+    display: none; /* Ẩn modal mặc định */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    padding-top: 25px;
+    overflow: auto;
+  }
+  
+  /* Nội dung modal */
+  .modal-content {
+    background-color: #fff;
+    margin: 3% auto; /* Giảm khoảng cách từ trên xuống */
+    padding: 60px; /* Giảm padding để modal nhỏ hơn */
+    border-radius: 8px; /* Bo góc modal */
+    width: 50%; /* Kích thước modal */
+    max-width: 600px; /* Giới hạn chiều rộng tối đa */
+    text-align: center;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng cho modal */
+  }
+  
+  /* Nút đóng modal */
+  .close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: -3px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #a00;
+    text-decoration: none;
+  }
+  
+  /* Hình ảnh sản phẩm trong modal */
+  .modal img {
+    width: 60%; /* Giảm kích thước hình ảnh */
+    height: auto;
+    margin-top: 1px;
+    border-radius: 8px; /* Bo góc ảnh */
+  }
+  
+  /* Giá sản phẩm */
+  .modal .modal-price {
+    font-size: 13px; /* Giảm kích thước chữ */
+    color: #ff6600;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+/* Phần chứa các nút */
+.buttons-container {
+    display: flex;
+    justify-content: center; /* Căn giữa các nút */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    margin-top: 20px; /* Khoảng cách phía trên */
+  }
+  
+  /* Các nút */
+  .buttons-container button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none; /* Bỏ border mặc định của button */
+    font-size: 13px; /* Cỡ chữ */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out; /* Thêm hiệu ứng khi hover */
+  }
+  
+  /* Nút Thanh toán ngay */
+  .btn-pay-now {
+    background-color: #256eff;
+    color: #fff;
+  }
+  
+  .btn-pay-now:hover {
+    background-color: #1e56d8; /* Màu khi hover */
+    transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+  }
+  
+  /* Nút Tiếp tục mua hàng */
+  .btn-continue-shopping {
+    background-color: #f64749;
+    color: #fff;
+  }
+  
+  .btn-continue-shopping:hover {
+    background-color: #d03636; /* Màu khi hover */
+    transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+  }
+  /* Phần chứa thông tin người dùng */
+.user-info {
+    display: flex;
+    flex-direction: column; /* Hiển thị các trường nhập theo cột */
+    gap: 15px; /* Khoảng cách giữa các trường */
+    margin-top: 20px; /* Khoảng cách trên */
+  }
+  
+  /* Kiểu cho từng input */
+  .user-info input {
+    padding: 10px;
+    width: 100%; /* Chiếm toàn bộ chiều rộng của modal */
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Bo góc */
+    font-size: 13px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+  }
+  
+  /* Hiệu ứng khi hover hoặc focus vào input */
+  .user-info input:focus {
+    border-color: #256eff; /* Đổi màu border khi focus */
+    outline: none; /* Bỏ viền khi focus */
+    background-color: #fff; /* Đổi nền khi focus */
+  }
+  
+  
+ 
+

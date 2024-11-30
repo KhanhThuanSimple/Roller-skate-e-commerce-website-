@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Shop Giày Partin</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Admin Dashboard</h2>
+            <ul>
+                <li><a href="./user.html">Tài khoản Admin</a></li>
+                <li><a href="./order.html">Đơn hàng</a></li>
+                <li><a class="background-active"  href="./customer.html">Khách hàng</a></li>
+                <li><a href="./product.html">Sản phẩm</a></li>
+                <li><a href="./product.html">Nhập hàng</a></li>
+                <li><a href="./xuathang.html">Xuất hàng</a></li>
+
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Section: Khách hàng -->
+            <section id="customers">
+                <h3>Quản lý Khách Hàng</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Khách hàng</th>
+                            <th>Tên khách hàng</th>
+                            <th>Email</th>
+                            <th>Điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>Nguyễn Văn A</td>
+                            <td>abc@gmail.com</td>
+                            <td>0822378685</td>
+
+                            <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
+                             <td>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>Nguyễn Văn Ba</td>
+                            <td>abc@gmail.com</td>
+                            <td>0822378685</td>
+
+                            <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
+                            <td>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>Nguyễn Thùy Trang</td>
+                            <td>abc@gmail.com</td>
+                            <td>0822378685</td>
+
+                            <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
+                             <td>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                            </td>
+                        <tr>
+                            <td>04</td>
+                            <td>Phạm Thị Hồng</td>
+                            <td>abc@gmail.com</td>
+                            <td>0822378685</td>
+
+                            <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
+                             <td>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>05</td>
+                            <td>Nguyễn Cao Thắng</td>
+                            <td>abc@gmail.com</td>
+                            <td>0822378685</td>
+
+                            <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
+                             <td>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                            </td>
+                        </tr>
+                     
+                    </tbody>
+                    <div class="pagination flex-row">
+                        <div class="flex-1">
+                            <button id="prevPage" class= "button-black" type="button" >Trước</button>
+                            <span id="pageNumber">3</span> / <span id="totalPages">6</span>
+                            <button id="SauPage" class="button-black"type="button" >Sau</button>
+                        </div>
+                        <button class="button-orange" onclick="openProductForm()">Thêm Khách Hàng</button>
+                       
+                    </div>
+
+                </table>
+            </section>
+        </main>
+    </div>
+    <div id="productModal" class="modal">
+        <div class="modal-content" >
+            <span class="close-btn" onclick="closeProductForm()">&times;</span>
+           
+            <form action="post" class="flex-colunm" >
+                <h2>Thêm Khách Hàng</h2>
+                <div >
+                    <input  class="input-common" type="text" placeholder=" Họ & tên">
+                </div>
+                <div>
+                    <input class="input-common"  type="email" placeholder=" Email">
+                </div>
+                <div>
+                    <input class="input-common" type="password" placeholder="Mật khẩu">
+                </div>
+                <div>
+                    <input class="input-common" type="password" placeholder="Số điện thoại">
+                </div>
+                <div>
+                    <textarea rows="3" class="input-common"  placeholder="Địa chỉ"></textarea>
+                </div>
+                <div  class="flex-center">
+                    <button class="button-orange">Lưu </button>
+                </div>
+
+                
+            </form>
+        </div>
+    </div>
+
+    
+
+    <script src="admin.js"></script>
+   
+</body>
+
+</html>

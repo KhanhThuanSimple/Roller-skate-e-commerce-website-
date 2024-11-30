@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Page</title>
+    <title>Home</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -15,6 +15,7 @@
    
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="sanpham.css">
   </head>
   <body>
     <div id="wrapper">
@@ -22,7 +23,7 @@
       <header id="header">
         <nav class="container">
             <a href="index.html" id="logo"><img src="image/logo1.png" alt="logo"></a>
-            <form id="search-form" action="search.html" method="get">
+            <form id="search-form" action="timkiem.html" method="get">
               <input type="text" name="query" placeholder="Tìm kiếm...">
               <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
@@ -50,156 +51,181 @@
         </nav>
     </header>
     
-      <div class="container1">
-        <div class="gallery-display-area">
-            <div class="gallery-wrap">
+    <div class="container1">
+      <div class="gallery-display-area">
+          <div class="gallery-wrap">
+              <div class="image">
+                  <img src="image/home1.jpg" alt="1  ">
+                  
+              </div>
+              <div class="image">
+                  <img src="image/home2.jpg" alt="1">
+                  
+              </div>
+              <div class="image">
+                  <img src="image/home3.jpg" alt="1"> <!-- Hình ảnh GIF mới -->
+                  
+              </div>
+              <div class="image">
+                  <img src="image/home4.jpg" alt="1">
+                
+              </div>
                 <div class="image">
-                    <img src="image/home1.jpg" alt="1  ">
-                    
-                </div>
-                <div class="image">
-                    <img src="image/home2.jpg" alt="1">
-                    
-                </div>
-                <div class="image">
-                    <img src="image/home3.jpg" alt="1"> <!-- Hình ảnh GIF mới -->
-                    
-                </div>
-                <div class="image">
-                    <img src="image/home4.jpg" alt="1">
+                    <img src="image/home5.jpg" alt="1">
                   
                 </div>
-                  <div class="image">
-                      <img src="image/home5.jpg" alt="1">
-                    
-                  </div>
-                 
-            </div>
-        </div>
+               
+          </div>
+      </div>
+  
         <div id="main-container-index">
         
           <div id="main-contain-product-index">
             
             
               <div class="healine-index"><h3>SẢN PHẨM NỔI BẬT</h3></div>
-              <ul class="product-index">
+              <ul class="product">
                 <li>
-                  <div class="product-item-index">
-                    <div class="product-top-index">
-                      <a href="" class="product-thumb-index">
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
                         <img src="image/noibat1.jpg" alt="" />
                       </a>
-                      <a href="" class="buy-now-index">Mua Ngay</a>
+                      <div class="button-container">
+                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
+                        <a href="chitietsanpham.html" class="view-details">Xem Chi Tiết</a>
+                      </div>
                     </div>
-                    <div class="product-info-index">
-                      <a href="" class="product-cat-index">Cougar</a>
-                      <a href="" class="product-name-index">Giày Patin Người Lớn Cougar MZS 307C</a>
-                      <div class="product-price-index">1.090.000 đồng</div>
+                    <div class="product-info">
+                      <a href="" class="product-cat">Cougar</a>
+                      <a href="" class="product-name">Giày Patin Người Lớn Cougar MZS 307C</a>
+                      <div class="product-price">Giá: 1.090.000 đ</div>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div class="product-item-index">
-                    <div class="product-top-index">
-                      <a href="" class="product-thumb-index">
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
                         <img src="image/noibat2.jpg" alt="" />
                       </a>
-                      <a href="" class="buy-now-index">Mua Ngay</a>
+                      <div class="button-container">
+                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
+                        <a href="chitietsanpham.html" class="view-details">Xem Chi Tiết</a>
+                      </div>
                     </div>
-                    <div class="product-info-index">
-                      <a href="" class="product-cat-index">	HOT</a>
-                      <a href="" class="product-name-index">Giày Patin Người Lớn HOT 2</a>
-                      <div class="product-price-index">1.190.000 đồng</div>
+                    <div class="product-info">
+                      <a href="" class="product-cat">	HOT</a>
+                      <a href="" class="product-name">Giày Patin Người Lớn HOT 2</a>
+                      <div class="product-price">Giá: 1.190.000 đ</div>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div class="product-item-index">
-                    <div class="product-top-index">
-                      <a href="" class="product-thumb-index">
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
                         <img src="image/noibat3.jpg" alt="" />
                       </a>
-                      <a href="" class="buy-now-index">Mua Ngay</a>
+                      <div class="button-container">
+                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
+                        <a href="chitietsanpham.html" class="view-details">Xem Chi Tiết</a>
+                      </div>
                     </div>
-                    <div class="product-info-index">
-                      <a href="" class="product-cat-index">	TNT</a>
-                      <a href="" class="product-name-index">Giày Patin Người Lớn TNT QS 2</a>
-                      <div class="product-price-index">1.350.000 đồng</div>
+                    <div class="product-info">
+                      <a href="" class="product-cat">	TNT</a>
+                      <a href="" class="product-name">Giày Patin Người Lớn TNT QS 2</a>
+                      <div class="product-price">Giá: 1.350.000 đ</div>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div class="product-item-index">
-                    <div class="product-top-index">
-                      <a href="" class="product-thumb-index">
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
                         <img src="image/noibat4.jpg" alt="" />
                       </a>
-                      <a href="" class="buy-now-index">Mua Ngay</a>
+                      <div class="button-container">
+                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
+                        <a href="chitietsanpham.html" class="view-details">Xem Chi Tiết</a>
+                      </div>
                     </div>
-                    <div class="product-info-index">
-                      <a href="" class="product-cat-index">Calary</a>
-                      <a href="" class="product-name-index">Giày Patin Người Lớn Calary C9</a>
-                      <div class="product-price-index">1.490.000 đồng</div>
+                    <div class="product-info">
+                      <a href="" class="product-cat">Calary</a>
+                      <a href="" class="product-name">Giày Patin Người Lớn Calary C9</a>
+                      <div class="product-price">Giá: 1.490.000 đ</div>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div class="product-item-index">
-                    <div class="product-top-index">
-                      <a href="" class="product-thumb-index">
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
                         <img src="image/noibat5.jpg" alt="" />
                       </a>
-                      <a href="" class="buy-now-index">Mua Ngay</a>
+                      <div class="button-container">
+                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
+                        <a href="chitietsanpham.html" class="view-details">Xem Chi Tiết</a>
+                      </div>
                     </div>
-                    <div class="product-info-index">
-                      <a href="" class="product-cat-index">Flying Eagle</a>
-                      <a href="" class="product-name-index">Giày patin người lớn Flying Eagle B3S</a>
-                      <div class="product-price-index">2.500.000 đồng</div>
+                    <div class="product-info">
+                      <a href="" class="product-cat">Flying Eagle</a>
+                      <a href="" class="product-name">Giày patin người lớn Flying Eagle B3S</a>
+                      <div class="product-price">Giá: 2.500.000 đ</div>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div class="product-item-index">
-                    <div class="product-top-index">
-                      <a href="" class="product-thumb-index">
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
                         <img src="image/noibat6.jpg" alt="" />
                       </a>
-                      <a href="" class="buy-now-index">Mua Ngay</a>
+                      <div class="button-container">
+                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
+                        <a href="chitietsanpham.html" class="view-details">Xem Chi Tiết</a>
+                      </div>
                     </div>
-                    <div class="product-info-index">
-                      <a href="" class="product-cat-index">Flying Eagle</a>
-                      <a href="" class="product-name-index">Giày Patin Người Lớn Flying Eagle F1S+ Màu Đen</a>
-                      <div class="product-price">2.199.000 đồng</div>
+                    <div class="product-info">
+                      <a href="" class="product-cat">Flying Eagle</a>
+                      <a href="" class="product-name">Giày Patin Người Lớn Flying Eagle F1S+ Màu Đen</a>
+                      <div class="product-price">Giá: 2.199.000 đ</div>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div class="product-item-index">
-                    <div class="product-top-index">
-                      <a href="" class="product-thumb-index">
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
                         <img src="image/noibat7.jpg" alt="" />
                       </a>
-                      <a href="" class="buy-now-index">Mua Ngay</a>
+                      <div class="button-container">
+                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
+                        <a href="chitietsanpham.html" class="view-details">Xem Chi Tiết</a>
+                      </div>
                     </div>
-                    <div class="product-info-index">
-                      <a href="" class="product-cat-index">Flying Eagle</a>
-                      <a href="" class="product-name-index">Giày Patin Người Lớn Flying Eagle B5S</a>
-                      <div class="product-price-index">1.790.000 đồng</div>
+                    <div class="product-info">
+                      <a href="" class="product-cat">Flying Eagle</a>
+                      <a href="" class="product-name">Giày Patin Người Lớn Flying Eagle B5S</a>
+                      <div class="product-price">Giá: 1.790.000 đ</div>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div class="product-item-index">
-                    <div class="product-top-index">
-                      <a href="" class="product-thumb-index">
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
                         <img src="image/noibat8.jpg" alt="" />
                       </a>
-                      <a href="" class="buy-now-index">Mua Ngay</a>
+                      <div class="button-container">
+                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
+                        <a href="chitietsanpham.html" class="view-details">Xem Chi Tiết</a>
+                      </div>
                     </div>
-                    <div class="product-info-index">
-                      <a href="" class="product-cat-index">Flying Eagle</a>
-                      <a href="" class="product-name-index">Giày Trượt Patin Người Lớn Flying Eagle B5S</a>
-                      <div class="product-price-index">2.590.000 đồng</div>
+                    <div class="product-info">
+                      <a href="" class="product-cat">Flying Eagle</a>
+                      <a href="" class="product-name">Giày Trượt Patin Người Lớn Flying Eagle B5S</a>
+                      <div class="product-price"> Giá: 2.590.000 đ</div>
                     </div>
                   </div>
                 </li>
