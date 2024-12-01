@@ -517,6 +517,7 @@ h3 a {
     right: 0;
     display: flex;
   //  background-color: red;
+    z-index: 1000;
 
 }
 
