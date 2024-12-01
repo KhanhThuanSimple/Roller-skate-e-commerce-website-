@@ -1,0 +1,163 @@
+[33mda441c9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mkhanhthuan[m[33m, [m[1;31morigin/khanhthuan[m[33m)[m truoclogin
+[33m20c793d[m capnhattangdan
+[33mc9f6e9b[m thaydoicart
+[33ma008482[m truoclogin
+[33m7e4b66c[m chinh sua chinh sach thanh toan
+[33m6570210[m chinh sua chinh sach doi tra
+[33mfa24942[m update dang xuat
+[33m97731ac[m update dang xuat
+[33m26fbba4[m js an hien mk
+[33me82d25c[m[33m ([m[1;31morigin/thanhnhan[m[33m)[m update
+[33mbc87f01[m update
+[33m1a42df0[m update don hang
+[33ma88542b[m js don hang
+[33m2a086ed[m js gio hang
+[33m79a35a2[m js button dang xuat
+[33md20e796[m home
+[33m42684c2[m Merge branch 'master' of https://github.com/KhanhThuanSimple/DoAnLTW
+[33m09acb59[m update
+[33m2011816[m update
+[33m1aee1bf[m update
+[33m556830e[m tao file thanhtoan.js
+[33m946ec3b[m tao thong bao mua hang thanh cong
+[33meec5c7f[m tach file thanhtoan.css
+[33md9b6e20[m demo chi tiet don hang
+[33m3de38b0[m chinh sach thanh toan
+[33m0cf9bce[m chinh sach doi tra hang
+[33m0c94f2f[m Them Dang Xuat
+[33m78919cf[m update matkhau
+[33m89e3610[m Don Hang css
+[33m6f6e708[m update
+[33m753363f[m update thanhtoan
+[33mcc07145[m chinh image
+[33mbc6bb2e[m Merge branch 'master' of https://github.com/KhanhThuanSimple/DoAnLTW
+[33me8e9dbb[m Merge branch 'master' of https://github.com/KhanhThuanSimple/DoAnLTW
+[33m731b16c[m Lich Su Don Hang html
+[33m2f68649[m update
+[33mcf9b678[m Gio Hang
+[33m9eb320f[m update html gio hang
+[33m95c1b3a[m update trang ca nhan
+[33m5ea45a6[m Update Doi Mat Khau
+[33mab9c43a[m update thanhtoan
+[33m563ec5d[m thanhtoan-basic
+[33md5a771e[m Chinh Sua Ban Do Trang GT
+[33mef34ce5[m Doi Mat Khau Ca Nhan
+[33m47463c2[m Hoan Chinh Dia Chi Ca Nhan
+[33mabf7e23[m Dia Chi Cua Trang Ca Nhan
+[33mc37fc74[m Merge branch 'master' of https://github.com/KhanhThuanSimple/DoAnLTW
+[33mbde1f03[m Hồ Sơ Cá Nhân
+[33m838a0df[m sanpham-muangay
+[33m21cba07[m muangay
+[33m84144e3[m Giải quyết xung đột và hoàn tất merge nhánh khanhthuan vào master
+[33mab953c6[m css
+[33m940b44f[m themchitiethome
+[33m46a25a7[m themchitietsanpham
+[33m356330c[m themchitiey
+[33m5d6aa69[m capnhatchitiet
+[33mb9b8e20[m updateall
+[33m81b9c5e[m themchitiet
+[33m68d8c8f[m capnhat
+[33m56842c0[m  update login
+[33m10853a2[m Sườn Trang Cá Nhân
+[33mfb38be2[m xemchitiet
+[33mfc517d8[m Merge branch 'khanhthuan' :wq git stat
+[33md0710fb[m themchitiet-sanphamtreem
+[33med70992[m themchitiet-phukien
+[33m3fe8736[m themchitiet-sanphamnguoilon
+[33m3010891[m themchitiet-sanpham
+[33m0f770c1[m themchitiet
+[33m74fc922[m capnhatcss
+[33m499ac82[m update footer
+[33md0e348d[m update
+[33m14f5412[m update-admin
+[33m12bf512[m update-admin
+[33mafae054[m Merge branch 'khanhthuan'
+[33m3856381[m Lưu các thay đổi trên master
+[33mfc22217[m update giohang
+[33m89d9b8a[m update css
+[33mb8b80b4[m khongcosanpham
+[33m40706d7[m update-giohang.css
+[33mbdeb02d[m update-giohang.html
+[33maea5957[m giohangcss-js
+[33m451014f[m them trang admin-xuathang
+[33m721f781[m them trang admin-nhaphang
+[33mbc1cecd[m update admin-order
+[33m03d53b0[m update cac trang admin
+[33mbc3771f[m update admin
+[33m0eb63ce[m cac trang admin
+[33mc3c3796[m Merge branch 'khanhthuan' # Please enter a commit message to explain why this merge is necessary, # especially if it merges an updated upstream into a topic branch. # # Lines starting with '#' will be ignored, and an empty message aborts # the commit.
+[33m5ea28b6[m update-css size
+[33m709ced8[m css-sort
+[33m865a36e[m capnhatlichsu
+[33m4e2183c[m Merge branch 'khanhthuan' # Please enter a commit message to explain why this merge is necessary, # especially if it merges an updated upstream into a topic branch. # # Lines starting with '#' will be ignored, and an empty message aborts # the commit.
+[33maed53b6[m update-thongtin-indexsanpham
+[33mdf9d10d[m update css index
+[33m951bc91[m update css
+[33mb46a624[m update-thongtin-phukien
+[33m8ed0789[m update-thongtin-patinnguoilon
+[33maaeb36d[m update-thongtin-giaypatintreem
+[33m2e3b335[m css của trang Giới Thiệu
+[33m98a04cc[m Giới thiệu
+[33m4f9a43c[m update-css-style
+[33m1553cd6[m update header
+[33m7f9118d[m update-seach-canhan
+[33md6098d6[m update- seach - giohang
+[33m8b667f2[m update-seach-gioithieu
+[33m97fdbff[m update-seach-sanpham
+[33mdac9381[m update -seach -sanphamnguoilon
+[33m70ee226[m update - seach -sanphamphukien
+[33m2075f57[m update-seach-sanphamtreem
+[33m01ebfe2[m update-seach-lienhe
+[33me46063c[m update-Seach-index
+[33mc83895b[m add-button-sapxep
+[33m55925ed[m update-submenu-::before
+[33m4baf182[m thay doi text va nut nhan
+[33m073b67d[m update-h3-sanpham
+[33m36bf0f6[m create-Patintreem
+[33m1197a56[m Resolved merge conflicts
+[33m2579e51[m update-phukiengiay
+[33m85188d1[m add-image-phukien
+[33m9589ae9[m update-size-image
+[33m751860d[m create-patinnguoilon
+[33mc6bf1ec[m update-image-phukien
+[33m1dfe25a[m updateanh
+[33m3d292ac[m update footer
+[33m8ce3b30[m Merge branch 'master' of https://github.com/KhanhThuanSimple/DoAnLTW
+[33m5ec1f35[m Merge branch 'khanhthuan'
+[33mff65296[m  chinh sũa
+[33m92476e8[m sua
+[33me3c6255[m chinh sua dia chi
+[33md38b67d[m tooltip-all
+[33mff97080[m tooltip-index
+[33mec221d8[m tooltip-lienhe
+[33mcfdd046[m tooltip-sanpham
+[33m5389b76[m index.css
+[33m2b32aef[m updateStyle.css
+[33me521555[m updatecss
+[33m708e225[m[33m ([m[1;31morigin/test[m[33m)[m dieu chinh ten trong file css
+[33m4e4aec0[m dieu chinh ten trong file css
+[33m342894d[m dieu chinh ten trong file css
+[33mfc92f7f[m trang nhap lai mat khau moi
+[33m8a22fd7[m link trong buttom
+[33m8672866[m trang nhap OTP lay lai mat khau
+[33m8de5d64[m chuyen ve trang quen mat khau
+[33ma8b96fb[m tao trang quen mat khau
+[33m0efac18[m chuyen trang dang nhap va dang ki
+[33m8d21acf[m form dang ki tai khoan
+[33meee957c[m dieu chinh form dang nhap
+[33m7fc78ce[m form dang nhap
+[33mc9f4da4[m banner dang nhap
+[33mf4c7bdf[m nhan
+[33m590e539[m map lien he
+[33m549870a[m ho tro tu van
+[33me03f3ce[m thong tin lien he
+[33m514adaf[m banner lien he
+[33m3d53684[m update-foodter-index
+[33mc131b20[m update-home-spnoibat
+[33m9b93927[m slideshowhome
+[33m2fa07da[m update
+[33mf6412be[m update gioithieu
+[33m1d6f146[m update spm
+[33m2d01c23[m SanPhamUpdate
+[33m6c3a118[m home
+[33m707ebc7[m SanPham
