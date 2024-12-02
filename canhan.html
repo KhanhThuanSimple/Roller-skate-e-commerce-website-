@@ -121,20 +121,11 @@
                                 <a href="#">Thay Đổi</a>
                             </div>
                             <div class="form-group">
-                                <label>Giới tính</label>
-                                <input type="radio" id="male" name="gender" value="male">
-                                <label for="male">Nam</label>
-                                <input type="radio" id="female" name="gender" value="female" checked>
-                                <label for="female">Nữ</label>
-                                <input type="radio" id="other" name="gender" value="other">
-                                <label for="other">Khác</label>
-                            </div>
-                            <div class="form-group">
-                                <label>Ngày sinh</label>
-                                <span>12/11/2004</span>
+                                <label>Địa chỉ</label>
+                                <span>B12/10/31 Ấp 2 Xã VLB Huyện BC TPHCM</span>
                                 <a href="#">Thay Đổi</a>
                             </div>
-                            <button class="nutLuu">Lưu</button>
+                            <button class="nutLuu" onclick="moNutLuu()">Lưu</button>
                         </div>
 
                     </div>
@@ -182,6 +173,17 @@
         </div>
     </div>
 </div>
+
+<div id="modal_luu" class="modal_dangxuat">
+    <div class="modal_overlay" onclick="dongNutLuu()"></div>
+    <div class="modal_body_updateHoSo">
+        <div class="button-correct">
+            <i class="fa-regular fa-circle-check"></i>
+        </div>
+        <div class="updatehoso">Cập nhật hồ sơ thành công</div>
+        </div>
+    </div>
+
 </body>
 <script src="canhan.js"></script>
 

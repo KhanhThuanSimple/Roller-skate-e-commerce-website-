@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="css/doimatkhau.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/canhan.css">
 </head>
 <body>
 <div id="wrapper">
@@ -120,6 +121,7 @@
                                 <button class="togglePassword" data-target="xacNhanMK">Hiện</button>
                             </div>
                         </div>
+                        <button class="nutLuu" onclick="moNutLuu()">Lưu</button>
                     </div>
                 </div>
             </div>
@@ -162,6 +164,16 @@
         </div>
     </div>
 </div>
+<div id="modal_luu" class="modal_dangxuat">
+    <div class="modal_overlay" onclick="dongNutLuu()"></div>
+    <div class="modal_body_updateHoSo">
+        <div class="button-correct">
+            <i class="fa-regular fa-circle-check"></i>
+        </div>
+        <div class="updatehoso">Cập nhật mật khẩu thành công</div>
+    </div>
+</div>
+
 </body>
 <script src="canhan.js"></script>
 </html>
