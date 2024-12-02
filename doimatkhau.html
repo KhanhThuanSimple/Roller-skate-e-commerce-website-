@@ -11,6 +11,8 @@
             referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/doimatkhau.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/canhan.css">
 </head>
 <body>
 <div id="wrapper">
@@ -79,19 +81,20 @@
                     <h3>QUẢN LÝ TÀI KHOẢN</h3>
                     <ul>
                         <li><a href="canhan.html"> Hồ Sơ Cá Nhân</a></li>
-                        <li><a href="doimatkhau .html"> Đổi Mật Khẩu</a></li>
+                        <li><a href="doimatkhau.html"> Đổi Mật Khẩu</a></li>
                     </ul>
                     <h3>QUẢN LÝ GIAO DỊCH</h3>
                     <ul>
                         <li><a href="donhang.html">Đơn hàng của bạn</a></li>
                     </ul>
-                    <button id="DangXuat" class="dangxuat"> Đăng Xuất</button>
+                    <button id="DangXuat" class="dangxuat" onclick="moChacChanDX()"> Đăng Xuất</button>
                 </div>
 
+
                 <div class="right-cn">
-                    <!-- Hồ sơ cá nhân - auto khi bật bào tcn-->
+                    <!-- Hồ sơ cá nhân -->
                     <div class="head-rightcn">
-                        <p> Đổi mật khẩu </p>
+                        <p>Đổi mật khẩu</p>
                         <div class="pmk">Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu với người khác</div>
                         <hr class="nganCachHead">
                     </div>
@@ -99,34 +102,40 @@
                     <div class="bot-rightcn">
                         <div class="mkGroup">
                             <label for="matKhauCu">Mật khẩu cũ</label>
-                            <input type="password" id="matKhauCu" placeholder="Nhập mật khẩu...">
+                            <div class="input-wrapper">
+                                <input type="password" id="matKhauCu" placeholder="Nhập mật khẩu...">
+                                <button class="togglePassword" data-target="matKhauCu">Hiện</button>
+                            </div>
                         </div>
                         <div class="mkGroup">
                             <label for="matKhauMoi">Mật khẩu mới</label>
-                            <input type="password" id="matKhauMoi" placeholder="Nhập mật khẩu...">
+                            <div class="input-wrapper">
+                                <input type="password" id="matKhauMoi" placeholder="Nhập mật khẩu...">
+                                <button class="togglePassword" data-target="matKhauMoi">Hiện</button>
+                            </div>
                         </div>
                         <div class="mkGroup">
                             <label for="xacNhanMK">Xác nhận mật khẩu</label>
-                            <input type="password" id="xacNhanMK" placeholder="Nhập mật khẩu...">
+                            <div class="input-wrapper">
+                                <input type="password" id="xacNhanMK" placeholder="Nhập mật khẩu...">
+                                <button class="togglePassword" data-target="xacNhanMK">Hiện</button>
+                            </div>
                         </div>
+                        <button class="nutLuu" onclick="moNutLuu()">Lưu</button>
                     </div>
-
-
                 </div>
-
-
             </div>
-
-
         </div>
     </main>
+    <script src="doimatkhau.js"></script>
 
     <!-- Footer Section -->
     <footer id="footer">
         <div class="footer-container">
             <div class="footer-section">
                 <h4>Chính sách</h4>
-                <p>Chính sách chăm sóc khách hàng.<br>Chính sách đổi trả.<br>Chính sách thanh toán.</p>
+                <p>Chính sách chăm sóc khách hàng.<br><a href="chinhsachtrahang.html">Chính sách đổi trả.</a><br><a
+                        href="chinhsachthanhtoan.html">Chính sách thanh toán.</a></p>
             </div>
             <div class="footer-section">
                 <h4>Liên hệ:</h4>
@@ -145,6 +154,26 @@
         </div>
     </footer>
 </div>
-<script src="canhan.js"></script>
+<div id="modal_dangxuat" class="modal_dangxuat">
+    <div class="modal_overlay"></div>
+    <div class="modal_body">
+        <h1>Bạn chắc chắn muốn đăng xuất? </h1>
+        <div class="button-dx">
+            <button onclick="dongChacChanDX()">Không</button>
+            <button id="chacChanDX">Có</button>
+        </div>
+    </div>
+</div>
+<div id="modal_luu" class="modal_dangxuat">
+    <div class="modal_overlay" onclick="dongNutLuu()"></div>
+    <div class="modal_body_updateHoSo">
+        <div class="button-correct">
+            <i class="fa-regular fa-circle-check"></i>
+        </div>
+        <div class="updatehoso">Cập nhật mật khẩu thành công</div>
+    </div>
+</div>
+
 </body>
+<script src="canhan.js"></script>
 </html>

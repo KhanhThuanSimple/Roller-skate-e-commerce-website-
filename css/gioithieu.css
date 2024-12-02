@@ -261,7 +261,6 @@ nav #main-menu > li:hover > a::before {
     top: 1px;
     justify-content: center;
     align-items: center;
-/ / -webkit-box-reflect: below 1 px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
 }
 
 @keyframes slideShow {
@@ -302,10 +301,9 @@ nav #main-menu > li:hover > a::before {
 /* Phần Main giới thiệu*/
 /*body phan gioithieu*/
 #bodyGT {
-/ / background-color: red;
     color: black;
     text-align: justify;
-    height: 1700px;
+    height: auto;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -359,7 +357,7 @@ h5 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-/ / max-width: 800 px;
+ max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
