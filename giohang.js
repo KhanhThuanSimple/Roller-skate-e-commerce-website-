@@ -1,14 +1,11 @@
-// Xử lý nút xem thêm sản phẩm
 document.getElementById('XemThemSP').addEventListener('click', function () {
     window.location.href = 'sanpham.html';
-})
-;
+});
 
 // Xử lý nút thanh toán
 document.getElementById('ThanhToan').addEventListener('click', function () {
     window.location.href = 'thanhtoan.html';
-})
-;
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     // Hàm xử lý nút giảm số lượng
@@ -22,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             quantity -= 1;
             quantityInput.value = quantity;
             updateTotalPrice(cartItem, quantity, unitPrice);
+            updateGrandTotal();
         }
     }
 
@@ -35,10 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
         quantity += 1;
         quantityInput.value = quantity;
         updateTotalPrice(cartItem, quantity, unitPrice);
-
+        updateGrandTotal();
     }
 
-    // Hàm tính và cập nhật tổng tiền
+    // Hàm tính và cập nhật tổng tiền của một sản phẩm
     function updateTotalPrice(cartItem, quantity, unitPrice) {
         const totalPriceElement = cartItem.querySelector(".total-price");
         const totalPrice = unitPrice * quantity;
@@ -51,10 +49,22 @@ document.addEventListener("DOMContentLoaded", () => {
         return parseFloat(priceElement.textContent.replace(/[^\d]/g, ""));
     }
 
+    // Hàm tính và cập nhật tổng tiền cho tất cả các sản phẩm
+    function updateGrandTotal() {
+        let grandTotal = 0;
+        document.querySelectorAll(".cart-item").forEach(cartItem => {
+            const quantity = parseInt(cartItem.querySelector(".qty-input").value);
+            const unitPrice = getUnitPrice(cartItem);
+            grandTotal += quantity * unitPrice;
+        });
+        document.querySelector(".grand-total").textContent = `${grandTotal.toLocaleString()}đ`;
+    }
+
     // Hàm xử lý xóa sản phẩm
     function handleDelete(button) {
         const cartItem = button.closest(".cart-item");
         cartItem.remove();
+        updateGrandTotal();
     }
 
     // Gán sự kiện cho các nút và ô nhập
@@ -73,11 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".cart-item .delete-item").forEach(button => {
             button.addEventListener("click", () => handleDelete(button));
         });
+
+        // Cập nhật tổng tiền ban đầu
+        updateGrandTotal();
     }
 
     // Khởi chạy
     initializeCart();
 });
-
-
-
