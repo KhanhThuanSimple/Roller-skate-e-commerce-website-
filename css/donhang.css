@@ -8,15 +8,12 @@
 ul {
     list-style-type: none;
 }
-<<<<<<< Updated upstream
-=======
 
 .container {
 
     margin-right: 25px;
     margin-left: 15px;
 }
->>>>>>> Stashed changes
 
 /* Body */
 body {
@@ -149,7 +146,6 @@ nav #main-menu li a {
     list-style-type: none;
 }
 
-<<<<<<< Updated upstream
 #main-menu li:hover > ul.sub-menu {
     display: block;
 }
@@ -286,7 +282,6 @@ nav #main-menu>li:hover>a::before {
     top: 1px;
     justify-content: center;
     align-items: center;
-/ / -webkit-box-reflect: below 1 px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
 }
 
 @keyframes slideShow {
@@ -527,8 +522,6 @@ h3 a {
     bottom: 0;
     right: 0;
     display: flex;
-<<<<<<< Updated upstream
-  //  background-color: red;
 
 }
 
@@ -606,8 +599,6 @@ tfoot td {
     bottom: 0;
     right: 0;
     display: flex;
-<<<<<<< Updated upstream
-/ / background-color: red;
 }
 
 .modal_overlay {
