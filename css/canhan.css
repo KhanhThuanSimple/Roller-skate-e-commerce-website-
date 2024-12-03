@@ -305,7 +305,7 @@ nav #main-menu > li:hover > a::before {
 /* Phần Main cá nhân*/
 /*body phan ca nhan*/
 #bodyCN {
-/ / background-color: red;
+    / / background-color: red;
     color: black;
     text-align: justify;
     height: 700px;
@@ -327,7 +327,7 @@ nav #main-menu > li:hover > a::before {
 /*css left-cn*/
 .left-cn {
     width: 30%;
-/ / background-color: black;
+    / / background-color: black;
     height: 600px;
 }
 
@@ -370,7 +370,8 @@ h3 a {
 .avatar img {
     width: 50px;
     height: 50px;
-    border-radius: 50%; /* Bo tròn */
+    border-radius: 50%;
+    /* Bo tròn */
 }
 
 .In4Avt {
@@ -400,7 +401,7 @@ h3 a {
 
 .head-rightcn {
     height: 15%;
-/ / background-color: red;
+    / / background-color: red;
     padding: 10px;
 
 }
@@ -417,7 +418,11 @@ h3 a {
 
 
 .bot-rightcn {
+<<<<<<< Updated upstream
 // background-color: red;
+=======
+    / / background-color: red;
+>>>>>>> Stashed changes
     height: 425px;
 }
 
@@ -429,7 +434,7 @@ h3 a {
     margin: 20px auto;
     font-family: Arial, sans-serif;
     color: #333;
-/ / background-color: red;
+    / / background-color: red;
 }
 
 .form-group {
@@ -522,7 +527,13 @@ input[type="radio"] {
     bottom: 0;
     right: 0;
     display: flex;
+<<<<<<< Updated upstream
 / / background-color: red;
+=======
+    / / background-color: red;
+    z-index: 1000;
+
+>>>>>>> Stashed changes
 }
 
 .modal_overlay {
@@ -552,7 +563,8 @@ h1 {
 
 .button-dx{
     display: flex;
-    justify-content: space-between; /* Dàn đều hai nút sang hai bên */
+    justify-content: space-between;
+    /* Dàn đều hai nút sang hai bên */
     margin-top: 20px;
     height: 100px;
 
@@ -574,4 +586,37 @@ button:hover{
     background-color: darkorange;
 }
 
+<<<<<<< Updated upstream
 
+=======
+/*Cập nhật hồ sơ thành công*/
+#modal_luu {
+    display: none;
+}
+
+.modal_body_updateHoSo {
+    width: 450px;
+    height: 200px;
+    margin: 300px auto;
+    background: #fff;
+    padding: 20px;
+    border: 0.5px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.button-correct {
+    font-size: 70px;
+    color: orange;
+    margin-left: 150px;
+}
+
+.updatehoso {
+    font-size: 24px;
+    margin-top: 20px;
+    color: orange;
+    font-weight: bold;
+    text-align: center;
+}
+>>>>>>> Stashed changes

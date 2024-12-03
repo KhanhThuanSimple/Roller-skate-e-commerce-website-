@@ -51,7 +51,8 @@ a#logo img {
 #search-form {
     display: inline-block;
     vertical-align: middle;
-    margin-left: 40px; /* Khoảng cách giữa logo và thanh tìm kiếm */
+    margin-left: 40px;
+    /* Khoảng cách giữa logo và thanh tìm kiếm */
 }
 
 #search-form input[type="text"] {
@@ -87,28 +88,36 @@ a#logo img {
     position: relative;
     margin-left: 15px;
 }
+
 .tooltip {
     position: relative;
     display: inline-block;
-    cursor: pointer; /* Thêm biểu tượng con trỏ để người dùng biết đây là phần có thể tương tác */
+    cursor: pointer;
+    /* Thêm biểu tượng con trỏ để người dùng biết đây là phần có thể tương tác */
 }
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 55px; /* Tăng chiều rộng để phù hợp với nội dung dài hơn */
+    width: 55px;
+    /* Tăng chiều rộng để phù hợp với nội dung dài hơn */
     background-color: #FFF;
-    color: #2b2b2b; /* Sửa màu chữ thành trắng để dễ đọc hơn trên nền màu */
+    color: #2b2b2b;
+    /* Sửa màu chữ thành trắng để dễ đọc hơn trên nền màu */
     text-align: center;
     border-radius: 5px;
-    padding: 8px; /* Tăng padding để nội dung thoáng hơn */
+    padding: 8px;
+    /* Tăng padding để nội dung thoáng hơn */
     position: absolute;
     z-index: 1;
-    bottom: 72%; /* Đặt tooltip ở phía trên icon */
+    bottom: 72%;
+    /* Đặt tooltip ở phía trên icon */
     left: 50%;
-    margin-left: -25px; /* Để căn giữa tooltip */
+    margin-left: -25px;
+    /* Để căn giữa tooltip */
     opacity: 0;
     font-size: 9px;
-    transition: opacity 0.3s ease-in-out; /* Giảm thời gian chuyển đổi để tooltip hiện ra nhanh hơn */
+    transition: opacity 0.3s ease-in-out;
+    /* Giảm thời gian chuyển đổi để tooltip hiện ra nhanh hơn */
 }
 
 .tooltip:hover .tooltiptext {
@@ -125,6 +134,7 @@ nav #main-menu li a {
     text-decoration: none;
     font-size: 15px;
 }
+
 #main-menu ul.sub-menu {
     position: absolute;
     background: #dddddd;
@@ -132,7 +142,8 @@ nav #main-menu li a {
     display: none;
     list-style-type: none;
 }
-#main-menu li:hover > ul.sub-menu {
+
+#main-menu li:hover>ul.sub-menu {
     display: block;
 }
 
@@ -171,11 +182,11 @@ nav #main-menu li a {
 }
 
 
-nav #main-menu > li > a {
+nav #main-menu>li>a {
     position: relative;
 }
 
-nav #main-menu > li > a::before {
+nav #main-menu>li>a::before {
     content: "";
     height: 4px;
     width: 0%;
@@ -191,14 +202,15 @@ nav #main-menu li:hover a {
     transition: all 0.3s;
 }
 
-nav #main-menu > li:hover > a::before {
+nav #main-menu>li:hover>a::before {
     width: 100%;
 }
 
 /* Footer */
 #footer {
     background-color: #f3f2ec;
-    padding: 20px 0; /* Thêm khoảng trống phía trên và dưới */
+    padding: 20px 0;
+    /* Thêm khoảng trống phía trên và dưới */
     text-align: center;
     border-top: 2px solid #8e8d8a;
 }
@@ -223,7 +235,8 @@ nav #main-menu > li:hover > a::before {
     color: #333;
 }
 
-.footer-section p, .footer-section a {
+.footer-section p,
+.footer-section a {
     color: #2b2b2b;
 }
 
@@ -262,7 +275,7 @@ nav #main-menu > li:hover > a::before {
     top: 1px;
     justify-content: center;
     align-items: center;
-/ / -webkit-box-reflect: below 1 px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
+    / / -webkit-box-reflect: below 1 px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
 }
 
 @keyframes slideShow {
@@ -289,12 +302,15 @@ nav #main-menu > li:hover > a::before {
     70% {
         margin-left: -300%;
     }
+
     80% {
         margin-left: -300%;
     }
+
     90% {
         margin-left: -400%;
     }
+
     100% {
         margin-left: -400%;
     }
@@ -303,7 +319,7 @@ nav #main-menu > li:hover > a::before {
 /* Phần Main cá nhân*/
 /*body phan ca nhan*/
 #bodyCN {
-/ / background-color: red;
+    / / background-color: red;
     color: black;
     text-align: justify;
     height: 700px;
@@ -325,7 +341,7 @@ nav #main-menu > li:hover > a::before {
 /*css left-cn*/
 .left-cn {
     width: 30%;
-/ / background-color: black;
+    / / background-color: black;
     height: 600px;
 }
 
@@ -368,7 +384,8 @@ h3 a {
 .avatar img {
     width: 50px;
     height: 50px;
-    border-radius: 50%; /* Bo tròn */
+    border-radius: 50%;
+    /* Bo tròn */
 }
 
 .In4Avt {
@@ -398,7 +415,7 @@ h3 a {
 
 .head-rightcn {
     height: 15%;
-/ / background-color: red;
+    / / background-color: red;
     padding: 10px;
 
 }
@@ -420,7 +437,7 @@ h3 a {
     margin-top: 50px;
 }
 
-.dangxuat{
+.dangxuat {
     display: block;
     width: 150px;
     padding: 10px 15px;
@@ -434,6 +451,7 @@ h3 a {
     margin-left: 20px;
     margin-top: 20px;
 }
+
 .dangxuat:hover {
     background-color: darkorange;
 }
@@ -515,9 +533,10 @@ h3 a {
 }
 
 /*phần overlay bạn muốn đăng xuất*/
-#modal_dangxuat{
+#modal_dangxuat {
     display: none;
 }
+
 .modal_dangxuat {
     position: fixed;
     top: 0;
@@ -525,7 +544,13 @@ h3 a {
     bottom: 0;
     right: 0;
     display: flex;
+<<<<<<< Updated upstream
 / / background-color: red;
+=======
+    / / background-color: red;
+    z-index: 1000;
+
+>>>>>>> Stashed changes
 }
 
 .modal_overlay {
@@ -553,14 +578,15 @@ h1 {
     color: orange;
 }
 
-.button-dx{
+.button-dx {
     display: flex;
-    justify-content: space-between; /* Dàn đều hai nút sang hai bên */
+    justify-content: space-between;
+    /* Dàn đều hai nút sang hai bên */
     margin-top: 20px;
     height: 100px;
 }
 
-.button-dx button{
+.button-dx button {
     background-color: orange;
     width: 40%;
     height: 35px;
@@ -570,14 +596,6 @@ h1 {
     margin-top: 50px;
 }
 
-button:hover{
+button:hover {
     background-color: darkorange;
 }
-
-
-
-
-
-
-
-

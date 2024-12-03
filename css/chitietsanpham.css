@@ -17,19 +17,23 @@ body {
 
 /* Main container styles */
 .main-content {
-    margin-top: 0px; /* Ensure this is greater than or equal to the header height */
+    margin-top: 0px;
+    /* Ensure this is greater than or equal to the header height */
 }
 
 .card-wrapper {
     max-width: 80%;
     height: auto;
     margin: 0 auto;
-    padding: 20px 15px; /* Add padding to the wrapper to ensure spacing */
+    padding: 20px 15px;
+    /* Add padding to the wrapper to ensure spacing */
 }
 
 #main-container {
-    margin-top: 80px; /* Ensure this is greater than or equal to the header height */
-    padding-bottom: 25px; /* Add padding to ensure spacing with the footer */
+    margin-top: 80px;
+    /* Ensure this is greater than or equal to the header height */
+    padding-bottom: 25px;
+    /* Add padding to ensure spacing with the footer */
 }
 
 /* Product Card styles */
@@ -175,7 +179,7 @@ img {
 }
 
 .purchase-info input {
-     border: 1.5px solid #ddd;
+    border: 1.5px solid #ddd;
     border-radius: 25px;
     text-align: center;
     padding: 0.45rem 0.8rem;
@@ -184,7 +188,8 @@ img {
     margin-bottom: 1rem;
 
 }
-.purchase-info  .btn  {
+
+.purchase-info .btn {
     border: 1.5px solid #ddd;
     border-radius: 25px;
     text-align: center;
@@ -199,7 +204,7 @@ img {
     width: 60px;
 }
 
-.purchase-info   .btn {
+.purchase-info .btn {
     cursor: pointer;
     color: #fff;
 }
@@ -248,147 +253,177 @@ img {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1.5rem;
     }
+
     .card-wrapper {
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
     .product-imgs {
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
+
     .product-content {
         padding-top: 0;
     }
 }
+
 /* Modal container */
 /* Modal container */
 .modal {
-    display: none; /* Ẩn modal mặc định */
+    display: none;
+    /* Ẩn modal mặc định */
     position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Nền mờ */
     padding-top: 25px;
     overflow: auto;
-  }
-  
-  /* Nội dung modal */
-  .modal-content {
+}
+
+/* Nội dung modal */
+.modal-content {
     background-color: #fff;
-    margin: 3% auto; /* Giảm khoảng cách từ trên xuống */
-    padding: 60px; /* Giảm padding để modal nhỏ hơn */
-    border-radius: 8px; /* Bo góc modal */
-    width: 50%; /* Kích thước modal */
-    max-width: 600px; /* Giới hạn chiều rộng tối đa */
+    margin: 3% auto;
+    /* Giảm khoảng cách từ trên xuống */
+    padding: 60px;
+    /* Giảm padding để modal nhỏ hơn */
+    border-radius: 8px;
+    /* Bo góc modal */
+    width: 50%;
+    /* Kích thước modal */
+    max-width: 600px;
+    /* Giới hạn chiều rộng tối đa */
     text-align: center;
     z-index: 999;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng cho modal */
-  }
-  
-  /* Nút đóng modal */
-  .close {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Hiệu ứng bóng cho modal */
+}
+
+/* Nút đóng modal */
+.close {
     color: black;
     float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
     margin-right: -3px;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #a00;
     text-decoration: none;
-  }
-  
-  /* Hình ảnh sản phẩm trong modal */
-  .modal img {
-    width: 60%; /* Giảm kích thước hình ảnh */
+}
+
+/* Hình ảnh sản phẩm trong modal */
+.modal img {
+    width: 60%;
+    /* Giảm kích thước hình ảnh */
     height: auto;
     margin-top: 1px;
-    border-radius: 8px; /* Bo góc ảnh */
-  }
-  
-  /* Giá sản phẩm */
-  .modal .modal-price {
-    font-size: 13px; /* Giảm kích thước chữ */
+    border-radius: 8px;
+    /* Bo góc ảnh */
+}
+
+/* Giá sản phẩm */
+.modal .modal-price {
+    font-size: 13px;
+    /* Giảm kích thước chữ */
     color: #ff6600;
     font-weight: bold;
     margin-top: 5px;
-  }
-  
+}
+
 /* Phần chứa các nút */
 .buttons-container {
     display: flex;
-    justify-content: center; /* Căn giữa các nút */
-    gap: 10px; /* Khoảng cách giữa các nút */
-    margin-top: 20px; /* Khoảng cách phía trên */
-  }
-  
-  /* Các nút */
-  .buttons-container button {
+    justify-content: center;
+    /* Căn giữa các nút */
+    gap: 10px;
+    /* Khoảng cách giữa các nút */
+    margin-top: 20px;
+    /* Khoảng cách phía trên */
+}
+
+/* Các nút */
+.buttons-container button {
     padding: 10px 20px;
     border-radius: 5px;
-    border: none; /* Bỏ border mặc định của button */
-    font-size: 13px; /* Cỡ chữ */
+    border: none;
+    /* Bỏ border mặc định của button */
+    font-size: 13px;
+    /* Cỡ chữ */
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s ease-in-out; /* Thêm hiệu ứng khi hover */
-  }
-  
-  /* Nút Thanh toán ngay */
-  .btn-pay-now {
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    /* Thêm hiệu ứng khi hover */
+}
+
+/* Nút Thanh toán ngay */
+.btn-pay-now {
     background-color: #256eff;
     color: #fff;
-  }
-  
-  .btn-pay-now:hover {
-    background-color: #1e56d8; /* Màu khi hover */
-    transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
-  }
-  
-  /* Nút Tiếp tục mua hàng */
-  .btn-continue-shopping {
+}
+
+.btn-pay-now:hover {
+    background-color: #1e56d8;
+    /* Màu khi hover */
+    transform: scale(1.05);
+    /* Hiệu ứng phóng to nhẹ */
+}
+
+/* Nút Tiếp tục mua hàng */
+.btn-continue-shopping {
     background-color: #f64749;
     color: #fff;
-  }
-  
-  .btn-continue-shopping:hover {
-    background-color: #d03636; /* Màu khi hover */
-    transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
-  }
-  /* Phần chứa thông tin người dùng */
+}
+
+.btn-continue-shopping:hover {
+    background-color: #d03636;
+    /* Màu khi hover */
+    transform: scale(1.05);
+    /* Hiệu ứng phóng to nhẹ */
+}
+
+/* Phần chứa thông tin người dùng */
 .user-info {
     display: flex;
-    flex-direction: column; /* Hiển thị các trường nhập theo cột */
-    gap: 15px; /* Khoảng cách giữa các trường */
-    margin-top: 20px; /* Khoảng cách trên */
-  }
-  
-  /* Kiểu cho từng input */
-  .user-info input {
+    flex-direction: column;
+    /* Hiển thị các trường nhập theo cột */
+    gap: 15px;
+    /* Khoảng cách giữa các trường */
+    margin-top: 20px;
+    /* Khoảng cách trên */
+}
+
+/* Kiểu cho từng input */
+.user-info input {
     padding: 10px;
-    width: 100%; /* Chiếm toàn bộ chiều rộng của modal */
+    width: 100%;
+    /* Chiếm toàn bộ chiều rộng của modal */
     border: 1px solid #ccc;
-    border-radius: 5px; /* Bo góc */
+    border-radius: 5px;
+    /* Bo góc */
     font-size: 13px;
     background-color: #f9f9f9;
     transition: border-color 0.3s;
-  }
-  
-  /* Hiệu ứng khi hover hoặc focus vào input */
-  .user-info input:focus {
-    border-color: #256eff; /* Đổi màu border khi focus */
-    outline: none; /* Bỏ viền khi focus */
-    background-color: #fff; /* Đổi nền khi focus */
-  }
-  
-  
- 
+}
 
+/* Hiệu ứng khi hover hoặc focus vào input */
+.user-info input:focus {
+    border-color: #256eff;
+    /* Đổi màu border khi focus */
+    outline: none;
+    /* Bỏ viền khi focus */
+    background-color: #fff;
+    /* Đổi nền khi focus */
+}
