@@ -275,7 +275,6 @@ nav #main-menu>li:hover>a::before {
     top: 1px;
     justify-content: center;
     align-items: center;
-    / / -webkit-box-reflect: below 1 px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
 }
 
 @keyframes slideShow {

@@ -1,7 +1,6 @@
 /* Phần Main cá nhân*/
 /*body phan ca nhan*/
 #bodyCN {
-    / / background-color: red;
     color: black;
     text-align: justify;
     height: 700px;
@@ -23,7 +22,6 @@
 /*css left-cn*/
 .left-cn {
     width: 30%;
-    / / background-color: black;
     height: 600px;
 }
 
@@ -97,7 +95,6 @@ h3 a {
 
 .head-rightcn {
     height: 15%;
-    / / background-color: red;
     padding: 10px;
 
 }
@@ -114,7 +111,6 @@ h3 a {
 
 
 .bot-rightcn {
-// background-color: red;
     height: 425px;
 }
 
@@ -126,7 +122,6 @@ h3 a {
     margin: 20px auto;
     font-family: Arial, sans-serif;
     color: #333;
-    / / background-color: red;
 }
 
 .form-group {
@@ -220,8 +215,6 @@ input[type="radio"] {
     bottom: 0;
     right: 0;
     display: flex;
-<<<<<<< Updated upstream
-/ / background-color: red;
 }
 
 .modal_overlay {
