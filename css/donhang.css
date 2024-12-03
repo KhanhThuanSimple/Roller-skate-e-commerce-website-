@@ -151,9 +151,6 @@ nav #main-menu li a {
 
 <<<<<<< Updated upstream
 #main-menu li:hover > ul.sub-menu {
-=======
-#main-menu li:hover>ul.sub-menu {
->>>>>>> Stashed changes
     display: block;
 }
 
@@ -249,14 +246,11 @@ nav #main-menu>li:hover>a::before {
     color: #2b2b2b;
 }
 
-<<<<<<< Updated upstream
-=======
 .footer-section a {
     text-decoration: none;
 
 }
 
->>>>>>> Stashed changes
 .footer-section .social-link {
     display: flex;
     justify-content: flex-start;
@@ -292,11 +286,7 @@ nav #main-menu>li:hover>a::before {
     top: 1px;
     justify-content: center;
     align-items: center;
-<<<<<<< Updated upstream
 / / -webkit-box-reflect: below 1 px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
-=======
-    -webkit-box-reflect: below 1px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
->>>>>>> Stashed changes
 }
 
 @keyframes slideShow {
@@ -361,7 +351,6 @@ nav #main-menu>li:hover>a::before {
 /*css left-cn*/
 .left-cn {
     width: 30%;
-    / / background-color: black;
     height: 600px;
 }
 
@@ -435,7 +424,6 @@ h3 a {
 
 .head-rightcn {
     height: 15%;
-    / / background-color: red;
     padding: 10px;
 }
 
@@ -451,7 +439,6 @@ h3 a {
 
 
 .bot-rightcn {
-    / / background-color: red;
     height: 425px;
 }
 
@@ -542,10 +529,6 @@ h3 a {
     display: flex;
 <<<<<<< Updated upstream
   //  background-color: red;
-=======
-    //  background-color: red;
-    z-index: 1000;
->>>>>>> Stashed changes
 
 }
 
@@ -625,10 +608,6 @@ tfoot td {
     display: flex;
 <<<<<<< Updated upstream
 / / background-color: red;
-=======
-    / / background-color: red;
-    z-index: 1000;
->>>>>>> Stashed changes
 }
 
 .modal_overlay {

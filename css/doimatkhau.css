@@ -275,7 +275,6 @@ nav #main-menu>li:hover>a::before {
     top: 1px;
     justify-content: center;
     align-items: center;
-    / / -webkit-box-reflect: below 1 px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
 }
 
 @keyframes slideShow {
@@ -319,7 +318,6 @@ nav #main-menu>li:hover>a::before {
 /* Phần Main cá nhân*/
 /*body phan ca nhan*/
 #bodyCN {
-    / / background-color: red;
     color: black;
     text-align: justify;
     height: 700px;
@@ -341,7 +339,6 @@ nav #main-menu>li:hover>a::before {
 /*css left-cn*/
 .left-cn {
     width: 30%;
-    / / background-color: black;
     height: 600px;
 }
 
@@ -415,7 +412,6 @@ h3 a {
 
 .head-rightcn {
     height: 15%;
-    / / background-color: red;
     padding: 10px;
 
 }
@@ -546,11 +542,6 @@ h3 a {
     display: flex;
 <<<<<<< Updated upstream
 / / background-color: red;
-=======
-    / / background-color: red;
-    z-index: 1000;
-
->>>>>>> Stashed changes
 }
 
 .modal_overlay {
