@@ -51,7 +51,8 @@ a#logo img {
 #search-form {
     display: inline-block;
     vertical-align: middle;
-    margin-left: 40px; /* Khoảng cách giữa logo và thanh tìm kiếm */
+    margin-left: 40px;
+    /* Khoảng cách giữa logo và thanh tìm kiếm */
 }
 
 #search-form input[type="text"] {
@@ -87,28 +88,36 @@ a#logo img {
     position: relative;
     margin-left: 15px;
 }
+
 .tooltip {
     position: relative;
     display: inline-block;
-    cursor: pointer; /* Thêm biểu tượng con trỏ để người dùng biết đây là phần có thể tương tác */
+    cursor: pointer;
+    /* Thêm biểu tượng con trỏ để người dùng biết đây là phần có thể tương tác */
 }
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 55px; /* Tăng chiều rộng để phù hợp với nội dung dài hơn */
+    width: 55px;
+    /* Tăng chiều rộng để phù hợp với nội dung dài hơn */
     background-color: #FFF;
-    color: #2b2b2b; /* Sửa màu chữ thành trắng để dễ đọc hơn trên nền màu */
+    color: #2b2b2b;
+    /* Sửa màu chữ thành trắng để dễ đọc hơn trên nền màu */
     text-align: center;
     border-radius: 5px;
-    padding: 8px; /* Tăng padding để nội dung thoáng hơn */
+    padding: 8px;
+    /* Tăng padding để nội dung thoáng hơn */
     position: absolute;
     z-index: 1;
-    bottom: 72%; /* Đặt tooltip ở phía trên icon */
+    bottom: 72%;
+    /* Đặt tooltip ở phía trên icon */
     left: 50%;
-    margin-left: -25px; /* Để căn giữa tooltip */
+    margin-left: -25px;
+    /* Để căn giữa tooltip */
     opacity: 0;
     font-size: 9px;
-    transition: opacity 0.3s ease-in-out; /* Giảm thời gian chuyển đổi để tooltip hiện ra nhanh hơn */
+    transition: opacity 0.3s ease-in-out;
+    /* Giảm thời gian chuyển đổi để tooltip hiện ra nhanh hơn */
 }
 
 .tooltip:hover .tooltiptext {
@@ -125,6 +134,7 @@ nav #main-menu li a {
     text-decoration: none;
     font-size: 15px;
 }
+
 #main-menu ul.sub-menu {
     position: absolute;
     background: #dddddd;
@@ -132,7 +142,8 @@ nav #main-menu li a {
     display: none;
     list-style-type: none;
 }
-#main-menu li:hover > ul.sub-menu {
+
+#main-menu li:hover>ul.sub-menu {
     display: block;
 }
 
@@ -171,11 +182,11 @@ nav #main-menu li a {
 }
 
 
-nav #main-menu > li > a {
+nav #main-menu>li>a {
     position: relative;
 }
 
-nav #main-menu > li > a::before {
+nav #main-menu>li>a::before {
     content: "";
     height: 4px;
     width: 0%;
@@ -191,13 +202,15 @@ nav #main-menu li:hover a {
     transition: all 0.3s;
 }
 
-nav #main-menu > li:hover > a::before {
+nav #main-menu>li:hover>a::before {
     width: 100%;
 }
+
 /* Footer */
 #footer {
     background-color: #f3f2ec;
-    padding: 20px 0; /* Thêm khoảng trống phía trên và dưới */
+    padding: 20px 0;
+    /* Thêm khoảng trống phía trên và dưới */
     text-align: center;
     border-top: 2px solid #8e8d8a;
 }
@@ -222,7 +235,8 @@ nav #main-menu > li:hover > a::before {
     color: #333;
 }
 
-.footer-section p, .footer-section a {
+.footer-section p,
+.footer-section a {
     color: #2b2b2b;
 }
 
@@ -287,12 +301,15 @@ nav #main-menu > li:hover > a::before {
     70% {
         margin-left: -300%;
     }
+
     80% {
         margin-left: -300%;
     }
+
     90% {
         margin-left: -400%;
     }
+
     100% {
         margin-left: -400%;
     }
@@ -357,7 +374,7 @@ h5 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
- max-width: 800px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -369,13 +386,15 @@ p {
     margin-top: 10px;
 
 }
+
 /* css cho phan box dia chi*/
 
-.ndung{
+.ndung {
     text-align: center;
     font-weight: bold;
     padding: 10px;
 }
+
 .box {
     border: solid #ddd;
     padding: 10px;
@@ -383,12 +402,14 @@ p {
     text-align: justify;
     font-family: Arial, sans-serif;
 }
+
 .box h3 {
 
     color: red;
     font-size: 20px;
     margin: 0;
 }
+
 .box a {
     color: #F8A330;
     font-size: 15px;
@@ -396,12 +417,14 @@ p {
     text-decoration: none;
     margin-top: -20px;
 }
+
 .box p {
     font-size: 18px;
     color: black;
     margin-top: 10px;
 }
-.box-cont{
+
+.box-cont {
     display: flex;
     gap: 17px;
     padding: 20px;

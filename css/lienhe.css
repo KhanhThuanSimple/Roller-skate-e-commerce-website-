@@ -1,166 +1,192 @@
-.contact-container thanhtoan{
-    margin-top: 120px;
-    min-height: 100vh;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-bottom: 60px;
+.contact-container thanhtoan {
+  margin-top: 120px;
+  min-height: 100vh;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 60px;
 }
 
- .contact-info{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
- .contact-info .info{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
- .contact-info .support{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-} .content{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-} .item-content p{
-    font-size: 16px;
-    color: #000;
-}
- .item-content div{
-    font-size: 16px;
-    color: #b8b8b8;
-
-} .form-support form{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-} .flex-row{
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
+.contact-info {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
- .flex-colunm{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.contact-info .info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
- .flex-1{
-    flex: 1;
-} .contact-banner img{
-    width: 100%;
-    object-fit: contain;
-    border-radius: 5px;
+
+.contact-info .support {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.item-content p {
+  font-size: 16px;
+  color: #000;
+}
+
+.item-content div {
+  font-size: 16px;
+  color: #b8b8b8;
 
 }
-.input-common{
-    min-height: 30px;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid #b8b8b8;
-   width: 100%;
-   padding: 3px;
-  }
-  .button-orange{
-    min-height: 30px;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid orange;
-    background-color: orange;
-    padding: 10px;
-    padding-right: 20px;
-    padding-left: 20px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500px;
-    cursor: pointer;
-  }
-  .flex-center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
-  .gallery-wrap {
-    width: 500%;
-    animation: slideShow 16s infinite;
-   }
-   
-   .image {
-     float: left;
-     height: 628px;
-     width: 1080px;
-     display: flex;
-     top: 1px;
-     justify-content: center;
-     align-items: center;
-     -webkit-box-reflect:  below 1px -webkit-gradient(linear,right top ,right bottom,form(transparent),to(rgba(255,255,255,0.3)));
-   }
+.form-support form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
-   .text-14{
-    font-size: 16px;
-    color: #171717;
-  }
-  
-  .text-link{
-    font-size: 14px;
-    color: #056bf1;
-  }
-  .form-group-thanhtoan{
-    margin-bottom: 15px;
-  }
-  
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.flex-colunm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.contact-banner img {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 5px;
+
+}
+
+.input-common {
+  min-height: 30px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #b8b8b8;
+  width: 100%;
+  padding: 3px;
+}
+
+.button-orange {
+  min-height: 30px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid orange;
+  background-color: orange;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500px;
+  cursor: pointer;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-wrap {
+  width: 500%;
+  animation: slideShow 16s infinite;
+}
+
+.image {
+  float: left;
+  height: 628px;
+  width: 1080px;
+  display: flex;
+  top: 1px;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-reflect: below 1px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
+}
+
+.text-14 {
+  font-size: 16px;
+  color: #171717;
+}
+
+.text-link {
+  font-size: 14px;
+  color: #056bf1;
+}
+
+.form-group-thanhtoan {
+  margin-bottom: 15px;
+}
+
 
 option {
-    font-weight: normal;
-    display: block;
-    padding-block-start: 0px;
-    padding-block-end: 1px;
-    min-block-size: 1.2em;
-    padding-inline: 2px;
-    white-space: nowrap;
+  font-weight: normal;
+  display: block;
+  padding-block-start: 0px;
+  padding-block-end: 1px;
+  min-block-size: 1.2em;
+  padding-inline: 2px;
+  white-space: nowrap;
 }
 
-.thanhtoan-title{
+.thanhtoan-title {
   display: block;
   font-family: 'Arial', sans-serif;
-  font-size: 30px; /* Tăng kích thước chữ */
-  font-weight: bold; /* Làm chữ đậm */
+  font-size: 30px;
+  /* Tăng kích thước chữ */
+  font-weight: bold;
+  /* Làm chữ đậm */
   color: #333;
 }
-.thanhtoan-right{
-  
+
+.thanhtoan-right {
+
   margin-right: -80px;
 }
-.thanhtoan-left{
+
+.thanhtoan-left {
   margin-left: 50px;
 }
-.thanhtoan{
+
+.thanhtoan {
   display: flex;
   flex-direction: row;
   gap: 90px;
 }
-.form-group-thanhtoan label {
-  font-size: 16px; /* Tăng kích thước chữ */
-  font-weight: bold; /* Làm chữ đậm */
-  color: #333; /* Màu chữ tối hơn để dễ đọc */
-  font-family: 'Arial', sans-serif; /* Phông chữ phổ biến */
 
-  
+.form-group-thanhtoan label {
+  font-size: 16px;
+  /* Tăng kích thước chữ */
+  font-weight: bold;
+  /* Làm chữ đậm */
+  color: #333;
+  /* Màu chữ tối hơn để dễ đọc */
+  font-family: 'Arial', sans-serif;
+  /* Phông chữ phổ biến */
+
+
   letter-spacing: 0.5px;
 }
-.thanhtoan{
+
+.thanhtoan {
   padding-left: 20%;
   padding-right: 20%;
 }
+
 .thanhtoan-bt {
   text-align: right;
 }
-
-
-
-  
