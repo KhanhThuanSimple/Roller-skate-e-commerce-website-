@@ -266,7 +266,7 @@ nav #main-menu > li:hover > a::before {
 
 .gallery-wrap {
  width: 500%;
- animation: slideShow 18s infinite;
+ animation: slideShow 16s infinite;
 }
 
 .image {

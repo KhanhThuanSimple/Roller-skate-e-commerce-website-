@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F-Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="../css/indexfist.css" />
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/sanpham.css">
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <header id="header">
+      <nav class="container">
+        <a href="indexfist.html.html" id="logo"><img src="../image/logo1.png" alt="logo"></a>
+        <form id="search-form" action="#" method="get" onclick="showMessage('Tìm kiếm')">
+          <input type="text" name="query" placeholder="Tìm kiếm...">
+          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <ul id="main-menu">
+          <li><a href="indexfist.html">TRANG CHỦ</a></li>
+          <li>
+            <a href="#" onclick="showMessage('Xem Sản Phẩm')"> SẢN PHẨM</a>
+            <ul class="sub-menu">
+              <li><a href="#" onclick="showMessage('Xem Patin Người Lớn')">Giày Patin Người Lớn</a></li>
+              <li><a href="#" onclick="showMessage('Xem Giày Patin Trẻ Em')">Giày Patin Trẻ Em</a></li>
+              <li><a href="#" onclick="showMessage('Xem Phụ Kiện Giày Patin')">Phụ Kiện Giày Patin</a></li>
+            </ul>
+          </li>
+          <li><a href="#" onclick="showMessage('Xem Giới Thiệu')">GIỚI THIỆU</a></li>
+          <li><a href="#" onclick="showMessage('Xem Liên Hệ')">LIÊN HỆ</a></li>
+          <li class="tooltip">
+            <a href="login.html" title="Đăng Nhập">Đăng Nhập</a>
+          </li>
+          <li class="tooltip">
+            <a href="register.html" title="Đăng kí">Đăng kí</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container1">
+      <div class="gallery-display-area">
+        <div class="gallery-wrap">
+          <div class="image">
+            <img src="../image/home1.jpg" alt="1  ">
+
+          </div>
+          <div class="image">
+            <img src="../image/home2.jpg" alt="1">
+
+          </div>
+          <div class="image">
+            <img src="../image/home3.jpg" alt="1"> <!-- Hình ảnh GIF mới -->
+
+          </div>
+          <div class="image">
+            <img src="../image/home4.jpg" alt="1">
+
+          </div>
+          <div class="image">
+            <img src="../image/home5.jpg" alt="1">
+
+          </div>
+
+        </div>
+      </div>
+
+      <div id="main-container-index">
+
+        <div id="main-contain-product-index">
+
+
+          <div class="healine-index">
+            <h3>SẢN PHẨM NỔI BẬT</h3>
+          </div>
+          <ul class="product">
+            <li>
+              <div class="product-item">
+                <div class="product-top">
+                  <a href="" class="product-thumb">
+                    <img src="../image/noibat1.jpg" alt="" />
+                  </a>
+                  <div class="button-container">
+                    <a href="#" class="buy-now" onclick="showMessage('Mua Ngay')">Mua Ngay</a>
+                    <a href="#" class="view-details" onclick="showMessage('Xem Chi Tiết')">Xem Chi Tiết</a>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <a href="" class="product-cat">Cougar</a>
+                  <a href="" class="product-name">Giày Patin Người Lớn Cougar MZS 307C</a>
+                  <div class="product-price">Giá: 1.090.000 đ</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="product-item">
+                <div class="product-top">
+                  <a href="" class="product-thumb">
+                    <img src="../image/noibat2.jpg" alt="" />
+                  </a>
+                  <div class="button-container">
+                    <a href="#" class="buy-now" onclick="showMessage('Mua Ngay')">Mua Ngay</a>
+                    <a href="#" class="view-details" onclick="showMessage('Xem Chi Tiết')">Xem Chi Tiết</a>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <a href="" class="product-cat"> HOT</a>
+                  <a href="" class="product-name">Giày Patin Người Lớn HOT 2</a>
+                  <div class="product-price">Giá: 1.190.000 đ</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="product-item">
+                <div class="product-top">
+                  <a href="" class="product-thumb">
+                    <img src="../image/noibat3.jpg" alt="" />
+                  </a>
+                  <div class="button-container">
+                    <a href="#" class="buy-now" onclick="showMessage('Mua Ngay')">Mua Ngay</a>
+                    <a href="#" class="view-details" onclick="showMessage('Xem Chi Tiết')">Xem Chi Tiết</a>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <a href="" class="product-cat"> TNT</a>
+                  <a href="" class="product-name">Giày Patin Người Lớn TNT QS 2</a>
+                  <div class="product-price">Giá: 1.350.000 đ</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="product-item">
+                <div class="product-top">
+                  <a href="" class="product-thumb">
+                    <img src="../image/noibat4.jpg" alt="" />
+                  </a>
+                  <div class="button-container">
+                    <a href="#" class="buy-now" onclick="showMessage('Mua Ngay')">Mua Ngay</a>
+                    <a href="#" class="view-details" onclick="showMessage('Xem Chi Tiết')">Xem Chi Tiết</a>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <a href="" class="product-cat">Calary</a>
+                  <a href="" class="product-name">Giày Patin Người Lớn Calary C9</a>
+                  <div class="product-price">Giá: 1.490.000 đ</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="product-item">
+                <div class="product-top">
+                  <a href="" class="product-thumb">
+                    <img src="../image/noibat5.jpg" alt="" />
+                  </a>
+                  <div class="button-container">
+                    <a href="#" class="buy-now" onclick="showMessage('Mua Ngay')">Mua Ngay</a>
+                    <a href="#" class="view-details" onclick="showMessage('Xem Chi Tiết')">Xem Chi Tiết</a>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <a href="" class="product-cat">Flying Eagle</a>
+                  <a href="" class="product-name">Giày patin người lớn Flying Eagle B3S</a>
+                  <div class="product-price">Giá: 2.500.000 đ</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="product-item">
+                <div class="product-top">
+                  <a href="" class="product-thumb">
+                    <img src="../image/noibat7.jpg" alt="" />
+                  </a>
+                  <div class="button-container">
+                    <a href="#" class="buy-now" onclick="showMessage('Mua Ngay')">Mua Ngay</a>
+                    <a href="#" class="view-details" onclick="showMessage('Xem Chi Tiết')">Xem Chi Tiết</a>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <a href="" class="product-cat">Flying Eagle</a>
+                  <a href="" class="product-name">Giày Patin Người Lớn Flying Eagle F1S+ Màu Đen</a>
+                  <div class="product-price">Giá: 2.199.000 đ</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="product-item">
+                <div class="product-top">
+                  <a href="" class="product-thumb">
+                    <img src="../image/noibat7.jpg" alt="" />
+                  </a>
+                  <div class="button-container">
+                    <a href="#" class="buy-now" onclick="showMessage('Mua Ngay')">Mua Ngay</a>
+                    <a href="#" class="view-details" onclick="showMessage('Xem Chi Tiết')">Xem Chi Tiết</a>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <a href="" class="product-cat">Flying Eagle</a>
+                  <a href="" class="product-name">Giày Patin Người Lớn Flying Eagle B5S</a>
+                  <div class="product-price">Giá: 1.790.000 đ</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="product-item">
+                <div class="product-top">
+                  <a href="" class="product-thumb">
+                    <img src="../image/noibat8.jpg" alt="" />
+                  </a>
+                  <div class="button-container">
+                    <a href="#" class="buy-now" onclick="showMessage('Mua Ngay')">Mua Ngay</a>
+                    <a href="#" class="view-details" onclick="showMessage('Xem Chi Tiết')">Xem Chi Tiết</a>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <a href="" class="product-cat">Flying Eagle</a>
+                  <a href="" class="product-name">Giày Trượt Patin Người Lớn Flying Eagle B5S</a>
+                  <div class="product-price"> Giá: 2.590.000 đ</div>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+
+      <footer id="footer">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h4>Chính sách</h4>
+            <p>Chính sách chăm sóc khách hàng.<br><a href="chinhsachtrahang.html">Chính sách đổi trả.</a><br><a
+                href="chinhsachthanhtoan.html">Chính sách thanh toán.</a></p>
+          </div>
+          <div class="footer-section">
+            <h4>Liên hệ:</h4>
+            <p>Email: NTN@company.com</p>
+            <p>Điện thoại: 0383967879</p>
+          </div>
+          <div class="footer-section">
+            <h4>Theo dõi chúng tôi</h4>
+            <div class="social-link">
+              <p><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></p>
+              <p><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></p>
+              <p><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <script src="js/indexfist.js"></script>
+</body>
+
+</html>

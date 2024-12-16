@@ -1,0 +1,15 @@
+{
+  "folders": [
+	{
+		"name": "image",
+		"path": "../image"
+	},
+	{
+		"name": "WebBanGiayBaTin",
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "WebBanGiayBaTin"
+  }
+}
