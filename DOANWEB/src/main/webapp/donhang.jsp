@@ -21,37 +21,7 @@
 
 <body>
 <div id="wrapper">
-  <header id="header">
-    <nav class="container">
-      <a href="index.html" id="logo"><img src="./image/logo1.png" alt="logo"></a>
-      <form id="search-form" action="timkiem.html" method="get">
-        <input type="text" name="query" placeholder="Tìm kiếm...">
-        <button type="submit"><i class="fas fa-search"></i></button>
-      </form>
-      <ul id="main-menu">
-        <li><a href="index.html">TRANG CHỦ</a></li>
-        <li>
-          <a href="sanpham.html">SẢN PHẨM</a>
-          <ul class="sub-menu">
-            <li><a href="sanphamnguoilon.html">Giày Patin Người Lớn</a></li>
-            <li><a href="sanphamtreem.html">Giày Patin Trẻ Em</a></li>
-            <li><a href="sanphamphukien.html">Phụ Kiện Giày Patin</a></li>
-          </ul>
-        </li>
-        <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
-        <li><a href="lienhe.html">LIÊN HỆ</a></li>
-        <li class="tooltip">
-          <a href="giohang.html" title="Giỏ hàng"><i class="fas fa-cart-shopping"></i></a>
-          <span class="tooltiptext">Giỏ hàng</span>
-        </li>
-        <li class="tooltip" id="personal-menu">
-          <a href="#" title="Cá nhân"><i class="fas fa-user"></i></a>
-          <span class="tooltiptext">Cá nhân</span>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
+  <jsp:include page="comon/header.jsp" />
 
   <!-- Main Content Section -->
   <main class="container">
@@ -114,32 +84,8 @@
   </main>
 
   <!-- Footer Section -->
-  <footer id="footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h4>Chính sách</h4>
-        <p>Chính sách chăm sóc khách hàng.<br><a href="chinhsachtrahang.html">Chính sách đổi trả.</a><br><a
-                href="chinhsachthanhtoan.html">Chính sách thanh toán.</a></p>
-      </div>
-      <div class="footer-section">
-        <h4>Liên hệ:</h4>
-        <p>Email: NTN@company.com</p>
-        <p>Điện thoại: 0383967879</p>
-      </div>
-      <div class="footer-section">
-        <h4>Theo dõi chúng tôi</h4>
-        <div class="social-link">
-          <p><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-          </p>
-          <p><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-          </p>
-          <p><a href="https://www.instagram.com" target="_blank"><i
-                  class="fa-brands fa-instagram"></i></a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <jsp:include page="comon/footer.jsp" />
+
 
   <!--  Phần chi tiết đơn hàng  -->
   <!-- đơn 1 -->
