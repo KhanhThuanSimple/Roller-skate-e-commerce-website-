@@ -1,0 +1,184 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Huyền Như
+  Date: 12/22/2024
+  Time: 5:14 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CaNhan Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/canhan.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+<div id="wrapper">
+    <header id="header">
+        <nav class="container">
+            <a href="index.html" id="logo"><img src="./image/logo1.png" alt="logo"></a>
+            <form id="search-form" action="timkiem.html" method="get">
+                <input type="text" name="query" placeholder="Tìm kiếm...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <ul id="main-menu">
+                <li><a href="index.html">TRANG CHỦ</a></li>
+                <li>
+                    <a href="sanpham.html">SẢN PHẨM</a>
+                    <ul class="sub-menu">
+                        <li><a href="sanphamnguoilon.html">Giày Patin Người Lớn</a></li>
+                        <li><a href="sanphamtreem.html">Giày Patin Trẻ Em</a></li>
+                        <li><a href="sanphamphukien.html">Phụ Kiện Giày Patin</a></li>
+                    </ul>
+                </li>
+                <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
+                <li><a href="lienhe.html">LIÊN HỆ</a></li>
+                <li class="tooltip">
+                    <a href="giohang.html" title="Giỏ hàng"><i class="fas fa-cart-shopping"></i></a>
+                    <span class="tooltiptext">Giỏ hàng</span>
+                </li>
+                <li class="tooltip" id="personal-menu">
+                    <a href="#" title="Cá nhân"><i class="fas fa-user"></i></a>
+                    <span class="tooltiptext">Cá nhân</span>
+                    <!--                    <ul class="sub-menu" id="personal-submenu">-->
+                    <!--                        <li class="logged-in"><a href="lichsu.html">Lịch Sử Đơn Hàng</a></li>-->
+                    <!--                        <li class="logged-in"><a href="thongtin.html">Thông Tin Khách Hàng</a></li>-->
+                    <!--                        <li class="logged-in"><a href="#" id="login.html">Đăng Xuất</a></li>-->
+                    <!--                        <li class="logged-out"><a href="login.html">Đăng Nhập</a></li>-->
+                    <!--                        <li class="logged-out"><a href="register.html">Đăng Ký</a></li>-->
+                    <!--                    </ul>-->
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Main Content Section -->
+    <main class="container">
+        <!-- Nội dung chính của trang sẽ được đặt ở đây -->
+        <div id="bodyCN">
+            <div class="flex-container">
+                <div class="left-cn">
+                    <!-- Phan avatar cua KH da dang nhap-->
+                    <div class="flex-avtar">
+                        <div class="avatar">
+                            <img src="https://i.pinimg.com/236x/5e/e0/82/5ee082781b8c41406a2a50a0f32d6aa6.jpg"
+                                 alt="Avatar">
+                        </div>
+
+                        <div class="In4Avt">
+                            <span class="username">user1</span>
+                            <a href="canhan.html" class="suaHoSo">
+                                <p>Sửa Hồ Sơ</p>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <h3>QUẢN LÝ TÀI KHOẢN</h3>
+                    <ul>
+                        <li><a href="canhan.html"> Hồ Sơ Cá Nhân</a></li>
+                        <li><a href="doimatkhau.html"> Đổi Mật Khẩu</a></li>
+                    </ul>
+                    <h3>QUẢN LÝ GIAO DỊCH</h3>
+                    <ul>
+                        <li><a href="donhang.html">Đơn hàng của bạn</a></li>
+                    </ul>
+
+                    <button id="DangXuat" class="dangxuat" onclick="moChacChanDX()"> Đăng Xuất</button>
+                </div>
+
+                <div class="right-cn">
+                    <!-- Hồ sơ cá nhân - auto khi bật bào tcn-->
+                    <div class="head-rightcn">
+                        <p> Hồ Sơ Của Tôi </p>
+                        <div class="pHoSo">Quản lý thông tin hồ sơ để bảo mật tài khoản</div>
+                        <hr class="nganCachHead">
+                    </div>
+
+                    <div class="bot-rightcn">
+
+                        <div class="formThongTinCaNhan">
+                            <div class="form-group">
+                                <label>Tên đăng nhập</label>
+                                <span>User1</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Tên</label>
+                                <input type="text" id="name" value="Nhu">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <span>ndangthihuyen@gmail.com</span>
+                                <a href="#">Thay Đổi</a>
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại</label>
+                                <span>0372170331</span>
+                                <a href="#">Thay Đổi</a>
+                            </div>
+                            <div class="form-group">
+                                <label>Địa chỉ</label>
+                                <span>B12/10/31 Ấp 2 Xã VLB Huyện BC TPHCM</span>
+                                <a href="#">Thay Đổi</a>
+                            </div>
+                            <button class="nutLuu" onclick="moNutLuu()">Lưu</button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Chính sách</h4>
+                <p>Chính sách chăm sóc khách hàng.<br><a href="chinhsachtrahang.html">Chính sách đổi trả.</a><br><a
+                        href="chinhsachthanhtoan.html">Chính sách thanh toán.</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên hệ:</h4>
+                <p>Email: NTN@company.com</p>
+                <p>Điện thoại: 0383967879</p>
+            </div>
+            <div class="footer-section">
+                <h4>Theo dõi chúng tôi</h4>
+                <div class="social-link">
+                    <p><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></p>
+                    <p><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></p>
+                    <p><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<div id="modal_dangxuat" class="modal_dangxuat">
+    <div class="modal_overlay"></div>
+    <div class="modal_body">
+        <h1>Bạn chắc chắn muốn đăng xuất? </h1>
+        <div class="button-dx">
+            <button onclick="dongChacChanDX()">Không</button>
+            <button id="chacChanDX">Có</button>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/canhan.js"></script>
+
+</html>
