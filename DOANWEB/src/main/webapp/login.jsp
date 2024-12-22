@@ -30,7 +30,15 @@
 <div class="login-container flex-colunm">
     <img class="img-banner" src="./image/login.jpg">
     <div class="mask"></div>
-    <form action="post" class="flex-colunm">
+
+    <%
+        String error = (String) request.getAttribute("error");
+        String uname = (String) request.getParameter("uname");
+        if(error==null) error ="";
+        if (uname==null) uname ="";
+    %>
+
+    <form method="post" action="login" class="flex-colunm">
         <div class="logo">
             <img src="./image/logo1.png" alt="logo">
 
@@ -39,16 +47,18 @@
             <h2>Đăng nhập</h2>
         </div>
         <div>
-            <input class="input-common" type="email" placeholder="Email">
+            <input class="input-common" type="email" placeholder="Email" value="<%=uname%>" name="uname">
         </div>
         <div>
-            <input class="input-common" type="password" placeholder="Mật khẩu">
+            <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">
         </div>
 
-
+        <p>
+            <%=error%>
+        </p>
         <div class="flex-center">
 
-            <button type="button" onclick="window.location.href='index.html'" class="button-orange">Đăng
+            <button type="submit" class="button-orange">Đăng
                 nhập</button>
 
 
