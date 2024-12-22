@@ -20,9 +20,9 @@
     <aside class="sidebar">
         <h2>Admin Dashboard</h2>
         <ul>
-            <li><a href="user.jsp">Tài khoản Admin</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/user">Tài khoản Admin</a></li>
             <li><a href="order.jsp">Đơn hàng</a></li>
-            <li><a class="background-active"  href="./customer.html">Khách hàng</a></li>
+            <li><a class="background-active"  href="${pageContext.request.contextPath}/admin/customer">Khách hàng</a></li>
             <li><a href="product.jsp">Sản phẩm</a></li>
             <li><a href="product.jsp">Nhập hàng</a></li>
             <li><a href="xuathang.jsp">Xuất hàng</a></li>

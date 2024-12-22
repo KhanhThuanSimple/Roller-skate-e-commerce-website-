@@ -52,66 +52,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>abc@gmail.com</td>
-                    <td>0822378685</td>
 
-                    <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
-                    <td>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>02</td>
-                    <td>Nguyễn Văn Ba</td>
-                    <td>abc@gmail.com</td>
-                    <td>0822378685</td>
+                <c:forEach var="user" items="${users}">
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.username}</td>
+                        <td>3456</td>
 
-                    <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
-                    <td>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>03</td>
-                    <td>Nguyễn Thùy Trang</td>
-                    <td>abc@gmail.com</td>
-                    <td>0822378685</td>
-
-                    <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
-                    <td>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                <tr>
-                    <td>04</td>
-                    <td>Phạm Thị Hồng</td>
-                    <td>abc@gmail.com</td>
-                    <td>0822378685</td>
-
-                    <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
-                    <td>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>05</td>
-                    <td>Nguyễn Cao Thắng</td>
-                    <td>abc@gmail.com</td>
-                    <td>0822378685</td>
-
-                    <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
-                    <td>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                </tr>
-
+                        <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
+                        <td>
+                            <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                            <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
                 <div class="pagination flex-row">
                     <div class="flex-1">

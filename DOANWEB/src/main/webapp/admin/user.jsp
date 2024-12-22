@@ -1,4 +1,8 @@
+<%@ page import="vn.edu.hcmuaf.fit.doanweb.dao.model.User" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -33,56 +37,20 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                    <c:forEach var="user" items="${users}">
                         <tr>
-                            <td>Nguyễn văn Thành</td>
-                            <td>abc@gmail.com</td>
-                            <td>50</td>
-                            <td> Tài khoản bị khóa</td>
+                            <td>${user.id}</td>
+                            <td>${user.name}</td>
+                            <td>${user.username}</td>
+                            <td>3456</td>
+                            <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
                             <td>
                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Phạm Ngọc Thảo</td>
-                            <td>abc@gmail.com</td>
-                            <td>30</td>
-                            <td>Tài khoản mới</td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nguyễn Thị Thu Thủy</td>
-                            <td>abc@gmail.com</td>
-                            <td>20</td>
-                            <td>Tài khoản đang hoạt động</td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nguyễn Công Vũ</td>
-                            <td>abc@gmail.com</td>
-                            <td>40</td>
-                            <td>Tài khoản bị khóa tạm thời</td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nguyễn Mai Anh</td>
-                            <td>abc@gmail.com</td>
-                            <td>40</td>
-                            <td>Tài khoản bị đóng</td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
+                    </c:forEach>
                         <!-- Các khách hàng sẽ được hiển thị ở đây -->
                     </tbody>
                     <div class="pagination flex-row">
@@ -103,7 +71,7 @@
     <div id="productModal" class="modal">
         <div class="modal-content" >
             <span class="close-btn" onclick="closeProductForm()">&times;</span>
-           
+
             <form action="post" class="flex-colunm" >
                 <h2>Thêm tài khoản</h2>
                 <div >
@@ -119,7 +87,7 @@
                     <button class="button-orange">Lưu tài khoản</button>
                 </div>
 
-                
+
             </form>
         </div>
     </div>

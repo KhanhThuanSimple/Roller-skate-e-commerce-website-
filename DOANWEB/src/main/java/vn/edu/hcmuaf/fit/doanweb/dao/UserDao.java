@@ -1,14 +1,69 @@
 package vn.edu.hcmuaf.fit.doanweb.dao;
 
+import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class UserDao {
-    static Map<String, User> users = new HashMap<String, User>();
 
-    public User findUserByUserName(String userName) {
-        return users.get(userName);
+    public User findUserByUserName(String userName) throws SQLException {
+        Statement st=   DBConnect.getStatement();
+        ResultSet rs = null;
+     try {
+         rs =  st.executeQuery("select * from user");
+         if(rs.next()) {
+             User user = new User(
+                     rs.getInt("id"),
+                     rs.getString("username"),
+                     rs.getString("password"),
+                     rs.getString("name"),
+                     rs.getString("type")
+             );
+             return user;
+         }else{
+             return null;
+         }
+     }catch (SQLException e) {
+         throw new RuntimeException(e);
+     }
+
+    }
+
+    public ArrayList<User> getList(int page, String type) throws SQLException {
+
+        Statement st=   DBConnect.getStatement();
+        ResultSet rs = null;
+        ArrayList<User> users = new ArrayList<>();
+        try {
+
+            String sql = "SELECT * FROM user WHERE type = ? ORDER BY id LIMIT ?, ?";
+
+            PreparedStatement pstmt = st.getConnection().prepareStatement(sql);
+            pstmt.setString(1, type); // Gán giá trị cho type
+            pstmt.setInt(2, page);      // Gán giá trị cho offset
+            pstmt.setInt(3, 50);       // Gán giá trị cho limit
+
+            System.out.println();
+
+            rs =  pstmt.executeQuery();
+
+            while (rs.next()) {
+                users.add(new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("name"),
+                        rs.getString("type")
+                ));
+            }
+
+            return users;
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

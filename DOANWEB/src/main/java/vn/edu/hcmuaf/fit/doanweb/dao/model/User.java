@@ -9,6 +9,17 @@ public class User implements Serializable {
 
     private String name;
 
+    private int id;
+    private String type;
+
+    public User(int id, String username, String password, String name, String type) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.type = type;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -31,5 +42,20 @@ public class User implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
