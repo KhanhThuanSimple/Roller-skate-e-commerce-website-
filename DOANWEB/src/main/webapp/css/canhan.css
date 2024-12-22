@@ -215,6 +215,8 @@ input[type="radio"] {
     bottom: 0;
     right: 0;
     display: flex;
+    z-index: 10000;
+
 }
 
 .modal_overlay {
