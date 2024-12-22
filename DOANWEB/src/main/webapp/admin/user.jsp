@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -13,18 +14,7 @@
 <body>
     <div class="container">
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <h2>Admin Dashboard</h2>
-            <ul >
-                <li ><a class="background-active" href="#products">Tài khoản Amin</a></li>
-                <li><a href="./order.html">Đơn hàng</a></li>
-                <li><a href="customer.jsp">Khách hàng</a></li>
-                <li><a href="./product.html">Sản phẩm</a></li>
-                <li><a href="nhaphang.jsp">Nhập hàng</a></li>
-                <li><a href="./xuathang.html">Xuất hàng</a></li>
-
-            </ul>
-        </aside>
+        <%@ include file="sidebar.jsp" %>
 
         <!-- Main Content -->
         <main class="main-content">
