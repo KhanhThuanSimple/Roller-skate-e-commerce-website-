@@ -29,7 +29,7 @@ public class LoginController extends HttpServlet {
 
         try {
             if(authService.login(uname,pass)){
-                response.sendRedirect(request.getContextPath()+"/index.jsp");
+                response.sendRedirect(request.getContextPath()+"/home.jsp");
             }else{
                 request.setAttribute("error", "Dang nhap khong thanh cong");
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
