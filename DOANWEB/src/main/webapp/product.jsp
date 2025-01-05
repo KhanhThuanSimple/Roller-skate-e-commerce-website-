@@ -21,11 +21,9 @@
 
     <jsp:include page="comon/header.jsp"/>
 
-
     <div id="main-container">
 
         <div id="main-contain-product">
-
 
             <div class="healine">
                 <h3>SẢN PHẨM MỚI</h3>
@@ -43,54 +41,32 @@
             </div>
             <ul class="product">
 
-<%--                <c:forEach var="p" items="${products}">--%>
-<%--                    <li>--%>
-<%--                        <div class="product-item">--%>
-<%--                            <div class="product-top">--%>
-<%--                                <a href="" class="product-thumb">--%>
-<%--                                    <img src="${p.img}" alt=""/>--%>
-<%--                                </a>--%>
-<%--                                <div class="button-container">--%>
-<%--                                    <a href="giohang.jsp" class="buy-now">Mua Ngay</a>--%>
-<%--                                    <a href="product_detail.jsp" class="view-details">Xem Chi Tiết</a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="product-info">--%>
-<%--                                <a href="" class="product-cat">Cougar</a>--%>
-<%--                                <a href="" class="product-name">--%>
-<%--                                    <p class="name">${p.name}</p>--%>
-<%--                                </a>--%>
-<%--                                <div class="product-price">--%>
-<%--                                    <f:formatNumber value="${p.price}" type="currency" currencySymbol="₫"/>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-
-    <c:if test="${not empty products}">
-        <c:forEach var="p" items="${products}">
-            <li>
-                <div class="product-item">
-                    <div class="product-top">
-                        <a href="" class="product-thumb">
-                            <img src="${p.img}" alt="" />
-                        </a>
-                        <div class="button-container">
-                            <a href="giohang.html" class="buy-now">Mua Ngay</a>
-                            <a href="chitietsanpham.html?id=${p.id}" class="view-details">Xem Chi Tiết</a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <a href="" class="product-cat"> HOT</a>
-                        <a href="" class="product-name">${p.name}</a>
-                        <div class="product-price">${p.price}</div>
-                    </div>
-                </div>
-            </li>
-        </c:forEach>
-    </c:if>
+                <c:if test="${not empty products}">
+                    <c:forEach var="p" items="${products}">
+                        <li>
+                            <div class="product-item">
+                                <div class="product-top">
+                                    <a href="" class="product-thumb">
+                                        <img src="${p.img}" alt="" />
+                                    </a>
+                                    <div class="button-container">
+                                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
+                                        <a href="chitietsanpham.html?id=${p.id}" class="view-details">Xem Chi Tiết</a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <a href="" class="product-cat">${p.name}</a>
+                                    <a href="" class="product-name">${p.title}</a>
+                                    <div class="product-price">${p.price}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </c:forEach>
+                </c:if>
             </ul>
         </div>
+
+
         <script src="js/script.js"></script>
     </div>
     <jsp:include page="comon/footer.jsp"/>

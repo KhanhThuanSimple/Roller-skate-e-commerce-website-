@@ -70,6 +70,7 @@ margin-top: -90px;
   padding: 15px;
 }
 
+
 .healine-index {
   text-align: center;
   margin: -10px 0;
@@ -83,6 +84,50 @@ h3 {
   display: inline-block;
   font-weight: 600;
   margin-top: -90px;
+}
+.category-section {
+  background-color: #ffffff; /* Màu nền trắng */
+  border: 1px solid #ddd; /* Viền màu xám nhạt */
+  border-radius: 10px; /* Bo tròn góc */
+  padding: 20px; /* Khoảng cách bên trong */
+  margin: 20px 0; /* Khoảng cách trên và dưới */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tạo độ sâu cho box */
+  max-width: 300px; /* Chiều rộng tối đa */
+  text-align: center; /* Căn giữa nội dung */
+  overflow: hidden; /* Đảm bảo không tràn nội dung */
+}
+
+.category-section h4 {
+  font-size: 24px; /* Cỡ chữ lớn hơn cho tiêu đề */
+  color: #ff6600; /* Màu sắc nổi bật */
+  margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+  text-transform: uppercase; /* Chuyển chữ hoa */
+}
+
+.category-list {
+  list-style-type: none; /* Loại bỏ dấu đầu dòng */
+  padding: 0; /* Loại bỏ padding mặc định */
+  margin: 0; /* Loại bỏ margin mặc định */
+}
+
+.category-list li {
+  margin-bottom: 10px; /* Khoảng cách giữa các mục */
+}
+
+.category-list .category-item {
+  display: block; /* Hiển thị dạng khối */
+  padding: 10px 15px; /* Khoảng cách bên trong */
+  color: #333; /* Màu chữ */
+  text-decoration: none; /* Loại bỏ gạch chân */
+  background-color: #f9f9f9; /* Màu nền nhẹ */
+  border-radius: 5px; /* Bo tròn góc */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Hiệu ứng hover */
+}
+
+.category-list .category-item:hover {
+  background-color: #ff6600; /* Màu nền khi hover */
+  color: #fff; /* Màu chữ khi hover */
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
 }
 
 ul.product-index {

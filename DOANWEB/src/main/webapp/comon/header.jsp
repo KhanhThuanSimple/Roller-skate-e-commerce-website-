@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Lenovo
-  Date: 22-Dec-24
-  Time: 5:41 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <header id="header">
   <nav class="container">
@@ -19,9 +14,9 @@
       <li>
         <a href="product.jsp"> SẢN PHẨM</a>
         <ul class="sub-menu">
-          <li><a href="sanphamnguoilon.html">Giày Patin Người Lớn</a></li>
-          <li><a href="sanphamtreem.html">Giày Patin Trẻ Em</a></li>
-          <li><a href="sanphamphukien.html">Phụ Kiện Giày Patin</a></li>
+          <c:forEach items="${listc}" var="o">
+          <li><a href="sanphamnguoilon.html">${o.name}</a></li>
+          </c:forEach>
         </ul>
       </li>
       <li><a href="gioithieu.jsp">GIỚI THIỆU</a></li>
