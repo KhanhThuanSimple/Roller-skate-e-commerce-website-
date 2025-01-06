@@ -29,61 +29,51 @@
                 <div class="product-imgs">
                     <div class="img-display">
                         <div class="img-showcase">
-                            <img src="../image/chitiet2.jpg" alt="shoe ../image"/>
-                            <img src="../image/chitiet3.jpg" alt="shoe ../image"/>
-                            <img src="../image/chitiet4.jpg" alt="shoe ../image"/>
-                            <img src="../image/chitiet5.jpg" alt="shoe ../image"/>
+                            <img src="${detail.img}"/>
+                            <img src="${detail.img}" alt="shoe ../image"/>
+                            <img src="${detail.img}" alt="shoe ../image"/>
+                            <img src="${detail.img}" alt="shoe ../image"/>
                         </div>
                     </div>
                     <div class="img-select">
                         <div class="img-item">
                             <a href="#" data-id="1">
-                                <img src="../image/chitiet2.jpg" alt="shoe ../image"/>
+                                <img src="${detail.img}" alt="shoe ../image"/>
                             </a>
                         </div>
                         <div class="img-item">
                             <a href="#" data-id="2">
-                                <img src="../image/chitiet3.jpg" alt="shoe ../image"/>
+                                <img src="${detail.img}" alt="shoe ../image"/>
                             </a>
                         </div>
                         <div class="img-item">
                             <a href="#" data-id="3">
-                                <img src="../image/chitiet4.jpg" alt="shoe ../image"/>
+                                <img src="${detail.img}" alt="shoe ../image"/>
                             </a>
                         </div>
                         <div class="img-item">
                             <a href="#" data-id="4">
-                                <img src="../image/chitiet5.jpg" alt="shoe ../image"/>
+                                <img src="${detail.img}" alt="shoe ../image"/>
                             </a>
                         </div>
                     </div>
                 </div>
                 <!-- card right -->
                 <div class="product-content">
-                    <h2 class="product-title">NTN store</h2>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>4.7(21)</span>
+                    <h2 class="product-title">${detail.title}</h2>     <div class="product-rating">
+                        <i class="fas "></i>
+
+                        <span>Thương hiệu:${detail.name} </span>
                     </div>
 
                     <div class="product-price">
-                        <p class="new-price">Giá: <span>1.090.000 đ</span></p>
+                        <p class="new-price">Giá: <span>${detail.price}đ</span></p>
                     </div>
 
                     <div class="product-detail">
                         <h2>THÔNG SỐ KỸ THUẬT:</h2>
                         <p>
-                            – Tên sản phẩm: Giày Patin Người Lớn Cougar MZS 307C 3 Màu Đen/ Trắng/ Đỏ<br/>
-                            – Mã sản phẩm: Cougar 307C <br/>
-                            – Hãng: Cougar <br/>
-                            – Sản xuất tại: Trung Quốc <br/>
-                            – Loại giày: Giày người lớn<br/>
-                            – Màu sắc: Đen, trắng <br/>
-                            – Size: Từ 37-45
+                            ${detail.description}
                         </p>
                         <ul>
                             <h2>Ưu đãi:</h2>

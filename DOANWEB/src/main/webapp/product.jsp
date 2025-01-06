@@ -51,7 +51,7 @@
                                     </a>
                                     <div class="button-container">
                                         <a href="giohang.html" class="buy-now">Mua Ngay</a>
-                                        <a href="chitietsanpham.html?id=${p.id}" class="view-details">Xem Chi Tiết</a>
+                                        <a href="detail?pid=${p.id}" class="view-details">Xem Chi Tiết</a>
                                     </div>
                                 </div>
                                 <div class="product-info">

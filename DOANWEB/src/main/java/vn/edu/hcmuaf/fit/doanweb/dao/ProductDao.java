@@ -44,6 +44,70 @@ public class ProductDao {
         }
         return products;
     }
+    public Product getAllProductId(String id) {
+        String query = "SELECT * FROM product WHERE id = ?";
+
+        try (Connection cons = DBConnect.getConn()) {
+            if (cons == null) {
+                throw new SQLException("Kết nối không thành công.");
+            }
+
+            try (PreparedStatement statement = cons.prepareStatement(query)) {
+                statement.setString(1, id); // Đặt giá trị tham số
+                try (ResultSet rs = statement.executeQuery()) {
+                    while (rs.next()) {
+                        return new Product(
+                                rs.getInt("id"),
+                                rs.getString("name"),
+                                rs.getString("img"),
+                                rs.getDouble("price"),
+                                rs.getString("title"),
+                                rs.getString("description")
+                        );
+                    }
+                }
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy sản phẩm: " + e.getMessage());
+        }
+        return null;
+    }
+    public List<Product> getAllByCategory(String id) {
+        List<Product> products = new ArrayList<>();
+        String query = "SELECT * FROM product WHERE cateID = ?";
+
+        try (Connection cons = DBConnect.getConn()) {
+            if (cons == null) {
+                throw new SQLException("Kết nối không thành công.");
+            }
+
+            try (PreparedStatement statement = cons.prepareStatement(query)) {
+                statement.setString(1, id); // Đặt giá trị tham số
+                try (ResultSet rs = statement.executeQuery()) {
+                    while (rs.next()) {
+                        products.add(new Product(
+                                rs.getInt("id"),
+                                rs.getString("name"),
+                                rs.getString("img"),
+                                rs.getDouble("price"),
+                                rs.getString("title"),
+                                rs.getString("description")
+                        ));
+                    }
+                }
+            }
+
+            if (products.isEmpty()) {
+                System.out.println("Không có sản phẩm nào được tìm thấy.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy sản phẩm: " + e.getMessage());
+        }
+        return products;
+    }
+
     public List<Product> getAllProductnew() {
         List<Product> productNew = new ArrayList<>();
         String query = "SELECT * FROM product ORDER BY id DESC LIMIT 8";
@@ -103,10 +167,12 @@ public class ProductDao {
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-        List<Product> products = dao.getAllProductnew();
-        for(Product Category : products) {
-            System.out.println(Category);
-        }
+//        List<Product> products = dao.getAllProductId("1");
+//        for(Product Category : products) {
+//            System.out.println(Category);
+//        }
+        Product products = dao.getAllProductId("1");
+            System.out.println(products);
     }
 }
 

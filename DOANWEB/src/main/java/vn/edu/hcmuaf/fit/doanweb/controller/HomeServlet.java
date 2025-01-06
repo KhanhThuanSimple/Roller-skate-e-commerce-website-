@@ -1,6 +1,5 @@
 package vn.edu.hcmuaf.fit.doanweb.controller;
 
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,25 +12,15 @@ import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 import java.io.IOException;
 import java.util.List;
 
-
-@WebServlet(name = "ListProduct", value = "/product")
-public class ListProduct extends  BaseServlet {
-
+@WebServlet(name = "HomeServlet", value = "/home")
+public class HomeServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ProductDao productDao = new ProductDao();
         loadCommonData(request); // Gọi phương thức chung
 
-        ProductDao productDao = new ProductDao();
-
-        List<Product> all = productDao.getAll();
-        request.setAttribute("products", all);
-
-        request.getRequestDispatcher("product.jsp").forward(request, response);
+        List<Product> productNew = productDao.getAllProductnew();
+        request.setAttribute("productNew", productNew);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
-
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
-
 }
