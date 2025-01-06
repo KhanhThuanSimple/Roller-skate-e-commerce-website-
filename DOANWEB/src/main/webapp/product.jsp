@@ -31,12 +31,8 @@
             <div class="sort-buttons">
                 <button>Sắp xếp</button>
                 <div class="dropdown-content">
-                    <a href="stanggian.html">
-                        <button onclick="sortProducts('asc')">Tăng dần</button>
-                    </a>
-                    <a href="sgiamgian.html">
-                        <button onclick="sortProducts('desc')">Giảm dần</button>
-                    </a>
+                    <a href="/DOANWEB/sort?order=asc">Tăng dần</a>
+                    <a href="/DOANWEB/sort?order=desc">Giảm dần</a>
                 </div>
             </div>
             <ul class="product">

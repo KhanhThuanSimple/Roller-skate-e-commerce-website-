@@ -44,6 +44,43 @@ public class  ProductDao {
         }
         return products;
     }
+    public List<Product> getProductByOrder(String order) {
+        List<Product> products = new ArrayList<>();
+
+        // Kiểm tra giá trị order
+
+
+        // Dùng cột mà bạn muốn sắp xếp, ví dụ là "price"
+        String query = "SELECT * FROM product ORDER BY price " + order;
+
+        try (Connection cons = DBConnect.getConn()) {
+            if (cons == null) {
+                throw new SQLException("Kết nối không thành công.");
+            }
+
+            try (PreparedStatement statement = cons.prepareStatement(query)) {
+                try (ResultSet rs = statement.executeQuery()) {
+                    while (rs.next()) {
+                        products.add(new Product(
+                                rs.getInt("id"),
+                                rs.getString("name"),
+                                rs.getString("img"),
+                                rs.getDouble("price"),
+                                rs.getString("title"),
+                                rs.getString("description")
+                        ));
+                    }
+                }
+            }
+
+            if (products.isEmpty()) {
+                System.out.println("Không có sản phẩm nào được tìm thấy.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy sản phẩm: " + e.getMessage());
+        }
+        return products;
+    }
     public Product getAllProductId(String id) {
         String query = "SELECT * FROM product WHERE id = ?";
 
@@ -200,12 +237,11 @@ public class  ProductDao {
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-//        List<Product> products = dao.getAllProductId("1");
-//        for(Product Category : products) {
-//            System.out.println(Category);
-//        }
-        Product products = dao.getAllProductId("1");
-            System.out.println(products);
+        List<Product> products = dao.getProductByOrder("asc");
+        for(Product Category : products) {
+            System.out.println(Category);
+        }
+
     }
 }
 
