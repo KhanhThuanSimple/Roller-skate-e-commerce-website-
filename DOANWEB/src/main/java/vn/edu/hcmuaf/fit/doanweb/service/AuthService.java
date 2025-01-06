@@ -17,12 +17,13 @@ public class AuthService {
         return user.getPassword().equals(password);
     }
 
-    public ArrayList<User> getList(int page, String type) throws SQLException {
+    public ArrayList<User> getList(int page, int type) throws SQLException {
         UserDao userDao = new UserDao();
         ArrayList<User> users = userDao.getList(page, type);
         return users;
 
     }
+
 //    public boolean register(String name, String uname, String pass, String rePass, String phone, String address) throws SQLException {
 //        UserDao userDao = new UserDao();
 //

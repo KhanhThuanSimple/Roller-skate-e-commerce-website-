@@ -5,12 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
-public class AdminUserUpdateController extends HttpServlet {
+@WebServlet(name = "AdminUserDeleteController" ,value = "/admin/user/edit")
+public class AdminUserEditController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }

@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.doanweb.controller.admin.user;
+package vn.edu.hcmuaf.fit.doanweb.controller.admin;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "AdminUserListController" ,value = "/admin/user/list")
+@WebServlet(name = "AdminUserListController" ,value = "/admin/user")
 public class AdminUserListController extends HttpServlet  {
 
     @Override

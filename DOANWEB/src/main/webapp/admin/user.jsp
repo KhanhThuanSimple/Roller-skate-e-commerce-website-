@@ -9,13 +9,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý Shop Giày Partin</title>
+    <title>Quản lý User</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body>
+<c:if test="${not empty message}">
+    <div class="alert alert-success">${message}</div>
+</c:if>
     <div class="container">
         <!-- Sidebar -->
         <%@ include file="sidebar.jsp" %>
@@ -29,6 +32,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Họ & tên</th>
                             <th>Email</th>
                             <th>password</th>
@@ -46,8 +50,13 @@
                             <td>3456</td>
                             <td> Tài khoản bị khóa</td>
                             <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button onclick="openUserForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <form action="${pageContext.request.contextPath}/admin/user/delete" method="post" style="display:inline;">
+                                    <input type="hidden" name="uid" value="${user.id}">
+                                    <button type="submit" style="border:none;background-color: unset">
+                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </c:forEach>
@@ -72,19 +81,19 @@
         <div class="modal-content" >
             <span class="close-btn" onclick="closeProductForm()">&times;</span>
 
-            <form action="post" class="flex-colunm" >
+            <form method="post"  action="${pageContext.request.contextPath}/admin/user/add"  class="flex-colunm" >
                 <h2>Thêm tài khoản</h2>
                 <div >
-                    <input  class="input-common" type="text" placeholder=" Họ &tên">
+                    <input name="name" class="input-common" type="text" placeholder=" Họ &tên">
                 </div>
                 <div>
-                    <input class="input-common"  type="email" placeholder=" Email">
+                    <input name="email" class="input-common"  type="email" placeholder=" Email">
                 </div>
                 <div>
-                    <input class="input-common" type="password" placeholder="Mật khẩu">
+                    <input name="pass" class="input-common" type="password" placeholder="Mật khẩu">
                 </div>
                 <div  class="flex-center">
-                    <button class="button-orange">Lưu tài khoản</button>
+                    <button type="submit" class="button-orange">Lưu tài khoản</button>
                 </div>
 
 
@@ -92,7 +101,33 @@
         </div>
     </div>
 
-    <script src="admin.js"></script>
+<div id="userModal" class="modal">
+    <div class="modal-content" >
+        <span class="close-btn" onclick="closeUserForm()">&times;</span>
+
+        <form action="post" class="flex-colunm" >
+            <h2>Chỉnh sửa tài khoản</h2>
+            <div >
+                <input  class="input-common" type="text" placeholder=" Họ &tên">
+            </div>
+            <div>
+                <input class="input-common"  type="email" placeholder=" Email">
+            </div>
+            <div>
+                <input class="input-common" type="password" placeholder="Mật khẩu">
+            </div>
+            <div  class="flex-center">
+                <button class="button-orange"  type="submit" >Lưu tài khoản</button>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+
+<script src="admin.js"></script>
 </body>
 
 </html>

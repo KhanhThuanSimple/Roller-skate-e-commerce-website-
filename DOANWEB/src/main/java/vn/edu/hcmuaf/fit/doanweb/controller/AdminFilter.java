@@ -10,7 +10,7 @@ import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.io.IOException;
 
-@WebFilter(filterName = "AdminFilter", urlPatterns = "//admin/dashbroad")
+@WebFilter(filterName = "AdminFilter", urlPatterns = "/admin/dashbroad")
 public class AdminFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
 

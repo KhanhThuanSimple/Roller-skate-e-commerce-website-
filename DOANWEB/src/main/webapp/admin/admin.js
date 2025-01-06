@@ -27,4 +27,19 @@ function closePayForm() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("payModal").style.display = "none";
 }
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('form').addEventListener('submit', function(event) {
+
+        //  closeProductForm(); // Gọi hàm đóng form khi form được gửi
+    });
+});
+
+function openUserForm() {
+    console.log("Opening user form..."); // Xác thực xem hàm có được gọi không
+    document.getElementById("userModal").style.display = "block";
+}
+function closeUserForm() {
+    document.getElementById("userModal").style.display = "none";
+}
+
 
