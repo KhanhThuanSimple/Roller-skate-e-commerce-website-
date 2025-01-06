@@ -5,35 +5,38 @@ import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserDao {
 
     public User findUserByUserName(String userName) throws SQLException {
-        Statement st=   DBConnect.getStatement();
+        Statement st = DBConnect.getStatement();
         ResultSet rs = null;
-     try {
-         rs =  st.executeQuery("select * from user");
-         if(rs.next()) {
-             User user = new User(
-                     rs.getInt("id"),
-                     rs.getString("username"),
-                     rs.getString("password"),
-                     rs.getString("name"),
-                     rs.getString("type")
-             );
-             return user;
-         }else{
-             return null;
-         }
-     }catch (SQLException e) {
-         throw new RuntimeException(e);
-     }
+        try {
+            rs = st.executeQuery("select * from user");
+            if (rs.next()) {
+                User user = new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("name"),
+                        rs.getInt("type")
+//                     rs.getString("phone"),
+//                     rs.getString("address")
+                );
+                return user;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
     public ArrayList<User> getList(int page, String type) throws SQLException {
 
-        Statement st=   DBConnect.getStatement();
+        Statement st = DBConnect.getStatement();
         ResultSet rs = null;
         ArrayList<User> users = new ArrayList<>();
         try {
@@ -47,7 +50,7 @@ public class UserDao {
 
             System.out.println();
 
-            rs =  pstmt.executeQuery();
+            rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 users.add(new User(
@@ -55,13 +58,16 @@ public class UserDao {
                         rs.getString("username"),
                         rs.getString("password"),
                         rs.getString("name"),
-                        rs.getString("type")
+                        rs.getInt("type")
+//                        rs.getString("phone"),
+//                        rs.getString("address")
+
                 ));
             }
 
             return users;
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 

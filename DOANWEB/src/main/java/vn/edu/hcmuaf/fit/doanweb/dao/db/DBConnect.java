@@ -23,13 +23,14 @@ public class DBConnect {
         }
     }
 
-    private static void makeConnect() throws SQLException, ClassNotFoundException {
+    public static Connection makeConnect() throws SQLException, ClassNotFoundException {
        System.out.println("Connecting to database..." + url);
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn= DriverManager.getConnection(url,DBProperties.username(),DBProperties.password());
+        return null;
     }
-    public static void main(String[] args) throws SQLException {
+    //   public static void main(String[] args) throws SQLException {
 //     Statement st=   DBConnect.getStatement();
 //
 //     try {
@@ -43,4 +44,5 @@ public class DBConnect {
 //     }
 
     }
-}
+//}
+

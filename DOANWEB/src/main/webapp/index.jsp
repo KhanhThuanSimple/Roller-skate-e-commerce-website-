@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -205,7 +207,11 @@
         </div>
 
 
-        <jsp:include page="comon/footer.jsp" />
+
+        <jsp:include page="comon/footer.jsp" >
+<%--<c:if test="${sessionScope.auth!=null}">--%>
+
+<%--        </c:if>--%>
 
 </body>
 

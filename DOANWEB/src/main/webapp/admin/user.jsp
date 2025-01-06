@@ -44,7 +44,7 @@
                             <td>${user.name}</td>
                             <td>${user.username}</td>
                             <td>3456</td>
-                            <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
+                            <td> Tài khoản bị khóa</td>
                             <td>
                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
