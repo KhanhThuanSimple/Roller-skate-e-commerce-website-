@@ -5,8 +5,9 @@
 <header id="header">
     <nav class="container">
         <a href="./home.jsp" id="logo"><img src="./image/logo1.png" alt="logo"></a>
-        <form id="search-form" action="timkiem.html" method="get">
-            <input type="text" name="query" placeholder="Tìm kiếm...">
+        <form id="search-form" action="search" method="get">
+<%--            // get day du duong dan van de bao mat --%>
+            <input value="${txtS}" type="text" name="txt" placeholder="Tìm kiếm...">
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
         <ul id="main-menu">

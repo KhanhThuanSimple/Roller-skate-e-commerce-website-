@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDao {
+public class  ProductDao {
     public List<Product> getAll() {
         List<Product> products = new ArrayList<>();
         String query = "SELECT * FROM product";
@@ -85,6 +85,39 @@ public class ProductDao {
 
             try (PreparedStatement statement = cons.prepareStatement(query)) {
                 statement.setString(1, id); // Đặt giá trị tham số
+                try (ResultSet rs = statement.executeQuery()) {
+                    while (rs.next()) {
+                        products.add(new Product(
+                                rs.getInt("id"),
+                                rs.getString("name"),
+                                rs.getString("img"),
+                                rs.getDouble("price"),
+                                rs.getString("title"),
+                                rs.getString("description")
+                        ));
+                    }
+                }
+            }
+
+            if (products.isEmpty()) {
+                System.out.println("Không có sản phẩm nào được tìm thấy.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy sản phẩm: " + e.getMessage());
+        }
+        return products;
+    }
+    public List<Product> getProductByTitle(String txtSearch) {
+        List<Product> products = new ArrayList<>();
+        String query = " SELECT * FROM product  WHERE title LIKE ?";
+
+        try (Connection cons = DBConnect.getConn()) {
+            if (cons == null) {
+                throw new SQLException("Kết nối không thành công.");
+            }
+
+            try (PreparedStatement statement = cons.prepareStatement(query)) {
+                statement.setString(1, "%"+txtSearch+"%"); // Đặt giá trị tham số
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
                         products.add(new Product(
