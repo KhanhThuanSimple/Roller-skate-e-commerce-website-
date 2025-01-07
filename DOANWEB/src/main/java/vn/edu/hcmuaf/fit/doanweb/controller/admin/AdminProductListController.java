@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "AdminUserListController" ,value = "/admin/user")
-public class AdminUserListController extends HttpServlet  {
+public class AdminProductListController extends HttpServlet  {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

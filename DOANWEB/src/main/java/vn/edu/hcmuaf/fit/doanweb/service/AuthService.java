@@ -23,6 +23,12 @@ public class AuthService {
         return users;
 
     }
+    public ArrayList<User> getListC(int page, int type) throws SQLException {
+        UserDao userDao = new UserDao();
+        ArrayList<User> customers = userDao.getListC(page, type);
+        return customers;
+
+    }
 
 //    public boolean register(String name, String uname, String pass, String rePass, String phone, String address) throws SQLException {
 //        UserDao userDao = new UserDao();

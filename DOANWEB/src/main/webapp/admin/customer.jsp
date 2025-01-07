@@ -33,19 +33,23 @@
                     <th>Thao tác</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>abc@gmail.com</td>
-                    <td>0822378685</td>
+                <c:forEach var="customer" items="${customers}">
+                    <tr>
+                        <td>${customer.id}</td>
+                        <td>${customer.name}</td>
+                        <td>${customer.username}</td>
+                        <td>${customer.phone_number}</td>
 
-                    <td> Linh Trung, TP.Thủ Đức, TP.HCM</td>
-                    <td>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                </tr>
+                        <td> ${customer.address}</td>
+                        <td>
+                            <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                            <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                        </td>
+                    </tr>
+                </c:forEach>
+
+
+
                 <tr>
                     <td>02</td>
                     <td>Nguyễn Văn Ba</td>

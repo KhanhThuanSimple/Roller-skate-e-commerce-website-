@@ -48,7 +48,7 @@
             <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">
         </div>
         <div>
-            <input class="input-common" type="password" placeholder="Nhập lại mật khẩu" name="re-pass">
+            <input class="input-common" type="password" placeholder="Nhập lại mật khẩu" name="repass">
         </div>
         <div>
             <input class="input-common" type="password" placeholder="Số điện thoại" name="phone" >

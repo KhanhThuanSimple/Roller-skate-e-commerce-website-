@@ -12,29 +12,24 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "AdminUserListController" ,value = "/admin/user")
-public class AdminUserListController extends HttpServlet  {
-
+@WebServlet(name = "AdminCustomerListController" ,value = "/admin/customer")
+public class AdminCustomerListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       // System.out.println("doGet13");
         AuthService authService = new AuthService();
         try {
-            List<User>  users = authService.getList(0, 1);
-            System.out.println(users.size());
-            request.setAttribute("users", users);
-            request.getRequestDispatcher("/admin/user.jsp").forward(request, response);
+            List<User>  customers = authService.getListC(0, 1);
+            System.out.println(customers.size());
+            request.setAttribute("customers", customers);
+            request.getRequestDispatcher("/admin/customer.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
     }
-
 }
