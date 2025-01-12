@@ -33,6 +33,9 @@ public class User implements Serializable {
     public User(String name, String uname, String pass, String phone, String address) {
     }
 
+    public User(String name, String username, String password) {
+    }
+
     public String getUsername() {
         return username;
     }

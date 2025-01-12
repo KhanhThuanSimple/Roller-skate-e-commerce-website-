@@ -50,7 +50,7 @@
                             <td>3456</td>
                             <td> Tài khoản bị khóa</td>
                             <td>
-                                <button onclick="openUserForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button href="loadUser?uid=${user.id}" onclick="openUserForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                                 <form action="${pageContext.request.contextPath}/admin/user/delete" method="post" style="display:inline;">
                                     <input type="hidden" name="uid" value="${user.id}">
                                     <button type="submit" style="border:none;background-color: unset">

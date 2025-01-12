@@ -58,17 +58,18 @@
         </div>
         <div class="flex-center">
 
-            <button type="button" onclick="window.location.href='login.jsp'" class="button-orange">Đăng kí</button>
+            <button type="submit" onclick="window.location.href='login.jsp'" class="button-orange">Đăng kí</button>
 
 
         </div>
         <div class="flex-row">
-            <a class="text-link flex-1" href="forgot-password.html"> Quên mật khẩu?</a>
-            <a class="text-link flex-1" href="login.html"> Đăng nhập.</a>
+            <a class="text-link flex-1" href="forgot-password.jsp"> Quên mật khẩu?</a>
+            <a class="text-link flex-1" href="login.jsp"> Đăng nhập.</a>
 
         </div>
     </form>
 </div>
+
 
 <footer id="footer">
     <div class="footer-container">

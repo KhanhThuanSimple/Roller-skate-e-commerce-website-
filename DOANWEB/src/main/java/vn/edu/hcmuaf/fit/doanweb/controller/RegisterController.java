@@ -18,8 +18,7 @@ import java.util.ArrayList;
 @WebServlet(name = "RegisterController", value = "/register")
 public class RegisterController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Có thể trả về trang đăng ký
-        request.getRequestDispatcher("/register.jsp").forward(request, response);
+
     }
 
     @Override
@@ -35,26 +34,24 @@ public class RegisterController extends HttpServlet {
             // Kiểm tra mật khẩu có khớp không
             if (!pass.equals(repass)) {
                 request.setAttribute("errorMessage", "Mật khẩu không khớp!");
-                request.getRequestDispatcher("/register.jsp").forward(request, response);
-                return;
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+
+            } else {
+                UserDao userDao = new UserDao();
+                User user = userDao.findUserByUserName(uname);
+                if (user == null) {
+                    userDao.register(name, uname, pass, phone, address);
+                    response.sendRedirect("login.jsp");
+
+                } else {
+                    response.sendRedirect("register.jsp");
+                }
+
             }
 
-            User user = new User(name, uname, pass, phone, address);
-            UserDao userDao = new UserDao();
 
-            // Gọi phương thức đăng ký
-            User registeredUser = userDao.register(user, repass);
 
-            // Nếu đăng ký thành công, chuyển hướng đến trang khác (ví dụ: trang đăng nhập)
-            response.sendRedirect("login.jsp");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            request.setAttribute("errorMessage", "Đã xảy ra lỗi khi đăng ký!"); // Thông báo lỗi
-            request.getRequestDispatcher("/register.jsp").forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            request.setAttribute("errorMessage", "Đã xảy ra lỗi!"); // Thông báo lỗi chung
-            request.getRequestDispatcher("/register.jsp").forward(request, response);
-        }
+
+        }catch (Exception e) {}
     }
 }

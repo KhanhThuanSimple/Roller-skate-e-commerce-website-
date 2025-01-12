@@ -52,7 +52,7 @@
 
                             
                             <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+                                <button  onclick="openXuatHangForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                                  <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                             </td>
                         </tr>
@@ -128,9 +128,9 @@
     </div>
 
     <!-- Product Form Modal -->
-    <div id="productModal" class="modal">
+    <div id="xuatHangModal" class="modal">
         <div class="modal-content" >
-            <span class="close-btn" onclick="closeProductForm()">&times;</span>
+            <span class="close-btn" onclick="closeXuatHangForm()">&times;</span>
            
             <form action="post" class="flex-colunm" >
                 <h2>Thêm sản phẩm</h2>
@@ -142,15 +142,15 @@
                 </div>
                 
                 <div>
-                    <input class="input-common" type="number" placeholder="Giá xuất">
+                    <input class="input-common" type="number" placeholder="Giá nhập">
                 </div>
                
                 <div>
-                    <input class="input-common" type="number" placeholder="Số lượng xuất">
+                    <input class="input-common" type="number" placeholder="Số lượng nhập">
                   
                 </div>
                 <div  class="flex-center">
-                    <button class="button-orange">Lưu </button>
+                    <button type="submit" class="button-orange">Lưu </button>
                 </div>
 
                 

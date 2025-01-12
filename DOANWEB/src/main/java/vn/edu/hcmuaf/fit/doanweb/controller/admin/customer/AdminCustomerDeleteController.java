@@ -18,6 +18,15 @@ public class AdminCustomerDeleteController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int uid= Integer.parseInt(request.getParameter("uid"));
+
+        UserDao userDao=new UserDao();
+        try {
+            userDao.deleteCustomer(uid);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        response.sendRedirect("admin/user");
 
     }
 

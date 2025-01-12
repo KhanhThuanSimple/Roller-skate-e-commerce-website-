@@ -41,5 +41,35 @@ function openUserForm() {
 function closeUserForm() {
     document.getElementById("userModal").style.display = "none";
 }
+function openCustomerForm() {
+    console.log("Opening user form..."); // Xác thực xem hàm có được gọi không
+    document.getElementById("customerModal").style.display = "block";
+}
+function closeCustomerForm() {
+    document.getElementById("customerModal").style.display = "none";
+}
 
 
+function  openEditProductForm() {
+    console.log("Opening user form..."); // Xác thực xem hàm có được gọi không
+    document.getElementById("productEditModal").style.display = "block";
+}
+function closeEditProductForm() {
+    document.getElementById("productEditModal").style.display = "none";
+}
+
+function  openNhapHangForm() {
+    console.log("Opening user form..."); // Xác thực xem hàm có được gọi không
+    document.getElementById("nhapHangModal").style.display = "block";
+}
+function closeNhapHangForm() {
+    document.getElementById("nhapHangModal").style.display = "none";
+}
+
+function  openXuatHangForm() {
+    console.log("Opening user form..."); // Xác thực xem hàm có được gọi không
+    document.getElementById("xuatHangModal").style.display = "block";
+}
+function closeXuatHangForm() {
+    document.getElementById("xuatHangModal").style.display = "none";
+}
