@@ -71,10 +71,11 @@
                     <div class="purchase-info">
                         <input type="number" min="0" value="1"/>
 
+                        <a href="add-cart?pId=${p.id}">
                         <button type="button" class="btn" id="first">
                             Thêm vào giỏ hàng <i class="fas fa-shopping-cart"></i>
                         </button>
-
+                        </a>
                         <button type="button" class="btn" id="last">Đặt hàng nhanh</button>
                     </div>
 

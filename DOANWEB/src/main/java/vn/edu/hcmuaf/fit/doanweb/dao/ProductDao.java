@@ -10,9 +10,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class  ProductDao {
+    static Map<Integer, Product> data = new HashMap<>();
     public List<Product> getAll() {
         List<Product> products = new ArrayList<>();
         String query = "SELECT * FROM product";
@@ -240,6 +243,8 @@ public class  ProductDao {
         }
         return lists;
     }
+
+    public Product getById(int id) {return data.get(id);}
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
