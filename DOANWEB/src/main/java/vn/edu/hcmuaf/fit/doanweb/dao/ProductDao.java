@@ -31,7 +31,8 @@ public class  ProductDao {
                             rs.getString("img"),
                             rs.getDouble("price"),
                             rs.getString("title"),
-                            rs.getString("description")
+                            rs.getString("description"),
+                            rs.getString("offer")
                     ));
                 }
             }
@@ -67,7 +68,8 @@ public class  ProductDao {
                                 rs.getString("img"),
                                 rs.getDouble("price"),
                                 rs.getString("title"),
-                                rs.getString("description")
+                                rs.getString("description"),
+                                rs.getString("offer")
                         ));
                     }
                 }
@@ -99,7 +101,8 @@ public class  ProductDao {
                                 rs.getString("img"),
                                 rs.getDouble("price"),
                                 rs.getString("title"),
-                                rs.getString("description")
+                                rs.getString("description"),
+                                rs.getString("offer")
                         );
                     }
                 }
@@ -130,7 +133,8 @@ public class  ProductDao {
                                 rs.getString("img"),
                                 rs.getDouble("price"),
                                 rs.getString("title"),
-                                rs.getString("description")
+                                rs.getString("description"),
+                                rs.getString("offer")
                         ));
                     }
                 }
@@ -163,7 +167,8 @@ public class  ProductDao {
                                 rs.getString("img"),
                                 rs.getDouble("price"),
                                 rs.getString("title"),
-                                rs.getString("description")
+                                rs.getString("description"),
+                                rs.getString("offer")
                         ));
                     }
                 }
@@ -196,7 +201,8 @@ public class  ProductDao {
                             rs.getString("img"),
                             rs.getDouble("price"),
                             rs.getString("title"),
-                            rs.getString("description")
+                            rs.getString("description"),
+                            rs.getString("offer")
                     ));
                 }
             }

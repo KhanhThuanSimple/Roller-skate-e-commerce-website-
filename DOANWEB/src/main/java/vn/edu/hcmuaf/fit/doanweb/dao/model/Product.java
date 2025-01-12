@@ -9,65 +9,72 @@ public class Product implements java.io.Serializable {
     private double price;
     private String title;
     private String description;
+    private String offer;
 
-    public Product(int id, String name, String img, double price, String title, String description) {
+    public Product(int id, String name, String img, double price, String title, String description, String offer) {
         this.id = id;
         this.name = name;
         this.img = img;
         this.price = price;
         this.title = title;
         this.description = description;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public double getPrice() {
-        return price;
+        this.offer = offer;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getOffer() {
+        return offer;
+    }
+
+    public void setOffer(String offer) {
+        this.offer = offer;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public double getPrice() {
+        return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
     }
 
-    public Product() {
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -79,6 +86,7 @@ public class Product implements java.io.Serializable {
                 ", price=" + price +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", offer='" + offer + '\'' +
                 '}';
     }
 }

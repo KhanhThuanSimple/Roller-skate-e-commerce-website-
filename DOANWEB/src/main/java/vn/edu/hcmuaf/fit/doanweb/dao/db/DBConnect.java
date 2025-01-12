@@ -62,7 +62,8 @@ public class DBConnect {
                             ", " + rs.getString(3) +
                             ", " + rs.getDouble(4) +
                             ", " + rs.getString(5) +
-                            ", " + rs.getString(6)
+                            ", " + rs.getString(6)+
+                            ", " + rs.getString(7)
                     );
                 }
                 rs.close();  // Đóng ResultSet

@@ -32,33 +32,10 @@
                     <div class="img-display">
                         <div class="img-showcase">
                             <img src="${detail.img}"/>
-                            <img src="${detail.img}" alt="shoe ../image"/>
-                            <img src="${detail.img}" alt="shoe ../image"/>
-                            <img src="${detail.img}" alt="shoe ../image"/>
+
                         </div>
                     </div>
-                    <div class="img-select">
-                        <div class="img-item">
-                            <a href="#" data-id="1">
-                                <img src="${detail.img}" alt="shoe ../image"/>
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="2">
-                                <img src="${detail.img}" alt="shoe ../image"/>
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="3">
-                                <img src="${detail.img}" alt="shoe ../image"/>
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="4">
-                                <img src="${detail.img}" alt="shoe ../image"/>
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
                 <!-- card right -->
                 <div class="product-content">
@@ -79,12 +56,16 @@
                         </p>
                         <ul>
                             <h2>Ưu đãi:</h2>
-                            <li><span>Tặng túi đựng patin chuyên dụng.</span></li>
-                            <li><span>Khóa học không có giá trị quy đổi.</span></li>
-                            <li><span>Bảo dưỡng MIỄN PHÍ.</span></li>
-                            <li><span>MIỄN PHÍ giao hàng nội thành Hà Nội và TP.HCM.</span></li>
-                            <li><span>Giao hàng NHANH 2h: Áp dụng tại nội thành Hà Nội, TP. Hồ Chí Minh</span></li>
+                            <li><span id="offerText">${detail.offer}</span></li>
                         </ul>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                const offerElement = document.getElementById('offerText');
+                                const text = offerElement.innerHTML;
+                                offerElement.innerHTML = text.replace(/\./g, '.<br>');
+                            });
+                        </script>
                     </div>
 
                     <div class="purchase-info">
