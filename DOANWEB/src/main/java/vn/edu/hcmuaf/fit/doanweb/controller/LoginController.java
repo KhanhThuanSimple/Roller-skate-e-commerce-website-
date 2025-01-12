@@ -37,7 +37,7 @@ public class LoginController extends HttpServlet {
                 if(user.getType()==1){
                     response.sendRedirect(request.getContextPath() + "/admin/user");
                 }else{
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect(request.getContextPath() + "/home");
                 }
             }else {
                 request.setAttribute("error","Dang nhap khong thaanh cong");

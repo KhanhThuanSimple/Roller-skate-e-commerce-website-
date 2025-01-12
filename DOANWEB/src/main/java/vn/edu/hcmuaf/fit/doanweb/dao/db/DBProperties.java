@@ -22,7 +22,7 @@ public class DBProperties {
     }
 
     public static String dbname(){
-        return prop.get("db.name").toString();
+        return prop.get("db.dbname").toString();
     }
 
     public static String username(){

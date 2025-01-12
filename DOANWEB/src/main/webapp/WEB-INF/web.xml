@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-         version="6.0">
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <servlet>
+        <servlet-name>ListProduct</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.ListProduct</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ListProduct</servlet-name>
+        <url-pattern>/product</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.HomeServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CategoryServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.CategoryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CategoryServlet</servlet-name>
+        <url-pattern>/category</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DetailServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.DetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DetailServlet</servlet-name>
+        <url-pattern>/detail</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.SearchServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>SortServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.SortServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SortServlet</servlet-name>
+        <url-pattern>/sort</url-pattern>
+    </servlet-mapping>
+
 </web-app>
