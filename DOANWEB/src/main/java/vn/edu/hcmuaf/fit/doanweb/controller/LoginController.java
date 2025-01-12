@@ -1,10 +1,11 @@
 package vn.edu.hcmuaf.fit.doanweb.controller;
 
+import com.mysql.cj.xdevapi.JsonString;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 
 import java.io.IOException;
@@ -16,26 +17,38 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         String uname = request.getParameter("uname");
         String pass = request.getParameter("pass");
 
         AuthService authService = new AuthService();
-
         try {
-            if(authService.login(uname,pass)){
-                response.sendRedirect(request.getContextPath()+"/home.jsp");
-            }else{
-                request.setAttribute("error", "Dang nhap khong thanh cong");
-                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            User user=authService.login(uname,pass);
+            if (user!=null){
+                HttpSession session = request.getSession(true);
+                session.setAttribute("auth",user);
+
+                if(user.getType()==1){
+                    response.sendRedirect(request.getContextPath() + "/admin/user");
+                }else{
+                    response.sendRedirect(request.getContextPath() + "/home");
+                }
+            }else {
+                request.setAttribute("error","Dang nhap khong thaanh cong");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+
+
     }
 }

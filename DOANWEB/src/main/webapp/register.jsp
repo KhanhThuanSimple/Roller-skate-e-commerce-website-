@@ -30,7 +30,7 @@
 <div class="login-container flex-colunm">
     <img class="img-banner" src="image/login.jpg">
     <div class="mask"></div>
-    <form action="post" class="flex-colunm">
+    <form method="post" action="register" class="flex-colunm">
         <div class="logo">
             <img src="./image/logo1.png" alt="logo">
 
@@ -39,36 +39,37 @@
             <h2>Đăng kí tài khoản</h2>
         </div>
         <div>
-            <input class="input-common" type="password" placeholder="Họ & tên">
+            <input class="input-common" type="password" placeholder="Họ & tên" name="name">
         </div>
         <div>
-            <input class="input-common" type="email" placeholder="Email">
+            <input class="input-common" type="email" placeholder="Email" name="uname">
         </div>
         <div>
-            <input class="input-common" type="password" placeholder="Mật khẩu">
+            <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">
         </div>
         <div>
-            <input class="input-common" type="password" placeholder="Nhập lại mật khẩu">
+            <input class="input-common" type="password" placeholder="Nhập lại mật khẩu" name="repass">
         </div>
         <div>
-            <input class="input-common" type="password" placeholder="Số điện thoại">
+            <input class="input-common" type="password" placeholder="Số điện thoại" name="phone" >
         </div>
         <div>
-            <textarea rows="2" class="input-common" placeholder="Địa chỉ"></textarea>
+            <textarea rows="2" class="input-common" placeholder="Địa chỉ" name="address"></textarea>
         </div>
         <div class="flex-center">
 
-            <button type="button" onclick="window.location.href='login.html'" class="button-orange">Đăng kí</button>
+            <button type="submit" onclick="window.location.href='login.jsp'" class="button-orange">Đăng kí</button>
 
 
         </div>
         <div class="flex-row">
-            <a class="text-link flex-1" href="forgot-password.html"> Quên mật khẩu?</a>
-            <a class="text-link flex-1" href="login.html"> Đăng nhập.</a>
+            <a class="text-link flex-1" href="forgot-password.jsp"> Quên mật khẩu?</a>
+            <a class="text-link flex-1" href="login.jsp"> Đăng nhập.</a>
 
         </div>
     </form>
 </div>
+
 
 <footer id="footer">
     <div class="footer-container">

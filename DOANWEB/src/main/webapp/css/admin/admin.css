@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    background-color: #34495e;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: orange;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    padding-left: 250px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table th {
+    background-color: #5c3a3a;
+    color: white;
+}
+
+/* button.btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+} */
+
+button.btn:hover {
+    background-color: #2980b9;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+}
+.modal-order {
+    background-color: white;
+    margin: 3% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Phân trang */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination .btn-pagination {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.pagination .btn-pagination:hover {
+    background-color: #2980b9;
+}
+
+.pagination span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+  .flex-colunm{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+ .flex-1{
+    flex: 1;
+}
+.button-orange{
+    min-height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid orange;
+    background-color: orange;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500px;
+    cursor: pointer;
+  }
+  .button-black{
+    min-height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid  #5c3a3a;
+    background-color:  #5c3a3a;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500px;
+    cursor: pointer;
+  }
+ 
+  .flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.image img{
+    width: 80px;
+    height: 80px;
+}
+.input-common{
+    min-height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #b8b8b8;
+   width: 100%;
+   padding: 3px;
+  }
+  .background-active{
+    background-color: orange !important;
+  }

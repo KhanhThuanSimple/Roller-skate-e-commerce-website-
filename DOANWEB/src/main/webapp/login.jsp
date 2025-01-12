@@ -38,6 +38,7 @@
         if (uname==null) uname ="";
     %>
 
+
     <form method="post" action="login" class="flex-colunm">
         <div class="logo">
             <img src="./image/logo1.png" alt="logo">
@@ -65,7 +66,7 @@
         </div>
         <div class="flex-row">
             <a class="text-link flex-1" href="forgot-password.html"> Quên mật khẩu?</a>
-            <a class="text-link flex-1" href="register.html"> Đăng kí tài khoản.</a>
+            <a class="text-link flex-1" href="register.jsp"> Đăng kí tài khoản.</a>
 
         </div>
 

@@ -8,19 +8,69 @@ import java.util.ArrayList;
 
 public class AuthService {
 
-    public boolean login(String username, String password) throws SQLException {
+    public User login(String username, String password) throws SQLException {
         UserDao userDao = new UserDao();
         User user = userDao.findUserByUserName(username);
         if (user == null) {
-            return false;
+            return null;
         }
-        return user.getPassword().equals(password);
+        return user;
     }
 
-    public ArrayList<User> getList(int page, String type) throws SQLException {
+    public ArrayList<User> getList(int page, int type) throws SQLException {
         UserDao userDao = new UserDao();
         ArrayList<User> users = userDao.getList(page, type);
         return users;
-
     }
+    public int getPage( int type) throws SQLException {
+        UserDao userDao = new UserDao();
+        return userDao.getPage(type);
+    }
+
+    public boolean insert(String name, String email, String pass,String address,String phone, int type) throws SQLException {
+        UserDao userDao = new UserDao();
+        return userDao.insertUser(name,email,pass,address,phone,type);
+    }
+
+    public boolean update(String name, String email,String address,String phone, int type, int id) throws SQLException {
+        UserDao userDao = new UserDao();
+        return userDao.updateUser(name,email,address,phone,type, id);
+    }
+
+    public boolean delete(int id) throws SQLException {
+        UserDao userDao = new UserDao();
+        return userDao.deleteUser(id);
+    }
+
+    public User findById(int id) throws SQLException {
+        UserDao userDao = new UserDao();
+        return userDao.getUserByID(id);
+    }
+
+
+//    public boolean register(String name, String uname, String pass, String rePass, String phone, String address) throws SQLException {
+//        UserDao userDao = new UserDao();
+//
+//        // Kiểm tra xem tên người dùng đã tồn tại chưa
+//        User existingUser = userDao.findUserByUserName(uname);
+//        if (existingUser != null) {
+//            return false; // Tên người dùng đã tồn tại
+//        }
+//
+//        // Kiểm tra xem mật khẩu có trùng khớp không
+//        if (!pass.equals(rePass)) {
+//            return false; // Mật khẩu không khớp
+//        }
+//
+//        // Tạo đối tượng User mới
+//        User newUser = new User();
+//        newUser.setName(name); // Giả sử bạn có phương thức setName trong User
+//        newUser.setUsername(uname);
+//        newUser.setPassword(pass); // Mật khẩu nên được mã hóa trước khi lưu vào CSDL
+//        newUser.setPhone(phone); // Giả sử bạn có phương thức setPhone trong User
+//        newUser.setAddress(address); // Giả sử bạn có phương thức setAddress trong User
+//
+//        // Thêm người dùng mới vào cơ sở dữ liệu
+//        return userDao.addUser(newUser);
+//    }
 }

@@ -51,7 +51,7 @@
 
 
                             <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
+                                <button onclick="openEditProductForm()"  style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
                                         style="flex:1; padding: 10px; cursor: pointer;"></i></button>
                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
                                         style="flex:1; padding: 10px; cursor: pointer;"></i></button>
@@ -157,7 +157,39 @@
                         style="visibility: hidden;" />
                 </div>
                 <div class="flex-center">
-                    <button class="button-orange">Lưu sản phẩm<button>
+                    <button type="submit" class="button-orange">Lưu sản phẩm<button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+    <div id="productEditModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn"  onclick="closeEditProductForm()">&times;</span>
+
+            <form action="post" class="flex-colunm">
+                <h2>Chỉnh sửa sản phẩm</h2>
+                <div>
+                    <input class="input-common" type="text" placeholder=" ID sản phẩm">
+                </div>
+                <div>
+                    <input class="input-common" type="email" placeholder=" Tên sản phẩm">
+                </div>
+
+                <div>
+                    <input class="input-common" type="number" placeholder="Giá">
+                </div>
+
+                <div>
+
+                    <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
+                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
+                           style="visibility: hidden;" />
+                </div>
+                <div class="flex-center">
+                    <button type="submit" class="button-orange">Lưu sản phẩm<button>
                 </div>
 
 
