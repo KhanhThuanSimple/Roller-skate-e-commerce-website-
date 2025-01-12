@@ -5,9 +5,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 
 import java.io.IOException;
-@WebServlet(name = "AdminUserDeleteController" ,value = "/admin/user/edit")
+import java.sql.SQLException;
+
+@WebServlet(name = "AdminUserEditController" ,value = "/admin/user/update")
 public class AdminUserEditController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -16,5 +19,30 @@ public class AdminUserEditController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        AuthService authService = new AuthService();
+
+        try{
+            String name=request.getParameter("name");
+            String username=request.getParameter("username");
+            String phone=request.getParameter("phone");
+            String address=request.getParameter("address");
+            int id=Integer.parseInt(request.getParameter("id"));
+
+            boolean rs =authService.update(name,username,address,phone,1,id);
+            System.out.println("KQs");
+
+            System.out.println(rs);
+            if(rs) {
+                request.setAttribute("message", "Cập nhật thành công!");
+            }else{
+                request.setAttribute("message", "Cập nhật không thành công!");
+            }
+            response.sendRedirect(request.getContextPath() + "/admin/user");
+
+        }catch (SQLException e) {
+            e.printStackTrace(); // Ghi lại stack trace để dễ theo dõi
+            request.setAttribute("errorMessage", "Đã xảy ra lỗi khi thêm tài khoản!");
+            response.sendRedirect(request.getContextPath() + "/admin/user");
+        }
     }
 }

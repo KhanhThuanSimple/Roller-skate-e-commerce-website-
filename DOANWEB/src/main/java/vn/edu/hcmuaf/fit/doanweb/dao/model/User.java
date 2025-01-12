@@ -3,12 +3,12 @@ package vn.edu.hcmuaf.fit.doanweb.dao.model;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private int id;
+    public int id;
     private String username;
 
     private String password;
 
-    private String name;
+    public String name;
     private int type;
     private String phone;
     private String address;

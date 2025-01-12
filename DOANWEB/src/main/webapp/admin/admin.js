@@ -1,3 +1,5 @@
+
+
 // Mở cửa sổ thêm sản phẩm
 function openProductForm() {
     document.getElementById("productModal").style.display = "block";
@@ -34,13 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function openUserForm() {
-    console.log("Opening user form..."); // Xác thực xem hàm có được gọi không
-    document.getElementById("userModal").style.display = "block";
-}
-function closeUserForm() {
-    document.getElementById("userModal").style.display = "none";
-}
 function openCustomerForm() {
     console.log("Opening user form..."); // Xác thực xem hàm có được gọi không
     document.getElementById("customerModal").style.display = "block";
@@ -73,3 +68,4 @@ function  openXuatHangForm() {
 function closeXuatHangForm() {
     document.getElementById("xuatHangModal").style.display = "none";
 }
+

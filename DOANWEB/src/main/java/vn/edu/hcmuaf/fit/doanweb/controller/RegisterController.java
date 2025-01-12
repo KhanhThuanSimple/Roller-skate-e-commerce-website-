@@ -40,7 +40,7 @@ public class RegisterController extends HttpServlet {
                 UserDao userDao = new UserDao();
                 User user = userDao.findUserByUserName(uname);
                 if (user == null) {
-                    userDao.register(name, uname, pass, phone, address);
+                  //  userDao.register(name, uname, pass, phone, address);
                     response.sendRedirect("login.jsp");
 
                 } else {

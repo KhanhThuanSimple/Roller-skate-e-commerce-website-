@@ -24,6 +24,7 @@ public class Login1Controller extends HttpServlet {
             if(u==null){
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
             }else{
+
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } catch (SQLException e) {

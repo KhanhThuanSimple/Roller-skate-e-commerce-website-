@@ -1,4 +1,6 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -15,6 +17,8 @@
 <div class="container">
     <!-- Sidebar -->
     <%@ include file="sidebar.jsp" %>
+
+
 
     <!-- Main Content -->
     <main class="main-content">
@@ -38,7 +42,7 @@
                         <td>${customer.id}</td>
                         <td>${customer.name}</td>
                         <td>${customer.username}</td>
-                        <td>${customer.phone_number}</td>
+                        <td>${customer.phone}</td>
 
                         <td> ${customer.address}</td>
                         <td>
@@ -59,9 +63,15 @@
                 </tbody>
                 <div class="pagination flex-row">
                     <div class="flex-1">
-                        <button id="prevPage" class= "button-black" type="button" >Trước</button>
-                        <span id="pageNumber">1</span> / <span id="totalPages">1</span>
-                        <button id="SauPage" class="button-black"type="button" >Sau</button>
+                        <a href="${pageContext.request.contextPath}/admin/customer?page=${page-1}">
+                            <button  id="prevPage" class= "button-black" type="button" >Trước</button>
+
+                        </a>
+                        <span id="pageNumber">${page}</span> / <span id="totalPages">${totalPage}</span>
+                       <a href="${pageContext.request.contextPath}/admin/customer?page=${page+1}">
+                           <button  id="SauPage" class="button-black"type="button" >Sau</button>
+
+                       </a>
                     </div>
                     <button class="button-orange" onclick="openProductForm()">Thêm Khách Hàng</button>
 

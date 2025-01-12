@@ -12,12 +12,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "AdminUserListController" ,value = "/admin/user")
+@WebServlet(name = "AdminProductListController" ,value = "/admin/product")
 public class AdminProductListController extends HttpServlet  {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       // System.out.println("doGet13");
         AuthService authService = new AuthService();
         try {
             List<User>  users = authService.getList(0, 1);

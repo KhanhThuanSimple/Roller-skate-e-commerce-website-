@@ -17,15 +17,29 @@ public class AdminCustomerListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AuthService authService = new AuthService();
+        int page = 1;
+        String page_prams= request.getParameter("page");
         try {
-            List<User>  customers = authService.getListC(0, 1);
-            System.out.println(customers.size());
+            int totalPage = authService.getPage(0);
+
+            if(page_prams!=null){
+                page = Integer.parseInt(page_prams);
+            }
+            if(page<1) page=1;
+            if(page>totalPage) page=totalPage;
+
+            List<User>  customers = authService.getList(page, 0);
+
             request.setAttribute("customers", customers);
+            request.setAttribute("totalPage", totalPage);
+            request.setAttribute("page", page);
+
+
+
             request.getRequestDispatcher("/admin/customer.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override

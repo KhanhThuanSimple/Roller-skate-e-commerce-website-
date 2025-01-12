@@ -9,7 +9,7 @@
 <aside class="sidebar">
     <h2>Admin Dashboard</h2>
     <ul>
-        <li><a href="admin/user/add">Tài khoản Admin</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/user">Tài khoản Admin</a></li>
         <li><a href="order.jsp">Đơn hàng</a></li>
         <li><a   href="${pageContext.request.contextPath}/admin/customer">Khách hàng</a></li>
         <li><a href="product.jsp">Sản phẩm</a></li>
