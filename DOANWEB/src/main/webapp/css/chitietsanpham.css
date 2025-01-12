@@ -17,27 +17,27 @@ body {
 /* Main container styles */
 .main-content {
     margin: 0;
-    padding: 10px; /* Reduced padding */
+    padding: 10px; /* Giảm padding */
 }
 
 .card-wrapper {
-    max-width: 100%; /* Full width for horizontal layout */
+    max-width: 100%; /* Chiều rộng tối đa cho bố cục ngang */
     margin: 0 auto;
-    padding: 10px; /* Reduced padding */
-    display: flex; /* Flexbox for horizontal alignment */
-    flex-wrap: wrap; /* Allow wrapping */
-    justify-content: space-between; /* Space items evenly */
+    padding: 10px; /* Giảm padding */
+    display: flex; /* Flexbox cho căn chỉnh ngang */
+    flex-wrap: wrap; /* Cho phép wrap */
+    justify-content: space-between; /* Căn giữa các mục */
 }
 
 #main-container {
-    padding: 15px; /* Reduced padding */
+    padding: 15px; /* Giảm padding */
 }
 
 /* Product Card styles */
 img {
     width: 100%;
     display: block;
-    border-radius: 5px; /* Reduced radius */
+    border-radius: 5px; /* Bo góc */
 }
 
 .img-display {
@@ -57,13 +57,13 @@ img {
 .img-select {
     display: flex;
     justify-content: center;
-    margin-top: 5px; /* Reduced margin */
+    margin-top: 5px; /* Giảm margin */
 }
 
 .img-item {
-    margin: 0.2rem; /* Reduced margin */
+    margin: 0.2rem; /* Giảm margin */
     border: 1px solid #ddd;
-    border-radius: 4px; /* Reduced radius */
+    border-radius: 4px; /* Bo góc */
     transition: transform 0.3s;
 }
 
@@ -73,36 +73,38 @@ img {
 }
 
 .product-display {
-    display: flex;
-    margin-top: 10px; /* Reduced margin */
-    flex: 1 1 100%; /* Allow full width */
+    display: flex; /* Sử dụng flex để sắp xếp hình ảnh và thông tin */
+    margin-top: 10px; /* Giảm margin */
+    flex-direction: row; /* Sắp xếp theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
 }
 
 .product-image {
-    flex: 0 0 40%; /* Fixed width for image */
-    padding: 5px; /* Reduced padding */
+    flex: 0 0 40%; /* Chiếm 40% không gian cho hình ảnh */
+    padding: 5px; /* Giữ khoảng cách bên trong */
 }
 
 .product-info {
-    flex: 0 0 60%; /* Fixed width for info */
-    padding: 5px; /* Reduced padding */
+    flex: 0 0 60%; /* Chiếm 60% không gian cho thông tin */
+    padding: 5px; /* Giữ khoảng cách bên trong */
 }
 
 .product-image img {
-    border-radius: 5px; /* Reduced radius */
+    border-radius: 5px; /* Bo góc hình ảnh */
+    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ không gian */
 }
 
 .product-content {
-    padding: 1rem; /* Reduced padding */
+    padding: 1rem; /* Giảm padding */
 }
 
 .product-title {
-    font-size: 2rem; /* Reduced font size */
+    font-size: 1.8rem; /* Điều chỉnh kích thước chữ */
     text-transform: capitalize;
     font-weight: 700;
     position: relative;
     color: #12263a;
-    margin: 0.5rem 0; /* Reduced margin */
+    margin: 0.5rem 0; /* Giảm margin */
 }
 
 .product-title::after {
@@ -111,7 +113,7 @@ img {
     left: 0;
     bottom: 0;
     height: 4px;
-    width: 60px; /* Reduced width */
+    width: 60px; /* Giảm chiều rộng */
     background: #12263a;
 }
 
@@ -120,31 +122,31 @@ img {
 }
 
 .product-price {
-    margin: 0.5rem 0; /* Reduced margin */
-    font-size: 1rem; /* Reduced font size */
+    margin: 0.5rem 0; /* Giảm margin */
+    font-size: 1rem; /* Giảm kích thước chữ */
     font-weight: 700;
 }
 
 .purchase-info {
-    margin: 1rem 0; /* Reduced margin */
+    margin: 1rem 0; /* Giảm margin */
     display: flex;
     align-items: center;
 }
 
 .purchase-info input {
     border: 1.5px solid #ddd;
-    border-radius: 20px; /* Reduced radius */
+    border-radius: 20px; /* Bo góc */
     text-align: center;
-    padding: 0.35rem 0.6rem; /* Reduced padding */
+    padding: 0.35rem 0.6rem; /* Giảm padding */
     outline: 0;
-    margin-right: 0.3rem; /* Reduced margin */
-    width: 50px; /* Reduced width */
+    margin-right: 0.3rem; /* Giảm margin */
+    width: 50px; /* Giảm chiều rộng */
 }
 
 .purchase-info .btn {
     border: 1.5px solid #ddd;
-    border-radius: 20px; /* Reduced radius */
-    padding: 0.35rem 0.6rem; /* Reduced padding */
+    border-radius: 20px; /* Bo góc */
+    padding: 0.35rem 0.6rem; /* Giảm padding */
     cursor: pointer;
     background-color: beige;
     transition: background-color 0.3s;
@@ -157,21 +159,21 @@ img {
 .social-links {
     display: flex;
     justify-content: center;
-    margin-top: 10px; /* Reduced margin */
+    margin-top: 10px; /* Giảm margin */
 }
 
 .social-links a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px; /* Reduced width */
-    height: 28px; /* Reduced height */
+    width: 28px; /* Giảm chiều rộng */
+    height: 28px; /* Giảm chiều cao */
     color: #000;
     border: 1px solid #000;
-    margin: 0 0.1rem; /* Reduced margin */
+    margin: 0 0.1rem; /* Giảm margin */
     border-radius: 50%;
     text-decoration: none;
-    font-size: 0.7rem; /* Reduced font size */
+    font-size: 0.7rem; /* Giảm kích thước chữ */
     transition: background 0.3s, color 0.3s;
 }
 
@@ -191,16 +193,16 @@ img {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    padding-top: 15px; /* Reduced padding */
+    padding-top: 15px; /* Giảm padding */
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 5% auto; /* Reduced margin */
-    padding: 20px; /* Reduced padding */
-    border-radius: 5px; /* Reduced radius */
+    margin: 5% auto; /* Giảm margin */
+    padding: 20px; /* Giảm padding */
+    border-radius: 5px; /* Bo góc */
     width: 90%;
-    max-width: 500px; /* Reduced max width */
+    max-width: 500px; /* Giảm chiều rộng tối đa */
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -208,7 +210,7 @@ img {
 .close {
     color: black;
     float: right;
-    font-size: 24px; /* Reduced font size */
+    font-size: 24px; /* Giảm kích thước chữ */
     font-weight: bold;
     cursor: pointer;
 }
@@ -219,11 +221,11 @@ img {
 }
 
 .modal img {
-    width: 60%; /* Reduced width */
+    width: 60%; /* Giảm chiều rộng */
 }
 
 .modal .modal-price {
-    font-size: 14px; /* Reduced font size */
+    font-size: 14px; /* Giảm kích thước chữ */
     color: #ff6600;
     font-weight: bold;
 }
@@ -231,15 +233,15 @@ img {
 .buttons-container {
     display: flex;
     justify-content: center;
-    gap: 5px; /* Reduced gap */
-    margin-top: 15px; /* Reduced margin */
+    gap: 5px; /* Giảm khoảng cách */
+    margin-top: 15px; /* Giảm margin */
 }
 
 .buttons-container button {
-    padding: 8px 16px; /* Reduced padding */
+    padding: 8px 16px; /* Giảm padding */
     border-radius: 5px;
     border: none;
-    font-size: 12px; /* Reduced font size */
+    font-size: 12px; /* Giảm kích thước chữ */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s ease-in-out;
@@ -268,16 +270,16 @@ img {
 .user-info {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Reduced gap */
-    margin-top: 15px; /* Reduced margin */
+    gap: 10px; /* Giảm khoảng cách */
+    margin-top: 15px; /* Giảm margin */
 }
 
 .user-info input {
-    padding: 8px; /* Reduced padding */
+    padding: 8px; /* Giảm padding */
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 12px; /* Reduced font size */
+    font-size: 12px; /* Giảm kích thước chữ */
     background-color: #f9f9f9;
     transition: border-color 0.3s, background-color 0.3s;
 }
