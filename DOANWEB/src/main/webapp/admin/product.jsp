@@ -31,91 +31,53 @@
                             <th>Hình ảnh</th>
 
                             <th>Giá</th>
-                            <th>Số lượng chờ giao hàng</th>
+                            <th>Tiêu đề</th>
 
 
-                            <th>Số lượng tồn</th>
+                            <th>Mô tả</th>
+                            <th>ID loại sản phâm</th>
+                            <th>Quà tặng</th>
                             <th>Thao tác</th>
 
                         </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="product" items="${products}">
                         <tr>
-                            <td>TSM1</td>
-                            <td>Flying Eagle</td>
-                            <td class="image"> <img src="../image/CR3.png" alt=""></td>
-
-                            <td>2.500.000</td>
-                            <td>30</td>
-                            <td>120</td>
+                            <td>${product.id}</td>
+                            <td>${product.name}</td>
+                            <td>${product.img}</td>
+                            <td>${product.price}</td>
+                            <td>${product.title}</td>
+                            <td>${product.description}</td>
+                            <td>${product.offer}</td>
 
 
                             <td>
-                                <button onclick="openEditProductForm()"  style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+
+                                <button onclick="openProductUpdateForm({
+                                        id: ${product.id},
+                                        name:'${product.name}',
+                                        inmg:'${product.img}',
+                                        title:'${product.title}',
+                                        description:'${product.description}',
+                                        offer:'${product.offer}'
+                                        })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+
+
+                                <form action="${pageContext.request.contextPath}/admin/product/delete" method="post"
+                                      style="display:inline;">
+                                    <input type="hidden" name="uid" value="${user.id}">
+                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                            style="border:none;background-color: unset">
+                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
-                        <tr>
-                            <td>TSM2</td>
-                            <td>Giày patin TSM2</td>
-                            <td class="image"> <img src="../image/MS1.png" alt=""></td>
-                            <td>1.200.000</td>
-                            <td>15</td>
-                            <td>120</td>
+                    </c:forEach>
 
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>TSM3</td>
-                            <td>Giày patin TSM3</td>
-                            <td class="image"> <img src="../image/EGLS1.png" alt=""></td>
-                            <td>1.260.000</td>
-                            <td>20</td>
-                            <td>120</td>
 
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        <tr>
-                            <td>S6S</td>
-                            <td>Giày patin S6S</td>
-                            <td class="image"> <img src="../image/CR2.png" alt=""></td>
-                            <td>2.590.000</td>
-                            <td>20</td>
-                            <td>200</td>
-
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>M52</td>
-                            <td>Giày patin M52</td>
-                            <td class="image"> <img src="../image/CR3.png" alt=""></td>
-                            <td>1.990.000</td>
-                            <td>25</td>
-                            <td>100</td>
-
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
                         <!-- Các khách hàng sẽ được hiển thị ở đây -->
                     </tbody>
                     <div class="pagination flex-row">
@@ -135,21 +97,28 @@
     <!-- Product Form Modal -->
     <div id="productModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeProductForm()">&times;</span>
+            <span class="close-btn" onclick="closeProductrForm()">&times;</span>
 
-            <form action="post" class="flex-colunm">
+            <form  method="post" action="${pageContext.request.contextPath}/admin/product/insert" class="flex-colunm">
                 <h2>Thêm sản phẩm</h2>
                 <div>
-                    <input class="input-common" type="text" placeholder=" ID sản phẩm">
+                    <input name="id" class="input-common" type="text" placeholder=" ID sản phẩm">
                 </div>
                 <div>
-                    <input class="input-common" type="email" placeholder=" Tên sản phẩm">
+                    <input  name="name" class="input-common" type="text" placeholder=" Tên sản phẩm">
                 </div>
+
+
 
                 <div>
-                    <input class="input-common" type="number" placeholder="Giá">
+                    <input name="title" class="input-common" type="text" placeholder="Tiêu đề">
                 </div>
-
+                <div>
+                    <input name="description" class="input-common" type="text" placeholder="Mô tả">
+                </div>
+                <div>
+                    <input name="offer" class="input-common" type="text" placeholder="Khuyến mãi">
+                </div>
                 <div>
 
                     <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
@@ -165,23 +134,27 @@
 
         </div>
     </div>
-    <div id="productEditModal" class="modal">
+    <div id="modal-update-product" class="modal">
         <div class="modal-content">
-            <span class="close-btn"  onclick="closeEditProductForm()">&times;</span>
+            <span class="close-btn"  onclick="closeUpdateProductForm()">&times;</span>
 
-            <form action="post" class="flex-colunm">
+            <form method="post" action="${pageContext.request.contextPath}/admin/product/update"  class="flex-colunm">
                 <h2>Chỉnh sửa sản phẩm</h2>
                 <div>
-                    <input class="input-common" type="text" placeholder=" ID sản phẩm">
-                </div>
-                <div>
-                    <input class="input-common" type="email" placeholder=" Tên sản phẩm">
+                    <input  name="name" class="input-common" type="text" placeholder=" Tên sản phẩm">
                 </div>
 
-                <div>
-                    <input class="input-common" type="number" placeholder="Giá">
-                </div>
 
+
+                <div>
+                    <input name="title" class="input-common" type="text" placeholder="Tiêu đề">
+                </div>
+                <div>
+                    <input name="description" class="input-common" type="text" placeholder="Mô tả">
+                </div>
+                <div>
+                    <input name="offer" class="input-common" type="text" placeholder="Khuyến mãi">
+                </div>
                 <div>
 
                     <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
@@ -208,6 +181,30 @@
                 fileInput.click();
             });
         });
+
+
+        function openProductForm() {
+            document.getElementById("productModal").style.display = "block";
+        }
+
+        function closeProductrForm() {
+            document.getElementById("productModal").style.display = "none";
+        }
+
+        function openProductUpdateForm(product) {
+            const form = document.getElementById("modal-update-product");
+            form.querySelector('input[name="id"]').value = product.id;
+            form.querySelector('input[name="name"]').value = product.name;
+            form.querySelector('input[name="img"]').value = product.imag;
+            form.querySelector('input[name="title"]').value = product.title;
+            form.querySelector('in[name="description"]').value = product.description;
+            form.querySelector('in[name="offer"]').value = product.offer;
+            form.style.display = "block";
+        }
+
+        function closeUpdateProductForm() {
+            document.getElementById("modal-update-product").style.display = "none";
+        }
 
     </script>
 </body>

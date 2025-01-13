@@ -1,16 +1,11 @@
 package vn.edu.hcmuaf.fit.doanweb.service;
 
-import vn.edu.hcmuaf.fit.doanweb.dao.CategoryDao;
-import vn.edu.hcmuaf.fit.doanweb.dao.ExportOrdersDao;
-import vn.edu.hcmuaf.fit.doanweb.dao.ImportDao;
-import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Category;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.ExportOrders;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.ImportOrders;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
+import vn.edu.hcmuaf.fit.doanweb.dao.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AuthService {
 
@@ -27,6 +22,11 @@ public class AuthService {
         UserDao userDao = new UserDao();
         ArrayList<User> users = userDao.getList(page, type);
         return users;
+    }
+    public List<Product> getListProduct() throws SQLException {
+        ProductDao productDao = new ProductDao();
+        List<Product> products = productDao.getAll();
+        return products;
     }
     public int getPage( int type) throws SQLException {
         UserDao userDao = new UserDao();
