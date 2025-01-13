@@ -91,31 +91,7 @@
                 </div>
             </div>
 
-            <div class="modal" id="productModal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div class="modal-header">
-                        <h2> Giày Patin Người Lớn Cougar MZS 307C 3 Màu Đen/ Trắng/ Đỏ</h2>
-                        <img src="../image/chitiet3.jpg "
-                             alt="Giày Patin Người Lớn Cougar MZS 307C 3 Màu Đen/ Trắng/ Đỏ"/>
-                    </div>
-                    <div class="modal-body">
-                        <p>Giày Patin Người Lớn Eagle A5 với thiết kế mạnh mẽ, phù hợp cho người lớn, chất liệu bền
-                            bỉ...</p>
-                        <div class="modal-price">Giá: 1.200.000đ</div>
-                        <div class="buttons-container">
-                            <button class="btn-pay-now" id="thanhtoan">Thanh toán ngay</button>
-                            <button class="btn-continue-shopping">Tiếp tục mua hàng</button>
-                        </div>
-                    </div>
-                    <div class="modal-footer user-info">
-                        <input type="text" placeholder="Họ và tên của bạn" required/>
-                        <input type="tel" placeholder="Điện thoại của bạn" required/>
-                        <input type="text" placeholder="Địa chỉ của bạn" required/>
-                    </div>
 
-                </div>
-            </div>
 
             <script src="js/script.js"></script>
         </div>
