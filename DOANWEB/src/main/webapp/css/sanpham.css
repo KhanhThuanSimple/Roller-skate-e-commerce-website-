@@ -11,7 +11,7 @@ ul {
 /* Body */
 body {
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: #2b2b2b;
   background-color: #f3f2ec;
 }
@@ -45,22 +45,19 @@ ul.product {
   display: flex;
   flex-wrap: wrap; /* Cho phép cuộn xuống */
   justify-content: space-between; /* Căn giữa các sản phẩm */
-  margin-top: 25px;
+  margin-top: 50px;
 }
 
 ul.product li {
   flex-basis: 23%; /* Chiếm 23% chiều rộng */
-  margin-bottom: 20px; /* Khoảng cách giữa các sản phẩm */
+  margin-bottom: 30px; /* Khoảng cách giữa các sản phẩm */
   background-color: #fff; /* Nền trắng cho box sản phẩm */
   border: 1px solid #ddd; /* Đường viền */
   border-radius: 5px; /* Bo góc */
   overflow: hidden; /* Ẩn phần thừa */
-  transition: transform 0.3s; /* Hiệu ứng khi hover */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho box */
-}
-
-ul.product li:hover {
-  transform: scale(1.05); /* Phóng to khi hover */
+  position: relative; /* Thêm vị trí tương đối để làm điểm tham chiếu */
+  transition: none; /* Không có hiệu ứng khi hover */
 }
 
 ul.product li img {
@@ -69,7 +66,6 @@ ul.product li img {
   object-fit: cover;
 }
 
-/* Product Info */
 /* Product Info */
 .product-info {
   padding: 10px; /* Tăng khoảng cách cho thông tin sản phẩm */
@@ -112,7 +108,12 @@ ul.product li img {
 .button-container {
   display: none; /* Ẩn nút theo mặc định */
   justify-content: space-between;
-  padding: 5px; /* Giảm khoảng cách trong button-container */
+  position: absolute; /* Đặt vị trí tuyệt đối cho button-container */
+  top: 63%; /* Đặt vị trí giữa box sản phẩm */
+  left: 50%; /* Căn giữa theo chiều ngang */
+  transform: translate(-50%, -50%); /* Để căn giữa hoàn hảo */
+  width: 96%; /* Chiều rộng của button-container */
+  height:44px;
 }
 
 ul.product li:hover .button-container {
@@ -122,50 +123,50 @@ ul.product li:hover .button-container {
 /* Nút */
 .button-container a {
   flex: 1; /* Chiếm đều không gian */
-  margin-right: 3px; /* Giảm khoảng cách giữa các nút */
+  margin: 5px 3px; /* Giảm khoảng cách giữa các nút */
   text-align: center; /* Căn giữa văn bản trong nút */
-  background-color: #446084; /* Màu nền cho nút */
-  color: #fff; /* Màu chữ */
-  padding: 8px; /* Giảm khoảng cách trong nút */
+  background-color: #FF7102; /* Màu nền cho nút */
+  color: #FFFFFF; /* Màu chữ */
+  padding: 3px 3px; /* Giảm khoảng cách trong nút */
   border: none;
   border-radius: 5px; /* Bo góc cho nút */
   text-decoration: none; /* Tắt gạch chân chữ */
-  transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng chuyển đổi */
+  transition: background-color 0.5s; /* Hiệu ứng chuyển đổi */
 }
 
 .button-container a:last-child {
   margin-right: 0; /* Không có khoảng cách cho nút cuối */
 }
 
-/* Hover Effects */
+/* Hover Effects cho nút */
 .button-container a:hover {
-  background-color: #365e75; /* Đổi màu nền khi hover */
-  transform: scale(1.05); /* Phóng to nút khi hover */
+  background-color: #ED6902; /* Đổi màu nền khi hover */
 }
+
 .pagination {
   display: flex;
-  justify-content: center; /* Canh giữa phân trang */
-  margin: 20px 0; /* Khoảng cách trên và dưới */
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .page-item {
-  text-decoration: none; /* Xóa gạch chân */
-  padding: 10px 15px; /* Khoảng cách bên trong */
-  margin: 0 5px; /* Khoảng cách giữa các mục */
-  border: 1px solid #007bff; /* Viền màu xanh */
-  color: #007bff; /* Màu chữ */
-  border-radius: 5px; /* Bo góc */
-  transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển tiếp */
+  text-decoration: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .page-item:hover {
-  background-color: #007bff; /* Màu nền khi hover */
-  color: white; /* Màu chữ khi hover */
+  background-color: #007bff;
+  color: white;
 }
 
 .page-item.active {
-  background-color: #007bff; /* Màu nền cho trang đang hoạt động */
-  color: white; /* Màu chữ cho trang đang hoạt động */
-  cursor: default; /* Không cho phép nhấp */
-  font-weight: bold; /* Tô đậm chữ cho trang đang hoạt động */
+  background-color: #007bff;
+  color: white;
+  cursor: default;
+  font-weight: bold;
 }
