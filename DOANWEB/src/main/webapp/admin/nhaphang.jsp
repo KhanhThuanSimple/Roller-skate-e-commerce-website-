@@ -27,7 +27,7 @@
             <table>
                 <thead>
                 <tr>
-                    <th>ID đơn hàng</th>
+                    <th>ID </th>
                     <th>ID sản phẩm</th>
                     <th>Tên sản phẩm</th>
                     <th>Hình ảnh</th>
@@ -41,83 +41,53 @@
 
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>TSM1</td>
-                    <td>Flying Eagle</td>
-                    <td class="image"> <img src="../image/CR3.png" alt=""></td>
+                <c:forEach var="importOrders" items="${imports}">
+                    <tr>
+                        <td>${importOrders.id}</td>
+                        <td>${importOrders.product_id}</td>
+                        <td>${importOrders.product_name}</td>
+                        <td>${importOrders.image}</td>
+                        <td>${importOrders.purchase_price}</td>
+                        <td>${importOrders.quantity}</td>
 
-                    <td>2.500.000</td>
-                    <td>30</td>
+                        <td>
 
-
-
-                    <td>
-                        <button onclick="openNhapHangForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>TSM2</td>
-                    <td>Giày patin TSM2</td>
-                    <td class="image"> <img src="../image/MS1.png" alt=""></td>
-                    <td>1.200.000</td>
-                    <td>15</td>
+                            <button onclick="openImportUpdateForm({
+                                    id: ${importOrders.id},
+                                    product_id:'${importOrders.product_id}',
+                                    product_name:'${importOrders.product_name}',
+                                    image:'${importOrders.image}',
+                                    purchase_price:'${importOrders.purchase_price}',
+                                    quantity:'${importOrders.quantity}'
+                                    })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
 
-                    <td>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>TSM3</td>
-                    <td>Giày patin TSM3</td>
-                    <td class="image"> <img src="../image/EGLS1.png" alt=""></td>
-                    <td>1.260.000</td>
-                    <td>20</td>
-
-
-                    <td>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                <tr>
-                    <td>S6S</td>
-                    <td>Giày patin S6S</td>
-                    <td class="image"> <img src="../image/CR2.png" alt=""></td>
-                    <td>2.590.000</td>
-                    <td>20</td>
-
-
-                    <td>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>M52</td>
-                    <td>Giày patin M52</td>
-                    <td class="image"> <img src="../image/CR3.png" alt=""></td>
-                    <td>1.990.000</td>
-                    <td>25</td>
-
-
-                    <td>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                </tr>
+                            <form action="${pageContext.request.contextPath}/admin/user/delete" method="post"
+                                  style="display:inline;">
+                                <input type="hidden" name="uid" value="${importOrders.id}">
+                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                        style="border:none;background-color: unset">
+                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
                 <!-- Các khách hàng sẽ được hiển thị ở đây -->
                 </tbody>
                 <div class="pagination flex-row">
                     <div class="flex-1">
-                        <button id="prevPage" class= "button-black" type="button" >Trước</button>
-                        <span id="pageNumber">1</span> / <span id="totalPages">1</span>
-                        <button id="SauPage" class="button-black"type="button" >Sau</button>
+                        <a href="${pageContext.request.contextPath}/admin/import?page=${page-1}">
+                            <button  id="prevPage" class= "button-black" type="button" >Trước</button>
+
+                        </a>
+                        <span id="pageNumber">${page}</span> / <span id="totalPages">${totalPage}</span>
+                        <a href="${pageContext.request.contextPath}/admin/import?page=${page+1}">
+                            <button  id="SauPage" class="button-black"type="button" >Sau</button>
+
+                        </a>
                     </div>
-                    <button class="button-orange" onclick="openProductForm()">Thêm Sản Phẩm</button>
+                    <button class="button-orange" onclick="openImportForm()">Thêm sản phẩm</button>
                 </div>
 
             </table>
@@ -128,9 +98,9 @@
 <!-- Product Form Modal -->
 <div id="productModal" class="modal">
     <div class="modal-content" >
-        <span class="close-btn" onclick="closeProductForm()">&times;</span>
+        <span class="close-btn" onclick="closeImportForm()">&times;</span>
 
-        <form action="post" class="flex-colunm" >
+        <form method="post" action="${pageContext.request.contextPath}/admin/import/insert"  class="flex-colunm" >
             <h2>Thêm sản phẩm</h2>
             <div >
                 <input  class="input-common" type="text" placeholder=" ID sản phẩm">
@@ -147,6 +117,12 @@
                 <input class="input-common" type="number" placeholder="Số lượng nhập">
 
             </div>
+            <div>
+
+                <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
+                       style="visibility: hidden;" />
+            </div>
             <div  class="flex-center ">
                 <button type="submit" class="button-orange">Lưu </button>
             </div>
@@ -156,9 +132,9 @@
 
     </div>
 </div>
-<div id="nhapHangModal" class="modal">
+<div id="modal-update-import" class="modal">
     <div class="modal-content" >
-        <span class="close-btn" onclick="closeNhapHangForm()">&times;</span>
+        <span class="close-btn" onclick="closeImportUpdateForm()">&times;</span>
 
         <form action="post" class="flex-colunm" >
             <h2>Chỉnh sửa sản phẩm</h2>
@@ -176,6 +152,12 @@
             <div>
                 <input class="input-common" type="number" placeholder="Số lượng nhập">
 
+            </div>
+            <div>
+
+                <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
+                       style="visibility: hidden;" />
             </div>
             <div  class="flex-center ">
                 <button type="submit" class="button-orange">Lưu </button>
@@ -198,6 +180,32 @@
         });
     });
 
+</script>
+
+<script>
+    function openImportForm() {
+        document.getElementById("productModal").style.display = "block";
+    }
+
+    function closeImportForm() {
+        document.getElementById("productModal").style.display = "none";
+    }
+
+    function openImportUpdateForm(importOrders) {
+        const form = document.getElementById("modal-update-import");
+        form.querySelector('input[name="id"]').value = importOrders.id;
+        form.querySelector('input[name="product_id"]').value = importOrders.product_id;
+        form.querySelector('input[name="product_name"]').value = importOrders.product_name;
+        form.querySelector('input[name="image"]').value = importOrders.image;
+        form.querySelector('input[name="purchase_price"]').value = importOrders.purchase_price;
+        form.querySelector('input[name="quantity"]').value = importOrders.quantity;
+
+        form.style.display = "block";
+    }
+
+    function closeImportUpdateForm() {
+        document.getElementById("modal-update-import").style.display = "none";
+    }
 </script>
 </body>
 

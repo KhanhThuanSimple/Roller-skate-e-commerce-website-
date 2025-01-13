@@ -25,7 +25,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID đơn hàng</th>
+                            <th>ID </th>
                             <th>ID sản phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
@@ -34,39 +34,38 @@
                             <th>Số Lượng Xuất</th>
 
 
-                           
-<%--                            <th>Thao tác</th>--%>
-                            
                         </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="export" items="${exports}">
                         <tr>
-                            <td>01</td>
-                            <td>TSM1</td>
-                            <td>Flying Eagle</td>
-                            <td class="image"> <img src="../image/CR3.png" alt=""></td>
+                            <td>${export.id}</td>
+                            <td>${export.productId}</td>
+                            <td>${export.productName}</td>
+                            <td>${export.image}</td>
+                            <td>${export.salePrice}</td>
+                            <td>${export.quantity}</td>
 
-                            <td>2.500.000</td>
-                            <td>30</td>
-                           
 
-                            
-<%--                            <td>--%>
-<%--                                <button  onclick="openXuatHangForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>--%>
-<%--                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>--%>
-<%--                            </td>--%>
                         </tr>
+                    </c:forEach>
 
                         <!-- Các khách hàng sẽ được hiển thị ở đây -->
                     </tbody>
-                    <div class="pagination flex-row">
-                        <div class="flex-1">
-                            <button id="prevPage" class= "button-black" type="button">Trước</button>
-                            <span id="pageNumber">1</span> / <span id="totalPages">1</span>
-                            <button id="SauPage" class="button-black"type="button">Sau</button>
-                        </div>
-                      
+                    < <div class="pagination flex-row">
+                    <div class="flex-1">
+                        <a href="${pageContext.request.contextPath}/admin/export?page=${page-1}">
+                            <button  id="prevPage" class= "button-black" type="button" >Trước</button>
+
+                        </a>
+                        <span id="pageNumber">${page}</span> / <span id="totalPages">${totalPage}</span>
+                        <a href="${pageContext.request.contextPath}/admin/export?page=${page+1}">
+                            <button  id="SauPage" class="button-black"type="button" >Sau</button>
+
+                        </a>
                     </div>
+
+                </div>
 
                 </table>
             </section>
