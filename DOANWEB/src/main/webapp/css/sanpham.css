@@ -142,3 +142,30 @@ ul.product li:hover .button-container {
   background-color: #365e75; /* Đổi màu nền khi hover */
   transform: scale(1.05); /* Phóng to nút khi hover */
 }
+.pagination {
+  display: flex;
+  justify-content: center; /* Canh giữa phân trang */
+  margin: 20px 0; /* Khoảng cách trên và dưới */
+}
+
+.page-item {
+  text-decoration: none; /* Xóa gạch chân */
+  padding: 10px 15px; /* Khoảng cách bên trong */
+  margin: 0 5px; /* Khoảng cách giữa các mục */
+  border: 1px solid #007bff; /* Viền màu xanh */
+  color: #007bff; /* Màu chữ */
+  border-radius: 5px; /* Bo góc */
+  transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển tiếp */
+}
+
+.page-item:hover {
+  background-color: #007bff; /* Màu nền khi hover */
+  color: white; /* Màu chữ khi hover */
+}
+
+.page-item.active {
+  background-color: #007bff; /* Màu nền cho trang đang hoạt động */
+  color: white; /* Màu chữ cho trang đang hoạt động */
+  cursor: default; /* Không cho phép nhấp */
+  font-weight: bold; /* Tô đậm chữ cho trang đang hoạt động */
+}

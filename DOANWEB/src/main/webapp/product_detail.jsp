@@ -50,9 +50,9 @@
                     </div>
 
                     <div class="product-detail">
-                        <h2>THÔNG SỐ KỸ THUẬT:</h2>
+                        <h2>Thông tin sản phẩm:</h2>
                         <p>
-                            ${detail.description}
+                            <span id="descriptionText">${detail.description}</span>
                         </p>
                         <ul>
                             <h2>Ưu đãi:</h2>
@@ -61,12 +61,19 @@
 
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
+                                // Định dạng thông tin sản phẩm
+                                const descriptionElement = document.getElementById('descriptionText');
+                                const descriptionText = descriptionElement.innerHTML;
+                                descriptionElement.innerHTML = descriptionText.replace(/\./g, '.<br>');
+
+                                // Định dạng ưu đãi
                                 const offerElement = document.getElementById('offerText');
-                                const text = offerElement.innerHTML;
-                                offerElement.innerHTML = text.replace(/\./g, '.<br>');
+                                const offerText = offerElement.innerHTML;
+                                offerElement.innerHTML = offerText.replace(/\./g, '.<br>');
                             });
                         </script>
                     </div>
+
 
                     <div class="purchase-info">
                         <input type="number" min="0" value="1"/>

@@ -1,6 +1,5 @@
 package vn.edu.hcmuaf.fit.doanweb.dao;
 
-import org.apache.taglibs.standard.tag.el.core.ForEachTag;
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Category;
@@ -240,13 +239,66 @@ public class  ProductDao {
         }
         return lists;
     }
+    public int getTotalProduct() {
+    String query = "SELECT COUNT(*) FROM product";
+        Connection cons = DBConnect.getConn();
+        try {
+            PreparedStatement prepa = cons.prepareStatement(query);
+            ResultSet re = prepa.executeQuery();
+            while (re.next()){
+                return re.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return 0 ;
+    }
+    public List<Product> pagingProduct(int index) {
+        List<Product> lists = new ArrayList<>();
+        String query = "SELECT * FROM product " +
+                "ORDER BY id " +
+                "OFFSET ? ROWS FETCH NEXT 20 ROWS ONLY;";
+
+        try (Connection cons = DBConnect.getConn()) {
+            if (cons == null) {
+                throw new SQLException("Kết nối không thành công.");
+            }
+
+            try (PreparedStatement statement = cons.prepareStatement(query)) {
+                statement.setInt(1, (index - 1) * 20); // Đặt tham số ở đây
+
+                try (ResultSet rs = statement.executeQuery()) {
+                    while (rs.next()) {
+                        lists.add(new Product(
+                                rs.getInt("id"),
+                                rs.getString("name"),
+                                rs.getString("img"),
+                                rs.getDouble("price"),
+                                rs.getString("title"),
+                                rs.getString("description"),
+                                rs.getString("offer")
+                        ));
+                    }
+                }
+            }
+
+            if (lists.isEmpty()) {
+                System.out.println("Không có sản phẩm nào được tìm thấy.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy sản phẩm: " + e.getMessage());
+        }
+
+        return lists;
+    }
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-        List<Product> products = dao.getProductByOrder("asc");
-        for(Product Category : products) {
-            System.out.println(Category);
-        }
+        List<Product> products = dao.pagingProduct(2);
+for (Product product : products) {
+     System.out.println(product);
+}
 
     }
 }

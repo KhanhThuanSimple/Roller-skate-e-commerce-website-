@@ -43,7 +43,7 @@
                             <div class="product-item">
                                 <div class="product-top">
                                     <a href="" class="product-thumb">
-                                        <img src="${p.img}" alt="" />
+                                        <img src="${p.img}" alt=""/>
                                     </a>
                                     <div class="button-container">
                                         <a href="giohang.html" class="buy-now">Mua Ngay</a>
@@ -60,6 +60,19 @@
                     </c:forEach>
                 </c:if>
             </ul>
+
+
+            <div class="pagination">
+
+                <c:if test="${endP > 0}">
+                    <div class="pagination">
+                        <c:forEach begin="1" end="${endP}" var="i">
+                            <a href="/DOANWEB/list?index=${i}" class="page-item ${tag == i ? 'active' : ''}">${i}</a>
+                        </c:forEach>
+                    </div>
+                </c:if>
+
+            </div>
         </div>
 
 
