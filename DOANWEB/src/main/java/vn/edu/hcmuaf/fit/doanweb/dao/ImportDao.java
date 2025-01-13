@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.fit.doanweb.dao;
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.ExportOrders;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.ImportOrders;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -78,4 +79,98 @@ public class ImportDao {
             throw new RuntimeException(e);
         }
     }
+    public User findUserByUserName(String username) throws SQLException {
+        String sql="select * from user where username=? ";
+
+        try {
+            Statement st = DBConnect.getStatement();
+            ResultSet rs = null;
+            PreparedStatement pre= st.getConnection().prepareStatement(sql);
+            pre.setString(1, username);
+            rs = pre.executeQuery();
+            if (rs.next()) {
+                System.out.println(rs);
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setName(rs.getString("name"));
+                user.setType(rs.getInt("type"));
+                user.setPhone(rs.getString("phone_number"));
+                user.setAddress(rs.getString("address"));
+                System.out.println("type");
+
+                System.out.println(rs.getString("type"));
+                System.out.println(rs.getInt(5));
+
+                System.out.println(user.getType());
+                return user;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public boolean insertImport(int product_id, String product_name, String image,double purchase_price,int quantity) throws SQLException {
+        String sql = "insert into import_orders(product_id,product_name,image,purchase_price,quantity) values(?,?,?, ?,?)";
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setInt(1, product_id);
+            pre.setString(2, product_name);
+            pre.setString(3, image);
+            pre.setDouble(4,purchase_price);
+            pre.setInt(5, quantity);
+
+
+
+            int rs = pre.executeUpdate();
+
+            return rs==1;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public boolean updateImport(int product_id, String product_name,String image,double purchase_price,int quantity,int id) throws SQLException {
+        String sql = "UPDATE import_orders SET product_id = ?, product_name = ?, image = ?, purchase_price = ?, quantity = ? WHERE id = ?";
+
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setInt(1, product_id);
+            pre.setString(2, product_name);
+            pre.setString(3, image);
+            pre.setDouble(4, purchase_price);
+
+            pre.setInt(5, quantity);
+            pre.setInt(6, id);
+
+            int rs = pre.executeUpdate();
+
+            return rs==1;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public boolean deleteImport(int uid) throws SQLException {
+        String sql = "delete from import_orders where id = ?";
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setInt(1, uid);
+
+            int rs = pre.executeUpdate();
+
+            return rs==1;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

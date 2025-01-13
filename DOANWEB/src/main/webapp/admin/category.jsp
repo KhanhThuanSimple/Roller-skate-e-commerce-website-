@@ -25,37 +25,54 @@
             <table>
                 <thead>
                 <tr>
-                    <th>ID </th>
-                    <th>ID sản phẩm</th>
+                    <th>ID</th>
                     <th>Loại sản phẩm</th>
                     <th>Thao tác</th>
-
-
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>TSM1</td>
-                    <td>Flying Eagle</td>
+
+                <c:forEach var="category" items="${categorys}">
+                    <tr>
+                        <td>${category.id}</td>
+                        <td>${category.name}</td>
 
 
+                        <td>
+
+                            <button onclick="openCategoryUpdateForm({
+                                    id: ${category.id},
+                                    name:'${category.name}'
+
+                                    })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
 
-                    <td>
-                        <button  onclick="openCategoryForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                    </td>
-                </tr>
-
-
+                            <form action="${pageContext.request.contextPath}/admin/category/delete" method="post"
+                                  style="display:inline;">
+                                <input type="hidden" name="uid" value="${user.id}">
+                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                        style="border:none;background-color: unset">
+                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+                <!-- Các khách hàng sẽ được hiển thị ở đây -->
+                </tbody>
                 <div class="pagination flex-row">
                     <div class="flex-1">
-                        <button id="prevPage" class="button-black" type="button">Trước</button>
-                        <span id="pageNumber">1</span> / <span id="totalPages">1</span>
-                        <button id="SauPage" class="button-black" type="button">Sau</button>
+                        <a href="${pageContext.request.contextPath}/admin/category?page=${page-1}">
+                            <button  id="prevPage" class= "button-black" type="button" >Trước</button>
+
+                        </a>
+                        <span id="pageNumber">${page}</span> / <span id="totalPages">${totalPage}</span>
+                        <a href="${pageContext.request.contextPath}/admin/category?page=${page+1}">
+                            <button  id="SauPage" class="button-black"type="button" >Sau</button>
+
+                        </a>
                     </div>
-                    <button class="button-orange" onclick="openProductForm()">Thêm Loại Sản Phẩm</button>
+                    <button class="button-orange" onclick="openCategorytForm()">Thêm Tài Khoản</button>
                 </div>
 
             </table>
@@ -65,15 +82,13 @@
 
 <div id="productModal" class="modal">
     <div class="modal-content" >
-        <span class="close-btn" onclick="closeProductForm()">&times;</span>
+        <span class="close-btn" onclick="closeCategorytForm()">&times;</span>
 
-        <form method="post" action="${pageContext.request.contextPath}/admin/category/add"class="flex-colunm" >
+        <form method="post" action="${pageContext.request.contextPath}/admin/category/insert"class="flex-colunm" >
             <h2>Thêm Loại Sản Phẩm</h2>
-            <div >
-                <input name="id-product" class="input-common" type="text" placeholder=" ID sản phẩm">
-            </div>
+
             <div>
-                <input name="type-product" class="input-common"  type="email" placeholder=" Loại sản phẩm">
+                <input name="name" class="input-common"  type="text" placeholder=" Loại sản phẩm">
             </div>
 
             <div  class="flex-center">
@@ -86,16 +101,14 @@
 </div>
 <div id="modal-update-category" class="modal">
     <div class="modal-content" >
-        <span class="close-btn" onclick="closeCategoryUpdateForm()">&times;</span>
+        <span class="close-btn" onclick="closeCustomerUpdateForm()">&times;</span>
 
         <form method="post" action="${pageContext.request.contextPath}/admin/category/update" class="flex-colunm" >
             <h2>Chỉnh sửa sản phẩm</h2>
             <input type="hidden" name="id">
-            <div >
-                <input name="id-product" class="input-common" type="text" placeholder=" ID sản phẩm">
-            </div>
+
             <div>
-                <input name="type-product" class="input-common"  type="email" placeholder=" Loại sản phẩm">
+                <input name="name" class="input-common"  type="email" placeholder=" Loại sản phẩm">
             </div>
 
             <div  class="flex-center">
@@ -109,14 +122,14 @@
 
 
 
-<script src="admin.js"></script>
+
 <script>
 
-    function openProductForm() {
+    function openCategorytForm() {
         document.getElementById("productModal").style.display = "block";
     }
 
-    function closeProductForm() {
+    function closeCategorytForm() {
         document.getElementById("productModal").style.display = "none";
     }
 

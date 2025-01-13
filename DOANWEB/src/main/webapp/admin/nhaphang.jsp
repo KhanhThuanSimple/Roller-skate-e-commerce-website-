@@ -62,7 +62,7 @@
                                     })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
 
-                            <form action="${pageContext.request.contextPath}/admin/user/delete" method="post"
+                            <form action="${pageContext.request.contextPath}/admin/import/delete" method="post"
                                   style="display:inline;">
                                 <input type="hidden" name="uid" value="${importOrders.id}">
                                 <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
@@ -103,18 +103,18 @@
         <form method="post" action="${pageContext.request.contextPath}/admin/import/insert"  class="flex-colunm" >
             <h2>Thêm sản phẩm</h2>
             <div >
-                <input  class="input-common" type="text" placeholder=" ID sản phẩm">
+                <input name="product_id"  class="input-common" type="text" placeholder=" ID sản phẩm">
             </div>
             <div>
-                <input class="input-common"  type="email" placeholder=" Tên sản phẩm">
-            </div>
-
-            <div>
-                <input class="input-common" type="number" placeholder="Giá nhập hàng">
+                <input name="product_name" class="input-common"  type="text" placeholder=" Tên sản phẩm">
             </div>
 
             <div>
-                <input class="input-common" type="number" placeholder="Số lượng nhập">
+                <input name="purchase_price" class="input-common" type="number" placeholder="Giá nhập hàng">
+            </div>
+
+            <div>
+                <input name="quantity" class="input-common" type="number" placeholder="Số lượng nhập">
 
             </div>
             <div>
@@ -136,7 +136,7 @@
     <div class="modal-content" >
         <span class="close-btn" onclick="closeImportUpdateForm()">&times;</span>
 
-        <form action="post" class="flex-colunm" >
+        <form method="post" action="${pageContext.request.contextPath}/admin/import/update" class="flex-colunm" >
             <h2>Chỉnh sửa sản phẩm</h2>
             <div >
                 <input  class="input-common" type="text" placeholder=" ID sản phẩm">
@@ -169,7 +169,9 @@
     </div>
 </div>
 
-<script src="admin.js"></script>
+<%--<script src="admin.js"></script>--%>
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const icon = document.querySelector('.fa-image');
@@ -180,9 +182,6 @@
         });
     });
 
-</script>
-
-<script>
     function openImportForm() {
         document.getElementById("productModal").style.display = "block";
     }
