@@ -1,3 +1,4 @@
+<%@ page import="vn.edu.hcmuaf.fit.doanweb.dao.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -21,7 +22,7 @@
 <div id="wrapper">
 
     <jsp:include page="comon/header.jsp"/>
-
+    <% User user = (User) session.getAttribute("auth"); %>
 
     <div id="main-container">
         <!-- Main Content Section -->
@@ -76,10 +77,10 @@
 
 
                     <div class="purchase-info">
-                        <input type="number" min="0" value="1"/>
+                        <input id="quantityInput" type="number" min="0" value="1"/>
 
-                        <a href="add-cart?pId=${p.id}">
-                        <button type="button" class="btn" id="first">
+<%--                        <a href="add-cart?pId=${p.id}">--%>
+                        <button type="button" class="btn" id="firsts">
                             Thêm vào giỏ hàng <i class="fas fa-shopping-cart"></i>
                         </button>
                         </a>
@@ -124,5 +125,58 @@
     <jsp:include page="comon/footer.jsp"/>
 </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#firsts").click(function() {
+            // var productId = $(this).data("id");
+            // var productName = $(this).data("title");
+            // var price = $(this).data("price");
+            // var amount = $("#quantity").val();
+            // var imgPath = $(this).data("img-path");
+
+
+
+            <%--var username = '<%= session.getAttribute("username") != null ? session.getAttribute("username") : "" %>';--%>
+
+
+            var idcart = "1";
+            var productId = "${detail.id}";
+            var productName = "${detail.name}";
+            var price = "${detail.price}";
+            var amount = $("#quantityInput").val();
+            var imgPath = "${detail.img}";
+            var username = "<%= user.getUsername() %>";
+            console.log(username);
+            // Tạo đối tượng dữ liệu
+            var cartData = {
+                id: idcart,
+                amount: amount,
+                img_path: imgPath,
+                price: price,
+                product_id: productId,
+                product_name: productName,
+                username: username
+            };
+
+            console.log(cartData);
+
+            // Gửi dữ liệu đến backend
+            $.ajax({
+                url: "/DOANWEB/insertProduct",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(cartData),
+                success: function(response) {
+                    alert("Sản phẩm đã được thêm vào giỏ hàng!");
+                },
+                error: function(xhr, status, error) {
+                    alert("Đã có lỗi xảy ra: " + error);
+                }
+            });
+        });
+    });
+</script>
 
 </html>
