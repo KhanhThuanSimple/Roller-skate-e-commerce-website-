@@ -14,4 +14,5 @@ public class BaseServlet extends HttpServlet {
         List<Category> listc = productDao.getAllCategory();
         request.setAttribute("listc", listc);
     }
+
 }

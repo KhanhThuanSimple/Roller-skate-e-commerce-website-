@@ -59,5 +59,15 @@
         <servlet-name>SortServlet</servlet-name>
         <url-pattern>/sort</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ListTotal</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.ListTotal</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ListTotal</servlet-name>
+        <url-pattern>/list</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
