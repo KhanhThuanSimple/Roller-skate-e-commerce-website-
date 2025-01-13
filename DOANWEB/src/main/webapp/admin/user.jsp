@@ -98,7 +98,7 @@
 </div>
 
 <!-- Product Form Modal -->
-<div id="productModal" class="modal">
+<div id="userModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeUserForm()">&times;</span>
 

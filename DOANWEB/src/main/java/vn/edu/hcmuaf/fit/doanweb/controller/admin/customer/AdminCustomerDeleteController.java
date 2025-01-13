@@ -29,12 +29,15 @@ public class AdminCustomerDeleteController extends HttpServlet {
             }else{
                 request.setAttribute("message", "Xóa không thành công!");
             }
-            request.getRequestDispatcher("/admin/customer").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/admin/customer");
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         }
-        response.sendRedirect("admin/customer");
+
+
 
     }
 

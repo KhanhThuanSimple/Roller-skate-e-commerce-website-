@@ -35,12 +35,13 @@ public class AdminCustomerAddController extends  HttpServlet {
             }else{
                 request.setAttribute("message", "Thêm không thành công!");
             }
-            request.getRequestDispatcher("/admin/customer").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/admin/customer");
 
         }catch (SQLException e) {
             e.printStackTrace(); // Ghi lại stack trace để dễ theo dõi
             request.setAttribute("errorMessage", "Đã xảy ra lỗi khi thêm tài khoản!");
-            request.getRequestDispatcher("/admin/customer").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/admin/customer");
+
         }
 
 

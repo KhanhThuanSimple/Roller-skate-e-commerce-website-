@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class AuthService {
 
-    public User login(String username, String password) throws SQLException {
+    public User findByUsername(String username) throws SQLException {
         UserDao userDao = new UserDao();
         User user = userDao.findUserByUserName(username);
         if (user == null) {

@@ -13,19 +13,11 @@
 <body>
 <div class="container">
 
-    <aside class="sidebar">
-        <h2>Admin Dashboard</h2>
-        <ul>
-            <li><a  href="./user.html">Tài khoản Admin</a></li>
-            <li><a href="./order.html">Đơn hàng</a></li>
-            <li><a href="./customer.html">Khách hàng</a></li>
-            <li><a href="./product.html">Sản phẩm</a></li>
-            <li><a class="background-active" href="#inventory">Nhập Hàng</a></li>
-            <li><a href="./xuathang.html">Xuất hàng</a></li>
+    <!-- Sidebar -->
+    <%@ include file="sidebar.jsp" %>
 
 
-        </ul>
-    </aside>
+
 
     <main class="main-content">
 
@@ -35,6 +27,7 @@
             <table>
                 <thead>
                 <tr>
+                    <th>ID đơn hàng</th>
                     <th>ID sản phẩm</th>
                     <th>Tên sản phẩm</th>
                     <th>Hình ảnh</th>
@@ -50,6 +43,7 @@
                 </thead>
                 <tbody>
                 <tr>
+                    <td>01</td>
                     <td>TSM1</td>
                     <td>Flying Eagle</td>
                     <td class="image"> <img src="../image/CR3.png" alt=""></td>

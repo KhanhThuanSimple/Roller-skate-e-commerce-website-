@@ -35,7 +35,7 @@
 
 
                            
-                            <th>Thao tác</th>
+<%--                            <th>Thao tác</th>--%>
                             
                         </tr>
                     </thead>
@@ -51,66 +51,12 @@
                            
 
                             
-                            <td>
-                                <button  onclick="openXuatHangForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
+<%--                            <td>--%>
+<%--                                <button  onclick="openXuatHangForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>--%>
+<%--                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>--%>
+<%--                            </td>--%>
                         </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>TSM2</td>
-                            <td>Giày patin TSM2</td>
-                            <td class="image"> <img src="../image/MS1.png" alt=""></td>
-                            <td>1.200.000</td>
-                            <td>15</td>
-                          
-                            
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>TSM3</td>
-                            <td>Giày patin TSM3</td>
-                            <td class="image"> <img src="../image/EGLS1.png" alt=""></td>
-                            <td>1.260.000</td>
-                            <td>20</td>
-                          
-                            
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        <tr>
-                            <td>04</td>
-                            <td>S6S</td>
-                            <td>Giày patin S6S</td>
-                            <td class="image"> <img src="../image/CR2.png" alt=""></td>
-                            <td>2.590.000</td>
-                            <td>20</td>
-                           
-                            
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td>M52</td>
-                            <td>Giày patin M52</td>
-                            <td class="image"> <img src="../image/CR3.png" alt=""></td>
-                            <td>1.990.000</td>
-                            <td>25</td>
-                           
-                            
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
+
                         <!-- Các khách hàng sẽ được hiển thị ở đây -->
                     </tbody>
                     <div class="pagination flex-row">
@@ -128,36 +74,7 @@
     </div>
 
     <!-- Product Form Modal -->
-    <div id="xuatHangModal" class="modal">
-        <div class="modal-content" >
-            <span class="close-btn" onclick="closeXuatHangForm()">&times;</span>
-           
-            <form action="post" class="flex-colunm" >
-                <h2>Thêm sản phẩm</h2>
-                <div >
-                    <input  class="input-common" type="text" placeholder=" ID sản phẩm">
-                </div>
-                <div>
-                    <input class="input-common"  type="email" placeholder=" Tên sản phẩm">
-                </div>
-                
-                <div>
-                    <input class="input-common" type="number" placeholder="Giá nhập">
-                </div>
-               
-                <div>
-                    <input class="input-common" type="number" placeholder="Số lượng nhập">
-                  
-                </div>
-                <div  class="flex-center">
-                    <button type="submit" class="button-orange">Lưu </button>
-                </div>
 
-                
-            </form>
-               
-        </div>
-    </div>
 
     <script src="admin.js"></script>
     <script>
