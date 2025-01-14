@@ -34,7 +34,7 @@ public class PlaceOrder extends HttpServlet {
         String discountCode = request.getParameter("discountCode");
         double discountAmount = validateDiscountCode(discountCode);
 
-        double total = cart.calculateFinalTotal(0, discountAmount);
+      //  double total = cart.calculateFinalTotal(0, discountAmount);
 
         try (Connection cons = DBConnect.getConn()) {
             if (cons == null) {
@@ -46,7 +46,7 @@ public class PlaceOrder extends HttpServlet {
             try (PreparedStatement orderStatement = cons.prepareStatement(orderSql, Statement.RETURN_GENERATED_KEYS)) {
                 int userId = (int) session.getAttribute("userId"); // Retrieve userId from session
                 orderStatement.setInt(1, userId);
-                orderStatement.setDouble(2, total);
+              //  orderStatement.setDouble(2, total);
                 orderStatement.setString(3, discountCode);
                 orderStatement.setString(4, "pending");
 
@@ -75,7 +75,7 @@ public class PlaceOrder extends HttpServlet {
 
             // Clear the cart after successful order placement
             session.removeAttribute("cart");
-            response.sendRedirect("success.jsp?total=" + total);
+    //        response.sendRedirect("success.jsp?total=" + total);
 
         } catch (SQLException e) {
             e.printStackTrace();
