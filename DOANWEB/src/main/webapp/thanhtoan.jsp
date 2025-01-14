@@ -145,7 +145,7 @@
 
         <h2>Mua hàng thành công!</h2>
         <p>Đơn hàng của bạn đã được đặt thành công. Cảm ơn bạn!</p>>
-        <button  type="button" onclick="window.location.href='index.html'" class="close-button">Đóng</button>
+        <button  type="button" onclick="window.location.href='home'" class="close-button">Đóng</button>
 
     </div>
 

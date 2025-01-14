@@ -313,5 +313,64 @@ nav #main-menu > li:hover > a::before {
   100% {
     margin-left: -400%;
   }
+
 }
+.sort-buttons {
+  position: relative;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+.sort-buttons button {
+  background-color: #007bff; /* Primary blue */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.sort-buttons button:hover {
+  background-color: #0056b3; /* Darker blue */
+  transform: scale(1.05);
+}
+
+.sort-buttons .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9; /* Light grey */
+  min-width: 150px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.sort-buttons .dropdown-content a {
+  color: #333; /* Dark grey text */
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.sort-buttons .dropdown-content a:hover {
+  background-color: #007bff; /* Highlight blue */
+  color: #fff; /* White text on hover */
+}
+
+.sort-buttons:hover .dropdown-content {
+  display: block; /* Show dropdown on hover */
+}
+
+/* Active state for buttons */
+.sort-buttons .dropdown-content a.active {
+  background-color: #0056b3; /* Darker blue */
+  color: #fff;
+  font-weight: bold;
+}
+
+
 

@@ -15,9 +15,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/giohang.css">
 </head>
@@ -35,14 +32,12 @@
       <div class="card mb-3 shadow-sm">
         <div class="row g-0">
           <div class="col-md-2">
-            <img src="${cp.img}" class="img-fluid rounded-start" alt="">
           </div>
           <div class="col-md-7">
             <div class="card-body">
               <h5 class="card-title">${cp.title}</h5>
               <p class="card-text">Đơn giá: <span class="fw-bold text-danger">${cp.price} đ</span></p>
               <div class="input-group" style="max-width: 150px;">
-                <input type="number" class="form-control text-center qty-input" value="${cp.quantity}" data-product-id="${cp.id}">
               </div>
             </div>
           </div>
@@ -50,7 +45,6 @@
             <p class="m-0">Thành tiền: <span class="fw-bold text-primary">${cp.price * cp.quantity}đ</span></p>
           </div>
           <div class="col-md-1 d-flex align-items-center justify-content-center">
-            <button class="btn btn-danger delete-item">
               <i class="fa-solid fa-trash"></i>
             </button>
           </div>
@@ -62,9 +56,6 @@
     <div class="p-4 mt-4 bg-light rounded shadow-sm">
       <div class="d-flex justify-content-between align-items-center">
         <p class="m-0">Tổng tiền: <span class="fw-bold text-primary">${sessionScope.cart.getTotal()}đ</span></p>
-        <button id="XemThemSP" class="btn btn-outline-secondary me-2">Xem thêm sản phẩm</button>
-        <button id="ThanhToan" class="btn btn-primary">Thanh toán</button>
-      </div>
     </div>
   </div>
 </div>
@@ -78,4 +69,3 @@
 <script src="./js/giohang.js"></script>
 </body>
 </html>
-g
