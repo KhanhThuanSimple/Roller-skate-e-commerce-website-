@@ -46,8 +46,8 @@
                                         <img src="${p.img}" alt=""/>
                                     </a>
                                     <div class="button-container">
-                                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
-                                        <a href="detail?pid=${p.id}" class="view-details">Xem Chi Tiết</a>
+                                        <a href="add-cart?pid=${p.id}" class="buy-now">Thêm Vào Giỏ Hàng</a>
+                                        <a href="detail?pid=${p.id}" class="view-details">Xem Chi Tiết Sản Phẩm</a>
                                     </div>
                                 </div>
                                 <div class="product-info">

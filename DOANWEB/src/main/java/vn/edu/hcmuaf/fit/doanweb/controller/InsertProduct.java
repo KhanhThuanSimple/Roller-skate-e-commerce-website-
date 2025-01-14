@@ -1,3 +1,4 @@
+/*
 package vn.edu.hcmuaf.fit.doanweb.controller;
 
 import com.google.gson.Gson;
@@ -48,3 +49,4 @@ public class InsertProduct extends HttpServlet {
         }
     }
 }
+*/
