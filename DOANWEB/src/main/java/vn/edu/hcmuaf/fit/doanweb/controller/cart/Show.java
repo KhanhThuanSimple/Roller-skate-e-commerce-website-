@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.doanweb.controller.Cart;
+package vn.edu.hcmuaf.fit.doanweb.controller.cart;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

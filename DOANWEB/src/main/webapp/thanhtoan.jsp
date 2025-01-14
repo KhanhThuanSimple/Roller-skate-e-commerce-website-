@@ -53,7 +53,7 @@
                 <h5 class="m-0">Thông tin vận chuyển</h5>
             </div>
             <div class="card-body">
-                <form action="placeOrder" method="post">
+                <form action="checkout"  method="post">
                     <div class="mb-3">
                         <label for="fullName" class="form-label">Họ và tên</label>
                         <input type="text" class="form-control" id="fullName" name="fullName" required>
@@ -66,39 +66,41 @@
                         <label for="phone" class="form-label">Số điện thoại</label>
                         <input type="tel" class="form-control" id="phone" name="phone" required>
                     </div>
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-warning">
+                            <h5 class="m-0">Mã giảm giá & Phương thức thanh toán</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="couponCode" class="form-label">Mã giảm giá</label>
+                                <input type="text" class="form-control" id="couponCode" name="couponCode">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phương thức thanh toán</label>
+                                <div>
+                                    <input type="radio"  name="paymentMethod" value="COD" checked>
+                                    <label >Thanh toán khi nhận hàng (COD)</label>
+                                </div>
+                                <div>
+                                    <input type="radio"  name="paymentMethod" value="Bank">
+                                    <label >Chuyển khoản ngân hàng</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" >Đặt hàng</button>
+
                 </form>
             </div>
         </div>
 
         <!-- Mã giảm giá và phương thức thanh toán -->
-        <div class="card mb-4 shadow-sm">
-            <div class="card-header bg-warning">
-                <h5 class="m-0">Mã giảm giá & Phương thức thanh toán</h5>
-            </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <label for="couponCode" class="form-label">Mã giảm giá</label>
-                    <input type="text" class="form-control" id="couponCode" name="couponCode">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Phương thức thanh toán</label>
-                    <div>
-                        <input type="radio" id="cod" name="paymentMethod" value="COD" checked>
-                        <label for="cod">Thanh toán khi nhận hàng (COD)</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="bank" name="paymentMethod" value="Bank">
-                        <label for="bank">Chuyển khoản ngân hàng</label>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <!-- Tổng tiền và nút đặt hàng -->
         <div class="p-4 bg-light rounded shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
                 <p class="m-0">Tổng tiền: <span class="fw-bold text-primary">${sessionScope.cart.getTotal()}đ</span></p>
-                <button type="submit" class="btn btn-primary" form="checkoutForm">Đặt hàng</button>
             </div>
         </div>
     </div>
