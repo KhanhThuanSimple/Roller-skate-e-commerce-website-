@@ -15,6 +15,7 @@ import java.util.Map;
 
 public class  ProductDao {
     static Map<Integer, Product> data = new HashMap<>();
+
     public List<Product> getAll() {
         List<Product> products = new ArrayList<>();
         String query = "SELECT * FROM product";
@@ -296,15 +297,47 @@ public class  ProductDao {
         return lists;
     }
 
-    public Product getById(int id) {return data.get(id);}
+    public Product getById(int id) {
+        String query = "SELECT * FROM product WHERE id = ?";
+        Product product = null;
+
+        try (Connection cons = DBConnect.getConn()) {
+            if (cons == null) {
+                throw new SQLException("Kết nối không thành công.");
+            }
+
+            try (PreparedStatement statement = cons.prepareStatement(query)) {
+                statement.setInt(1, id); // Thiết lập ID vào câu truy vấn
+                ResultSet rs = statement.executeQuery();
+
+                // Nếu tìm thấy sản phẩm
+                if (rs.next()) {
+                    product = new Product(
+                            rs.getInt("id"),
+                            rs.getString("name"),
+                            rs.getString("img"),
+                            rs.getDouble("price"),
+                            rs.getString("title"),
+                            rs.getString("description"),
+                            rs.getString("offer")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy sản phẩm: " + e.getMessage());
+        }
+
+        return product; // Trả về sản phẩm hoặc null nếu không tìm thấy
+    }
+
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-        List<Product> products = dao.pagingProduct(2);
-for (Product product : products) {
-     System.out.println(product);
-}
-
+//        List<Product> products = dao.pagingProduct(2);
+//for (Product product : products) {
+//     System.out.println(product);
+//}
+        System.out.println(dao.getAllProductId("1"));
     }
 }
 

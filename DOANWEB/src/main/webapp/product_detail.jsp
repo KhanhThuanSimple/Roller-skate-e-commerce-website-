@@ -81,7 +81,8 @@
 
 <%--                        <a href="add-cart?pId=${p.id}">--%>
                         <button type="button" class="btn" id="firsts">
-                            Thêm vào giỏ hàng <i class="fas fa-shopping-cart"></i>
+                            <a href="add-cart?pid=${detail.id}" class="buy-now">Thêm Vào Giỏ Hàng</a>
+                            <i class="fas fa-shopping-cart"></i>
                         </button>
                         </a>
                         <button type="button" class="btn" id="last">Đặt hàng nhanh</button>
@@ -103,56 +104,5 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#firsts").click(function() {
-            // var productId = $(this).data("id");
-            // var productName = $(this).data("title");
-            // var price = $(this).data("price");
-            // var amount = $("#quantity").val();
-            // var imgPath = $(this).data("img-path");
-
-
-
-            <%--var username = '<%= session.getAttribute("username") != null ? session.getAttribute("username") : "" %>';--%>
-
-
-            var idcart = "1";
-            var productId = "${detail.id}";
-            var productName = "${detail.name}";
-            var price = "${detail.price}";
-            var amount = $("#quantityInput").val();
-            var imgPath = "${detail.img}";
-            var username = "<%= user.getUsername() %>";
-            console.log(username);
-            // Tạo đối tượng dữ liệu
-            var cartData = {
-                id: idcart,
-                amount: amount,
-                img_path: imgPath,
-                price: price,
-                product_id: productId,
-                product_name: productName,
-                username: username
-            };
-
-            console.log(cartData);
-
-            // Gửi dữ liệu đến backend
-            $.ajax({
-                url: "/DOANWEB/insertProduct",
-                type: "POST",
-                contentType: "application/json",
-                data: JSON.stringify(cartData),
-                success: function(response) {
-                    alert("Sản phẩm đã được thêm vào giỏ hàng!");
-                },
-                error: function(xhr, status, error) {
-                    alert("Đã có lỗi xảy ra: " + error);
-                }
-            });
-        });
-    });
-</script>
 
 </html>
