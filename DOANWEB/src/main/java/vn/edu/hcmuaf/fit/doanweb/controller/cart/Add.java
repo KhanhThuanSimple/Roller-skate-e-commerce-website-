@@ -11,6 +11,7 @@ import vn.edu.hcmuaf.fit.doanweb.dao.model.CartP;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 
 import java.io.IOException;
+
 @WebServlet(name = "Add", value = "/add-cart")
 public class Add extends HttpServlet {
 
@@ -23,7 +24,7 @@ public class Add extends HttpServlet {
 
         if (product == null) {
             // Nếu sản phẩm không tồn tại, chuyển hướng và dừng xử lý
-            response.sendRedirect("product?addCart=false");
+            response.sendRedirect(request.getHeader("referer") + "?addCart=false");
             return;
         }
 
@@ -38,15 +39,18 @@ public class Add extends HttpServlet {
         cart.addProduct(product);
         session.setAttribute("cart", cart);
 
-        // Chuyển hướng đến danh sách sản phẩm
-        response.sendRedirect("product?addCart=ok");
+        // Lấy URL của trang trước đó
+        String referer = request.getHeader("referer");
+        if (referer != null) {
+            // Chuyển hướng về trang trước đó
+            response.sendRedirect(referer + "?addCart=ok");
+        } else {
+            // Nếu không lấy được URL trước đó, quay về trang mặc định
+            response.sendRedirect("product?addCart=ok");
+        }
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }
-
-
-
