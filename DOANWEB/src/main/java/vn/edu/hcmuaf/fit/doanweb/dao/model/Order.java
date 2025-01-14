@@ -91,4 +91,18 @@ public class Order implements Serializable {
 
     public Order() {
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", user_id=" + user_id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                ", totalAmount=" + totalAmount +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

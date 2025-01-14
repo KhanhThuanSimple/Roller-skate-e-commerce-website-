@@ -56,4 +56,16 @@ public class OrderItems implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
-    }}
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItems{" +
+                "id=" + id +
+                ", order_id=" + order_id +
+                ", product_id=" + product_id +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                '}';
+    }
+}

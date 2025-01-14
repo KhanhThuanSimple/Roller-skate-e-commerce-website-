@@ -77,6 +77,9 @@ public class Product implements java.io.Serializable {
         this.name = name;
     }
 
+    public Product() {
+    }
+
     @Override
     public String toString() {
         return "Product{" +
