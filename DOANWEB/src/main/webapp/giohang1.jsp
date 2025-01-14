@@ -43,10 +43,7 @@
                                 <button class="btn btn-outline-secondary btn-sm decrease-qty" data-product-id="${cp.id}">
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
-
                                 <input type="number" class="form-control text-center qty-input" value="${cp.quantity}" data-product-id="${cp.id}" min="1">
-
-
                                 <button class="btn btn-outline-secondary btn-sm increase-qty" data-product-id="${cp.id}">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>

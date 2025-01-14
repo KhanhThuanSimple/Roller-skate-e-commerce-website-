@@ -16,16 +16,16 @@ public class CartP {
             return update(p.getId(),data.get(p.getId()).getQuantity()+1);
         }
         data.put(p.getId(), convert(p));
-    return true;
+        return true;
     }
 
     public boolean update(int id,int quantity) {
-    if (!data.containsKey(id)) return false;
-    CartProduct cartProduct = data.get(id);
-    if(quantity <1) return false;
-    cartProduct.setQuantity(quantity);
-    data.put(id, cartProduct);
-    return true;
+        if (!data.containsKey(id)) return false;
+        CartProduct cartProduct = data.get(id);
+        if(quantity <1) return false;
+        cartProduct.setQuantity(quantity);
+        data.put(id, cartProduct);
+        return true;
     }
     public boolean removeProduct(int id) {
         return data.remove(id) != null;
@@ -48,9 +48,6 @@ public class CartP {
         });
         return total.get();
     }
-    public double calculateFinalTotal(double shippingFee, double discountAmount) {
-        return getTotal() + shippingFee - discountAmount;
-    }
 
     private CartProduct convert(Product p) {
         CartProduct re = new CartProduct();
@@ -62,7 +59,7 @@ public class CartP {
         re.setDescription(p.getDescription());
         re.setOffer(p.getOffer());
         re.setQuantity(1);
-    return re;
+        return re;
 
     }
 }
