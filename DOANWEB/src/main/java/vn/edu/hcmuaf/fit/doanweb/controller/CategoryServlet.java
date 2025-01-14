@@ -18,6 +18,7 @@ public class CategoryServlet extends BaseServlet {
 
         ProductDao productDao = new ProductDao();
         String cateID = request.getParameter("id");
+
         List<Product> all = productDao.getAllByCategory(cateID);
         request.setAttribute("products", all);
 

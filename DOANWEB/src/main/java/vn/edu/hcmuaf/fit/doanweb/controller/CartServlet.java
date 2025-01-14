@@ -27,6 +27,9 @@ public class CartServlet extends  BaseServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        loadCommonData(request); // Gọi phương thức chung
         User user = (User) request.getSession().getAttribute("auth");
+        if (user == null) {
+            response.sendRedirect("login.jsp");
+            return;}
         String username = user.getUsername();
         CartDao cartDao = new CartDao();
         List<Cart> cart = null;

@@ -1,10 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: PC
-  Date: 22/12/2024
-  Time: 4:43 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +35,7 @@
             <h2>Đăng kí tài khoản</h2>
         </div>
         <div>
-            <input class="input-common" type="password" placeholder="Họ & tên" name="name">
+            <input class="input-common" type="text" placeholder="Họ & tên" name="name">
         </div>
         <div>
             <input class="input-common" type="email" placeholder="Email" name="uname">
@@ -51,7 +47,7 @@
             <input class="input-common" type="password" placeholder="Nhập lại mật khẩu" name="repass">
         </div>
         <div>
-            <input class="input-common" type="password" placeholder="Số điện thoại" name="phone" >
+            <input class="input-common" type="text" placeholder="Số điện thoại" name="phone" >
         </div>
         <div>
             <textarea rows="2" class="input-common" placeholder="Địa chỉ" name="address"></textarea>

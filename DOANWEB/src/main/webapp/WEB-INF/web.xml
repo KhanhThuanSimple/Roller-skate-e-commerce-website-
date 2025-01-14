@@ -64,10 +64,32 @@
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.ListTotal</servlet-class>
     </servlet>
 
+
     <servlet-mapping>
         <servlet-name>ListTotal</servlet-name>
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Add</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.cart.Add</servlet-class>
+    </servlet>
+
+    <!-- Ánh xạ servlet -->
+    <servlet-mapping>
+        <servlet-name>Add</servlet-name>
+        <url-pattern>/add-cart</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ShowCart</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.cart.Show</servlet-class>
+    </servlet>
+
+    <!-- Ánh xạ servlet -->
+    <servlet-mapping>
+        <servlet-name>ShowCart</servlet-name>
+        <url-pattern>/ShowCart</url-pattern>
+    </servlet-mapping>
+
 
 
 </web-app>
