@@ -65,7 +65,7 @@
                 <td><span class="badge bg-success status-badge">${p.status}</span></td>
                 <td>${p.totalAmount}</td>
                 <td>
-                    <a href="order-details.html?id=123456" class="btn btn-primary btn-sm btn-details">Xem Chi Tiết</a>
+                    <a href="chitiet?pid=${p.id}" class="btn btn-primary btn-sm btn-details">Xem Chi Tiết</a>
                 </td>
             </tr>
 

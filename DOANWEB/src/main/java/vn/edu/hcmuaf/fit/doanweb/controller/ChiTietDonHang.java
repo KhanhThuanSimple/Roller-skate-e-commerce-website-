@@ -9,7 +9,7 @@ import vn.edu.hcmuaf.fit.doanweb.dao.model.Order;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ChiTietDonHang", value = "/ChiTiet")
+@WebServlet(name = "ChiTietDonHang", value = "/chitiet")
 public class ChiTietDonHang extends HttpServlet {
 
 
@@ -17,7 +17,7 @@ public class ChiTietDonHang extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductDao dao = new ProductDao();
-
+        String id = request.getParameter("pid");
         HttpSession session = request.getSession();
         Integer userId = (Integer) session.getAttribute("user");
 
@@ -28,7 +28,7 @@ public class ChiTietDonHang extends HttpServlet {
         }
 
         // Lấy danh sách đơn hàng từ DAO
-        List<Order> list = dao.getOrdersWithProducts(userId);
+        List<Order> list = dao.getOrderDetails(userId, Integer.parseInt(id));
 
         // Kiểm tra nếu không có đơn hàng nào
         if (list == null || list.isEmpty()) {
@@ -36,11 +36,10 @@ public class ChiTietDonHang extends HttpServlet {
         }
 
         // Đặt danh sách đơn hàng vào request để chuyển sang JSP
-        request.setAttribute("list", list);
 
         request.setAttribute("list", list);
         // Chuyển tiếp đến trang JSP hiển thị chi tiết đơn hàng
-        request.getRequestDispatcher("lichsudonhang.jsp").forward(request, response);
+        request.getRequestDispatcher("chitietdonhang.jsp").forward(request, response);
 
     }
     @Override

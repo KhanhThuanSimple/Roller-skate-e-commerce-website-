@@ -36,12 +36,13 @@
     <p class="text-muted">Thông tin chi tiết về đơn hàng của bạn</p>
   </div>
 
-  <!-- Order Information -->
+  <!-- Order Information --><c:forEach var="p" items="${list}">
   <div class="order-summary">
-    <h4>Mã Đơn Hàng: <span class="text-primary">#123456</span></h4>
-    <p>Tên Khách Hàng: <strong>15/01/2025</strong></p>
+    <h4>Mã Đơn Hàng: <span class="text-primary">${p.id}</span></h4>
+    <p>Tên Khách Hàng: <strong>${p.name}</strong></p>
     <p>Trạng Thái: <span class="badge bg-success">Đã Giao Hàng</span></p>
   </div>
+</c:forEach>
 
   <!-- Product Table -->
   <div class="mt-4">
@@ -56,29 +57,20 @@
         <th>Thành Tiền (VNĐ)</th>
       </tr>
       </thead>
+
+<c:forEach var="p" items="${list}">
       <tbody>
       <tr>
-        <td>1</td>
-        <td>Áo Thun Nam</td>
-        <td>2</td>
-        <td>200,000</td>
-        <td>400,000</td>
+        <td></td>
+<%--        <td>${p.title}</td>--%>
+<%--        <td>${p.quantity}</td>--%>
+<%--        <td>${p.price}</td>--%s>
+<%--        <td>${p.totalAmount}</td>--%>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>Quần Jeans Nữ</td>
-        <td>1</td>
-        <td>500,000</td>
-        <td>500,000</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Giày Thể Thao</td>
-        <td>1</td>
-        <td>800,000</td>
-        <td>800,000</td>
-      </tr>
+
       </tbody>
+
+</c:forEach>
       <tfoot class="table-light">
       <tr>
         <td colspan="4" class="text-end">Tổng Cộng</td>
@@ -90,7 +82,7 @@
 
   <!-- Back to Order History -->
   <div class="text-center mt-4">
-    <a href="history.html" class="btn btn-primary">Quay Lại Lịch Sử Đơn Hàng</a>
+    <a href="lichsu" class="btn btn-primary">Quay Lại Lịch Sử Đơn Hàng</a>
   </div>
 </div>
 <jsp:include page="comon/footer.jsp" />
