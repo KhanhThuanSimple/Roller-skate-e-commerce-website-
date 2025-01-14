@@ -25,8 +25,7 @@
 
 <body>
 <div class="container flex-colunm">
-
-    <%@ include file="comon/header.jsp" %>
+    <jsp:include page="comon/header.jsp"/>
 
     <div class="main">
         <div class="flex-row thanhtoan">
@@ -105,7 +104,7 @@
                             <h4>Tạm tính</h4>
                         </div>
                         <div class="flex-1">
-                            <h5 style="color: red;">1.760.000</h4>
+                            <h5 style="color: red;">1.760.000</h5>
                         </div>
                     </div>
                     <div class="flex-row">
@@ -153,7 +152,8 @@
 
 
 
-    <%@ include file="comon/footer.jsp" %>
+
+    <jsp:include page="comon/footer.jsp"/>
 </div>
 <script src="js/thanhtoan.js"> </script>
 
