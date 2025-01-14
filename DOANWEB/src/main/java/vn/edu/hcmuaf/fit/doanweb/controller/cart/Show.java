@@ -1,8 +1,5 @@
-package vn.edu.hcmuaf.fit.doanweb.controller.Cart;
+package vn.edu.hcmuaf.fit.doanweb.controller.cart;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

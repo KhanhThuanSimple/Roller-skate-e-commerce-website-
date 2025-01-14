@@ -72,7 +72,7 @@
 <!--    gio hang-->
     <servlet>
         <servlet-name>Add</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.Cart.Add</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.cart.Add</servlet-class>
     </servlet>
 
     <!-- Ánh xạ servlet -->
@@ -84,7 +84,7 @@
 
     <servlet>
         <servlet-name>ShowCart</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.Cart.Show</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.cart.Show</servlet-class>
     </servlet>
 
     <!-- Ánh xạ servlet -->

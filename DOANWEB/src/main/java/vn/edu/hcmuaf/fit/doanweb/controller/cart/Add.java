@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.doanweb.controller.Cart;
+package vn.edu.hcmuaf.fit.doanweb.controller.cart;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpSession;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.CartP;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
-import vn.edu.hcmuaf.fit.doanweb.service.ProductService;
 
 import java.io.IOException;
 @WebServlet(name = "Add", value = "/add-cart")
