@@ -1,0 +1,67 @@
+[33m14d2dd0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33m14d2dd0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{1}: reset: moving to HEAD
+[33m14d2dd0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{2}: checkout: moving from Thuan_src to main
+[33mfc18675[m[33m ([m[1;31morigin/Thuan_src[m[33m, [m[1;32mThuan_src[m[33m)[m HEAD@{3}: commit: upadate-giohang-checkout
+[33m3d6c25d[m HEAD@{4}: reset: moving to 3d6c25d
+[33md27805a[m HEAD@{5}: reset: moving to HEAD
+[33md27805a[m HEAD@{6}: commit: Khôi phục các tệp và lưu các thay đổi
+[33m14d2dd0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{7}: pull origin main: Fast-forward
+[33m3d6c25d[m HEAD@{8}: checkout: moving from main to Thuan_src
+[33m14d2dd0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{9}: reset: moving to HEAD
+[33m14d2dd0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{10}: commit (merge): conflit-giohang
+[33ma5302f2[m HEAD@{11}: pull origin main: Fast-forward
+[33m70676c5[m HEAD@{12}: checkout: moving from Thuan_src to main
+[33m3d6c25d[m HEAD@{13}: commit: update-giohang_coban
+[33m70676c5[m HEAD@{14}: pull origin main: Fast-forward
+[33mab82183[m HEAD@{15}: checkout: moving from main to Thuan_src
+[33m70676c5[m HEAD@{16}: checkout: moving from Thuan_src to main
+[33mab82183[m HEAD@{17}: checkout: moving from main to Thuan_src
+[33m70676c5[m HEAD@{18}: commit (merge): update-viewThanhtoan
+[33md1e2dbe[m HEAD@{19}: reset: moving to HEAD
+[33md1e2dbe[m HEAD@{20}: reset: moving to HEAD
+[33md1e2dbe[m HEAD@{21}: pull origin main: Fast-forward
+[33macb2768[m HEAD@{22}: checkout: moving from Thuan_src to main
+[33mab82183[m HEAD@{23}: commit: update-viewthanhtoan
+[33m26f4456[m HEAD@{24}: commit: capnhatlaicsssanpham
+[33m2de6721[m HEAD@{25}: checkout: moving from main to Thuan_src
+[33macb2768[m HEAD@{26}: merge Thuan_src: Merge made by the 'ort' strategy.
+[33mf9d2fc6[m HEAD@{27}: pull origin main: Fast-forward
+[33mb94c112[m HEAD@{28}: checkout: moving from Thuan_src to main
+[33m2de6721[m HEAD@{29}: commit: update-Phantrang
+[33mb94c112[m HEAD@{30}: checkout: moving from main to Thuan_src
+[33mb94c112[m HEAD@{31}: merge Thuan_src: Fast-forward
+[33ma5d1f93[m HEAD@{32}: checkout: moving from Thuan_src to main
+[33mb94c112[m HEAD@{33}: commit: update-product-dtb
+[33ma5d1f93[m HEAD@{34}: checkout: moving from main to Thuan_src
+[33ma5d1f93[m HEAD@{35}: pull origin Thuan_src: Fast-forward
+[33m505c0e2[m HEAD@{36}: checkout: moving from Thuan_src to main
+[33ma5d1f93[m HEAD@{37}: commit: update_sort
+[33m93578e4[m HEAD@{38}: commit: update search
+[33m505c0e2[m HEAD@{39}: checkout: moving from main to Thuan_src
+[33m505c0e2[m HEAD@{40}: merge Thuan_src: Fast-forward
+[33m4bf0084[m HEAD@{41}: checkout: moving from Thuan_src to main
+[33m505c0e2[m HEAD@{42}: commit: update product-detail
+[33m32cfb48[m HEAD@{43}: commit: chuyenupdatecatetumain
+[33m4bf0084[m HEAD@{44}: checkout: moving from main to Thuan_src
+[33m4bf0084[m HEAD@{45}: merge Thuan_src: Fast-forward
+[33m58a6a34[m HEAD@{46}: pull origin main: Fast-forward
+[33m2650cd5[m HEAD@{47}: checkout: moving from Thuan_src to main
+[33m4bf0084[m HEAD@{48}: checkout: moving from Thuan_src to Thuan_src
+[33m4bf0084[m HEAD@{49}: commit: capnhatsanphamlenweb
+[33m58a6a34[m HEAD@{50}: pull origin main: Fast-forward
+[33mea9ec81[m HEAD@{51}: checkout: moving from main to Thuan_src
+[33m2650cd5[m HEAD@{52}: merge Thuan_src: Merge made by the 'ort' strategy.
+[33m0aeb2de[m HEAD@{53}: pull origin main: Fast-forward
+[33m3014ac3[m HEAD@{54}: checkout: moving from Thuan_src to main
+[33mea9ec81[m HEAD@{55}: commit: update header-footer
+[33m93378b9[m HEAD@{56}: checkout: moving from main to Thuan_src
+[33m3014ac3[m HEAD@{57}: merge Thuan_src: Merge made by the 'ort' strategy.
+[33mecbdeaf[m HEAD@{58}: pull origin main: Fast-forward
+[33m3664ddd[m[33m ([m[1;31morigin/Nhan_src[m[33m, [m[1;32mkhanh_thuan_src[m[33m)[m HEAD@{59}: checkout: moving from Thuan_src to main
+[33m93378b9[m HEAD@{60}: commit: home
+[33m3664ddd[m[33m ([m[1;31morigin/Nhan_src[m[33m, [m[1;32mkhanh_thuan_src[m[33m)[m HEAD@{61}: checkout: moving from main to Thuan_src
+[33m3664ddd[m[33m ([m[1;31morigin/Nhan_src[m[33m, [m[1;32mkhanh_thuan_src[m[33m)[m HEAD@{62}: checkout: moving from khanh_thuan_src to main
+[33m3664ddd[m[33m ([m[1;31morigin/Nhan_src[m[33m, [m[1;32mkhanh_thuan_src[m[33m)[m HEAD@{63}: checkout: moving from Thuan_src to khanh_thuan_src
+[33m3664ddd[m[33m ([m[1;31morigin/Nhan_src[m[33m, [m[1;32mkhanh_thuan_src[m[33m)[m HEAD@{64}: pull origin main: Fast-forward
+[33m03446a9[m HEAD@{65}: checkout: moving from main to Thuan_src
+[33m3664ddd[m[33m ([m[1;31morigin/Nhan_src[m[33m, [m[1;32mkhanh_thuan_src[m[33m)[m HEAD@{66}: clone: from https://github.com/KhanhThuanSimple/DoAnLTW.git

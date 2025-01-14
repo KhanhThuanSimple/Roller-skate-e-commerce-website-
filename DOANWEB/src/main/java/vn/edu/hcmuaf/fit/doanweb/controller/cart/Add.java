@@ -9,9 +9,9 @@ import jakarta.servlet.http.HttpSession;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.CartP;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
-import vn.edu.hcmuaf.fit.doanweb.service.ProductService;
 
 import java.io.IOException;
+
 @WebServlet(name = "Add", value = "/add-cart")
 public class Add extends HttpServlet {
 
@@ -24,7 +24,7 @@ public class Add extends HttpServlet {
 
         if (product == null) {
             // Nếu sản phẩm không tồn tại, chuyển hướng và dừng xử lý
-            response.sendRedirect("?addCart=false");
+            response.sendRedirect(request.getHeader("referer") + "?addCart=false");
             return;
         }
 
@@ -39,22 +39,18 @@ public class Add extends HttpServlet {
         cart.addProduct(product);
         session.setAttribute("cart", cart);
 
-        // Lấy URL của trang hiện tại từ Referer header
-        String referer = request.getHeader("Referer");
-
-        // Nếu không có referer (chẳng hạn khi người dùng trực tiếp truy cập trang), điều hướng đến trang sản phẩm
-        if (referer == null || referer.isEmpty()) {
-            referer = "product"; // Hoặc bất kỳ URL mặc định nào bạn muốn chuyển hướng về
+        // Lấy URL của trang trước đó
+        String referer = request.getHeader("referer");
+        if (referer != null) {
+            // Chuyển hướng về trang trước đó
+            response.sendRedirect(referer + "?addCart=ok");
+        } else {
+            // Nếu không lấy được URL trước đó, quay về trang mặc định
+            response.sendRedirect("product?addCart=ok");
         }
-
-        // Chuyển hướng người dùng quay lại trang trước đó
-        response.sendRedirect(referer + "?addCart=ok");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }
-
-
-
