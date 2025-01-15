@@ -48,6 +48,40 @@ public class ProductDao {
         return products;
     }
 
+//    public List<Product> getList(int id ) {
+//        List<Product> products = new ArrayList<>();
+//        String query = "SELECT * FROM product where (cateID = 0 OR cateID = ?)";
+//
+//        try (Connection cons = DBConnect.getConn()) {
+//            if (cons == null) {
+//                throw new SQLException("Kết nối không thành công.");
+//            }
+//
+//            try (PreparedStatement statement = cons.prepareStatement(query);
+//                 statement.setInt(1, id);
+//                 ResultSet rs = statement.executeQuery()) {
+//                while (rs.next()) {
+//                    products.add(new Product(
+//                            rs.getInt("id"),
+//                            rs.getString("name"),
+//                            rs.getString("img"),
+//                            rs.getDouble("price"),
+//                            rs.getString("title"),
+//                            rs.getString("description"),
+//                            rs.getString("offer")
+//                    ));
+//                }
+//            }
+//
+//            if (products.isEmpty()) {
+//                System.out.println("Không có sản phẩm nào được tìm thấy.");
+//            }
+//        } catch (SQLException e) {
+//            System.out.println("Lỗi khi lấy sản phẩm: " + e.getMessage());
+//        }
+//        return products;
+//    }
+
     public List<Product> getProductByOrder(String order) {
         List<Product> products = new ArrayList<>();
 

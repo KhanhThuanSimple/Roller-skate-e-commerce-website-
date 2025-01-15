@@ -16,7 +16,7 @@
                 <a href="product"> SẢN PHẨM</a>
                 <ul class="sub-menu">
                     <c:forEach items="${listc}" var="o">
-                        <li> <a href="category?id=${o.id}">${o.name}</a></li>
+                        <li> <a href="product?category=${o.id}">${o.name}</a></li>
                     </c:forEach>
                 </ul>
             </li>
