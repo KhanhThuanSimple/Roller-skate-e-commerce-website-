@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -32,7 +33,7 @@
                 </thead>
                 <tbody>
 
-                <c:forEach var="category" items="${categorys}">
+                <c:forEach var="category" items="${categories}">
                     <tr>
                         <td>${category.id}</td>
                         <td>${category.name}</td>
@@ -49,7 +50,7 @@
 
                             <form action="${pageContext.request.contextPath}/admin/category/delete" method="post"
                                   style="display:inline;">
-                                <input type="hidden" name="uid" value="${user.id}">
+                                <input type="hidden" name="uid" value="${category.id}">
                                 <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
                                         style="border:none;background-color: unset">
                                     <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
@@ -87,6 +88,7 @@
         <form method="post" action="${pageContext.request.contextPath}/admin/category/insert"class="flex-colunm" >
             <h2>Thêm Loại Sản Phẩm</h2>
 
+
             <div>
                 <input name="name" class="input-common"  type="text" placeholder=" Loại sản phẩm">
             </div>
@@ -108,7 +110,7 @@
             <input type="hidden" name="id">
 
             <div>
-                <input name="name" class="input-common"  type="email" placeholder=" Loại sản phẩm">
+                <input name="type" class="input-common"  type="email" placeholder=" Loại sản phẩm">
             </div>
 
             <div  class="flex-center">
@@ -135,8 +137,8 @@
 
     function openCategoryUpdateForm(category) {
         const form = document.getElementById("modal-update-category");
-        form.querySelector('input[name="id-product"]').value = category.id;
-        form.querySelector('input[name="type-product"]').value = category.name;
+        form.querySelector('input[name="id"]').value = category.id;
+        form.querySelector('input[name="type"]').value = category.name;
 
         form.style.display = "block";
     }

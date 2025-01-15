@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
+import vn.edu.hcmuaf.fit.doanweb.service.CategoryService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,13 +18,14 @@ public class AdminCategoryEditController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        AuthService authService = new AuthService();
+        CategoryService categoryService = new CategoryService();
+
 
         try{
             String name=request.getParameter("name");
             int id=Integer.parseInt(request.getParameter("id"));
 
-            boolean rs =authService.updateCategory(name,id);
+            boolean rs =categoryService.updateCategory(name,id);
             System.out.println("KQs");
 
             System.out.println(rs);
