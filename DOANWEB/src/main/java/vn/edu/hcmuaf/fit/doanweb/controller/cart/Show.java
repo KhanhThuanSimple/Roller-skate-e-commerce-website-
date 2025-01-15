@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.CartP;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.CartProduct;
 
 import java.io.IOException;
 
@@ -21,6 +22,11 @@ public class Show extends HttpServlet {
         HttpSession session = request.getSession(true);
         CartP cartP = (CartP) session.getAttribute("cart");
         if (cartP != null) {
+            // update cart
+            String checkout = request.getParameter("checkout");
+            System.out.println("qtt"+checkout);
+
+            // remove cart
             String removeParam = request.getParameter("remove");
             if (removeParam != null) {
                 int idRemove = Integer.parseInt(removeParam);
@@ -36,6 +42,10 @@ public class Show extends HttpServlet {
             if (id != null && qt != null) {
                 int idUpdate = Integer.parseInt(id);
                 int qtUpdate = Integer.parseInt(qt);
+                System.out.println("qtt"+idUpdate);
+
+                System.out.println("qtt"+qtUpdate);
+
                 if (cartP != null) {
                     cartP.update(idUpdate, qtUpdate);
                     session.setAttribute("cart", cartP);
