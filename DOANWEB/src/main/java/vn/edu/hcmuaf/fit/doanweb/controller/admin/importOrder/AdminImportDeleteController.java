@@ -1,18 +1,16 @@
-package vn.edu.hcmuaf.fit.doanweb.controller.admin.customer;
+package vn.edu.hcmuaf.fit.doanweb.controller.admin.importOrder;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "AdminCustomerDeleteController" ,value = "/admin/customer/delete")
-public class AdminCustomerDeleteController extends HttpServlet {
+@WebServlet(name = "AdminImportDeleteController", value = "/admin/import/delete")
+public class AdminImportDeleteController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
@@ -23,13 +21,13 @@ public class AdminCustomerDeleteController extends HttpServlet {
         int uid= Integer.parseInt(request.getParameter("uid"));
 
         try {
-            boolean rs = authService.delete(uid);
+            boolean rs = authService.deleteImport(uid);
             if(rs) {
                 request.setAttribute("message", "Xóa thành công!");
             }else{
                 request.setAttribute("message", "Xóa không thành công!");
             }
-            response.sendRedirect(request.getContextPath() + "/admin/customer");
+            response.sendRedirect(request.getContextPath() + "/admin/import");
 
 
         } catch (SQLException e) {
@@ -41,4 +39,7 @@ public class AdminCustomerDeleteController extends HttpServlet {
 
     }
 
+
 }
+
+

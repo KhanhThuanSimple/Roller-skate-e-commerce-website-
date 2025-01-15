@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -25,7 +27,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID đơn hàng</th>
+                            <th>ID </th>
                             <th>ID sản phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
@@ -34,93 +36,38 @@
                             <th>Số Lượng Xuất</th>
 
 
-                           
-                            <th>Thao tác</th>
-                            
                         </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="export" items="${exports}">
                         <tr>
-                            <td>01</td>
-                            <td>TSM1</td>
-                            <td>Flying Eagle</td>
-                            <td class="image"> <img src="../image/CR3.png" alt=""></td>
+                            <td>${export.id}</td>
+                            <td>${export.productId}</td>
+                            <td>${export.productName}</td>
+                            <td>${export.image}</td>
+                            <td>${export.salePrice}</td>
+                            <td>${export.quantity}</td>
 
-                            <td>2.500.000</td>
-                            <td>30</td>
-                           
 
-                            
-                            <td>
-                                <button  onclick="openXuatHangForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
                         </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>TSM2</td>
-                            <td>Giày patin TSM2</td>
-                            <td class="image"> <img src="../image/MS1.png" alt=""></td>
-                            <td>1.200.000</td>
-                            <td>15</td>
-                          
-                            
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>TSM3</td>
-                            <td>Giày patin TSM3</td>
-                            <td class="image"> <img src="../image/EGLS1.png" alt=""></td>
-                            <td>1.260.000</td>
-                            <td>20</td>
-                          
-                            
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        <tr>
-                            <td>04</td>
-                            <td>S6S</td>
-                            <td>Giày patin S6S</td>
-                            <td class="image"> <img src="../image/CR2.png" alt=""></td>
-                            <td>2.590.000</td>
-                            <td>20</td>
-                           
-                            
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td>M52</td>
-                            <td>Giày patin M52</td>
-                            <td class="image"> <img src="../image/CR3.png" alt=""></td>
-                            <td>1.990.000</td>
-                            <td>25</td>
-                           
-                            
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                 <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"  style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            </td>
-                        </tr>
+                    </c:forEach>
+
                         <!-- Các khách hàng sẽ được hiển thị ở đây -->
                     </tbody>
-                    <div class="pagination flex-row">
-                        <div class="flex-1">
-                            <button id="prevPage" class= "button-black" type="button">Trước</button>
-                            <span id="pageNumber">1</span> / <span id="totalPages">1</span>
-                            <button id="SauPage" class="button-black"type="button">Sau</button>
-                        </div>
-                      
+                    < <div class="pagination flex-row">
+                    <div class="flex-1">
+                        <a href="${pageContext.request.contextPath}/admin/export?page=${page-1}">
+                            <button  id="prevPage" class= "button-black" type="button" >Trước</button>
+
+                        </a>
+                        <span id="pageNumber">${page}</span> / <span id="totalPages">${totalPage}</span>
+                        <a href="${pageContext.request.contextPath}/admin/export?page=${page+1}">
+                            <button  id="SauPage" class="button-black"type="button" >Sau</button>
+
+                        </a>
                     </div>
+
+                </div>
 
                 </table>
             </section>
@@ -128,36 +75,7 @@
     </div>
 
     <!-- Product Form Modal -->
-    <div id="xuatHangModal" class="modal">
-        <div class="modal-content" >
-            <span class="close-btn" onclick="closeXuatHangForm()">&times;</span>
-           
-            <form action="post" class="flex-colunm" >
-                <h2>Thêm sản phẩm</h2>
-                <div >
-                    <input  class="input-common" type="text" placeholder=" ID sản phẩm">
-                </div>
-                <div>
-                    <input class="input-common"  type="email" placeholder=" Tên sản phẩm">
-                </div>
-                
-                <div>
-                    <input class="input-common" type="number" placeholder="Giá nhập">
-                </div>
-               
-                <div>
-                    <input class="input-common" type="number" placeholder="Số lượng nhập">
-                  
-                </div>
-                <div  class="flex-center">
-                    <button type="submit" class="button-orange">Lưu </button>
-                </div>
 
-                
-            </form>
-               
-        </div>
-    </div>
 
     <script src="admin.js"></script>
     <script>

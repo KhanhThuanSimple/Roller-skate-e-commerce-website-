@@ -54,11 +54,11 @@ public class Payment extends BaseServlet {
         String discountCode = request.getParameter("discountCode");
 
         HttpSession session = request.getSession();
-        Integer userId = (Integer) session.getAttribute("user");
+        User user = (User) session.getAttribute("auth");
 
         CartP cart = (CartP) session.getAttribute("cart");
 
-        if (userId == null) {
+        if (user == null) {
            response.sendRedirect("login");
             return;
         }
@@ -71,7 +71,7 @@ public class Payment extends BaseServlet {
             OderDao dao = new OderDao();
             Order order = new Order();
 
-            order.setUser_id(userId);
+            order.setUser_id(user.getId());
             order.setName(name);
             order.setPhone(phone);
             order.setAddress(address);

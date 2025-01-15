@@ -27,7 +27,7 @@
     <div id="main-container">
         <!-- Main Content Section -->
         <div class="card-wrapper">
-            <div class="card">
+            <div class="card" style="display: flex">
                 <!-- card left -->
                 <div class="product-imgs">
                     <div class="img-display">

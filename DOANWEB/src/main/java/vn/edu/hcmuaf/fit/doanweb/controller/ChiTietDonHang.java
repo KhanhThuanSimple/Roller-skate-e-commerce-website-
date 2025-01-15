@@ -7,6 +7,7 @@ import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Order;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.OrderDetail;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.OrderItems;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,16 +24,16 @@ public class ChiTietDonHang extends BaseServlet {
 
         String id = request.getParameter("pid");
         HttpSession session = request.getSession();
-        Integer userId = (Integer) session.getAttribute("user");
+        User user = (User)  session.getAttribute("auth");
 
-        if (userId == null) {
+        if (user == null) {
             // Nếu không có userId trong session, chuyển hướng người dùng đến trang đăng nhập
             response.sendRedirect("login");
             return;
         }
 
         // Lấy danh sách đơn hàng từ DAO
-        List<OrderDetail> list = dao.getOrderDetails(userId,Integer.parseInt(id));
+        List<OrderDetail> list = dao.getOrderDetails(user.getId(),Integer.parseInt(id));
 
         // Kiểm tra nếu không có đơn hàng nào
         if (list == null || list.isEmpty()) {

@@ -3,10 +3,7 @@ package vn.edu.hcmuaf.fit.doanweb.dao;
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,6 +31,7 @@ public class ProductDao {
                             rs.getDouble("price"),
                             rs.getString("title"),
                             rs.getString("description"),
+                            rs.getInt("cateID"),
                             rs.getString("offer")
                     ));
                 }
@@ -106,6 +104,7 @@ public class ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
+                                rs.getInt("cateID"),
                                 rs.getString("offer")
                         ));
                     }
@@ -140,6 +139,7 @@ public class ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
+                                rs.getInt("cateID"),
                                 rs.getString("offer")
                         );
                     }
@@ -164,6 +164,8 @@ public class ProductDao {
 
             try (PreparedStatement statement = cons.prepareStatement(query)) {
                 statement.setString(1, id); // Đặt giá trị tham số
+                System.out.println(statement);
+
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
                         products.add(new Product(
@@ -173,6 +175,7 @@ public class ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
+                                rs.getInt("cateID"),
                                 rs.getString("offer")
                         ));
                     }
@@ -208,6 +211,7 @@ public class ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
+                                rs.getInt("category_id"),
                                 rs.getString("offer")
                         ));
                     }
@@ -242,6 +246,7 @@ public class ProductDao {
                             rs.getDouble("price"),
                             rs.getString("title"),
                             rs.getString("description"),
+                            rs.getInt("cateID"),
                             rs.getString("offer")
                     ));
                 }
@@ -279,6 +284,72 @@ public class ProductDao {
             System.out.println("Lỗi khi lấy sản phẩm: " + e.getMessage());
         }
         return lists;
+    }
+    public boolean insertProduct(String name, String img, double price,String title,String description, int cateID,String offer) throws SQLException {
+        String sql = "insert into product(name,img,price,title, description,cateID,offer) values(?,?,?, ?,?,?,?)";
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setString(1, name);
+            pre.setString(2, img);
+            pre.setDouble(3, price);
+            pre.setString(4, title);
+            pre.setString(5, description);
+            pre.setInt(6, cateID);
+            pre.setString(7, offer);
+            System.out.println(pre);
+
+
+
+            int rs = pre.executeUpdate();
+
+            return rs==1;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean updateProduct(String name, String img, double price,String title,String description, int cateID,String offer, int id) throws SQLException {
+        String sql = "UPDATE product SET name = ?, img = ?, price = ?, title = ?, description = ? ,cateID = ? ,offer = ? WHERE id = ?";
+
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setString(1, name);
+            pre.setString(2, img);
+            pre.setDouble(3, price);
+            pre.setString(4, title);
+
+
+            pre.setString(5, description);
+            pre.setInt(6, cateID);
+            pre.setString(7, offer);
+            pre.setInt(8, id);
+
+            int rs = pre.executeUpdate();
+
+            return rs==1;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean deleteProduct(int uid) throws SQLException {
+        String sql = "delete from product where id = ?";
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setInt(1, uid);
+
+            int rs = pre.executeUpdate();
+
+            return rs==1;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public int getTotalProduct() {
@@ -320,6 +391,7 @@ public class ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
+                                rs.getInt("cateId"),
                                 rs.getString("offer")
                         ));
                     }
@@ -358,6 +430,7 @@ public class ProductDao {
                             rs.getDouble("price"),
                             rs.getString("title"),
                             rs.getString("description"),
+                            rs.getInt("cateId"),
                             rs.getString("offer")
                     );
                 }

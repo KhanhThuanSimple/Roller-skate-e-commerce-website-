@@ -5,8 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
+import vn.edu.hcmuaf.fit.doanweb.service.ProductService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,12 +19,14 @@ public class AdminProductListController extends HttpServlet  {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        AuthService authService = new AuthService();
+        ProductService productService = new ProductService();
         try {
-            List<User>  users = authService.getList(0, 1);
-            System.out.println(users.size());
-            request.setAttribute("users", users);
-            request.getRequestDispatcher("/admin/user.jsp").forward(request, response);
+            List<Product>  products = productService.getAll();
+          System.out.println(1234);
+            request.setAttribute("products", products);
+            request.getRequestDispatcher("/admin/product.jsp").forward(request, response);
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

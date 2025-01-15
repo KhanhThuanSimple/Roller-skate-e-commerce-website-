@@ -20,7 +20,9 @@ public class Add extends HttpServlet {
         ProductDao dao = new ProductDao();
         // Lấy thông tin sản phẩm
         String productId = request.getParameter("pid");
+        System.out.println(productId);
         Product product = dao.getAllProductId(productId);
+        System.out.println(product.getId());
 
         if (product == null) {
             // Nếu sản phẩm không tồn tại, chuyển hướng và dừng xử lý

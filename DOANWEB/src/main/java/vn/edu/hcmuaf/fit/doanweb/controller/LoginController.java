@@ -29,13 +29,13 @@ public class LoginController extends HttpServlet {
 
         AuthService authService = new AuthService();
         try {
-            User user=authService.login(uname,pass);
+            User user=authService.findByUsername(uname);
             if (user!=null){
                 HttpSession session = request.getSession(true);
                 session.setAttribute("auth",user);
                 session.setAttribute("user",user.getId());
                 System.out.println("User details: " + user);
-                System.out.println("User ID from session: " + session.getAttribute("user"));
+                System.out.println("User ID from session: " + session.getAttribute("auth"));
 
 
                 if(user.getType()==1){

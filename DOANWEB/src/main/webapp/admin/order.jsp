@@ -27,97 +27,60 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID đơn hàng</th>
-                            <th>Khách Hàng</th>
-                            <th>Tổng Tiền</th>
-                            <th>Trạng thái thanh toán</th>
+                            <th>ID </th>
+                            <th>ID Khách Hàng</th>
+                            <th>Điện Thoại</th>
+                            <th>Địa Chỉ</th>
 
-                            <th>Trạng thái giao hàng</th>
+                            <th>Phương Thức Thanh Toán</th>
+                            <th>Tổng tiền</th>
+                            <th>Status</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="order" items="${orders}">
                         <tr>
-                            <td>01</td>
-                            <td>Nguyễn Văn A</td>
-                            <td>160.000</td>
-                            <td>Đã thanh toán</td>
+                            <td>${order.id}</td>
+                            <td>${order.user_id}</td>
+                            <td>${order.name}</td>
+                            <td>${order.phone}</td>
+                            <td>${order.address}</td>
+                            <td>${order.paymentMethod}</td>
+                            <td>${order.totalAmount}</td>
+                            <td>${order.status}</td>
 
-                            <td> Đặt hàng</td>
                             <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
-                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
+
+                                <button onclick="openOrderUpdateForm({
+                                        id: ${order.id},
+                                        user_id:'${order.user_id}',
+                                        name:'${order.name}',
+                                        phone:'${order.phone}',
+                                        address:'${order.address}',
+                                        paymentMethod:'${order.paymentMethod}'
+                                        totalAmount:'${order.totalAmount}',
+
+                                        status:'${order.status}'
+                                        })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+
+
+                                <form action="${pageContext.request.contextPath}/admin/order/delete" method="post"
+                                      style="display:inline;">
+                                    <input type="hidden" name="uid" value="${user.id}">
+                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                            style="border:none;background-color: unset">
+                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                    </button>
+                                </form>
+                                <button style="border:none;background-color: unset"> <i onclick="openOrderDetailForm()"
+                                                                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
                             </td>
                         </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Nguyễn Văn Hậu</td>
-                            <td>130.000</td>
-                            <td>Đã thanh toán</td>
-                            <td>Xác nhận đơn hàng</td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
-                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Trần Mai Anh</td>
-                            <td>180.000</td>
-                            <td>Chúa thanh toán</td>
-                            <td>Đang xử lí </td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
-                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>04</td>
-                            <td>Phạm Thị Hồng</td>
-                            <td>400.000</td>
-                            <td>Đã thanh toán</td>
-                            <td>Đang lấy hàng</td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
-                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td>Nguyễn Cao Thắng</td>
-                            <td>560.000</td>
-                            <td>Chưa thanh toán</td>
-                            <td>Đang giao hàng</td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
-                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                </button>
-                            </td>
-                        </tr>
+                    </c:forEach>
+                    <!-- Các khách hàng sẽ được hiển thị ở đây -->
+
                        
                     </tbody>
 
@@ -132,114 +95,58 @@
 
                 </table>
             </section>
-            <div id="productModal" class="modal">
+            <div id="orderDetailModal" class="modal">
                 <div class="modal-order">
-                    <span class="close-btn" onclick="closeProductForm()">&times;</span>
+                    <span class="close-btn" onclick="closeOrderDetailForm()">&times;</span>
 
                     <form action="post" class="flex-colunm">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>ID sản phẩm</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Hình ảnh</th>
+                                    <th>ID </th>
+                                    <th>ID đơn hàng</th>
+                                    <th>Số lượng</th>
 
                                     <th>Giá</th>
 
-
-                                    <th>Số lượng </th>
                                     <th>Hành động</th>
 
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach var="orderDetail" items="${orderDetails}">
                                 <tr>
-                                    <td>TSM1</td>
-                                    <td>Flying Eagle</td>
-                                    <td class="image"> <img src="../image/CR3.png" alt=""></td>
+                                    <td>${orderDetail.id}</td>
+                                    <td>${orderDetail.order_id}</td>
+                                    <td>${orderDetail.product_id}</td>
+                                    <td>${orderDetail.quantity}</td>
+                                    <td>${orderDetail.price}</td>
 
-                                    <td>2.500.000</td>
-
-                                    <td>120</td>
 
                                     <td>
-                                        <button style="border:none;background-color: unset" type="button"  onclick="openProductFormDetail()">
-                                            <i class="fa-solid fa-pen-to-square"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                        </button>
-                                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+
+                                        <button onclick="openOrderDetailUpdateForm({
+                                                id: ${orderDetail.id},
+                                                order_id:'${orderDetail.order_id}',
+                                                product_id:'${orderDetail.product_id}',
+                                                quantity:'${orderDetail.quantity}',
+                                                price:'${orderDetail.price}'
+                                                })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+
+
+                                        <form action="${pageContext.request.contextPath}/admin/order/delete" method="post"
+                                              style="display:inline;">
+                                            <input type="hidden" name="uid" value="${orderDetail.id}">
+                                            <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                                    style="border:none;background-color: unset">
+                                                <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                            </button>
+                                        </form>
+
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>TSM2</td>
-                                    <td>Giày patin TSM2</td>
-                                    <td class="image"> <img src="../image/MS1.png" alt=""></td>
-                                    <td>1.200.000</td>
+                            </c:forEach>
 
-                                    <td>120</td>
-
-                                    <td>
-                                        <button style="border:none;background-color: unset" type="button"  onclick="openProductFormDetail()">
-                                            <i class="fa-solid fa-pen-to-square"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                        </button>
-                                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>TSM3</td>
-                                    <td>Giày patin TSM3</td>
-                                    <td class="image"> <img src="../image/EGLS1.png" alt=""></td>
-                                    <td>1.260.000</td>
-
-                                    <td>120</td>
-                                    <td>
-                                        <button style="border:none;background-color: unset" type="button"  onclick="openProductFormDetail()">
-                                            <i class="fa-solid fa-pen-to-square"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                        </button>
-                                        <button 
-                                            style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                    </td>
-                                <tr>
-                                    <td>S6S</td>
-                                    <td>Giày patin S6S</td>
-                                    <td class="image"> <img src="../image/CR2.png" alt=""></td>
-                                    <td>2.590.000</td>
-
-                                    <td>200</td>
-
-                                    <td>
-                                        <button style="border:none;background-color: unset" type="button"  onclick="openProductFormDetail()">
-                                            <i class="fa-solid fa-pen-to-square"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                        </button>
-                                        <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>M52</td>
-                                    <td>Giày patin M52</td>
-                                    <td class="image"> <img src="../image/CR3.png" alt=""></td>
-                                    <td>1.990.000</td>
-
-                                    <td>100</td>
-
-                                    <td>
-                                        <button style="border:none;background-color: unset" type="button"  onclick="openProductFormDetail()">
-                                            <i class="fa-solid fa-pen-to-square"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                        </button>
-                                        <button 
-                                            style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                                style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                    </td>
-                                </tr>
-                                <!-- Các khách hàng sẽ được hiển thị ở đây -->
                             </tbody>
                          
 
@@ -250,23 +157,79 @@
                 </div>
 
             </div>
-            <div id="productModalDetail" class="modal">
+            <div id="model-update-orderDetail" class="modal">
                 <div class="modal-content">
-                    <span class="close-btn" onclick="closeProductFormDetail()">&times;</span>
+                    <span class="close-btn" onclick="closeOrderDetailUpdateForm()">&times;</span>
 
-                    <form action="post" class="flex-colunm">
+                    <form method="post" action="${pageContext.request.contextPath}/admin/order/update" class="flex-colunm">
                         <h2>Chỉnh sửa sản phẩm</h2>
+                        <input type="hidden" name="id">
                         <div>
-                            <input class="input-common" type="text" placeholder=" Họ & tên ">
+                            <input  name="name" class="input-common" type="text" placeholder=" Tên sản phẩm">
+                        </div>
+
+
+
+                        <div>
+                            <input name="title" class="input-common" type="text" placeholder="Tiêu đề">
                         </div>
                         <div>
-                            <input class="input-common" type="email" placeholder=" Email">
+                            <input name="description" class="input-common" type="text" placeholder="Mô tả">
                         </div>
                         <div>
-                            <input class="input-common" type="password" placeholder="Mật khẩu">
+                            <input name="cateID" class="input-common" type="text" placeholder="ID loại sản phẩm">
+                        </div>
+                        <div>
+                            <input name="offer" class="input-common" type="text" placeholder="Khuyến mãi">
+                        </div>
+                        <div>
+
+                            <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
+                            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
+                                   style="visibility: hidden;" />
                         </div>
                         <div class="flex-center">
-                            <button class="button-orange">Lưu sản phẩm</button>
+                            <button type="submit" class="button-orange">Lưu sản phẩm<button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div id="model-update-order" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeOrderUpdateForm()">&times;</span>
+
+                    <form method="post" action="${pageContext.request.contextPath}/admin/order/update" class="flex-colunm">
+                        <h2>Chỉnh sửa đơn hàng</h2>
+                        <input type="hidden" name="id">
+                        <div>
+                            <input name="user_id" class="input-common" type="number" placeholder=" ID khách hàng">
+                        </div>
+                        <div>
+                            <input name="name" class="input-common" type="text" placeholder=" Tên khách hàng">
+                        </div>
+
+                        <div>
+                            <input name="phone" class="input-common" type="number" placeholder="Số điện thoại">
+                        </div>
+                        <div>
+                            <textarea name="address" rows="3" class="input-common" placeholder="Địa chỉ"></textarea>
+                        </div>
+
+                        <div>
+                            <input name="paymentMethod" class="input-common" type="text" placeholder="Phương thức thanh toán">
+                        </div>
+
+                        <div>
+                            <input name="totalAmount" class="input-common" type="text" placeholder="Tổng tiền">
+                        </div>
+
+                        <div>
+                            <input name="status" class="input-common" type="text" placeholder="Status">
+                        </div>
+
+                        <div class="flex-center">
+                            <button class="button-orange" type="submit">Lưu tài khoản</button>
                         </div>
 
 
@@ -279,6 +242,57 @@
 
 
     <script src="admin.js"></script>
+    <script>
+        function openOrderDetailForm() {
+            document.getElementById("orderDetailModal").style.display = "block";
+        }
+
+        function closeOrderDetailForm() {
+            document.getElementById("orderDetailModal").style.display = "none";
+        }
+
+        function openOrderUpdateForm(order) {
+            const form = document.getElementById("model-update-order");
+            form.querySelector('input[name="id"]').value = order.id;
+            form.querySelector('input[name="user_id"]').value = order.name;
+            form.querySelector('input[name="name"]').value = order.username;
+            form.querySelector('input[name="phone"]').value = order.phone;
+            form.querySelector('textarea[name="address"]').value = order.address;
+            form.querySelector('input[name="paymentMethod"]').value = order.username;
+            form.querySelector('input[name="totalAmount"]').value = order.phone;
+            form.querySelector('input[name="status"]').value = order.phone;
+
+
+            form.style.display = "block";
+        }
+
+        function closeOrderUpdateForm() {
+            document.getElementById("model-update-order").style.display = "none";
+        }
+
+
+
+
+
+
+        function openProductUpdateForm(product) {
+            const form = document.getElementById("modal-update-orderDetail");
+            form.querySelector('input[name="id"]').value = product.id;
+            form.querySelector('input[name="name"]').value = product.name;
+            form.querySelector('input[name="img"]').value = product.imag;
+            form.querySelector('input[name="title"]').value = product.title;
+            form.querySelector('in[name="description"]').value = product.description;
+            form.querySelector('in[name="cateID"]').value = product.cateID;
+
+            form.querySelector('in[name="offer"]').value = product.offer;
+            form.style.display = "block";
+        }
+
+        function closeUpdateProductForm() {
+            document.getElementById("modal-update-orderDetail").style.display = "none";
+        }
+
+    </script>
 </body>
 
 </html>

@@ -1,14 +1,15 @@
 package vn.edu.hcmuaf.fit.doanweb.service;
 
-import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
+import vn.edu.hcmuaf.fit.doanweb.dao.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AuthService {
 
-    public User login(String username, String password) throws SQLException {
+    public User findByUsername(String username) throws SQLException {
         UserDao userDao = new UserDao();
         User user = userDao.findUserByUserName(username);
         if (user == null) {
@@ -22,10 +23,22 @@ public class AuthService {
         ArrayList<User> users = userDao.getList(page, type);
         return users;
     }
+
     public int getPage( int type) throws SQLException {
         UserDao userDao = new UserDao();
         return userDao.getPage(type);
     }
+    public int getPageExport( ) throws SQLException {
+        ExportOrdersDao exportOrdersDao = new ExportOrdersDao();
+        return exportOrdersDao.getPageExport();
+    }
+
+    public int getPageImport( ) throws SQLException {
+        ImportDao importDao = new ImportDao();
+        return importDao.getPageImport();
+    }
+
+
 
     public boolean insert(String name, String email, String pass,String address,String phone, int type) throws SQLException {
         UserDao userDao = new UserDao();
@@ -47,30 +60,52 @@ public class AuthService {
         return userDao.getUserByID(id);
     }
 
+    public ArrayList<ExportOrders> getListExport(int page) throws SQLException {
+        ExportOrdersDao exportDao = new ExportOrdersDao();
+        ArrayList<ExportOrders> exports = exportDao.getListExport(page);
+        return exports;
+    }
 
-//    public boolean register(String name, String uname, String pass, String rePass, String phone, String address) throws SQLException {
-//        UserDao userDao = new UserDao();
-//
-//        // Kiểm tra xem tên người dùng đã tồn tại chưa
-//        User existingUser = userDao.findUserByUserName(uname);
-//        if (existingUser != null) {
-//            return false; // Tên người dùng đã tồn tại
-//        }
-//
-//        // Kiểm tra xem mật khẩu có trùng khớp không
-//        if (!pass.equals(rePass)) {
-//            return false; // Mật khẩu không khớp
-//        }
-//
-//        // Tạo đối tượng User mới
-//        User newUser = new User();
-//        newUser.setName(name); // Giả sử bạn có phương thức setName trong User
-//        newUser.setUsername(uname);
-//        newUser.setPassword(pass); // Mật khẩu nên được mã hóa trước khi lưu vào CSDL
-//        newUser.setPhone(phone); // Giả sử bạn có phương thức setPhone trong User
-//        newUser.setAddress(address); // Giả sử bạn có phương thức setAddress trong User
-//
-//        // Thêm người dùng mới vào cơ sở dữ liệu
-//        return userDao.addUser(newUser);
-//    }
+    public ArrayList<ImportOrders> getListImport(int page) throws SQLException {
+        ImportDao importDao = new ImportDao();
+        ArrayList<ImportOrders> imports = importDao.getListImport(page);
+        return imports;
+    }
+
+
+    public boolean insertImport(int product_id,double purchase_price,int quantity) throws SQLException {
+       ImportDao importDao = new ImportDao();
+        return importDao.insertImport(product_id,purchase_price,quantity);
+    }
+    public boolean updateImport(int product_id, double purchase_price, int quantity, int id) throws SQLException {
+        ImportDao importDao = new ImportDao();
+        return importDao.updateImport(product_id,purchase_price,quantity,id);
+    }
+    public boolean deleteImport(int id) throws SQLException {
+        ImportDao importDao = new ImportDao();
+        return importDao.deleteImport(id);
+    }
+
+
+    public boolean insertProduct(String name, String img, double price,String title,String description, int cateID,String offer) throws SQLException {
+        ProductDao productDao = new ProductDao();
+        return productDao.insertProduct(name,img,price,title,description,cateID,offer);
+    }
+    public boolean updateProduct(String name, String img, double price,String title,String description, int cateID,String offer,int id) throws SQLException {
+        ProductDao productDao = new ProductDao();
+        return productDao.updateProduct(name, img, price, title, description, cateID, offer, id);
+    }
+    public boolean deleteProduct(int id) throws SQLException {
+        ProductDao productDao = new ProductDao();
+        return productDao.deleteProduct(id);
+    }
+
+
+
+
+
+
+
+
+
 }

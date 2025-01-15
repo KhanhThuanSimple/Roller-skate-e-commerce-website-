@@ -18,11 +18,14 @@ import java.util.ArrayList;
 @WebServlet(name = "RegisterController", value = "/register")
 public class RegisterController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("register.jsp").forward(request, response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        AuthService authService = new AuthService();
+
         try {
             String name = request.getParameter("name");
             String uname = request.getParameter("uname");
@@ -37,11 +40,15 @@ public class RegisterController extends HttpServlet {
                 request.getRequestDispatcher("register.jsp").forward(request, response);
 
             } else {
-                UserDao userDao = new UserDao();
-                User user = userDao.findUserByUserName(uname);
+                User user = authService.findByUsername(uname);
                 if (user == null) {
-                  //  userDao.register(name, uname, pass, phone, address);
-                    response.sendRedirect("login.jsp");
+                    boolean rs = authService.insert(name, uname, pass,address,phone, 0);
+                    if(rs){
+                        response.sendRedirect(request.getContextPath() + "/login");
+
+                    }else{
+                        request.getRequestDispatcher("register.jsp").forward(request, response);
+                    }
 
                 } else {
                     response.sendRedirect("register.jsp");

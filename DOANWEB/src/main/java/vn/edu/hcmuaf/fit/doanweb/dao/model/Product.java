@@ -3,21 +3,23 @@ package vn.edu.hcmuaf.fit.doanweb.dao.model;
 public class Product implements java.io.Serializable {
 
 
-    private int id;
-    private String name;
-    private String img;
-    private double price;
-    private String title;
-    private String description;
-    private String offer;
+    public int id;
+    public String name;
+    public String img;
+    public double price;
+    public String title;
+    public String description;
+    public int cateId;
+    public String offer;
 
-    public Product(int id, String name, String img, double price, String title, String description, String offer) {
+    public Product(int id, String name, String img, double price, String title, String description,int cateId, String offer) {
         this.id = id;
         this.name = name;
         this.img = img;
         this.price = price;
         this.title = title;
         this.description = description;
+        this.cateId = cateId;
         this.offer = offer;
     }
 
@@ -75,6 +77,14 @@ public class Product implements java.io.Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+     public int getCateId() {
+        return cateId;
+    }
+
+    public void setCateId(int cateId) {
+        this.cateId = cateId;
     }
 
     public Product() {

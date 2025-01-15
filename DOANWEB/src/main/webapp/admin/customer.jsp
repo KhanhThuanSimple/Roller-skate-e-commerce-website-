@@ -46,10 +46,19 @@
 
                         <td> ${customer.address}</td>
                         <td>
-                            <button onclick="openCustomerForm()" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                            <form action="${pageContext.request.contextPath}/admin/customer/delete" method="post" style="display:inline;">
+                            <button onclick="openCustomerUpdateForm({
+                                    id: ${customer.id},
+                                    name:'${customer.name}',
+                                    username:'${customer.username}',
+                                    phone:'${customer.phone}',
+                                    address:'${customer.address}'
+                                    })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+
+                            <form action="${pageContext.request.contextPath}/admin/customer/delete" method="post"
+                                  style="display:inline;">
                                 <input type="hidden" name="uid" value="${customer.id}">
-                                <button type="submit" style="border:none;background-color: unset">
+                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                        style="border:none;background-color: unset">
                                     <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
                             </form>
@@ -68,10 +77,10 @@
 
                         </a>
                         <span id="pageNumber">${page}</span> / <span id="totalPages">${totalPage}</span>
-                       <a href="${pageContext.request.contextPath}/admin/customer?page=${page+1}">
-                           <button  id="SauPage" class="button-black"type="button" >Sau</button>
+                        <a href="${pageContext.request.contextPath}/admin/customer?page=${page+1}">
+                            <button  id="SauPage" class="button-black"type="button" >Sau</button>
 
-                       </a>
+                        </a>
                     </div>
                     <button class="button-orange" onclick="openProductForm()">Thêm Khách Hàng</button>
 
@@ -110,23 +119,24 @@
         </form>
     </div>
 </div>
-<div id="customerModal" class="modal">
+<div id="modal-update-customer" class="modal">
     <div class="modal-content" >
-        <span class="close-btn" onclick="closeCustomerForm()">&times;</span>
+        <span class="close-btn" onclick="closeCustomerUpdateForm()">&times;</span>
 
-        <form method="post" class="flex-colunm" >
+        <form method="post" action="${pageContext.request.contextPath}/admin/customer/update" class="flex-colunm" >
             <h2>Chỉnh sửa Khách Hàng</h2>
+            <input type="hidden" name="id">
             <div >
                 <input name="name" class="input-common" type="text" placeholder=" Họ & tên">
             </div>
             <div>
                 <input name="username" class="input-common"  type="email" placeholder=" Email">
             </div>
+            <%--            <div>--%>
+            <%--                <input name="pass" class="input-common" type="password" placeholder="Mật khẩu">--%>
+            <%--            </div>--%>
             <div>
-                <input name="pass" class="input-common" type="password" placeholder="Mật khẩu">
-            </div>
-            <div>
-                <input name="phone" class="input-common" type="password" placeholder="Số điện thoại">
+                <input name="phone" class="input-common" type="number" placeholder="Số điện thoại">
             </div>
             <div>
                 <textarea name="address" rows="3" class="input-common"  placeholder="Địa chỉ"></textarea>
@@ -143,6 +153,30 @@
 
 
 <script src="admin.js"></script>
+<script>
+
+    function openProductForm() {
+        document.getElementById("productModal").style.display = "block";
+    }
+
+    function closeProductForm() {
+        document.getElementById("productModal").style.display = "none";
+    }
+
+    function openCustomerUpdateForm(customer) {
+        const form = document.getElementById("modal-update-customer");
+        form.querySelector('input[name="id"]').value = customer.id;
+        form.querySelector('input[name="name"]').value = customer.name;
+        form.querySelector('input[name="username"]').value = customer.username;
+        form.querySelector('input[name="phone"]').value = customer.phone;
+        form.querySelector('textarea[name="address"]').value = customer.address;
+        form.style.display = "block";
+    }
+
+    function closeCustomerUpdateForm() {
+        document.getElementById("modal-update-customer").style.display = "none";
+    }
+</script>
 
 </body>
 
