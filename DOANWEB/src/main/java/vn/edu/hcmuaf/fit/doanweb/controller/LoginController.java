@@ -35,7 +35,7 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("auth",user);
                 session.setAttribute("user",user.getId());
                 System.out.println("User details: " + user);
-                System.out.println("User ID from session: " + session.getAttribute("user"));
+                System.out.println("User ID from session: " + session.getAttribute("auth"));
 
 
                 if(user.getType()==1){
