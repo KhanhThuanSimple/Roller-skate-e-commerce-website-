@@ -22,25 +22,8 @@
 
     <div class="container1">
         <div class="gallery-display-area">
-            <div class="gallery-wrap">
                 <div class="image">
                     <img src="./image/home1.jpg" alt="1  ">
-
-                </div>
-                <div class="image">
-                    <img src="./image/home2.jpg" alt="1">
-
-                </div>
-                <div class="image">
-                    <img src="./image/home3.jpg" alt="1"> <!-- Hình ảnh GIF mới -->
-
-                </div>
-                <div class="image">
-                    <img src="./image/home4.jpg" alt="1">
-
-                </div>
-                <div class="image">
-                    <img src="./image/home5.jpg" alt="1">
 
                 </div>
 
