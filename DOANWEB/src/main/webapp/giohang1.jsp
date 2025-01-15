@@ -40,13 +40,22 @@
                             <p class="card-text">Đơn giá: <span class="fw-bold text-danger">${cp.price} đ</span></p>
                             <div class="input-group" style="max-width: 150px;">
                                 <!-- Increase and Decrease buttons -->
-                                <button class="btn btn-outline-secondary btn-sm decrease-qty" data-product-id="${cp.id}">
+
+                                <form method="post" action="ShowCart?id=${cp.id}&qt=${cp.quantity-1}"><button type="submit" class="btn btn-outline-secondary btn-sm decrease-qty" data-product-id="${cp.id}">
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
+                                </form>
+
                                 <input type="number" class="form-control text-center qty-input" value="${cp.quantity}" data-product-id="${cp.id}" min="1">
-                                <button class="btn btn-outline-secondary btn-sm increase-qty" data-product-id="${cp.id}">
+
+                                <form method="post" action="ShowCart?id=${cp.id}&qt=${cp.quantity+1}">
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm increase-qty" data-product-id="${cp.id}">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
+                                </form>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -84,6 +93,7 @@
                 <p class="m-0">Tổng tiền: <span class="fw-bold text-primary">${sessionScope.cart.getTotal()}đ</span></p>
                 <a id="XemThemSP" href="product" class="btn btn-outline-secondary me-2">Xem thêm sản phẩm</a>
                 <a id="ThanhToan" href="checkout" class="btn btn-primary">Thanh toán</a>
+
             </div>
         </div>
     </div>
