@@ -546,15 +546,37 @@ public class ProductDao {
     }
 
 
+    public User getUserById(int id) {
 
+        String query = "SELECT * FROM `user` WHERE id = ?";
+        User user = null;
+        try (Connection conn = DBConnect.getConn();
+                PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+            // Gán giá trị cho tham số id
+            preparedStatement.setInt(1, id);
+
+            // Thực hiện truy vấn
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    // Tạo đối tượng User từ kết quả
+                    user = new User();
+                    user.setId(resultSet.getInt("id"));
+                    user.setUsername(resultSet.getString("username"));
+                    user.setName(resultSet.getString("name"));
+                    user.setPhone(resultSet.getString("phone_number"));
+                    user.setAddress(resultSet.getString("address"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Xử lý lỗi
+        }
+        return user;
+    }
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-        List<OrderDetail> products = dao.getOrderDetails(1,8);
-        for (OrderDetail product : products) {
-            System.out.println(product);
+        System.out.println(dao.getUserById(1));
 
-        }
     }
 }
 
