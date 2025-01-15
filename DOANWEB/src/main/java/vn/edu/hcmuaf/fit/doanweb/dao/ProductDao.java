@@ -417,6 +417,23 @@ public class ProductDao {
 
         return orders;
     }
+    public static double getDiscountValue(String couponCode) {
+        double discount = 0.0;
+        String query = "SELECT discount_value FROM Coupon WHERE code = ? AND is_active = TRUE";
+
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, couponCode);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                discount = rs.getDouble("discount_value");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return discount;
+    }
 
 
 

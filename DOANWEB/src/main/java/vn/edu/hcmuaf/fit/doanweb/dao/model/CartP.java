@@ -49,6 +49,7 @@ public class CartP {
         return total.get();
     }
 
+
     private CartProduct convert(Product p) {
         CartProduct re = new CartProduct();
         re.setId(p.getId());

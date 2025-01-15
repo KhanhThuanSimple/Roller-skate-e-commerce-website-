@@ -12,6 +12,8 @@ public class Order implements Serializable {
     private String paymentMethod;
     private double totalAmount;
     private String status;
+    private String discountCode; // Thêm trường mã giảm giá tạm thời
+
 
     public Order(int user_id, String name, String phone, String address, String paymentMethod, double totalAmount, String status) {
         this.user_id = user_id;
@@ -21,6 +23,14 @@ public class Order implements Serializable {
         this.paymentMethod = paymentMethod;
         this.totalAmount = totalAmount;
         this.status = status;
+    }
+
+    public String getDiscountCode() {
+        return discountCode;
+    }
+
+    public void setDiscountCode(String discountCode) {
+        this.discountCode = discountCode;
     }
 
     public int getId() {
