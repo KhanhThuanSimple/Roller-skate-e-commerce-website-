@@ -104,7 +104,7 @@ public class ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
-                                rs.getInt("category_id"),
+                                rs.getInt("cateID"),
                                 rs.getString("offer")
                         ));
                     }
@@ -139,7 +139,7 @@ public class ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
-                                rs.getInt("category_id"),
+                                rs.getInt("cateID"),
                                 rs.getString("offer")
                         );
                     }
@@ -164,6 +164,8 @@ public class ProductDao {
 
             try (PreparedStatement statement = cons.prepareStatement(query)) {
                 statement.setString(1, id); // Đặt giá trị tham số
+                System.out.println(statement);
+
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
                         products.add(new Product(
@@ -173,7 +175,7 @@ public class ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
-                                rs.getInt("category_id"),
+                                rs.getInt("cateID"),
                                 rs.getString("offer")
                         ));
                     }
@@ -244,7 +246,7 @@ public class ProductDao {
                             rs.getDouble("price"),
                             rs.getString("title"),
                             rs.getString("description"),
-                            rs.getInt("category_id"),
+                            rs.getInt("cateID"),
                             rs.getString("offer")
                     ));
                 }
