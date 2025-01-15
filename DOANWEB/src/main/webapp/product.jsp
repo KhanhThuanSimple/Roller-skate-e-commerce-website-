@@ -31,8 +31,8 @@
             <div class="sort-buttons">
                 <button>Sắp xếp</button>
                 <div class="dropdown-content">
-                    <a href="/DOANWEB/sort?order=asc">Tăng dần</a>
-                    <a href="/DOANWEB/sort?order=desc">Giảm dần</a>
+                    <a href="/DOANWEB/product?sort=asc">Tăng dần</a>
+                    <a href="/DOANWEB/product?sort=desc">Giảm dần</a>
                 </div>
             </div>
             <ul class="product">
@@ -67,7 +67,7 @@
                 <c:if test="${endP > 0}">
                     <div class="pagination">
                         <c:forEach begin="1" end="${endP}" var="i">
-                            <a href="/DOANWEB/list?index=${i}" class="page-item ${tag == i ? 'active' : ''}">${i}</a>
+                            <a href="/DOANWEB/product?index=${i}" class="page-item ${tag == i ? 'active' : ''}">${i}</a>
                         </c:forEach>
                     </div>
                 </c:if>
