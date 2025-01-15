@@ -5,6 +5,8 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Order;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.OrderDetail;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.OrderItems;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,7 +30,7 @@ public class ChiTietDonHang extends HttpServlet {
         }
 
         // Lấy danh sách đơn hàng từ DAO
-        List<Order> list = dao.getOrderDetails(userId, Integer.parseInt(id));
+        List<OrderDetail> list = dao.getOrderDetails(userId,Integer.parseInt(id));
 
         // Kiểm tra nếu không có đơn hàng nào
         if (list == null || list.isEmpty()) {

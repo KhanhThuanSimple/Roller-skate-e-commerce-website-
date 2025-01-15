@@ -1,10 +1,7 @@
 package vn.edu.hcmuaf.fit.doanweb.dao;
 
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Order;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.OrderItems;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Category;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -340,35 +337,29 @@ public class ProductDao {
 
     public List<Order> getOrdersWithProducts(int userId) {
             List<Order> orders = new ArrayList<>();
-            String query = "SELECT o.id, o.name, p.title, oi.quantity, oi.price, o.totalAmount, o.status " +
-                "FROM product p " +
-                "JOIN order_items oi ON p.id = oi.product_id " +
-                "JOIN orders o ON oi.order_id = o.id " +
-                "WHERE o.user_id = ?";
+        String queryOrders = "SELECT * FROM orders WHERE user_id = ?";
+
 
         try (Connection cons = DBConnect.getConn()) {
             if (cons == null) {
                 // Xử lý khi không thể kết nối
             }
-            try (PreparedStatement statement = cons.prepareStatement(query)) {
+            try (PreparedStatement statement = cons.prepareStatement(queryOrders)) {
                 statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị userId
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
                         Order order = new Order();
                         order.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id"
+                        order.setUser_id(rs.getInt("user_id")); // Sửa để lấy đúng giá trị từ cột "id"
+                        order.setName(rs.getString("name")); // Sửa để lấy đúng giá trị từ cột "id"
+                        order.setPhone(rs.getString("phone")); // Sửa để lấy đúng giá trị từ cột "id"
+                        order.setAddress(rs.getString("address")); // Sửa để lấy đúng giá trị từ cột "id"
+                        order.setPaymentMethod(rs.getString("paymentMethod")); // Sửa để lấy đúng giá trị từ cột "id"
                         order.setTotalAmount(rs.getDouble("totalAmount")); // Sửa để lấy đúng giá trị từ cột "totalAmount"
                         order.setStatus(rs.getString("status")); // Sửa để lấy đúng giá trị từ cột "status"
 
-                        Product product = new Product();
-                        product.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id" của sản phẩm
-                        product.setName(rs.getString("name")); // Sửa để lấy đúng giá trị từ cột "name"
-                        product.setTitle(rs.getString("title")); // Lấy tiêu đề sản phẩm
 
-                        OrderItems orderItem = new OrderItems();
-                        orderItem.setQuantity(rs.getInt("quantity"));
-                        orderItem.setPrice(rs.getDouble("price"));
 
-                        // Thêm sản phẩm và mục đơn hàng vào đối tượng order nếu cần
                         // Ví dụ: order.addProduct(product, orderItem);
                         orders.add(order); // Thêm đơn hàng vào danh sách
                     }
@@ -382,9 +373,9 @@ public class ProductDao {
     }
 
 
-    public List<Order> getOrderDetails(int userId,int orderId) {
-        List<Order> orders = new ArrayList<>();
-        String query = "SELECT o.id, o.name, p.title, oi.quantity, oi.price, o.totalAmount, o.status " +
+    public List<OrderDetail> getOrderDetails(int userId, int orderId) {
+        List<OrderDetail> orders = new ArrayList<>();
+        String query = "SELECT p.id,p.title,oi.quantity,oi.price,o.id,o.name,o.totalAmount,o.status,o.paymentMethod " +
                 "FROM product p " +
                 "JOIN order_items oi ON p.id = oi.product_id " +
                 "JOIN orders o ON oi.order_id = o.id " +
@@ -403,19 +394,20 @@ public class ProductDao {
                         order.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id"
                         order.setTotalAmount(rs.getDouble("totalAmount")); // Sửa để lấy đúng giá trị từ cột "totalAmount"
                         order.setStatus(rs.getString("status")); // Sửa để lấy đúng giá trị từ cột "status"
+                        order.setPaymentMethod(rs.getString("paymentMethod")); // Sửa để lấy đúng giá trị từ cột "status"
+                        order.setName(rs.getString("name")); // Sửa để lấy đúng giá trị từ cột "status"
 
                         Product product = new Product();
                         product.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id" của sản phẩm
-                        product.setName(rs.getString("name")); // Sửa để lấy đúng giá trị từ cột "name"
                         product.setTitle(rs.getString("title")); // Lấy tiêu đề sản phẩm
 
                         OrderItems orderItem = new OrderItems();
                         orderItem.setQuantity(rs.getInt("quantity"));
                         orderItem.setPrice(rs.getDouble("price"));
 
-                        // Thêm sản phẩm và mục đơn hàng vào đối tượng order nếu cần
-                        // Ví dụ: order.addProduct(product, orderItem);
-                        orders.add(order); // Thêm đơn hàng vào danh sách
+                        OrderDetail detail = new OrderDetail(order, product, orderItem);
+                        orders.add(detail);
+
                     }
                 }
             }
@@ -431,8 +423,8 @@ public class ProductDao {
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-        List<Order> products = dao.getOrderDetails(1,3);
-        for (Order product : products) {
+        List<OrderDetail> products = dao.getOrderDetails(1,8);
+        for (OrderDetail product : products) {
             System.out.println(product);
 
         }

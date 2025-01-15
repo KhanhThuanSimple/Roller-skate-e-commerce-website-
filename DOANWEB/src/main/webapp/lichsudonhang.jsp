@@ -51,6 +51,8 @@
                 <th></th>
                 <th>Mã Đơn Hàng</th>
                 <th>Tên Khách Hàng</th>
+                <th>Số Điện Thoại</th>
+                <th>Phương Thức Thanh Toán</th>
                 <th>Trạng Thái</th>
                 <th>Tổng Tiền (VNĐ)</th>
                 <th>Hành Động</th>
@@ -62,6 +64,8 @@
                 <td></td>
                 <td>#${p.id}</td>
                 <td>${p.name}</td>
+                <td>${p.phone}</td>
+                <td>${p.paymentMethod}</td>
                 <td><span class="badge bg-success status-badge">${p.status}</span></td>
                 <td>${p.totalAmount}</td>
                 <td>

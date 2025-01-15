@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +55,7 @@
                     </ul>
                     <h3>QUẢN LÝ GIAO DỊCH</h3>
                     <ul>
-                        <li><a href="donhang.jsp">Đơn hàng của bạn</a></li>
+                        <li><a href="lichsu">Đơn hàng của bạn</a></li>
                     </ul>
 
                     <button id="DangXuat" class="dangxuat" onclick="moChacChanDX()"> Đăng Xuất</button>
@@ -121,6 +123,6 @@
     </div>
 </div>
 </body>
-<script src="js/canhan.js"></script>
+<script src="./js/canhan.js"></script>
 
 </html>
