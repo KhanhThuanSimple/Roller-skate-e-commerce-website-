@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +21,13 @@
     <link rel="stylesheet" href="./css/canhan.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
+<style>
+    .button-dx a{
+        text-decoration: none;
+        color: white;
+        z-index: 10;
+    }
+</style>
 <body>
 <div id="wrapper">
     <jsp:include page="comon/header.jsp" />
@@ -49,11 +57,12 @@
                     <h3>QUẢN LÝ TÀI KHOẢN</h3>
                     <ul>
                         <li><a href="canhan.jsp"> Hồ Sơ Cá Nhân</a></li>
-                        <li><a href="doimatkhau.jsp"> Đổi Mật Khẩu</a></li>
+                        <form method="get" action="changePassword"> <li><a href="changePassword"> Đổi Mật Khẩu</a></li></form>
+
                     </ul>
                     <h3>QUẢN LÝ GIAO DỊCH</h3>
                     <ul>
-                        <li><a href="donhang.jsp">Đơn hàng của bạn</a></li>
+                        <li><a href="lichsu">Đơn hàng của bạn</a></li>
                     </ul>
 
                     <button id="DangXuat" class="dangxuat" onclick="moChacChanDX()"> Đăng Xuất</button>
@@ -116,11 +125,13 @@
         <h1>Bạn chắc chắn muốn đăng xuất? </h1>
         <div class="button-dx">
             <button onclick="dongChacChanDX()">Không</button>
-            <button id="chacChanDX">Có</button>
+            <button>
+                <a   href="${pageContext.request.contextPath}/logout">OK</a>
+            </button>
         </div>
     </div>
 </div>
 </body>
-<script src="js/canhan.js"></script>
+<script src="./js/canhan.js"></script>
 
 </html>

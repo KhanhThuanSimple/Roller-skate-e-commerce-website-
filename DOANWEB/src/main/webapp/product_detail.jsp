@@ -1,3 +1,4 @@
+<%@ page import="vn.edu.hcmuaf.fit.doanweb.dao.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -21,7 +22,7 @@
 <div id="wrapper">
 
     <jsp:include page="comon/header.jsp"/>
-
+    <% User user = (User) session.getAttribute("auth"); %>
 
     <div id="main-container">
         <!-- Main Content Section -->
@@ -50,9 +51,9 @@
                     </div>
 
                     <div class="product-detail">
-                        <h2>THÔNG SỐ KỸ THUẬT:</h2>
+                        <h2>Thông tin sản phẩm:</h2>
                         <p>
-                            ${detail.description}
+                            <span id="descriptionText">${detail.description}</span>
                         </p>
                         <ul>
                             <h2>Ưu đãi:</h2>
@@ -61,20 +62,29 @@
 
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
+                                // Định dạng thông tin sản phẩm
+                                const descriptionElement = document.getElementById('descriptionText');
+                                const descriptionText = descriptionElement.innerHTML;
+                                descriptionElement.innerHTML = descriptionText.replace(/\./g, '.<br>');
+
+                                // Định dạng ưu đãi
                                 const offerElement = document.getElementById('offerText');
-                                const text = offerElement.innerHTML;
-                                offerElement.innerHTML = text.replace(/\./g, '.<br>');
+                                const offerText = offerElement.innerHTML;
+                                offerElement.innerHTML = offerText.replace(/\./g, '.<br>');
                             });
                         </script>
                     </div>
 
+
                     <div class="purchase-info">
-                        <input type="number" min="0" value="1"/>
+                        <input id="quantityInput" type="number" min="0" value="1"/>
 
-                        <button type="button" class="btn" id="first">
-                            Thêm vào giỏ hàng <i class="fas fa-shopping-cart"></i>
+<%--                        <a href="add-cart?pId=${p.id}">--%>
+                        <button type="button" class="btn" id="firsts">
+                            <a href="add-cart?pid=${detail.id}" class="buy-now">Thêm Vào Giỏ Hàng</a>
+                            <i class="fas fa-shopping-cart"></i>
                         </button>
-
+                        </a>
                         <button type="button" class="btn" id="last">Đặt hàng nhanh</button>
                     </div>
 
@@ -82,31 +92,7 @@
                 </div>
             </div>
 
-            <div class="modal" id="productModal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div class="modal-header">
-                        <h2> Giày Patin Người Lớn Cougar MZS 307C 3 Màu Đen/ Trắng/ Đỏ</h2>
-                        <img src="../image/chitiet3.jpg "
-                             alt="Giày Patin Người Lớn Cougar MZS 307C 3 Màu Đen/ Trắng/ Đỏ"/>
-                    </div>
-                    <div class="modal-body">
-                        <p>Giày Patin Người Lớn Eagle A5 với thiết kế mạnh mẽ, phù hợp cho người lớn, chất liệu bền
-                            bỉ...</p>
-                        <div class="modal-price">Giá: 1.200.000đ</div>
-                        <div class="buttons-container">
-                            <button class="btn-pay-now" id="thanhtoan">Thanh toán ngay</button>
-                            <button class="btn-continue-shopping">Tiếp tục mua hàng</button>
-                        </div>
-                    </div>
-                    <div class="modal-footer user-info">
-                        <input type="text" placeholder="Họ và tên của bạn" required/>
-                        <input type="tel" placeholder="Điện thoại của bạn" required/>
-                        <input type="text" placeholder="Địa chỉ của bạn" required/>
-                    </div>
 
-                </div>
-            </div>
 
             <script src="js/script.js"></script>
         </div>
@@ -116,5 +102,7 @@
     <jsp:include page="comon/footer.jsp"/>
 </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </html>

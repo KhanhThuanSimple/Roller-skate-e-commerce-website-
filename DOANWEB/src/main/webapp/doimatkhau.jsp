@@ -16,9 +16,16 @@
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/doimatkhau.css">
+    <link rel="stylesheet" href="./css/canhan.css">
     <link rel="stylesheet" href="./style.css">
 </head>
-
+<style>
+    .button-dx a{
+        text-decoration: none;
+        color: white;
+        z-index: 10;
+    }
+</style>
 <body>
 <div id="wrapper">
     <jsp:include page="comon/header.jsp" />
@@ -67,27 +74,29 @@
                     </div>
 
                     <div class="bot-rightcn">
+                        <form method="post" action="changePassword">
                         <div class="mkGroup">
                             <label for="matKhauCu">Mật khẩu cũ</label>
                             <div class="input-wrapper">
-                                <input type="password" id="matKhauCu" placeholder="Nhập mật khẩu...">
-                                <button class="togglePassword" data-target="matKhauCu">Hiện</button>
+                                <input name="oldPassword" type="password" id="matKhauCu" placeholder="Nhập mật khẩu...">
                             </div>
                         </div>
                         <div class="mkGroup">
                             <label for="matKhauMoi">Mật khẩu mới</label>
                             <div class="input-wrapper">
-                                <input type="password" id="matKhauMoi" placeholder="Nhập mật khẩu...">
-                                <button class="togglePassword" data-target="matKhauMoi">Hiện</button>
+                                <input name="newPassword" type="password" id="matKhauMoi" placeholder="Nhập mật khẩu...">
                             </div>
                         </div>
                         <div class="mkGroup">
                             <label for="xacNhanMK">Xác nhận mật khẩu</label>
                             <div class="input-wrapper">
-                                <input type="password" id="xacNhanMK" placeholder="Nhập mật khẩu...">
-                                <button class="togglePassword" data-target="xacNhanMK">Hiện</button>
+                                <input name="confirmPassword" type="password" id="xacNhanMK" placeholder="Nhập mật khẩu...">
                             </div>
+                            <button class="nutLuu" type="submit">Lưu</button>
+
                         </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
@@ -105,8 +114,9 @@
         <h1>Bạn chắc chắn muốn đăng xuất? </h1>
         <div class="button-dx">
             <button onclick="dongChacChanDX()">Không</button>
-            <button id="chacChanDX">Có</button>
-        </div>
+            <button>
+                <a   href="${pageContext.request.contextPath}/logout">OK</a>
+            </button>        </div>
     </div>
 </div>
 </body>

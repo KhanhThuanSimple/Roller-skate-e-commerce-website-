@@ -48,7 +48,7 @@
             <h2>Đăng nhập</h2>
         </div>
         <div>
-            <input class="input-common" type="email" placeholder="Email" value="<%=uname%>" name="uname">
+            <input class="input-common" type="text" placeholder="Email" value="<%=uname%>" name="uname">
         </div>
         <div>
             <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">

@@ -64,6 +64,11 @@
             <artifactId>jdbi3-core</artifactId>
             <version>3.47.0</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
 
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/javax.servlet/jstl &ndash;&gt;-->
         <!--        <dependency>-->
@@ -83,7 +88,11 @@
 
 
 
-
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version> <!-- Bạn có thể kiểm tra phiên bản mới nhất trên Maven Central -->
+        </dependency>
 
 
 

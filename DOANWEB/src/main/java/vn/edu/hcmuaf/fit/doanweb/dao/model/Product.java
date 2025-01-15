@@ -79,12 +79,15 @@ public class Product implements java.io.Serializable {
         this.name = name;
     }
 
-    public int getCateId() {
+     public int getCateId() {
         return cateId;
     }
 
     public void setCateId(int cateId) {
         this.cateId = cateId;
+    }
+
+    public Product() {
     }
 
     @Override

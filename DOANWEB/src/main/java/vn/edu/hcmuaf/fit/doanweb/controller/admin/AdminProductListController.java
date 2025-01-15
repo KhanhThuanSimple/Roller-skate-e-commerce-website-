@@ -21,7 +21,7 @@ public class AdminProductListController extends HttpServlet  {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductService productService = new ProductService();
         try {
-            List<Product>  products = productService.getListProduct();
+            List<Product>  products = productService.getAll();
           System.out.println(1234);
             request.setAttribute("products", products);
             request.getRequestDispatcher("/admin/product.jsp").forward(request, response);

@@ -31,8 +31,8 @@
             <div class="sort-buttons">
                 <button>Sắp xếp</button>
                 <div class="dropdown-content">
-                    <a href="/DOANWEB/sort?order=asc">Tăng dần</a>
-                    <a href="/DOANWEB/sort?order=desc">Giảm dần</a>
+                    <a href="/DOANWEB/product?sort=asc">Tăng dần</a>
+                    <a href="/DOANWEB/product?sort=desc">Giảm dần</a>
                 </div>
             </div>
             <ul class="product">
@@ -43,11 +43,11 @@
                             <div class="product-item">
                                 <div class="product-top">
                                     <a href="" class="product-thumb">
-                                        <img src="${p.img}" alt="" />
+                                        <img src="${p.img}" alt=""/>
                                     </a>
                                     <div class="button-container">
-                                        <a href="giohang.html" class="buy-now">Mua Ngay</a>
-                                        <a href="detail?pid=${p.id}" class="view-details">Xem Chi Tiết</a>
+                                        <a href="add-cart?pid=${p.id}" class="buy-now">Thêm Vào Giỏ Hàng</a>
+                                        <a href="detail?pid=${p.id}" class="view-details">Xem Chi Tiết Sản Phẩm</a>
                                     </div>
                                 </div>
                                 <div class="product-info">
@@ -60,6 +60,19 @@
                     </c:forEach>
                 </c:if>
             </ul>
+
+
+            <div class="pagination">
+
+                <c:if test="${endP > 0}">
+                    <div class="pagination">
+                        <c:forEach begin="1" end="${endP}" var="i">
+                            <a href="/DOANWEB/product?index=${i}" class="page-item ${tag == i ? 'active' : ''}">${i}</a>
+                        </c:forEach>
+                    </div>
+                </c:if>
+
+            </div>
         </div>
 
 
