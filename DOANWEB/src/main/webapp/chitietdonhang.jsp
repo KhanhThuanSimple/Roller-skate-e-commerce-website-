@@ -56,6 +56,7 @@
                 <th>Thành Tiền (VNĐ)</th>
             </tr>
             </thead>
+            <c:set var="totalAmount" value="0" /> <!-- Khởi tạo totalAmount -->
 
             <c:forEach var="p" items="${list}">
                 <tbody>
@@ -65,7 +66,7 @@
                     <td>${p.orderItem.price}</td>
                     <td> ${p.order.paymentMethod}</td>
                     <td>${p.orderItem.price*p.orderItem.quantity}</td>
-                    <c:set var="totalAmount" value="${totalAmount + p.orderItem.price * p.orderItem.quantity}" />
+                    <c:set var="totalAmount" value="${totalAmount+p.orderItem.price * p.orderItem.quantity}" />
 
                 </tr>
 
