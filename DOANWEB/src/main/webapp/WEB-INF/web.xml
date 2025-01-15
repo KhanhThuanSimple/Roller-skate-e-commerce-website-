@@ -69,6 +69,7 @@
         <servlet-name>ListTotal</servlet-name>
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>Add</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.cart.Add</servlet-class>
@@ -79,6 +80,8 @@
         <servlet-name>Add</servlet-name>
         <url-pattern>/add-cart</url-pattern>
     </servlet-mapping>
+
+
     <servlet>
         <servlet-name>ShowCart</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.cart.Show</servlet-class>
@@ -88,6 +91,38 @@
     <servlet-mapping>
         <servlet-name>ShowCart</servlet-name>
         <url-pattern>/ShowCart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Remove</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.cart.Remove</servlet-class>
+    </servlet>
+
+    <!-- Ánh xạ servlet -->
+    <servlet-mapping>
+        <servlet-name>Remove</servlet-name>
+        <url-pattern>/Remove</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Information</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.InformationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Information</servlet-name>
+        <url-pattern>/information</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.ChangePasswordServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
     </servlet-mapping>
 
 

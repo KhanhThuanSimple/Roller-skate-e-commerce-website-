@@ -21,7 +21,13 @@
     <link rel="stylesheet" href="./css/canhan.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
+<style>
+    .button-dx a{
+        text-decoration: none;
+        color: white;
+        z-index: 10;
+    }
+</style>
 <body>
 <div id="wrapper">
     <jsp:include page="comon/header.jsp" />
@@ -51,7 +57,8 @@
                     <h3>QUẢN LÝ TÀI KHOẢN</h3>
                     <ul>
                         <li><a href="canhan.jsp"> Hồ Sơ Cá Nhân</a></li>
-                        <li><a href="doimatkhau.jsp"> Đổi Mật Khẩu</a></li>
+                        <form method="get" action="changePassword"> <li><a href="changePassword"> Đổi Mật Khẩu</a></li></form>
+
                     </ul>
                     <h3>QUẢN LÝ GIAO DỊCH</h3>
                     <ul>
@@ -118,7 +125,9 @@
         <h1>Bạn chắc chắn muốn đăng xuất? </h1>
         <div class="button-dx">
             <button onclick="dongChacChanDX()">Không</button>
-            <button id="chacChanDX">Có</button>
+            <button>
+                <a   href="${pageContext.request.contextPath}/logout">OK</a>
+            </button>
         </div>
     </div>
 </div>

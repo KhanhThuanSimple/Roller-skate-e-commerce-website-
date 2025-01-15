@@ -223,4 +223,18 @@ public class UserDao {
         return null;
     }
 
+    public boolean updatePassword(int id, String newPassword, String oldPassword) throws SQLException {
+        String sql = "UPDATE user SET password = ? WHERE id = ? AND password = ?";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, newPassword);
+            pstmt.setInt(2, id);
+            pstmt.setString(3, oldPassword);
+
+            System.out.println(pstmt);
+            int rs = pstmt.executeUpdate(); // Thực hiện cập nhật
+            return rs==1;
+        }
+    }
+
 }

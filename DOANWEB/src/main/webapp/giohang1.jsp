@@ -52,9 +52,11 @@
                     </div>
                     <div class="col-md-1 d-flex align-items-center justify-content-center">
                         <!-- New Delete Order button -->
-                        <button class="btn btn-danger delete-order" data-product-id="${cp.id}">
+                        <form method="post" action="ShowCart?remove=${cp.id}">
+                        <button type="submit" class="btn btn-danger delete-order" data-product-id="${cp.id}">
                             Xóa
                         </button>
+                        </form>
                     </div>
                     <div class="col-md-2 d-flex align-items-center justify-content-center">
                         <p class="m-0">Thành tiền: <span class="fw-bold text-primary">${cp.price * cp.quantity}đ</span></p>
