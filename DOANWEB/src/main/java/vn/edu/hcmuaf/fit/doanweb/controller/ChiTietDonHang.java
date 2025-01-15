@@ -12,13 +12,15 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "ChiTietDonHang", value = "/chitiet")
-public class ChiTietDonHang extends HttpServlet {
+public class ChiTietDonHang extends BaseServlet {
 
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductDao dao = new ProductDao();
+        loadCommonData(request); // Gọi phương thức chung
+
         String id = request.getParameter("pid");
         HttpSession session = request.getSession();
         Integer userId = (Integer) session.getAttribute("user");

@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import vn.edu.hcmuaf.fit.doanweb.controller.BaseServlet;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.CartProduct;
 import vn.edu.hcmuaf.fit.doanweb.dao.order.OderDao;
@@ -16,11 +17,13 @@ import java.io.IOException;
 
 
 @WebServlet(name = "Payment", value = "/checkout")
-public class Payment extends HttpServlet {
+public class Payment extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        loadCommonData(request); // Gọi phương thức chung
+
         CartP cart = (CartP) session.getAttribute("cart");
 
         if (cart == null) {

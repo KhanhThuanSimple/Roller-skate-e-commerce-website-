@@ -85,7 +85,6 @@
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                         </a>
-                        <button type="button" class="btn" id="last">Đặt hàng nhanh</button>
                     </div>
 
 

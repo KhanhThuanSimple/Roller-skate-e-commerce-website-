@@ -261,7 +261,8 @@
   
   .gallery-wrap {
    width: 500%;
-   animation: slideShow 16s infinite;
+   /*animation: slideShow 16s infinite;*/
+    margin-left: 0;
   }
   
   .image {
@@ -274,28 +275,28 @@
     align-items: center;
     -webkit-box-reflect:  below 1px -webkit-gradient(linear,right top ,right bottom,form(transparent),to(rgba(255,255,255,0.3)));
   }
-  
+
   @keyframes slideShow {
     20% {
       margin-left: 0;
     }
-  
+
     30% {
       margin-left: -100;
     }
-  
+
     40% {
       margin-left: -100%;
     }
-  
+
     50% {
       margin-left: -200%;
     }
-  
+
     60% {
       margin-left: -200%;
     }
-  
+
     70% {
       margin-left: -300%;
     }
@@ -309,4 +310,4 @@
       margin-left: -400%;
     }
   }
-  
+
