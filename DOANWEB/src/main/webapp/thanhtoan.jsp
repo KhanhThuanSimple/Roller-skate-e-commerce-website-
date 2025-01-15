@@ -25,6 +25,9 @@
 
     <div class="container my-5">
         <h2 class="mb-4">Thanh Toán</h2>
+        <div class="d-flex justify-content-end mb-4">
+            <a href="ShowCart" class="btn btn-secondary">Giỏ Hàng </a>
+        </div>
 
         <!-- Danh sách sản phẩm -->
         <div class="card mb-4 shadow-sm">

@@ -19,7 +19,8 @@ margin-top: -90px;
 
 .gallery-wrap {
   width: 600%;
-  animation: slideShow 26s infinite ease-in-out;  
+  /*animation: slideShow 26s infinite ease-in-out;*/
+  margin-left: 0;
 }
 
 @keyframes slideShow {

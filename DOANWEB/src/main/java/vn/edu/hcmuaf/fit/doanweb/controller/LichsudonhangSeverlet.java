@@ -10,11 +10,12 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "LichsudonhangSeverlet", value = "/lichsu")
-public class LichsudonhangSeverlet extends HttpServlet {
+public class LichsudonhangSeverlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductDao dao = new ProductDao();
+        loadCommonData(request); // Gọi phương thức chung
 
         HttpSession session = request.getSession();
         Integer userId = (Integer) session.getAttribute("user");
