@@ -1,167 +1,119 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: PC
-  Date: 22/12/2024
-  Time: 4:44 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
-<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ThanhToan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/lienhe.css">
-    <link rel="stylesheet" href="./css/thanhtoan.css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/checkout.css">
+    <link rel="stylesheet" href="./css/sanpham.css">
     <link rel="stylesheet" href="./css/style.css">
-
 </head>
 
 <body>
-<div class="container flex-colunm">
-    <jsp:include page="comon/header.jsp"/>
+<div id="wrapper">
+    <!-- Header -->
+    <jsp:include page="comon/header.jsp" />
 
-    <div class="main">
-        <div class="flex-row thanhtoan">
+    <div class="container my-5">
+        <h2 class="mb-4">Thanh Toán</h2>
 
-            <div class=" thanhtoan-left flex-colunm flex-1">
-                <div class=" flex-colunm">
-                    <div>
-                        <h2 class="thanhtoan-title"> THÔNG TIN THANH TOÁN</h2>
-
-                    </div>
-                    <div class="form-support">
-                        <form action="post">
-                            <div>
-                                <input class="input-common" type="text" placeholder="Tên của bạn">
-                            </div>
-                            <div class="flex-row">
-                                <div class="flex-1">
-                                    <input class="input-common" type="email" placeholder="Email của bạn">
-
-                                </div>
-                                <div class="flex-1">
-                                    <input class="input-common" type="text" placeholder="Số điện thoại của bạn">
-                                </div>
-                            </div>
-                            <div>
-
-                                <textarea rows="4" class="input-common" placeholder="Địa chỉ"></textarea>
-
-                            </div>
-
-
-                        </form>
-                    </div>
-
-
-                </div>
-                <div class="flex-colunm">
-                    <div>
-                        <h2 class="thanhtoan-title">THÔNG TIN BỔ SUNG</h2>
-                    </div>
-                    <div>
-                        <label for="element_id">Ghi chú đơn hàng(tùy chọn)</label>
-                        <!-- <input type="text" id="element_id" name="element_name"> -->
-                        <textarea rows="4" class="input-common"
-                                  placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng cụ thể hơn"></textarea>
-
-                    </div>
-                </div>
+        <!-- Danh sách sản phẩm -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="m-0">Danh sách sản phẩm</h5>
             </div>
-            <div class="thanhtoan-right flex-1 flex-colunm ">
-                <div class="thanhtoan-title">
-                    <h2 class="thanhtoan-title ">ĐƠN HÀNG CỦA BẠN</h2>
-                </div>
-                <div class="info-product flex-colunm ">
-                    <div class="flex-row">
-                        <div class="flex-1">
-                            <h3>SẢN PHẨM</h3>
+            <div class="card-body">
+                <c:forEach items="${sessionScope.cart.list}" var="cp">
+                    <div class="row border-bottom py-2">
+                        <div class="col-md-2">
+                            <img src="${cp.img}" class="img-fluid" alt="">
                         </div>
-                        <div class="flex-1">
-                            <h3>TẠM TÍNH</h3>
+                        <div class="col-md-6">
+                            <h6>${cp.title}</h6>
+                            <p>Đơn giá: <span class="fw-bold text-danger">${cp.price}đ</span></p>
+                            <p>Số lượng: <span class="fw-bold">${cp.quantity}</span></p>
                         </div>
-                    </div>
-                    <div class="item-content flex-row">
-                        <div class="flex-1 ">
-                            <h4>Giày Patin Trẻ em Centosy <br> Lion 3 Màu Đen/Hồng <br> Xanh X1 <br> Màu sắc: Đỏ
-                                <br> Kích cở: L
-                            </h4>
-
-                        </div>
-                        <div class="flex-1">
-                            <h4> 1.760.000</h4>
+                        <div class="col-md-4 text-end">
+                            <p>Thành tiền: <span class="fw-bold text-primary">${cp.price * cp.quantity}đ</span></p>
                         </div>
                     </div>
-                    <div class="flex-row">
-                        <div class="flex-1">
-                            <h4>Tạm tính</h4>
-                        </div>
-                        <div class="flex-1">
-                            <h5 style="color: red;">1.760.000</h5>
-                        </div>
-                    </div>
-                    <div class="flex-row">
-                        <div class="flex-1">
-                            <h4>Tổng</h4>
-                        </div>
-                        <div class="flex-1">
-                            <h4 style="color: red;">1.760.000</h4>
-                        </div>
-
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <div class="form-group-thanhtoan flex-row">
-                            <!-- <h4>Phương thức thanh toán</h4> -->
-                            <label class="input-common" for="payment-method">Phương thức thanh toán</label>
-                            <select class="input-common" id="payment-method" name="payment-method" required>
-                                <option class="input-common" value="">Chọn phương thức thanh toán</option>
-                                <option class="input-common" value="credit-card">Thẻ tín dụng</option>
-                                <option class="input-common" value="paypal">Thanh toán khi nhận hàng</option>
-                                <option class="input-common" value="bank-transfer">Chuyển khoản ngân hàng</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="overlay" class="overlay" style="display: none;"></div>
-
-                    <div class="thanhtoan-bt">
-                        <button class="button-orange" onclick="openPayForm()">Đặt hàng</button>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
-
         </div>
 
+        <!-- Thông tin vận chuyển -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h5 class="m-0">Thông tin vận chuyển</h5>
+            </div>
+            <div class="card-body">
+                <form action="checkout"  method="post">
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Địa chỉ</label>
+                        <input type="text" class="form-control" id="address" name="address" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Số điện thoại</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-warning">
+                            <h5 class="m-0">Mã giảm giá & Phương thức thanh toán</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="couponCode" class="form-label">Mã giảm giá</label>
+                                <input type="text" class="form-control" id="couponCode" name="couponCode">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phương thức thanh toán</label>
+                                <div>
+                                    <input type="radio"  name="paymentMethod" value="COD" checked>
+                                    <label >Thanh toán khi nhận hàng (COD)</label>
+                                </div>
+                                <div>
+                                    <input type="radio"  name="paymentMethod" value="Bank">
+                                    <label >Chuyển khoản ngân hàng</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" >Đặt hàng</button>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- Mã giảm giá và phương thức thanh toán -->
+
+
+        <!-- Tổng tiền và nút đặt hàng -->
+        <div class="p-4 bg-light rounded shadow-sm">
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="m-0">Tổng tiền: <span class="fw-bold text-primary">${sessionScope.cart.getTotal()}đ</span></p>
+            </div>
+        </div>
     </div>
-    <div id="payModal" class="success-message modal-content" style="display: none;">
 
-        <h2>Mua hàng thành công!</h2>
-        <p>Đơn hàng của bạn đã được đặt thành công. Cảm ơn bạn!</p>>
-        <button  type="button" onclick="window.location.href='home'" class="close-button">Đóng</button>
-
-    </div>
-
-
-
-
-
-    <jsp:include page="comon/footer.jsp"/>
+    <!-- Footer -->
+    <jsp:include page="comon/footer.jsp" />
 </div>
-<script src="js/thanhtoan.js"> </script>
 
-
-
-
-
-
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -33,6 +33,10 @@ public class LoginController extends HttpServlet {
             if (user!=null){
                 HttpSession session = request.getSession(true);
                 session.setAttribute("auth",user);
+                session.setAttribute("user",user.getId());
+                System.out.println("User details: " + user);
+                System.out.println("User ID from session: " + session.getAttribute("user"));
+
 
                 if(user.getType()==1){
                     response.sendRedirect(request.getContextPath() + "/admin/user");

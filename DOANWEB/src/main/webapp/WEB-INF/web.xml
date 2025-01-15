@@ -90,8 +90,4 @@
         <url-pattern>/ShowCart</url-pattern>
     </servlet-mapping>
 
-
-<!--    gio hang-->
-
-
 </web-app>
