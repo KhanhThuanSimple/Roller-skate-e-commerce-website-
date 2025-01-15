@@ -76,7 +76,7 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label for="couponCode" class="form-label">Mã giảm giá</label>
-                                <input type="text" class="form-control" id="couponCode" name="couponCode">
+                                <input type="text" class="form-control" id="couponCode" name="discountCode">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Phương thức thanh toán</label>

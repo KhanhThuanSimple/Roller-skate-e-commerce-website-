@@ -9,6 +9,8 @@ public class CartProduct {
     private String description;
     private String offer;
     private int quantity;
+    private double total;
+
 
     public int getId() {
         return id;
@@ -68,6 +70,9 @@ public class CartProduct {
 
     public int getQuantity() {
         return quantity;
+    }
+    public double getTotal() {
+        return total;
     }
 
     public void setQuantity(int quantity) {

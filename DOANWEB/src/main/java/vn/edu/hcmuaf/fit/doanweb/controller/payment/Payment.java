@@ -48,6 +48,7 @@ public class Payment extends HttpServlet {
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         String paymentMethod = request.getParameter("paymentMethod");
+        String discountCode = request.getParameter("discountCode");
 
         HttpSession session = request.getSession();
         Integer userId = (Integer) session.getAttribute("user");
@@ -73,6 +74,14 @@ public class Payment extends HttpServlet {
             order.setAddress(address);
             order.setTotalAmount(totalAmount);
             order.setPaymentMethod(paymentMethod);
+            String status;
+            if ("Bank".equalsIgnoreCase(paymentMethod)) {
+                status = "Đã thanh toán";
+            } else {
+                status = "Đang xử lí";
+            }
+            order.setStatus(status);
+            order.setDiscountCode(discountCode);
 
             dao.insertOrder(order);  // Phương thức này sẽ tự động cập nhật ID của đơn hàng
 
