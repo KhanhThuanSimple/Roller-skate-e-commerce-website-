@@ -21,13 +21,12 @@ public class AdminImportEditController extends HttpServlet {
 
         try{
             int product_id=Integer.parseInt(request.getParameter("product_id"));
-            String product_name=request.getParameter("product_name");
-            String image=request.getParameter("image");
+
             double purchase_price= Double.parseDouble(request.getParameter("purchase_price"));
             int quantity=Integer.parseInt(request.getParameter("quantity"));
             int id=Integer.parseInt(request.getParameter("id"));
 
-            boolean rs =authService.updateImport(product_id,product_name,image,purchase_price,quantity,id);
+            boolean rs =authService.updateImport(product_id,purchase_price,quantity,id);
             System.out.println("KQs");
 
             System.out.println(rs);

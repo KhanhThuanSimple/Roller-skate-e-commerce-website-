@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
+import vn.edu.hcmuaf.fit.doanweb.service.CategoryService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,12 +18,12 @@ public class AdminCategoryAddController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        AuthService authService = new AuthService();
+        CategoryService categoryService = new CategoryService();
 
         try{
             String name=request.getParameter("name");
 
-            boolean rs =authService.insertCategory(name);
+            boolean rs =categoryService.insertCategory(name);
             if(rs) {
                 request.setAttribute("message", "Thêm thành công!");
             }else{

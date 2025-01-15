@@ -3,14 +3,14 @@ package vn.edu.hcmuaf.fit.doanweb.dao.model;
 public class Product implements java.io.Serializable {
 
 
-    private int id;
-    private String name;
-    private String img;
-    private double price;
-    private String title;
-    private String description;
-    private int cateId;
-    private String offer;
+    public int id;
+    public String name;
+    public String img;
+    public double price;
+    public String title;
+    public String description;
+    public int cateId;
+    public String offer;
 
     public Product(int id, String name, String img, double price, String title, String description,int cateId, String offer) {
         this.id = id;

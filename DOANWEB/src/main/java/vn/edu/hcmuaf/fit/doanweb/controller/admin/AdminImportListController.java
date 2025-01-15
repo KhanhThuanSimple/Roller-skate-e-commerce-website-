@@ -17,6 +17,7 @@ public class AdminImportListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AuthService authService = new AuthService();
+        System.out.println("Nhannnnnn nè");
         int page = 1;
         String page_prams= request.getParameter("page");
         try {
@@ -29,7 +30,7 @@ public class AdminImportListController extends HttpServlet {
             if(page>totalPage) page=totalPage;
 
             List<ImportOrders> imports = authService.getListImport(page);
-
+System.out.println(imports);
             request.setAttribute("imports", imports);
             request.setAttribute("totalPage", totalPage);
             request.setAttribute("page", page);

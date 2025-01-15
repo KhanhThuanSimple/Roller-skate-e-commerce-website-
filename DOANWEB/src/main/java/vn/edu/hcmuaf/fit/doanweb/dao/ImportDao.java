@@ -19,22 +19,24 @@ public class ImportDao {
         ResultSet rs = null;
         ArrayList<ImportOrders> imports = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM import_orders  ORDER BY id LIMIT ?, ?";
+            String sql = "SELECT * FROM import_orders AS import_orders\n" +
+                    " LEFT JOIN product AS product ON product.id = import_orders.product_id\n" +
+                    " ORDER BY import_orders.id LIMIT ?,?";
 
             PreparedStatement pstmt = st.getConnection().prepareStatement(sql);
 
             pstmt.setInt(1, page-1);      // Gán giá trị cho offset
             pstmt.setInt(2, this.limit);       // Gán giá trị cho limit
 
-
+System.out.println(pstmt);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 ImportOrders importOrders= new ImportOrders();
                 importOrders.setId(rs.getInt("id"));
                 importOrders.setProduct_id(rs.getInt("product_id"));
-                importOrders.setProduct_name(rs.getString("product_name"));
-                importOrders.setImage(rs.getString("image"));
+                importOrders.setProduct_name(rs.getString("name"));
+                importOrders.setImage(rs.getString("img"));
                 importOrders.setPurchase_price(rs.getDouble("purchase_price"));
                 importOrders.setQuantity(rs.getInt("quantity"));
 
@@ -80,7 +82,7 @@ public class ImportDao {
         }
     }
     public User findUserByUserName(String username) throws SQLException {
-        String sql="select * from user where username=? ";
+        String sql="select * from user where username=?  ";
 
         try {
             Statement st = DBConnect.getStatement();
@@ -113,16 +115,15 @@ public class ImportDao {
         }
 
     }
-    public boolean insertImport(int product_id, String product_name, String image,double purchase_price,int quantity) throws SQLException {
-        String sql = "insert into import_orders(product_id,product_name,image,purchase_price,quantity) values(?,?,?, ?,?)";
+    public boolean insertImport(int product_id,double purchase_price,int quantity) throws SQLException {
+        String sql = "insert into import_orders(product_id,purchase_price,quantity) values(?, ?,?)";
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
             pre.setInt(1, product_id);
-            pre.setString(2, product_name);
-            pre.setString(3, image);
-            pre.setDouble(4,purchase_price);
-            pre.setInt(5, quantity);
+     ;
+            pre.setDouble(2,purchase_price);
+            pre.setInt(3, quantity);
 
 
 
@@ -134,19 +135,18 @@ public class ImportDao {
             throw new RuntimeException(e);
         }
     }
-    public boolean updateImport(int product_id, String product_name,String image,double purchase_price,int quantity,int id) throws SQLException {
-        String sql = "UPDATE import_orders SET product_id = ?, product_name = ?, image = ?, purchase_price = ?, quantity = ? WHERE id = ?";
+    public boolean updateImport(int product_id,double purchase_price,int quantity,int id) throws SQLException {
+        String sql = "UPDATE import_orders SET product_id = ?,  purchase_price = ?, quantity = ? WHERE id = ?";
 
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
             pre.setInt(1, product_id);
-            pre.setString(2, product_name);
-            pre.setString(3, image);
-            pre.setDouble(4, purchase_price);
+          ;
+            pre.setDouble(2, purchase_price);
 
-            pre.setInt(5, quantity);
-            pre.setInt(6, id);
+            pre.setInt(3, quantity);
+            pre.setInt(4, id);
 
             int rs = pre.executeUpdate();
 

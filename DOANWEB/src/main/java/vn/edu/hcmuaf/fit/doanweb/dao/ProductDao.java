@@ -29,6 +29,7 @@ public class  ProductDao {
                             rs.getDouble("price"),
                             rs.getString("title"),
                             rs.getString("description"),
+                            rs.getInt("cateID"),
                             rs.getString("offer")
                     ));
                 }
@@ -66,6 +67,7 @@ public class  ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
+                                rs.getInt("category_id"),
                                 rs.getString("offer")
                         ));
                     }
@@ -99,6 +101,7 @@ public class  ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
+                                rs.getInt("category_id"),
                                 rs.getString("offer")
                         );
                     }
@@ -131,6 +134,7 @@ public class  ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
+                                rs.getInt("category_id"),
                                 rs.getString("offer")
                         ));
                     }
@@ -165,6 +169,7 @@ public class  ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
+                                rs.getInt("category_id"),
                                 rs.getString("offer")
                         ));
                     }
@@ -199,6 +204,7 @@ public class  ProductDao {
                             rs.getDouble("price"),
                             rs.getString("title"),
                             rs.getString("description"),
+                            rs.getInt("category_id"),
                             rs.getString("offer")
                     ));
                 }
@@ -238,7 +244,7 @@ public class  ProductDao {
         return lists;
     }
     public boolean insertProduct(String name, String img, double price,String title,String description, int cateID,String offer) throws SQLException {
-        String sql = "insert into product(name,img,price,title,address, description,offer) values(?,?,?, ?,?,?,?)";
+        String sql = "insert into product(name,img,price,title, description,cateID,offer) values(?,?,?, ?,?,?,?)";
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
@@ -249,6 +255,7 @@ public class  ProductDao {
             pre.setString(5, description);
             pre.setInt(6, cateID);
             pre.setString(7, offer);
+            System.out.println(pre);
 
 
 

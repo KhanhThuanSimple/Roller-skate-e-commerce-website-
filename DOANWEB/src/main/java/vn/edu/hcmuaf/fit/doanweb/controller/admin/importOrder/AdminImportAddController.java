@@ -29,7 +29,7 @@ public class AdminImportAddController extends HttpServlet {
 
 
 
-            boolean rs =authService.insertImport(product_id,product_name,image,purchase_price,quantity);
+            boolean rs =authService.insertImport(product_id,purchase_price,quantity);
             if(rs) {
                 request.setAttribute("message", "Thêm thành công!");
             }else{

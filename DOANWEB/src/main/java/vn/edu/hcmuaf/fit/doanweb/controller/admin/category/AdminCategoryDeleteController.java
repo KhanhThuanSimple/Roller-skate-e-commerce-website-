@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
+import vn.edu.hcmuaf.fit.doanweb.service.CategoryService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,11 +18,12 @@ public class AdminCategoryDeleteController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        AuthService authService = new AuthService();
+        CategoryService categoryService = new CategoryService();
+
         int uid= Integer.parseInt(request.getParameter("uid"));
 
         try {
-            boolean rs = authService.delete(uid);
+            boolean rs = categoryService.deleteCategory(uid);
             if(rs) {
                 request.setAttribute("message", "Xóa thành công!");
             }else{

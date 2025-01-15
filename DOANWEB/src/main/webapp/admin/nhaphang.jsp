@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -46,7 +49,10 @@
                         <td>${importOrders.id}</td>
                         <td>${importOrders.product_id}</td>
                         <td>${importOrders.product_name}</td>
-                        <td>${importOrders.image}</td>
+                        <td>
+                            <img src="${importOrders.image}" style="width: 50px ; height: 50px ; border-radius: 5px">
+                        </td>
+
                         <td>${importOrders.purchase_price}</td>
                         <td>${importOrders.quantity}</td>
 
@@ -55,8 +61,7 @@
                             <button onclick="openImportUpdateForm({
                                     id: ${importOrders.id},
                                     product_id:'${importOrders.product_id}',
-                                    product_name:'${importOrders.product_name}',
-                                    image:'${importOrders.image}',
+
                                     purchase_price:'${importOrders.purchase_price}',
                                     quantity:'${importOrders.quantity}'
                                     })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
@@ -105,9 +110,6 @@
             <div >
                 <input name="product_id"  class="input-common" type="text" placeholder=" ID sản phẩm">
             </div>
-            <div>
-                <input name="product_name" class="input-common"  type="text" placeholder=" Tên sản phẩm">
-            </div>
 
             <div>
                 <input name="purchase_price" class="input-common" type="number" placeholder="Giá nhập hàng">
@@ -117,12 +119,7 @@
                 <input name="quantity" class="input-common" type="number" placeholder="Số lượng nhập">
 
             </div>
-            <div>
 
-                <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
-                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
-                       style="visibility: hidden;" />
-            </div>
             <div  class="flex-center ">
                 <button type="submit" class="button-orange">Lưu </button>
             </div>
@@ -138,27 +135,20 @@
 
         <form method="post" action="${pageContext.request.contextPath}/admin/import/update" class="flex-colunm" >
             <h2>Chỉnh sửa sản phẩm</h2>
+            <input type="hidden" name="id">
             <div >
-                <input  class="input-common" type="text" placeholder=" ID sản phẩm">
-            </div>
-            <div>
-                <input class="input-common"  type="email" placeholder=" Tên sản phẩm">
+                <input name="product_id"  class="input-common" type="text" placeholder=" ID sản phẩm">
             </div>
 
             <div>
-                <input class="input-common" type="number" placeholder="Giá nhập hàng">
+                <input class="input-common" type="number" name="purchase_price" placeholder="Giá nhập hàng">
             </div>
 
             <div>
-                <input class="input-common" type="number" placeholder="Số lượng nhập">
+                <input class="input-common" type="number" name="quantity" placeholder="Số lượng nhập">
 
             </div>
-            <div>
 
-                <i class="fa-regular fa-image" style="font-size: xx-large; color: #a3a3a3; cursor: pointer;"></i>
-                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
-                       style="visibility: hidden;" />
-            </div>
             <div  class="flex-center ">
                 <button type="submit" class="button-orange">Lưu </button>
             </div>
@@ -194,8 +184,7 @@
         const form = document.getElementById("modal-update-import");
         form.querySelector('input[name="id"]').value = importOrders.id;
         form.querySelector('input[name="product_id"]').value = importOrders.product_id;
-        form.querySelector('input[name="product_name"]').value = importOrders.product_name;
-        form.querySelector('input[name="image"]').value = importOrders.image;
+
         form.querySelector('input[name="purchase_price"]').value = importOrders.purchase_price;
         form.querySelector('input[name="quantity"]').value = importOrders.quantity;
 
