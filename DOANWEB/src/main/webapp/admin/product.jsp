@@ -50,6 +50,8 @@
                             <td>${product.price}</td>
                             <td>${product.title}</td>
                             <td>${product.description}</td>
+                            <td>${product.cateID}</td>
+
                             <td>${product.offer}</td>
 
 
@@ -61,6 +63,7 @@
                                         inmg:'${product.img}',
                                         title:'${product.title}',
                                         description:'${product.description}',
+                                        cateId:'${product.cateID}',
                                         offer:'${product.offer}'
                                         })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
@@ -117,6 +120,9 @@
                     <input name="description" class="input-common" type="text" placeholder="Mô tả">
                 </div>
                 <div>
+                    <input name="cateID" class="input-common" type="number" placeholder="ID loại sản phẩm">
+                </div>
+                <div>
                     <input name="offer" class="input-common" type="text" placeholder="Khuyến mãi">
                 </div>
                 <div>
@@ -151,6 +157,9 @@
                 </div>
                 <div>
                     <input name="description" class="input-common" type="text" placeholder="Mô tả">
+                </div>
+                <div>
+                    <input name="cateID" class="input-common" type="text" placeholder="ID loại sản phẩm">
                 </div>
                 <div>
                     <input name="offer" class="input-common" type="text" placeholder="Khuyến mãi">
@@ -198,6 +207,8 @@
             form.querySelector('input[name="img"]').value = product.imag;
             form.querySelector('input[name="title"]').value = product.title;
             form.querySelector('in[name="description"]').value = product.description;
+            form.querySelector('in[name="cateID"]').value = product.cateID;
+
             form.querySelector('in[name="offer"]').value = product.offer;
             form.style.display = "block";
         }

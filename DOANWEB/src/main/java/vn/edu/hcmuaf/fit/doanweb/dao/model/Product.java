@@ -9,15 +9,17 @@ public class Product implements java.io.Serializable {
     private double price;
     private String title;
     private String description;
+    private int cateId;
     private String offer;
 
-    public Product(int id, String name, String img, double price, String title, String description, String offer) {
+    public Product(int id, String name, String img, double price, String title, String description,int cateId, String offer) {
         this.id = id;
         this.name = name;
         this.img = img;
         this.price = price;
         this.title = title;
         this.description = description;
+        this.cateId = cateId;
         this.offer = offer;
     }
 
@@ -75,6 +77,14 @@ public class Product implements java.io.Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getCateId() {
+        return cateId;
+    }
+
+    public void setCateId(int cateId) {
+        this.cateId = cateId;
     }
 
     @Override

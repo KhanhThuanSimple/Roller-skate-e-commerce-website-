@@ -110,6 +110,19 @@ public class AuthService {
         CategoryDao categoryDao = new CategoryDao();
         return categoryDao.deleteCategory(id);
     }
+    public boolean insertProduct(String name, String img, double price,String title,String description, int cateID,String offer) throws SQLException {
+        ProductDao productDao = new ProductDao();
+        return productDao.insertProduct(name,img,price,title,description,cateID,offer);
+    }
+    public boolean updateProduct(String name, String img, double price,String title,String description, int cateID,String offer,int id) throws SQLException {
+        ProductDao productDao = new ProductDao();
+        return productDao.updateProduct(name, img, price, title, description, cateID, offer, id);
+    }
+    public boolean deleteProduct(int id) throws SQLException {
+        ProductDao productDao = new ProductDao();
+        return productDao.deleteProduct(id);
+    }
+
 
 
 

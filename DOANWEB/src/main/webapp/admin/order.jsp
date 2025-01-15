@@ -27,97 +27,57 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID đơn hàng</th>
-                            <th>Khách Hàng</th>
-                            <th>Tổng Tiền</th>
-                            <th>Trạng thái thanh toán</th>
+                            <th>ID </th>
+                            <th>ID Khách Hàng</th>
+                            <th>Điện Thoại</th>
+                            <th>Địa Chỉ</th>
 
-                            <th>Trạng thái giao hàng</th>
+                            <th>Phương Thức Thanh Toán</th>
+                            <th>Tổng tiền</th>
+                            <th>Status</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="order" items="${orders}">
                         <tr>
-                            <td>01</td>
-                            <td>Nguyễn Văn A</td>
-                            <td>160.000</td>
-                            <td>Đã thanh toán</td>
+                            <td>${order.id}</td>
+                            <td>${order.user_id}</td>
+                            <td>${order.name}</td>
+                            <td>${order.phone}</td>
+                            <td>${order.address}</td>
+                            <td>${order.paymentMethod}</td>
+                            <td>${order.totalAmount}</td>
+                            <td>${order.status}</td>
 
-                            <td> Đặt hàng</td>
                             <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
-                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                </button>
+
+                                <button onclick="openProductUpdateForm({
+                                        id: ${order.id},
+                                        user_id:'${order.user_id}',
+                                        name:'${order.name}',
+                                        phone:'${order.phone}',
+                                        address:'${order.address}',
+                                        paymentMethod:'${order.paymentMethod}'
+                                        totalAmount:'${order.totalAmount}',
+
+                                        status:'${order.status}'
+                                        })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
+
+
+                                <form action="${pageContext.request.contextPath}/admin/order/delete" method="post"
+                                      style="display:inline;">
+                                    <input type="hidden" name="uid" value="${user.id}">
+                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                            style="border:none;background-color: unset">
+                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Nguyễn Văn Hậu</td>
-                            <td>130.000</td>
-                            <td>Đã thanh toán</td>
-                            <td>Xác nhận đơn hàng</td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
-                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Trần Mai Anh</td>
-                            <td>180.000</td>
-                            <td>Chúa thanh toán</td>
-                            <td>Đang xử lí </td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
-                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>04</td>
-                            <td>Phạm Thị Hồng</td>
-                            <td>400.000</td>
-                            <td>Đã thanh toán</td>
-                            <td>Đang lấy hàng</td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
-                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td>Nguyễn Cao Thắng</td>
-                            <td>560.000</td>
-                            <td>Chưa thanh toán</td>
-                            <td>Đang giao hàng</td>
-                            <td>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"><i class="fa-solid fa-trash"
-                                        style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-                                <button style="border:none;background-color: unset"> <i onclick="openProductForm()"
-                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                </button>
-                            </td>
-                        </tr>
+                    </c:forEach>
+                    <!-- Các khách hàng sẽ được hiển thị ở đây -->
+
                        
                     </tbody>
 
