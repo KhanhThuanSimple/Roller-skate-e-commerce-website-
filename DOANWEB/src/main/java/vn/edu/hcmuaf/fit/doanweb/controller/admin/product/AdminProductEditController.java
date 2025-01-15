@@ -10,7 +10,7 @@ import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "AdminProductEditController" ,value = "/admin/product/edit")
+@WebServlet(name = "AdminProductEditController" ,value = "/admin/product/update")
 public class AdminProductEditController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +34,7 @@ public class AdminProductEditController extends HttpServlet {
             boolean rs =authService.updateProduct(name,img,price,title,description,cateID,offer,id);
             System.out.println("KQs");
 
-            System.out.println(rs);
+            System.out.println("Nhanf");
             if(rs) {
                 request.setAttribute("message", "Cập nhật thành công!");
             }else{

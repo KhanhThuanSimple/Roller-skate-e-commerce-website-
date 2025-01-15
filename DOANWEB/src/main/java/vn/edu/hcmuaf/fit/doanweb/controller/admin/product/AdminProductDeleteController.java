@@ -24,7 +24,7 @@ public class AdminProductDeleteController extends HttpServlet {
         int uid= Integer.parseInt(request.getParameter("uid"));
 
         try {
-            boolean rs = authService.delete(uid);
+            boolean rs = authService.deleteProduct(uid);
             if(rs) {
                 request.setAttribute("message", "Xóa thành công!");
             }else{

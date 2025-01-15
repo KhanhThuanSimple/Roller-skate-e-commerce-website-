@@ -10,12 +10,12 @@
     <h2>Admin Dashboard</h2>
     <ul>
         <li><a href="${pageContext.request.contextPath}/admin/user">Tài khoản Admin</a></li>
-        <li><a href="order.jsp">Đơn hàng</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/order">Đơn hàng</a></li>
         <li><a   href="${pageContext.request.contextPath}/admin/customer">Khách hàng</a></li>
-        <li><a href="product.jsp">Sản phẩm</a></li>
-        <li><a href="nhaphang.jsp">Nhập hàng</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/product">Sản phẩm</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/import">Nhập hàng</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/export">Xuất hàng</a></li>
-        <li><a href="category.jsp">Loại sản phẩm</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/category">Loại sản phẩm</a></li>
 
     </ul>
 </aside>
