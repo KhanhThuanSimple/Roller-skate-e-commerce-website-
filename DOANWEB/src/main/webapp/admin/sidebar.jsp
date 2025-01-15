@@ -7,8 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <aside class="sidebar">
-    <h2>Admin Dashboard</h2>
-    <ul>
+    <h2 style="font-size: 24px !important;s">Admin Dashboard</h2>
+    <ul style="padding-left: 0 !important;">
         <li><a href="${pageContext.request.contextPath}/admin/user">Tài khoản Admin</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/order">Đơn hàng</a></li>
         <li><a   href="${pageContext.request.contextPath}/admin/customer">Khách hàng</a></li>

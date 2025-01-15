@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -29,6 +31,8 @@
                         <tr>
                             <th>ID </th>
                             <th>ID Khách Hàng</th>
+                            <th>Tên khách hàng</th>
+
                             <th>Điện Thoại</th>
                             <th>Địa Chỉ</th>
 
@@ -52,30 +56,11 @@
 
                             <td>
 
-                                <button onclick="openOrderUpdateForm({
-                                        id: ${order.id},
-                                        user_id:'${order.user_id}',
-                                        name:'${order.name}',
-                                        phone:'${order.phone}',
-                                        address:'${order.address}',
-                                        paymentMethod:'${order.paymentMethod}'
-                                        totalAmount:'${order.totalAmount}',
-
-                                        status:'${order.status}'
-                                        })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-
-
-                                <form action="${pageContext.request.contextPath}/admin/order/delete" method="post"
-                                      style="display:inline;">
-                                    <input type="hidden" name="uid" value="${user.id}">
-                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                                            style="border:none;background-color: unset">
-                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                    </button>
-                                </form>
-                                <button style="border:none;background-color: unset"> <i onclick="openOrderDetailForm()"
-                                                                                        class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            <form method="post" action="order-detail?pid=${order.id}">
+                                <button style="border:none;background-color: unset" type="submit">
+                                    <i class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
+                            </form>
                             </td>
                         </tr>
                     </c:forEach>

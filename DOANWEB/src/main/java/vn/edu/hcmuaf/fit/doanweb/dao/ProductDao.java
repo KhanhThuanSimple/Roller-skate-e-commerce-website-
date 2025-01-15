@@ -444,7 +444,7 @@ public class ProductDao {
 
     public List<Order> getOrdersWithProducts(int userId) {
             List<Order> orders = new ArrayList<>();
-        String queryOrders = "SELECT * FROM orders WHERE user_id = ?";
+        String queryOrders = "SELECT * FROM orders WHERE ?=0 OR user_id = ?";
 
 
         try (Connection cons = DBConnect.getConn()) {
@@ -453,7 +453,9 @@ public class ProductDao {
             }
             try (PreparedStatement statement = cons.prepareStatement(queryOrders)) {
                 statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị userId
+                statement.setInt(2, userId); // Sửa ở đây để truyền đúng giá trị userId
                 try (ResultSet rs = statement.executeQuery()) {
+                    System.out.println(statement);
                     while (rs.next()) {
                         Order order = new Order();
                         order.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id"
@@ -486,7 +488,7 @@ public class ProductDao {
                 "FROM product p " +
                 "JOIN order_items oi ON p.id = oi.product_id " +
                 "JOIN orders o ON oi.order_id = o.id " +
-                "WHERE o.user_id = ? AND o.id = ?";
+                "WHERE (?=0 OR o.user_id = ?) AND o.id = ?";
 
         try (Connection cons = DBConnect.getConn()) {
             if (cons == null) {
@@ -494,7 +496,8 @@ public class ProductDao {
             }
             try (PreparedStatement statement = cons.prepareStatement(query)) {
                 statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị userId
-                statement.setInt(2, orderId);
+                statement.setInt(2, userId); // Sửa ở đây để truyền đúng giá trị userId
+                statement.setInt(3, orderId);
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
                         Order order = new Order();
