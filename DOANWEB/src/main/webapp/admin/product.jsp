@@ -28,11 +28,11 @@
                 <thead>
                 <tr>
                     <th>ID sản phẩm</th>
-                    <th>Tên sản phẩm</th>
+                    <th>Nhà Sản Xuất</th>
                     <th>Hình ảnh</th>
 
                     <th>Giá</th>
-                    <th>Tiêu đề</th>
+                    <th>Tên Sản Phẩm</th>
 
 
                     <th>Mô tả</th>

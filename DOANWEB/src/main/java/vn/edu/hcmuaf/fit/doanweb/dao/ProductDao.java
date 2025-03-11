@@ -211,7 +211,7 @@ public class ProductDao {
                                 rs.getDouble("price"),
                                 rs.getString("title"),
                                 rs.getString("description"),
-                                rs.getInt("category_id"),
+                                rs.getInt("cateID"),
                                 rs.getString("offer")
                         ));
                     }
@@ -575,7 +575,11 @@ public class ProductDao {
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-        System.out.println(dao.getUserById(1));
+        List<Product> products = dao.getProductByTitle("patin");
+        for (Product product : products) {
+            System.out.println(product);
+        }
+
 
     }
 }

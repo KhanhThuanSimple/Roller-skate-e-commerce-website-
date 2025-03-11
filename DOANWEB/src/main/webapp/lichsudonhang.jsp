@@ -37,7 +37,7 @@
 <div class="container mt-5">
     <!-- Header -->
     <div class="text-center mb-4">
-        <h1 class="text-primary">Lịch Sử Đơn Hàng</h1>
+        <h1 class="text-primary">Đơn Hàng</h1>
         <p class="text-muted">Xem lại các đơn hàng mà bạn đã đặt</p>
     </div>
 

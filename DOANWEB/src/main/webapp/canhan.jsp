@@ -46,17 +46,15 @@
                         </div>
 
                         <div class="In4Avt">
-                            <span class="username">user1</span>
-                            <a href="canhan.jsp" class="suaHoSo">
-                                <p>Sửa Hồ Sơ</p>
-                            </a>
+                            <span class="username"> <span>${user.name}</span></span>
+
                         </div>
                     </div>
 
 
                     <h3>QUẢN LÝ TÀI KHOẢN</h3>
                     <ul>
-                        <li><a href="canhan.jsp"> Hồ Sơ Cá Nhân</a></li>
+                        <li><a href="canhan"> Hồ Sơ Cá Nhân</a></li>
                         <form method="get" action="changePassword"> <li><a href="changePassword"> Đổi Mật Khẩu</a></li></form>
 
                     </ul>

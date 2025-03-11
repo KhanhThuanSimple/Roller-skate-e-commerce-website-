@@ -46,14 +46,13 @@
         <div class="flex-center">
 
 
-            <button type="button" onclick="window.location.href='forgot-otp.html'" class="button-orange">Nhận
-                OTP</button>
+            <button type="button" onclick="window.location.href='forgot-password-new.jsp'" class="button-orange">Gưỉ mail</button>
 
 
         </div>
         <div class="flex-row">
 
-            <a class="text-link flex-1" href="login.html"> Trở lại đăng nhập.</a>
+            <a class="text-link flex-1" href="login"> Trở lại đăng nhập.</a>
 
         </div>
 

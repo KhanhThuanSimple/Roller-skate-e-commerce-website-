@@ -65,7 +65,7 @@
 
         </div>
         <div class="flex-row">
-            <a class="text-link flex-1" href="forgot-password.html"> Quên mật khẩu?</a>
+            <a class="text-link flex-1" href="forgot-password.jsp"> Quên mật khẩu?</a>
             <a class="text-link flex-1" href="register.jsp"> Đăng kí tài khoản.</a>
 
         </div>
