@@ -3,11 +3,10 @@ package vn.edu.hcmuaf.fit.doanweb.controller.payment;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import vn.edu.hcmuaf.fit.doanweb.controller.BaseServlet;
+import vn.edu.hcmuaf.fit.doanweb.controller.product.BaseServlet;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.CartProduct;
 import vn.edu.hcmuaf.fit.doanweb.dao.order.OderDao;

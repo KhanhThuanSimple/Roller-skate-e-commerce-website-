@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.doanweb.controller;
+package vn.edu.hcmuaf.fit.doanweb.controller.login;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,11 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet(name = "Logout", value = "/logout")
 

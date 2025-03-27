@@ -1,10 +1,8 @@
-package vn.edu.hcmuaf.fit.doanweb.controller;
+package vn.edu.hcmuaf.fit.doanweb.controller.login;
 
-import com.mysql.cj.xdevapi.JsonString;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 
