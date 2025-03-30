@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>ListProduct</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.ListProduct</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.ListProduct</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -15,12 +15,12 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>HomeServlet</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.HomeServlet</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.HomeServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>CategoryServlet</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.CategoryServlet</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.CategoryServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -29,7 +29,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>DetailServlet</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.DetailServlet</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.DetailServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DetailServlet</servlet-name>
@@ -42,7 +42,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>SearchServlet</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.SearchServlet</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.SearchServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -53,7 +53,7 @@
 
     <servlet>
         <servlet-name>SortServlet</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.SortServlet</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.SortServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SortServlet</servlet-name>
@@ -61,7 +61,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ListTotal</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.ListTotal</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.ListTotal</servlet-class>
     </servlet>
 
 
@@ -106,7 +106,7 @@
 
     <servlet>
         <servlet-name>Information</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.InformationServlet</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.login.InformationServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -117,7 +117,7 @@
 
     <servlet>
         <servlet-name>ChangePassword</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.ChangePasswordServlet</servlet-class>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.login.ChangePasswordServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

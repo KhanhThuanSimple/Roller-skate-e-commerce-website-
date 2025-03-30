@@ -1,8 +1,9 @@
-package vn.edu.hcmuaf.fit.doanweb.controller;
+package vn.edu.hcmuaf.fit.doanweb.controller.login;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import vn.edu.hcmuaf.fit.doanweb.controller.product.BaseServlet;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 

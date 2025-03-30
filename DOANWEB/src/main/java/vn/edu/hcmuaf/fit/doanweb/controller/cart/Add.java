@@ -10,7 +10,7 @@ import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.CartP;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 import vn.edu.hcmuaf.fit.doanweb.service.ProductService;
-
+import vn.edu.hcmuaf.fit.doanweb.log.Log;
 import java.io.IOException;
 @WebServlet(name = "Add", value = "/add-cart")
 public class Add extends HttpServlet {
@@ -20,12 +20,14 @@ public class Add extends HttpServlet {
         ProductDao dao = new ProductDao();
         // Lấy thông tin sản phẩm
         String productId = request.getParameter("pid");
+        Log.info("Thêm sản phẩm có ID: " + productId);
         System.out.println(productId);
         Product product = dao.getAllProductId(productId);
         System.out.println(product.getId());
 
         if (product == null) {
             // Nếu sản phẩm không tồn tại, chuyển hướng và dừng xử lý
+            Log.warn("San phẩm"+productId+"không tồn tại.");
             response.sendRedirect("?addCart=false");
             return;
         }
@@ -40,7 +42,7 @@ public class Add extends HttpServlet {
         // Thêm sản phẩm vào giỏ hàng
         cart.addProduct(product);
         session.setAttribute("cart", cart);
-
+Log.info("Sản phẩm "+product.getName()+"thêm vào giỏ hàng thành công.");
         // Lấy URL của trang hiện tại từ Referer header
         String referer = request.getHeader("Referer");
 

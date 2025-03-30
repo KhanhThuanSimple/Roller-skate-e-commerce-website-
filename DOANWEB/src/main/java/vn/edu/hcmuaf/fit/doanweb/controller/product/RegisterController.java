@@ -1,19 +1,14 @@
-package vn.edu.hcmuaf.fit.doanweb.controller;
+package vn.edu.hcmuaf.fit.doanweb.controller.product;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 @WebServlet(name = "RegisterController", value = "/register")
 public class RegisterController extends HttpServlet {
