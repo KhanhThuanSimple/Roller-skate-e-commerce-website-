@@ -26,7 +26,7 @@
         <div id="main-contain-product">
 
             <div class="healine">
-                <h3>SẢN PHẨM MỚI</h3>
+                <h3>SẢN PHẨM </h3>
             </div>
             <div class="sort-buttons">
                 <button>Sắp xếp</button>

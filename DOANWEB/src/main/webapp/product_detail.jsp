@@ -77,12 +77,14 @@
 
 
                     <div class="purchase-info">
-                        <input id="quantityInput" type="number" min="0" value="1"/>
 
 <%--                        <a href="add-cart?pId=${p.id}">--%>
                         <button type="button" class="btn" id="firsts">
                             <a href="add-cart?pid=${detail.id}" class="buy-now">Thêm Vào Giỏ Hàng</a>
                             <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        <button type="button" class="btn" id="firsts">
+                            <a href="product" >Xem Thêm Sản Phẩm</a>
                         </button>
                         </a>
                     </div>

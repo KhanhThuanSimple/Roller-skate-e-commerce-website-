@@ -65,7 +65,16 @@
 
         </div>
         <div class="flex-row">
-            <a class="text-link flex-1" href="forgot-password.html"> Quên mật khẩu?</a>
+<%--            <a class="text-link flex-1" href="forgot-password.jsp"> Quên mật khẩu?</a>--%>
+            <a class="text-link flex-1" href="https://accounts.google.com/o/oauth2/auth?scope=email profile openid
+
+&redirect_uri=http://localhost:8080/DOANWEB/login
+
+&response_type=code
+
+&client_id=839747132596-cgvivf8uqtd2512b4fnev7rjjqh2l8lg.apps.googleusercontent.com
+
+&approval_prompt=force"> Quên mật khẩu?</a>
             <a class="text-link flex-1" href="register.jsp"> Đăng kí tài khoản.</a>
 
         </div>

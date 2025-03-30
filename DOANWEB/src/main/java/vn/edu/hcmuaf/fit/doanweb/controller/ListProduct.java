@@ -25,6 +25,7 @@ public class ListProduct extends BaseServlet {
         String indexPage = request.getParameter("index");
         String sort = request.getParameter("sort");
         String cateID = request.getParameter("category");
+        String search = request.getParameter("txt");
 
         if (indexPage == null) {
             indexPage = "1";

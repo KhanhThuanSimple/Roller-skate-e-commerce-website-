@@ -46,17 +46,15 @@
                         </div>
 
                         <div class="In4Avt">
-                            <span class="username">user1</span>
-                            <a href="canhan.jsp" class="suaHoSo">
-                                <p>Sửa Hồ Sơ</p>
-                            </a>
+                            <span class="username"> <span>${user.name}</span></span>
+
                         </div>
                     </div>
 
 
                     <h3>QUẢN LÝ TÀI KHOẢN</h3>
                     <ul>
-                        <li><a href="canhan.jsp"> Hồ Sơ Cá Nhân</a></li>
+                        <li><a href="canhan"> Hồ Sơ Cá Nhân</a></li>
                         <form method="get" action="changePassword"> <li><a href="changePassword"> Đổi Mật Khẩu</a></li></form>
 
                     </ul>
@@ -78,31 +76,28 @@
 
                     <div class="bot-rightcn">
 
+
                         <div class="formThongTinCaNhan">
                             <div class="form-group">
                                 <label>Tên đăng nhập</label>
-                                <span>User1</span>
+                                <span>${user.username}</span>
                             </div>
                             <div class="form-group">
-                                <label for="name">Tên</label>
-                                <input type="text" id="name" value="Nhu">
+                                <label >Tên</label>
+                                <span>${user.name}</span>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <span>ndangthihuyen@gmail.com</span>
-                                <a href="#">Thay Đổi</a>
+                                <span>${user.username}</span>
                             </div>
                             <div class="form-group">
                                 <label>Số điện thoại</label>
-                                <span>0372170331</span>
-                                <a href="#">Thay Đổi</a>
+                                <span>${user.phone}</span>
                             </div>
                             <div class="form-group">
                                 <label>Địa chỉ</label>
-                                <span>B12/10/31 Ấp 2 Xã VLB Huyện BC TPHCM</span>
-                                <a href="#">Thay Đổi</a>
+                                <span>${user.address}</span>
                             </div>
-                            <button class="nutLuu" onclick="moNutLuu()">Lưu</button>
                         </div>
 
                     </div>
@@ -116,7 +111,7 @@
     </main>
 
     <!-- Footer Section -->
-    <jsp:include page="comon/footer.jsp" />
+    <jsp:include page="comon/footer.jsp" />x`
 
 </div>
 <div id="modal_dangxuat" class="modal_dangxuat">

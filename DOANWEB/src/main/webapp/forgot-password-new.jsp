@@ -49,14 +49,14 @@
         <div class="flex-center">
 
 
-            <button type="button" onclick="window.location.href='login.html'" class="button-orange">Xác
+            <button type="button" onclick="window.location.href='login'" class="button-orange">Xác
                 nhận</button>
 
 
         </div>
         <div class="flex-row">
 
-            <a class="text-link flex-1" href="login.html"> Trở lại đăng nhập.</a>
+            <a class="text-link flex-1" href="login"> Trở lại đăng nhập.</a>
 
         </div>
 

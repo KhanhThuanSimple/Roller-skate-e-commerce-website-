@@ -73,7 +73,7 @@
 
                         </a>
                     </div>
-                    <button class="button-orange" onclick="openCategorytForm()">Thêm Tài Khoản</button>
+                    <button class="button-orange" onclick="openCategorytForm()">Thêm Loại Sản Phẩm  </button>
                 </div>
 
             </table>
