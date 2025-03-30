@@ -209,9 +209,6 @@
 
 
         <jsp:include page="comon/footer.jsp" >
-<%--<c:if test="${sessionScope.auth!=null}">--%>
-
-<%--        </c:if>--%>
 
 </body>
 
