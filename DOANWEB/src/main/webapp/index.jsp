@@ -206,10 +206,9 @@
             </div>
         </div>
 
-
-
-        <jsp:include page="comon/footer.jsp" >
-
+    </div>
+        <jsp:include page="comon/footer.jsp" />
+</div>
 </body>
 
 </html>

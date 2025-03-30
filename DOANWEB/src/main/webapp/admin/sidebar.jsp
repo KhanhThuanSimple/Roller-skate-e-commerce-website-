@@ -16,6 +16,8 @@
         <li><a href="${pageContext.request.contextPath}/admin/import">Nhập hàng</a></li>
 <%--        <li><a href="${pageContext.request.contextPath}/admin/export">Xuất hàng</a></li>--%>
         <li><a href="${pageContext.request.contextPath}/admin/category">Loại sản phẩm</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/screen">Màn hình</a></li>
+
         <li><a style="background-color: #657a8f !important;"  href="${pageContext.request.contextPath}/logout">Đăng xuất</a></li>
 
 

@@ -27,7 +27,7 @@
   <!-- Main Content -->
   <main class="main-content">
     <!-- Section: Khách hàng -->
-    <section id="manhinh">
+    <section id="screen">
       <h3>Quản lý màn hình</h3>
 
       <table>
@@ -36,34 +36,32 @@
           <th>ID</th>
           <th>Mã màn hình </th>
           <th>Tên màn hình</th>
+          <th>Thao tác</th>
 
         </tr>
         </thead>
         <tbody>
 
-        <c:forEach var="user" items="${users}">
+        <c:forEach var="screen" items="${screens}">
           <tr>
-            <td>${user.id}</td>
-            <td>${user.name}</td>
-            <td>${user.username}</td>
-            <td>${user.password}</td>
-            <td>${user.phone}</td>
-            <td>${user.address}</td>
+            <td>${screen.id}</td>
+            <td>${screen.idScreen}</td>
+            <td>${screen.nameScreen}</td>
+
 
             <td>
 
-              <button onclick="openUserUpdateForm({
-                      id: ${user.id},
-                      name:'${user.name}',
-                      username:'${user.username}',
-                      phone:'${user.phone}',
-                      address:'${user.address}'
+              <button onclick="openScreenUpdateForm({
+                      id: ${screen.id},
+                      name:'${screen.idScreen}',
+                      username:'${screen.nameScreen}'
+
                       })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
 
-              <form action="${pageContext.request.contextPath}/admin/user/delete" method="post"
+              <form action="${pageContext.request.contextPath}/admin/screen/delete" method="post"
                     style="display:inline;">
-                <input type="hidden" name="uid" value="${user.id}">
+                <input type="hidden" name="uid" value="${screen.id}">
                 <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
                         style="border:none;background-color: unset">
                   <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
@@ -86,7 +84,7 @@
 
             </a>
           </div>
-          <button class="button-orange" onclick="openUserForm()">Thêm màn hình</button>
+          <button class="button-orange" onclick="openScreenForm()">Thêm màn hình</button>
         </div>
 
       </table>
@@ -95,27 +93,20 @@
 </div>
 
 <!-- Product Form Modal -->
-<div id="userModal" class="modal">
+<div id="screenModal" class="modal">
   <div class="modal-content">
-    <span class="close-btn" onclick="closeUserForm()">&times;</span>
+    <span class="close-btn" onclick="closeScreenForm()">&times;</span>
 
-    <form method="post" action="${pageContext.request.contextPath}/admin/user/insert" class="flex-colunm">
-      <h2>Thêm tài khoản Admin</h2>
+    <form method="post" action="${pageContext.request.contextPath}/admin/screen/insert" class="flex-colunm">
+      <h2>Thêm màn hình</h2>
       <div>
-        <input name="name" class="input-common" type="text" placeholder=" Họ & tên">
+        <input name="idScreen" class="input-common" type="text" placeholder=" Mã màn hình">
       </div>
       <div>
-        <input name="username" class="input-common" type="email" placeholder=" Email">
+        <input name="nameScreen" class="input-common" type="text" placeholder=" Tên màn hình">
       </div>
-      <div>
-        <input name="pass" class="input-common" type="password" placeholder="Mật khẩu">
-      </div>
-      <div>
-        <input name="phone" class="input-common" type="number" placeholder="Số điện thoại">
-      </div>
-      <div>
-        <textarea name="address" rows="3" class="input-common" placeholder="Địa chỉ"></textarea>
-      </div>
+
+
       <div class="flex-center">
         <button type="submit" class="button-orange">Lưu</button>
       </div>
@@ -125,28 +116,22 @@
   </div>
 </div>
 
-<div id="modal-update-user" class="modal">
+<div id="modal-update-screen" class="modal">
   <div class="modal-content">
-    <span class="close-btn" onclick="closeUserUpdateForm()">&times;</span>
+    <span class="close-btn" onclick="closeScreenUpdateForm()">&times;</span>
 
-    <form method="post" action="${pageContext.request.contextPath}/admin/user/update" class="flex-colunm">
-      <h2>Chỉnh sửa tài khoản</h2>
+    <form method="post" action="${pageContext.request.contextPath}/admin/screen/update" class="flex-colunm">
+      <h2>Chỉnh sửa màn hình</h2>
       <input type="hidden" name="id">
       <div>
-        <input name="name" class="input-common" type="text" placeholder=" Họ &tên">
+        <input name="idScreen" class="input-common" type="text" placeholder=" Mã màn hình ">
       </div>
       <div>
-        <input name="username" class="input-common" type="email" placeholder=" Email">
+        <input name="nameScreen" class="input-common" type="text" placeholder=" Tên màn hình ">
       </div>
 
-      <div>
-        <input name="phone" class="input-common" type="number" placeholder="Số điện thoại">
-      </div>
-      <div>
-        <textarea name="address" rows="3" class="input-common" placeholder="Địa chỉ"></textarea>
-      </div>
-      <div class="flex-center">
-        <button class="button-orange" type="submit">Lưu tài khoản</button>
+
+        <button class="button-orange" type="submit">Lưu </button>
       </div>
 
 
@@ -157,26 +142,25 @@
 
 
 <script>
-  function openUserForm() {
-    document.getElementById("userModal").style.display = "block";
+  function openScreenForm() {
+    document.getElementById("screenModal").style.display = "block";
   }
 
-  function closeUserForm() {
-    document.getElementById("userModal").style.display = "none";
+  function closeScreenForm() {
+    document.getElementById("screenModal").style.display = "none";
   }
 
-  function openUserUpdateForm(user) {
-    const form = document.getElementById("modal-update-user");
-    form.querySelector('input[name="id"]').value = user.id;
-    form.querySelector('input[name="name"]').value = user.name;
-    form.querySelector('input[name="username"]').value = user.username;
-    form.querySelector('input[name="phone"]').value = user.phone;
-    form.querySelector('textarea[name="address"]').value = user.address;
+  function openScreenUpdateForm(screen) {
+    const form = document.getElementById("modal-update-screen");
+    form.querySelector('input[name="id"]').value = screen.id;
+    form.querySelector('input[name="idScreen"]').value = screen.idScreen;
+    form.querySelector('input[name="nameScreen"]').value = screen.nameScreen;
+
     form.style.display = "block";
   }
 
-  function closeUserUpdateForm() {
-    document.getElementById("modal-update-user").style.display = "none";
+  function closeScreenUpdateForm() {
+    document.getElementById("modal-update-screen").style.display = "none";
   }
 </script>
 </body>
