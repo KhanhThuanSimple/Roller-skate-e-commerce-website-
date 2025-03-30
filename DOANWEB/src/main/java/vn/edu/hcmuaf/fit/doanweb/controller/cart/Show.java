@@ -37,7 +37,7 @@ public class Show extends HttpServlet {
                     int idRemove = Integer.parseInt(removeParam);
                     cartP.removeProduct(idRemove);
                     session.setAttribute("cart", cartP);
-                    Log.info("Product with ID: " + idRemove + " removed from cart."); // Ghi log khi xóa sản phẩm
+                    Log.info("Product with ID: " + idRemove + " removed from cart."); // Gh i log khi xóa sản phẩm
                     response.sendRedirect("ShowCart");
                 } catch (NumberFormatException e) {
                     Log.error("Invalid product ID format: " + removeParam); // Ghi log lỗi nếu định dạng ID không hợp lệ
