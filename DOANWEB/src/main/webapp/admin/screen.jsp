@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản lý User</title>
+  <title>Quản lý màn hình</title>
   <link rel="stylesheet" href="admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
@@ -53,8 +53,8 @@
 
               <button onclick="openScreenUpdateForm({
                       id: ${screen.id},
-                      name:'${screen.idScreen}',
-                      username:'${screen.nameScreen}'
+                      idScreen:'${screen.idScreen}',
+                      nameScreen:'${screen.nameScreen}'
 
                       })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
@@ -97,7 +97,7 @@
   <div class="modal-content">
     <span class="close-btn" onclick="closeScreenForm()">&times;</span>
 
-    <form method="post" action="${pageContext.request.contextPath}/admin/screen/insert" class="flex-colunm">
+    <form method="post" action="${pageContext.request.contextPath}/admin/screen/add" class="flex-colunm">
       <h2>Thêm màn hình</h2>
       <div>
         <input name="idScreen" class="input-common" type="text" placeholder=" Mã màn hình">
@@ -120,7 +120,7 @@
   <div class="modal-content">
     <span class="close-btn" onclick="closeScreenUpdateForm()">&times;</span>
 
-    <form method="post" action="${pageContext.request.contextPath}/admin/screen/update" class="flex-colunm">
+    <form method="post" action="${pageContext.request.contextPath}/admin/screen/edit" class="flex-colunm">
       <h2>Chỉnh sửa màn hình</h2>
       <input type="hidden" name="id">
       <div>

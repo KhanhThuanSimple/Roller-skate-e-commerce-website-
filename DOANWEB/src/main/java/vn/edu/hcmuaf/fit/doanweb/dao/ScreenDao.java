@@ -84,7 +84,7 @@ public class ScreenDao {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
             pre.setString(1, idScreen);
-            pre.setString(1, nameScreen);
+            pre.setString(2, nameScreen);
 
 
             int rs = pre.executeUpdate();
