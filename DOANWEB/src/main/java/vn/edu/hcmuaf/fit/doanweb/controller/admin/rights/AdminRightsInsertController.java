@@ -9,8 +9,8 @@ import vn.edu.hcmuaf.fit.doanweb.service.RightsService;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "AdminRightsDeleteController", value = "/admin/rights/delete")
-public class AdminRightsDeleteController extends HttpServlet {
+@WebServlet(name = "AdminRightsInsertController", value = "/admin/rights/insert")
+public class AdminRightsInsertController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,26 +19,24 @@ public class AdminRightsDeleteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RightsService rightsService = new RightsService();
-        int uid= Integer.parseInt(request.getParameter("uid"));
 
-        try {
-            boolean rs = rightsService.deleteRights(uid);
+        try{
+            int id=Integer.parseInt(request.getParameter("id"));
+            String name=request.getParameter("name");
+
+            boolean rs =rightsService.insertRights(id,name);
             if(rs) {
-                request.setAttribute("message", "Xóa thành công!");
+                request.setAttribute("message", "Thêm thành công!");
             }else{
-                request.setAttribute("message", "Xóa không thành công!");
+                request.setAttribute("message", "Thêm không thành công!");
             }
             response.sendRedirect(request.getContextPath() + "/admin/rights");
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        }catch (SQLException e) {
+            e.printStackTrace(); // Ghi lại stack trace để dễ theo dõi
+            request.setAttribute("errorMessage", "Đã xảy ra lỗi khi thêm tài khoản!");
+            response.sendRedirect(request.getContextPath() + "/admin/rights");
 
         }
-
-
-
     }
-
 }
 

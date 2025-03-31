@@ -27,7 +27,7 @@
   <!-- Main Content -->
   <main class="main-content">
     <!-- Section: Khách hàng -->
-    <section id="screen">
+    <section id="rights">
       <h3>Quản lý màn hình</h3>
 
       <table>
@@ -96,7 +96,7 @@
   <div class="modal-content">
     <span class="close-btn" onclick="closerightsForm()">&times;</span>
 
-    <form method="post" action="${pageContext.request.contextPath}/admin/rights/add" class="flex-colunm">
+    <form method="post" action="${pageContext.request.contextPath}/admin/rights/insert" class="flex-colunm">
       <h2>Thêm màn hình</h2>
       <div>
         <input name="id" class="input-common" type="text" placeholder=" Mã quyền">
@@ -141,11 +141,11 @@
 
 
 <script>
-  function openrightsForm() {
+  function openRightsForm() {
     document.getElementById("rightsModal").style.display = "block";
   }
 
-  function closerightsForm() {
+  function closeRightsForm() {
     document.getElementById("rightsModal").style.display = "none";
   }
 
@@ -158,8 +158,8 @@
     form.style.display = "block";
   }
 
-  function closeScreenUpdateForm() {
-    document.getElementById("modal-update-screen").style.display = "none";
+  function closeRightsUpdateForm() {
+    document.getElementById("modal-update-rights").style.display = "none";
   }
 </script>
 </body>
