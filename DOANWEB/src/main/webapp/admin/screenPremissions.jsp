@@ -18,8 +18,6 @@
 
 <body>
 
-
-
 <div class="container">
     <!-- Sidebar -->
     <%@ include file="sidebar.jsp" %>
@@ -27,54 +25,50 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Section: Khách hàng -->
-        <section id="screen-premissions">
+        <section id="screenPremissions">
             <h3>Quản lý quyền màn hình</h3>
 
             <table>
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Mã quyênf </th>
+                    <th>Mã quyền </th>
                     <th>Mã màn hình</th>
                     <th>Xem</th>
                     <th>Thêm</th>
                     <th>Xóa </th>
                     <th>Sửa</th>
                     <th>Thao tác</th>
-
                 </tr>
                 </thead>
                 <tbody>
 
-                <c:forEach var="screen-premissions" items="${screen-premissionss}">
+                <c:forEach var="screenPremissions" items="${screenPremissionss}">
                     <tr>
-                        <td>${screen-premissions.id}</td>
-                        <td>${screen-premissions.idRights}</td>
-                        <td>${screen-premissions.idScreen}</td>
-                        <td>${screen-premissions.read}</td>
-                        <td>${screen-premissions.add}</td>
-                        <td>${screen-premissions.delete}</td>
-                        <td>${screen-premissions.edit}</td>
-
+                        <td>${screenPremissions.id}</td>
+                        <td>${screenPremissions.idRights}</td>
+                        <td>${screenPremissions.idScreen}</td>
+                        <td>${screenPremissions.read}</td>
+                        <td>${screenPremissions.add}</td>
+                        <td>${screenPremissions.delete}</td>
+                        <td>${screenPremissions.edit}</td>
 
                         <td>
+                            <button onclick="openScreenPremissionsUpdateForm({
+                                    id: ${screenPremissions.id},
+                                    idRights:'${screenPremissions.idRights}',
+                                    idScreen:'${screenPremissions.idScreen}',
+                                    read:'${screenPremissions.read}',
+                                    add:'${screenPremissions.add}',
+                                    delete:'${screenPremissions.delete}',
+                                    edit:'${screenPremissions.edit}'
+                                    })" style="border:none;background-color: unset">
+                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            </button>
 
-                            <button onclick="openScreenUpdateForm({
-                                    id: ${screen-premissions.id},
-                                    idRights:'${screen-premissions.idScreen}',
-                                    idScreen:'${screen-premissions.idScreen}',
-                                    read:'${screen-premissions.read}',
-                                    add:'${screen-premissions.add}',
-                                    delete:'${screen-premissions.delete}',
-                                    edit:'${screen-premissions.edit}'
-
-
-                                    })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-
-
-                            <form action="${pageContext.request.contextPath}/admin/screen-premissions/delete" method="post"
+                            <form action="${pageContext.request.contextPath}/admin/screenPremissions/delete" method="post"
                                   style="display:inline;">
-                                <input type="hidden" name="uid" value="${screen-premissions.id}">
+                                <input type="hidden" name="uid" value="${screenPremissions.id}">
                                 <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
                                         style="border:none;background-color: unset">
                                     <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
@@ -83,18 +77,15 @@
                         </td>
                     </tr>
                 </c:forEach>
-                <!-- Các khách hàng sẽ được hiển thị ở đây -->
                 </tbody>
                 <div class="pagination flex-row">
                     <div class="flex-1">
                         <a href="${pageContext.request.contextPath}/admin/user?page=${page-1}">
-                            <button  id="prevPage" class= "button-black" type="button" >Trước</button>
-
+                            <button id="prevPage" class="button-black" type="button">Trước</button>
                         </a>
                         <span id="pageNumber">${page}</span> / <span id="totalPages">${totalPage}</span>
                         <a href="${pageContext.request.contextPath}/admin/user?page=${page+1}">
-                            <button  id="SauPage" class="button-black"type="button" >Sau</button>
-
+                            <button id="SauPage" class="button-black" type="button">Sau</button>
                         </a>
                     </div>
                     <button class="button-orange" onclick="openScreenPremissionsForm()">Thêm màn hình</button>
@@ -106,11 +97,11 @@
 </div>
 
 <!-- Product Form Modal -->
-<div id="screen-premissionsModal" class="modal">
+<div id="screenPremissionsModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeScreenPremissionsForm()">&times;</span>
 
-        <form method="post" action="${pageContext.request.contextPath}/admin/screen-premissions/add" class="flex-colunm">
+        <form method="post" action="${pageContext.request.contextPath}/admin/screenPremissions/add" class="flex-colunm">
             <h2>Thêm màn hình</h2>
             <div>
                 <input name="idRights" class="input-common" type="number" placeholder=" Mã quyền">
@@ -131,21 +122,18 @@
                 <input name="edit" class="input-common" type="number" placeholder=" Sửa">
             </div>
 
-
             <div class="flex-center">
                 <button type="submit" class="button-orange">Lưu</button>
             </div>
-
-
         </form>
     </div>
 </div>
 
-<div id="modal-update-screen-premissions" class="modal">
+<div id="modal-update-screenPremissions" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeScreenPremissionsUpdateForm()">&times;</span>
 
-        <form method="post" action="${pageContext.request.contextPath}/admin/screen-premissions/edit" class="flex-colunm">
+        <form method="post" action="${pageContext.request.contextPath}/admin/screenPremissions/edit" class="flex-colunm">
             <h2>Chỉnh sửa màn hình</h2>
             <input type="hidden" name="id">
             <div>
@@ -167,38 +155,34 @@
                 <input name="edit" class="input-common" type="number" placeholder=" Sửa">
             </div>
 
-
-
             <button class="button-orange" type="submit">Lưu </button>
+        </form>
     </div>
-
-
-    </form>
 </div>
-</div>
-
-
 
 <script>
     function openScreenPremissionsForm() {
-        document.getElementById("screen-premissionsModal").style.display = "block";
+        document.getElementById("screenPremissionsModal").style.display = "block";
     }
 
-    function closeScreenPrimessionsForm() {
-        document.getElementById("screen-premissionsModal").style.display = "none";
+    function closeScreenPremissionsForm() {
+        document.getElementById("screenPremissionsModal").style.display = "none";
     }
 
-    function openScreenPremissionsUpdateForm(screen-premissions) {
-        const form = document.getElementById("modal-update-screen-premissions");
-        form.querySelector('input[name="idRights"]').value = screen-premissions.id;
-        form.querySelector('input[name="idScreen"]').value = screen.idScreen;
-        form.querySelector('input[name="nameScreen"]').value = screen.nameScreen;
+    function openScreenPremissionsUpdateForm(screenPremissions) {
+        const form = document.getElementById("modal-update-screenPremissions");
+        form.querySelector('input[name="idRights"]').value = screenPremissions.idRights;
+        form.querySelector('input[name="idScreen"]').value = screenPremissions.idScreen;
+        form.querySelector('input[name="read"]').value = screenPremissions.read;
+        form.querySelector('input[name="add"]').value = screenPremissions.add;
+        form.querySelector('input[name="delete"]').value = screenPremissions.delete;
+        form.querySelector('input[name="edit"]').value = screenPremissions.edit;
 
         form.style.display = "block";
     }
 
-    function closeScreenUpdateForm() {
-        document.getElementById("modal-update-screen-premissions").style.display = "none";
+    function closeScreenPremissionsUpdateForm() {
+        document.getElementById("modal-update-screenPremissions").style.display = "none";
     }
 </script>
 </body>

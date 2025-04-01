@@ -22,6 +22,10 @@ public class ScreenPermissions implements Serializable {
         this.edit = edit;
     }
 
+    public ScreenPermissions() {
+
+    }
+
     public int getId() {
         return id;
     }

@@ -3,17 +3,13 @@ package vn.edu.hcmuaf.fit.doanweb.controller.admin;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Category;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Rights;
 
-import vn.edu.hcmuaf.fit.doanweb.service.CategoryService;
 import vn.edu.hcmuaf.fit.doanweb.service.RightsService;
-import vn.edu.hcmuaf.fit.doanweb.service.ScreenService;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(name = "AdminRightsListController", value = "/admin/rights")
 public class AdminRightsListController extends HttpServlet {
