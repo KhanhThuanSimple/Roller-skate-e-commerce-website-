@@ -83,7 +83,7 @@ public class ScreenPremissionsDao {
     }
     public boolean insert(int idRights, int idScreen, int read, int add, int delete, int edit) throws SQLException {
 
-        String sql = "insert into screen_permissions(idRights,idScreen, read, add, delete, edit) values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into screen_permissions(idRights,idScreen,`read`, `add`, `delete`, `edit`) values(?,?,?,?,?,?)";
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);

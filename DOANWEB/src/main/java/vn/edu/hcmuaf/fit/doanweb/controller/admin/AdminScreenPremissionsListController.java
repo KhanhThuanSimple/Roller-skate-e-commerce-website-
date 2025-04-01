@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "ScreenPremissions", value = "/admin/screen-premissions")
+@WebServlet(name = "ScreenPremissions", value = "/admin/screenPremissions")
 public class AdminScreenPremissionsListController extends HttpServlet {
 
     @Override
