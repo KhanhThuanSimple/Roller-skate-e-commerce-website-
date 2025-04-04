@@ -16,6 +16,7 @@
         <li><a href="${pageContext.request.contextPath}/admin/import">Nhập hàng</a></li>
 <%--        <li><a href="${pageContext.request.contextPath}/admin/export">Xuất hàng</a></li>--%>
         <li><a href="${pageContext.request.contextPath}/admin/category">Loại sản phẩm</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/stock">Kho hàng</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/screen">Màn hình</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/rights">Quyền</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/screenPremissions">Quyền màn hình</a></li>

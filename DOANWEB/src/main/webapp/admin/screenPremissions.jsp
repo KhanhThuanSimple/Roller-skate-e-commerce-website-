@@ -32,11 +32,11 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Mã quyền </th>
+                    <th>Mã quyền</th>
                     <th>Mã màn hình</th>
                     <th>Xem</th>
                     <th>Thêm</th>
-                    <th>Xóa </th>
+                    <th>Xóa</th>
                     <th>Sửa</th>
                     <th>Thao tác</th>
                 </tr>
@@ -53,7 +53,7 @@
                         <td>${screenPremissions.delete}</td>
                         <td>${screenPremissions.edit}</td>
 
-                        <td>
+                        <td style="display: flex; justify-content: center; align-items: center; gap: 10px;">
                             <button onclick="openScreenPremissionsUpdateForm({
                                     id: ${screenPremissions.id},
                                     idRights:'${screenPremissions.idRights}',
@@ -63,10 +63,12 @@
                                     delete:'${screenPremissions.delete}',
                                     edit:'${screenPremissions.edit}'
                                     })" style="border:none;background-color: unset">
-                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                <i class="fa-solid fa-pen-to-square"
+                                   style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </button>
 
-                            <form action="${pageContext.request.contextPath}/admin/screenPremissions/delete" method="post"
+                            <form action="${pageContext.request.contextPath}/admin/screenPremissions/delete"
+                                  method="post"
                                   style="display:inline;">
                                 <input type="hidden" name="uid" value="${screenPremissions.id}">
                                 <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
@@ -74,6 +76,9 @@
                                     <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
                             </form>
+                            <button onclick="openDetailRights()" style="border:none;background-color: unset">
+                                <i class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            </button>
                         </td>
                     </tr>
                 </c:forEach>
@@ -129,11 +134,52 @@
     </div>
 </div>
 
+<div id="modal-detail-rights" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeDetailRights()">&times;</span>
+        <table>
+            <thead>
+            <tr>
+                <th>Tên màn hình</th>
+                <th>Xem</th>
+                <th>Thêm</th>
+                <th>Xóa</th>
+                <th>Chỉnh sửa</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <c:forEach var="screenPremissions" items="${screenPremissionss}">
+                <tr>
+                    <td>${screenPremissions.idScreen}</td>
+                    <td>
+                        <input type="checkbox" name="view_${rights.id}" value="view">
+                    </td>
+                    <td>
+                        <input type="checkbox" name="add_${rights.id}" value="add">
+                    </td>
+                    <td>
+                        <input type="checkbox" name="delete_${rights.id}" value="delete">
+                    </td>
+                    <td>
+                        <input type="checkbox" name="edit_${rights.id}" value="edit">
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+        <div style="text-align: right; margin-top: 10px;">
+            <button class="button-orange" onclick="saveChanges()">Lưu</button>
+        </div>
+    </div>
+</div>
+
 <div id="modal-update-screenPremissions" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeScreenPremissionsUpdateForm()">&times;</span>
 
-        <form method="post" action="${pageContext.request.contextPath}/admin/screenPremissions/edit" class="flex-colunm">
+        <form method="post" action="${pageContext.request.contextPath}/admin/screenPremissions/edit"
+              class="flex-colunm">
             <h2>Chỉnh sửa màn hình</h2>
             <input type="hidden" name="id">
             <div>
@@ -155,9 +201,11 @@
                 <input name="edit" class="input-common" type="number" placeholder=" Sửa">
             </div>
 
-            <button class="button-orange" type="submit">Lưu </button>
+            <button class="button-orange" type="submit">Lưu</button>
         </form>
     </div>
+
+
 </div>
 
 <script>
@@ -183,6 +231,20 @@
 
     function closeScreenPremissionsUpdateForm() {
         document.getElementById("modal-update-screenPremissions").style.display = "none";
+    }
+
+    function openDetailRights() {
+        document.getElementById("modal-detail-rights").style.display = "block";
+    }
+
+    function closeDetailRights() {
+        document.getElementById("modal-detail-rights").style.display = "none";
+    }
+</script>
+<script>
+    function saveChanges() {
+        // Logic để lưu các thay đổi
+        alert("Lưu thay đổi thành công!");
     }
 </script>
 </body>
