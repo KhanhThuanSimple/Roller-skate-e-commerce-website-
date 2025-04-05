@@ -124,7 +124,25 @@
         <servlet-name>ChangePassword</servlet-name>
         <url-pattern>/changePassword</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.payment.ajaxServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VnpayReturn</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.payment.vnpayRefund</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VnpayReturn</servlet-name>
+        <url-pattern>/vnpayReturn</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>
