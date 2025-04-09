@@ -1,4 +1,6 @@
-package vn.edu.hcmuaf.fit.doanweb.dao.model;
+package vn.edu.hcmuaf.fit.doanweb.dao.model.order;
+
+import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 
 public class OrderDetail {
     private Order order;
