@@ -92,7 +92,14 @@
         <servlet-name>ShowCart</servlet-name>
         <url-pattern>/ShowCart</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>ShippingController</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.shipping.ShippingController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShippingController</servlet-name>
+        <url-pattern>/shipping</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>Remove</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.cart.Remove</servlet-class>
