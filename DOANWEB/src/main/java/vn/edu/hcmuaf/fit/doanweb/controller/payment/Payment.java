@@ -8,7 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.edu.hcmuaf.fit.doanweb.controller.product.BaseServlet;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.CartProduct;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartP;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartProduct;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderItems;
 import vn.edu.hcmuaf.fit.doanweb.dao.order.OderDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.order.OrderItemDAO;
 
