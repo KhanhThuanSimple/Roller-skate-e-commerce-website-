@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.doanweb.dao.model;
+package vn.edu.hcmuaf.fit.doanweb.dao.model.cart;
 
 public class CartProduct {
     private int id;
