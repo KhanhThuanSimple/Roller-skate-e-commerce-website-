@@ -2,7 +2,7 @@ package vn.edu.hcmuaf.fit.doanweb.dao.order;
 
 
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.OrderItems;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderItems;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

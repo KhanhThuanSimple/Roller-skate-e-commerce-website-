@@ -1,12 +1,10 @@
-package vn.edu.hcmuaf.fit.doanweb.controller;
+package vn.edu.hcmuaf.fit.doanweb.controller.product;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Order;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.OrderDetail;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.OrderItems;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderDetail;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.io.IOException;

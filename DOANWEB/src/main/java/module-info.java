@@ -8,5 +8,9 @@ module DOANWEB {
     requires org.apache.httpcomponents.httpclient.fluent;
     requires mysql.connector.j;
     requires org.jdbi.v3.core; // Nhập khẩu HttpClient
-    // Có thể thêm các mô-đun khác nếu cần    requires jakarta.servlet;
+    requires org.apache.logging.log4j;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.annotation;
+    requires com.fasterxml.jackson.databind; // Để sử dụng ObjectMapper
+
 }

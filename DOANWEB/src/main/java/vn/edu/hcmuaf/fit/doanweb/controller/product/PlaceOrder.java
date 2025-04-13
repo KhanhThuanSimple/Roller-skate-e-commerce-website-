@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.doanweb.controller;
+package vn.edu.hcmuaf.fit.doanweb.controller.product;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,8 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.CartP;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.CartProduct;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartP;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartProduct;
 
 import java.io.IOException;
 import java.sql.*;

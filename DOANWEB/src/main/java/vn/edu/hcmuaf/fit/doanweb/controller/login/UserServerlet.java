@@ -1,17 +1,16 @@
-package vn.edu.hcmuaf.fit.doanweb.controller;
+package vn.edu.hcmuaf.fit.doanweb.controller.login;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import vn.edu.hcmuaf.fit.doanweb.controller.product.BaseServlet;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Order;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "LichsudonhangSeverlet", value = "/lichsu")
-public class LichsudonhangSeverlet extends BaseServlet {
+@WebServlet(name = "UserServerlet", value = "/canhan")
+public class UserServerlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,22 +26,15 @@ public class LichsudonhangSeverlet extends BaseServlet {
             return;
         }
 
-
-        // Lấy danh sách đơn hàng từ DAO
-        List<Order> list = dao.getOrdersWithProducts(user.getId());
-
-        // Kiểm tra nếu không có đơn hàng nào
-        if (list == null || list.isEmpty()) {
-            request.setAttribute("message", "Không có đơn hàng nào.");
+        User userFromDb =dao.getUserById(user.getId());
+        if (userFromDb == null) {
+            // Xử lý trường hợp không tìm thấy người dùng trong cơ sở dữ liệu
+            response.sendRedirect("home.jsp");
+            return;
         }
+        request.setAttribute("user", userFromDb);
 
-        // Đặt danh sách đơn hàng vào request để chuyển sang JSP
-        request.setAttribute("list", list);
-
-        request.setAttribute("list", list);
-        // Chuyển tiếp đến trang JSP hiển thị chi tiết đơn hàng
-        request.getRequestDispatcher("lichsudonhang.jsp").forward(request, response);
-
+        request.getRequestDispatcher("canhan.jsp").forward(request, response);
     }
 
     @Override

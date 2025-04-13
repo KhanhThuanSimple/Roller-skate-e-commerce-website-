@@ -2,6 +2,9 @@ package vn.edu.hcmuaf.fit.doanweb.dao;
 
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderDetail;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderItems;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -83,10 +86,6 @@ public class ProductDao {
     public List<Product> getProductByOrder(String order) {
         List<Product> products = new ArrayList<>();
 
-        // Kiểm tra giá trị order
-
-
-        // Dùng cột mà bạn muốn sắp xếp, ví dụ là "price"
         String query = "SELECT * FROM product ORDER BY price " + order;
 
         try (Connection cons = DBConnect.getConn()) {
@@ -285,7 +284,8 @@ public class ProductDao {
         }
         return lists;
     }
-    public boolean insertProduct(String name, String img, double price,String title,String description, int cateID,String offer) throws SQLException {
+
+    public boolean insertProduct(String name, String img, double price, String title, String description, int cateID, String offer) throws SQLException {
         String sql = "insert into product(name,img,price,title, description,cateID,offer) values(?,?,?, ?,?,?,?)";
         try {
             Statement st = DBConnect.getStatement();
@@ -300,17 +300,16 @@ public class ProductDao {
             System.out.println(pre);
 
 
-
             int rs = pre.executeUpdate();
 
-            return rs==1;
+            return rs == 1;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public boolean updateProduct(String name, String img, double price,String title,String description, int cateID,String offer, int id) throws SQLException {
+    public boolean updateProduct(String name, String img, double price, String title, String description, int cateID, String offer, int id) throws SQLException {
         String sql = "UPDATE product SET name = ?, img = ?, price = ?, title = ?, description = ? ,cateID = ? ,offer = ? WHERE id = ?";
 
         try {
@@ -329,7 +328,7 @@ public class ProductDao {
 
             int rs = pre.executeUpdate();
 
-            return rs==1;
+            return rs == 1;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -345,7 +344,7 @@ public class ProductDao {
 
             int rs = pre.executeUpdate();
 
-            return rs==1;
+            return rs == 1;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -443,7 +442,7 @@ public class ProductDao {
     }
 
     public List<Order> getOrdersWithProducts(int userId) {
-            List<Order> orders = new ArrayList<>();
+        List<Order> orders = new ArrayList<>();
         String queryOrders = "SELECT * FROM orders WHERE ?=0 OR user_id = ?";
 
 
@@ -466,7 +465,6 @@ public class ProductDao {
                         order.setPaymentMethod(rs.getString("paymentMethod")); // Sửa để lấy đúng giá trị từ cột "id"
                         order.setTotalAmount(rs.getDouble("totalAmount")); // Sửa để lấy đúng giá trị từ cột "totalAmount"
                         order.setStatus(rs.getString("status")); // Sửa để lấy đúng giá trị từ cột "status"
-
 
 
                         // Ví dụ: order.addProduct(product, orderItem);
@@ -527,6 +525,7 @@ public class ProductDao {
 
         return orders;
     }
+
     public static double getDiscountValue(String couponCode) {
         double discount = 0.0;
         String query = "SELECT discount_value FROM Coupon WHERE code = ? AND is_active = TRUE";
@@ -551,7 +550,7 @@ public class ProductDao {
         String query = "SELECT * FROM `user` WHERE id = ?";
         User user = null;
         try (Connection conn = DBConnect.getConn();
-                PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             // Gán giá trị cho tham số id
             preparedStatement.setInt(1, id);
 
@@ -573,9 +572,51 @@ public class ProductDao {
         return user;
     }
 
+    public List<Product> getProductsByCategoryAndSort(String cateID, String order) {
+        List<Product> products = new ArrayList<>();
+        String sortOrder = "asc".equalsIgnoreCase(order) ? "asc" : "desc";
+        String query = "SELECT * FROM product WHERE cateID = ? ORDER BY price " + sortOrder;
+
+        try (Connection cons = DBConnect.getConn()) {
+            if (cons == null) {
+                throw new SQLException("Kết nối không thành công.");
+            }
+
+            try (PreparedStatement statement = cons.prepareStatement(query)) {
+                // Thiết lập tham số cho câu truy vấn
+                statement.setString(1, cateID);
+
+                try (ResultSet rs = statement.executeQuery()) {
+                    while (rs.next()) {
+                        // Thêm sản phẩm vào danh sách
+                        products.add(new Product(
+                                rs.getInt("id"),
+                                rs.getString("name"),
+                                rs.getString("img"),
+                                rs.getDouble("price"),
+                                rs.getString("title"),
+                                rs.getString("description"),
+                                rs.getInt("cateID"),
+                                rs.getString("offer")
+                        ));
+                    }
+                }
+            }
+
+            if (products.isEmpty()) {
+                System.out.println("Không có sản phẩm nào được tìm thấy.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy sản phẩm: " + e.getMessage());
+        }
+
+        return products;
+    }
+
+
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-        List<Product> products = dao.getProductByTitle("patin");
+        List<Product> products = dao.getProductsByCategoryAndSort("1","ASC");
         for (Product product : products) {
             System.out.println(product);
         }

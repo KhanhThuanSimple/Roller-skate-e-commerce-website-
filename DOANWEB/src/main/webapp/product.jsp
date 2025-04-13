@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+    // Lấy cateID từ URL
+    String cateID = request.getParameter("category");
+    request.setAttribute("cateID", cateID); // Gán cateID vào request attribute
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,8 +36,8 @@
             <div class="sort-buttons">
                 <button>Sắp xếp</button>
                 <div class="dropdown-content">
-                    <a href="/DOANWEB/product?sort=asc">Giá:Thấp-Cao </a>
-                    <a href="/DOANWEB/product?sort=desc">Giá:Cao-Thấp</a>
+                    <a href="/DOANWEB/product?${not empty cateID ? 'category=' += cateID += '&' : ''}sort=asc">Giá: Thấp-Cao</a>
+                    <a href="/DOANWEB/product?${not empty cateID ? 'category=' += cateID += '&' : ''}sort=desc">Giá: Cao-Thấp</a>
                 </div>
             </div>
             <ul class="product">
@@ -63,15 +68,22 @@
 
 
             <div class="pagination">
-
                 <c:if test="${endP > 0}">
                     <div class="pagination">
                         <c:forEach begin="1" end="${endP}" var="i">
-                            <a href="/DOANWEB/product?index=${i}" class="page-item ${tag == i ? 'active' : ''}">${i}</a>
+                            <c:url var="pageUrl" value="http://localhost:8080/DOANWEB/product">
+                                <c:if test="${not empty cateID}">
+                                    <c:param name="category" value="${cateID}"/>
+                                </c:if>
+                                <c:if test="${not empty param.sort}">
+                                    <c:param name="sort" value="${param.sort}"/> <!-- Giữ lại sort nếu có -->
+                                </c:if>
+                                <c:param name="index" value="${i}"/>
+                            </c:url>
+                            <a href="${pageUrl}" class="page-item ${tag == i ? 'active' : ''}">${i}</a>
                         </c:forEach>
                     </div>
                 </c:if>
-
             </div>
         </div>
 

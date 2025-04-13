@@ -1,13 +1,11 @@
-package vn.edu.hcmuaf.fit.doanweb.controller;
+package vn.edu.hcmuaf.fit.doanweb.controller.product;
 
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Category;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 
 import java.io.IOException;
@@ -39,7 +37,10 @@ public class ListProduct extends BaseServlet {
         } else {
             products = productDao.getAll();
         }
+        if (cateID != null && sort != null) {
+            products=productDao.getProductsByCategoryAndSort(cateID, sort);
 
+        }else
         if (sort != null && !sort.isEmpty()) {
             products = productDao.getProductByOrder(sort);
         }
