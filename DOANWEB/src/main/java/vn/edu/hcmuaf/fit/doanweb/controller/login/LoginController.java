@@ -11,6 +11,7 @@ import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "LoginController" ,value = "/login")
 public class LoginController extends HttpServlet {
@@ -28,6 +29,7 @@ public class LoginController extends HttpServlet {
         String pass = request.getParameter("pass");
 
         AuthService authService = new AuthService();
+        UserDao userDao = new UserDao();
         try {
             User user=authService.findByUsername(uname);
             if (user!=null){
@@ -39,6 +41,8 @@ public class LoginController extends HttpServlet {
 
 
                 if(user.getType()==1){
+                    List<String> allowedScreens = userDao.getListPerUser(user.id);
+                    request.getSession().setAttribute("allowedScreens", allowedScreens);
                     response.sendRedirect(request.getContextPath() + "/admin/user");
                 }else{
                     response.sendRedirect(request.getContextPath() + "/home");

@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.doanweb.dao;
 
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.ScreenPermissions;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.sql.*;
@@ -242,6 +243,36 @@ public class UserDao {
             screenCodes.add(rs.getString("code"));
         }
         return screenCodes;
+    }
+
+    public ScreenPermissions getPerUserScreen(int user_id, String code) throws SQLException {
+
+        String sql = "SELECT sp.*\n" +
+                "FROM user u\n" +
+                "JOIN screen_permissions sp ON u.idPer = sp.idRights\n" +
+                "JOIN screen s ON sp.idScreen = s.id\n" +
+                "WHERE u.id = ? AND s.code = ?;";
+        Statement st = DBConnect.getStatement();
+        PreparedStatement pre = st.getConnection().prepareStatement(sql);
+        System.out.println(pre.toString());
+        pre.setInt(1, user_id);
+        pre.setString(2, code);
+
+        ResultSet rs = pre.executeQuery();
+        while (rs.next()) {
+            ScreenPermissions screenPermissions = new ScreenPermissions();
+            screenPermissions.setId(rs.getInt("id"));
+            screenPermissions.setIdRights(rs.getInt("idRights"));
+            screenPermissions.setIdScreen(rs.getInt("idScreen"));
+            screenPermissions.setRead(rs.getInt("read"));
+            screenPermissions.setAdd(rs.getInt("add"));
+            screenPermissions.setDelete(rs.getInt("delete"));
+            screenPermissions.setEdit(rs.getInt("edit"));
+
+            return screenPermissions;
+
+        }
+        return null;
     }
 
     public boolean updatePassword(int id, String newPassword, String oldPassword) throws SQLException {

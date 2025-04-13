@@ -62,11 +62,17 @@
               <form action="${pageContext.request.contextPath}/admin/screen/delete" method="post"
                     style="display:inline;">
                 <input type="hidden" name="uid" value="${screen.id}">
-                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                        style="border:none;background-color: unset">
-                  <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                </button>
+
+                <c:if test="${permission.delete == 1}">
+                  <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                          style="border:none;background-color: unset">
+                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                  </button>                </c:if>
+
+
               </form>
+
+
             </td>
           </tr>
         </c:forEach>
@@ -84,7 +90,10 @@
 
             </a>
           </div>
-          <button class="button-orange" onclick="openScreenForm()">Thêm màn hình</button>
+          <c:if test="${permission.add == 1}">
+            <button class="button-orange" onclick="openScreenForm()">Thêm màn hình</button>
+          </c:if>
+
         </div>
 
       </table>
