@@ -236,5 +236,40 @@ public class UserDao {
             return rs==1;
         }
     }
+    public User findByEmail(String email) throws SQLException {
+        String sql = "SELECT * FROM user WHERE username = ?";
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setString(1, email);
+
+            ResultSet rs = pre.executeQuery();
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("name"),
+                        rs.getInt("type")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+    public void savePasswordResetToken(int userId, String token, Timestamp expiryTime) throws SQLException {
+        String sql = "UPDATE user SET reset_token = ?, token_expiry = ? WHERE id = ?";
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setString(1, token);
+            pre.setTimestamp(2, expiryTime);
+            pre.setInt(3, userId);
+            pre.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

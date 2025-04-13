@@ -57,6 +57,13 @@
         <p>
             <%=error%>
         </p>
+        <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/DOANWEB/login&response_type=code&client_id=839747132596-cgvivf8uqtd2512b4fnev7rjjqh2l8lg.apps.googleusercontent.com&approval_prompt=force"
+           class="flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-md text-gray-700 hover:bg-gray-100 transition duration-200"
+           style="text-decoration: none;">
+            <i class="fa-brands fa-google text-red-500 text-lg"></i>
+            <span>Đăng nhập với Google</span>
+        </a>
+
         <div class="flex-center">
 
             <button type="submit" class="button-orange">Đăng
@@ -64,17 +71,11 @@
 
 
         </div>
+
+
         <div class="flex-row">
-<%--            <a class="text-link flex-1" href="forgot-password.jsp"> Quên mật khẩu?</a>--%>
-            <a class="text-link flex-1" href="https://accounts.google.com/o/oauth2/auth?scope=email profile openid
+         <a class="text-link flex-1" href="forgot-password.jsp"> Quên mật khẩu?</a>
 
-&redirect_uri=http://localhost:8080/DOANWEB/login
-
-&response_type=code
-
-&client_id=839747132596-cgvivf8uqtd2512b4fnev7rjjqh2l8lg.apps.googleusercontent.com
-
-&approval_prompt=force"> Quên mật khẩu?</a>
             <a class="text-link flex-1" href="register.jsp"> Đăng kí tài khoản.</a>
 
         </div>
