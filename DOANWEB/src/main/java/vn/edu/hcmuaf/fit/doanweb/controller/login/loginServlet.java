@@ -19,6 +19,7 @@ public class loginServlet extends HttpServlet {
         GoogleAccount acc = gg.getUserInfo(accessToken);
     System.out.println(acc);
 
+
     }
 
     @Override

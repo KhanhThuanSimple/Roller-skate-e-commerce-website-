@@ -27,6 +27,7 @@ public class AdminScreenPremissionsListController extends HttpServlet {
             List<ScreenPermissions> screenPermissionss = rightsDao.getListPer(id);
 
             request.setAttribute("screenPremissionss", screenPermissionss);
+            request.setAttribute("pid", id);
 
 
             System.out.println(screenPermissionss);
@@ -49,7 +50,7 @@ public class AdminScreenPremissionsListController extends HttpServlet {
             List<ScreenPermissions> screenPermissionss = rightsDao.getListPer(id);
 
             request.setAttribute("screenPremissionss", screenPermissionss);
-
+            request.setAttribute("pid", id);
 
             System.out.println(screenPermissionss);
 

@@ -12,6 +12,21 @@ public class User implements Serializable {
     private int type;
     private String phone;
     private String address;
+    public int idPer;
+    private String namePer;
+
+
+    public User(int id, String username, String password, String name, int type, String phone, String address, int idPer, String namePer) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.type = type;
+        this.phone = phone;
+        this.address = address;
+        this.idPer = idPer;
+        this.namePer = namePer;
+    }
 
     public User(int id, String username, String password, String name, int type) {
         this.id = id;
@@ -21,10 +36,28 @@ public class User implements Serializable {
         this.type = type;
         this.phone = phone;
         this.address = address;
+        this.idPer = idPer;
+        this.namePer = namePer;
     }
 
     public User() {
 
+    }
+
+    public int getIdPer() {
+        return idPer;
+    }
+
+    public void setIdPer(int idPer) {
+        this.idPer = idPer;
+    }
+
+    public String getNamePer() {
+        return namePer;
+    }
+
+    public void setNamePer(String namePer) {
+        this.namePer = namePer;
     }
 
     public User(int id, String username, String name, int type, String phone, String address) {

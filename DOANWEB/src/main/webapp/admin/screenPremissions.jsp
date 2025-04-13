@@ -78,7 +78,7 @@
                                     idScreen:'${screenPremissions.idScreen}',
                                     nameScreen:'${screenPremissions.nameScreen}',
                                     codeScreen:'${screenPremissions.codeScreen}',
-                                    idRights:'${screenPremissions.idRights}',
+                                    idRights:'${pid}',
                                     nameRights:'${screenPremissions.nameRights}',
                                     read:'${screenPremissions.read}',
                                     add:'${screenPremissions.add}',

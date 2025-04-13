@@ -6,11 +6,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.Rights;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
+import vn.edu.hcmuaf.fit.doanweb.service.RightsService;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "AdminUserListController" ,value = "/admin/user")
@@ -20,6 +23,8 @@ public class AdminUserListController extends HttpServlet  {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         AuthService authService = new AuthService();
+        RightsService rightsService = new RightsService();
+
         int page = 1;
         String page_prams= request.getParameter("page");
         try {
@@ -33,6 +38,8 @@ public class AdminUserListController extends HttpServlet  {
 
             List<User>  users = authService.getList(page, 1);
 
+            ArrayList<Rights> rights = rightsService.getListRights(1);
+            request.setAttribute("rights", rights);
             request.setAttribute("users", users);
             request.setAttribute("totalPage", totalPage);
             request.setAttribute("page", page);

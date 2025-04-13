@@ -42,7 +42,7 @@ public class RegisterController extends HttpServlet {
             } else {
                 User user = authService.findByUsername(uname);
                 if (user == null) {
-                    boolean rs = authService.insert(name, uname, pass,address,phone, 0);
+                    boolean rs = authService.insert(name, uname, pass,address,phone, 0,0);
                     if(rs){
                         response.sendRedirect(request.getContextPath() + "/login");
 

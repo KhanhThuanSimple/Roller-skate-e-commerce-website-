@@ -39,6 +39,7 @@
                     <th>password</th>
                     <th>Số điện thoại</th>
                     <th>Địa chỉ</th>
+                    <th>Quyền</th>
                     <th>Thao tác</th>
                 </tr>
                 </thead>
@@ -52,7 +53,7 @@
                         <td>${user.password}</td>
                         <td>${user.phone}</td>
                         <td>${user.address}</td>
-
+                        <td>${user.namePer}</td>
                         <td>
 
                             <button onclick="openUserUpdateForm({
@@ -60,7 +61,8 @@
                                     name:'${user.name}',
                                     username:'${user.username}',
                                     phone:'${user.phone}',
-                                    address:'${user.address}'
+                                    address:'${user.address}',
+                                    idPer:'${user.idPer}',
                                     })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
 
@@ -116,9 +118,15 @@
             <div>
                 <input name="phone" class="input-common" type="number" placeholder="Số điện thoại">
             </div>
+            <select name="role">
+                <c:forEach var="right" items="${rights}">
+                    <option value="${right.id}">${right.name}</option>
+                </c:forEach>
+            </select>
             <div>
                 <textarea name="address" rows="3" class="input-common" placeholder="Địa chỉ"></textarea>
             </div>
+
             <div class="flex-center">
                 <button type="submit" class="button-orange">Lưu</button>
             </div>
@@ -148,6 +156,11 @@
             <div>
                 <textarea name="address" rows="3" class="input-common" placeholder="Địa chỉ"></textarea>
             </div>
+            <select name="role">
+                <c:forEach var="right" items="${rights}">
+                    <option value="${right.id}">${right.name}</option>
+                </c:forEach>
+            </select>
             <div class="flex-center">
                 <button class="button-orange" type="submit">Lưu tài khoản</button>
             </div>
@@ -175,6 +188,8 @@
         form.querySelector('input[name="username"]').value = user.username;
         form.querySelector('input[name="phone"]').value = user.phone;
         form.querySelector('textarea[name="address"]').value = user.address;
+        form.querySelector('select[name="role"]').value = user.idPer;
+
         form.style.display = "block";
     }
 
