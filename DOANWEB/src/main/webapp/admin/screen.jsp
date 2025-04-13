@@ -45,16 +45,16 @@
         <c:forEach var="screen" items="${screens}">
           <tr>
             <td>${screen.id}</td>
-            <td>${screen.idScreen}</td>
-            <td>${screen.nameScreen}</td>
+            <td>${screen.code}</td>
+            <td>${screen.name}</td>
 
 
             <td>
 
               <button onclick="openScreenUpdateForm({
                       id: ${screen.id},
-                      idScreen:'${screen.idScreen}',
-                      nameScreen:'${screen.nameScreen}'
+                      code:'${screen.code}',
+                      name:'${screen.name}'
 
                       })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
@@ -100,10 +100,10 @@
     <form method="post" action="${pageContext.request.contextPath}/admin/screen/add" class="flex-colunm">
       <h2>Thêm màn hình</h2>
       <div>
-        <input name="idScreen" class="input-common" type="text" placeholder=" Mã màn hình">
+        <input name="code" class="input-common" type="text" placeholder=" Mã màn hình">
       </div>
       <div>
-        <input name="nameScreen" class="input-common" type="text" placeholder=" Tên màn hình">
+        <input name="name" class="input-common" type="text" placeholder=" Tên màn hình">
       </div>
 
 
@@ -124,10 +124,10 @@
       <h2>Chỉnh sửa màn hình</h2>
       <input type="hidden" name="id">
       <div>
-        <input name="idScreen" class="input-common" type="text" placeholder=" Mã màn hình ">
+        <input name="code" class="input-common" type="text" placeholder=" Mã màn hình ">
       </div>
       <div>
-        <input name="nameScreen" class="input-common" type="text" placeholder=" Tên màn hình ">
+        <input name="name" class="input-common" type="text" placeholder=" Tên màn hình ">
       </div>
 
 
@@ -153,8 +153,8 @@
   function openScreenUpdateForm(screen) {
     const form = document.getElementById("modal-update-screen");
     form.querySelector('input[name="id"]').value = screen.id;
-    form.querySelector('input[name="idScreen"]').value = screen.idScreen;
-    form.querySelector('input[name="nameScreen"]').value = screen.nameScreen;
+    form.querySelector('input[name="code"]').value = screen.code;
+    form.querySelector('input[name="name"]').value = screen.name;
 
     form.style.display = "block";
   }

@@ -20,18 +20,23 @@ public class AdminScreenPremissionsEditController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ScreenPremissionsDao screenPremissionsDao = new ScreenPremissionsDao();
-
-
         try{
-            int idRights=Integer.parseInt(request.getParameter("idRights"));
             int idScreen= Integer.parseInt(request.getParameter("idScreen"));
-            int read= Integer.parseInt(request.getParameter("read"));
-            int add= Integer.parseInt(request.getParameter("add"));
-            int delete= Integer.parseInt(request.getParameter("delete"));
-            int edit= Integer.parseInt(request.getParameter("edit"));
+            int idRights=Integer.parseInt(request.getParameter("idRights"));
             int id=Integer.parseInt(request.getParameter("id"));
 
-            boolean rs =screenPremissionsDao.update(idRights,idScreen,read,add,delete,edit,id);
+            int read = request.getParameter("read") != null ? 1 : 0;
+            int add = request.getParameter("add") != null ? 1 : 0;
+            int delete = request.getParameter("delete") != null ? 1 : 0;
+            int edit = request.getParameter("edit") != null ? 1 : 0;
+
+
+            boolean rs = false;
+            if(id==0){
+                rs =screenPremissionsDao.insert(idRights,idScreen,read,add,delete,edit);
+            }else{
+                rs =screenPremissionsDao.update(read,add,delete,edit,id);
+            }
             System.out.println("KQs");
 
             System.out.println(rs);
@@ -40,12 +45,13 @@ public class AdminScreenPremissionsEditController extends HttpServlet {
             }else{
                 request.setAttribute("message", "Cập nhật không thành công!");
             }
-            response.sendRedirect(request.getContextPath() + "/admin/screenPremissions");
+            response.sendRedirect(request.getContextPath() + "/admin/screenPremissions?pid="+idRights);
 
         }catch (SQLException e) {
             e.printStackTrace(); // Ghi lại stack trace để dễ theo dõi
             request.setAttribute("errorMessage", "Đã xảy ra lỗi khi thêm tài khoản!");
-            response.sendRedirect(request.getContextPath() + "/admin/screenPremissions");
-        } }
+            response.sendRedirect(request.getContextPath() + "/admin/rights");
+        }
+    }
 }
 

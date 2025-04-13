@@ -20,10 +20,10 @@ public class AdminScreenAddController extends HttpServlet {
         ScreenService screenService = new ScreenService();
 
         try{
-            String idScreen=request.getParameter("idScreen");
-            String nameScreen=request.getParameter("nameScreen");
+            String code=request.getParameter("code");
+            String name=request.getParameter("name");
          ;
-            boolean rs =screenService.insertScreen(idScreen,nameScreen);
+            boolean rs =screenService.insertScreen(code,name);
             if(rs) {
                 request.setAttribute("message", "Thêm thành công!");
             }else{

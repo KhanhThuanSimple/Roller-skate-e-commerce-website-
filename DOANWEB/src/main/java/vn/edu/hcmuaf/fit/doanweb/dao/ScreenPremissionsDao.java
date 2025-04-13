@@ -105,19 +105,17 @@ public class ScreenPremissionsDao {
         }
     }
 
-    public boolean update(int idRights, int idScreen, int read, int add, int delete, int edit , int id) throws SQLException {
-        String sql = "UPDATE screen_permissions SET  idRights = ?, idScreen=?,read=?,add=?,delete=?,edit=? WHERE id = ?";
+    public boolean update( int read, int add, int delete, int edit , int id) throws SQLException {
+        String sql = "UPDATE screen_permissions SET `read`=?, `add`=?, `delete`=?, `edit`=? WHERE id=?";
 
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
-            pre.setInt(1, idRights);
-            pre.setInt(2, idScreen);
-            pre.setInt(3, read);
-            pre.setInt(4, add);
-            pre.setInt(5, delete);
-            pre.setInt(6, edit);
-            pre.setInt(7, id);
+            pre.setInt(1, read);
+            pre.setInt(2, add);
+            pre.setInt(3, delete);
+            pre.setInt(4, edit);
+            pre.setInt(5, id);
 
             int rs = pre.executeUpdate();
 

@@ -32,8 +32,8 @@ public class ScreenDao {
             while (rs.next()) {
                 Screen screen = new Screen();
                 screen.setId(rs.getInt("id"));
-                screen.setIdScreen(rs.getString("idScreen"));
-                screen.setNameScreen(rs.getString("nameScreen"));
+                screen.setCode(rs.getString("code"));
+                screen.setName(rs.getString("name"));
 
                 screens.add(screen);
             }

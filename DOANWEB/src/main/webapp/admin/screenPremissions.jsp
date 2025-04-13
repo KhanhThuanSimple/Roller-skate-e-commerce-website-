@@ -31,9 +31,9 @@
             <table>
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Mã quyền</th>
                     <th>Mã màn hình</th>
+                    <th>Tên màn hình</th>
+                    <th>Mã quyền</th>
                     <th>Xem</th>
                     <th>Thêm</th>
                     <th>Xóa</th>
@@ -45,102 +45,82 @@
 
                 <c:forEach var="screenPremissions" items="${screenPremissionss}">
                     <tr>
-                        <td>${screenPremissions.id}</td>
-                        <td>${screenPremissions.idRights}</td>
-                        <td>${screenPremissions.idScreen}</td>
-                        <td>${screenPremissions.read}</td>
-                        <td>${screenPremissions.add}</td>
-                        <td>${screenPremissions.delete}</td>
-                        <td>${screenPremissions.edit}</td>
+                        <td>${screenPremissions.codeScreen}</td>
+                        <td>${screenPremissions.nameScreen}</td>
+
+                        <td>${screenPremissions.nameRights}</td>
+
+                        <td>
+                            <input type="checkbox" name="read_${screenPremissions.id}" value="1"
+                                   <c:if test="${screenPremissions.read == 1}">checked</c:if> >
+
+                        </td>
+                        <td>
+                            <input type="checkbox" name="add_${screenPremissions.id}" value="1"
+                                   <c:if test="${screenPremissions.add == 1}">checked</c:if> >
+
+                        </td>
+                        <td>
+                            <input type="checkbox" name="delete_${screenPremissions.id}" value="1"
+                                   <c:if test="${screenPremissions.delete == 1}">checked</c:if> >
+
+                        </td>
+                        <td>
+                            <input type="checkbox" name="edit_${screenPremissions.id}" value="1"
+                                   <c:if test="${screenPremissions.edit == 1}">checked</c:if> >
+
+                        </td>
+
 
                         <td style="display: flex; justify-content: center; align-items: center; gap: 10px;">
                             <button onclick="openScreenPremissionsUpdateForm({
                                     id: ${screenPremissions.id},
-                                    idRights:'${screenPremissions.idRights}',
                                     idScreen:'${screenPremissions.idScreen}',
+                                    nameScreen:'${screenPremissions.nameScreen}',
+                                    codeScreen:'${screenPremissions.codeScreen}',
+                                    idRights:'${screenPremissions.idRights}',
+                                    nameRights:'${screenPremissions.nameRights}',
                                     read:'${screenPremissions.read}',
                                     add:'${screenPremissions.add}',
                                     delete:'${screenPremissions.delete}',
                                     edit:'${screenPremissions.edit}'
+
                                     })" style="border:none;background-color: unset">
                                 <i class="fa-solid fa-pen-to-square"
                                    style="flex:1; padding: 10px; cursor: pointer;"></i>
-                            </button>
-
-                            <form action="${pageContext.request.contextPath}/admin/screenPremissions/delete"
-                                  method="post"
-                                  style="display:inline;">
-                                <input type="hidden" name="uid" value="${screenPremissions.id}">
-                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                                        style="border:none;background-color: unset">
-                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                </button>
-                            </form>
-                            <button onclick="openDetailRights()" style="border:none;background-color: unset">
-                                <i class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
                             </button>
                         </td>
                     </tr>
                 </c:forEach>
                 </tbody>
-                <div class="pagination flex-row">
-                    <div class="flex-1">
-                        <a href="${pageContext.request.contextPath}/admin/user?page=${page-1}">
-                            <button id="prevPage" class="button-black" type="button">Trước</button>
-                        </a>
-                        <span id="pageNumber">${page}</span> / <span id="totalPages">${totalPage}</span>
-                        <a href="${pageContext.request.contextPath}/admin/user?page=${page+1}">
-                            <button id="SauPage" class="button-black" type="button">Sau</button>
-                        </a>
-                    </div>
-                    <button class="button-orange" onclick="openScreenPremissionsForm()">Thêm màn hình</button>
-                </div>
+
 
             </table>
         </section>
     </main>
 </div>
 
-<!-- Product Form Modal -->
-<div id="screenPremissionsModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeScreenPremissionsForm()">&times;</span>
-
-        <form method="post" action="${pageContext.request.contextPath}/admin/screenPremissions/add" class="flex-colunm">
-            <h2>Thêm màn hình</h2>
-            <div>
-                <input name="idRights" class="input-common" type="number" placeholder=" Mã quyền">
-            </div>
-            <div>
-                <input name="idScreen" class="input-common" type="number" placeholder=" Mã màn hình">
-            </div>
-            <div>
-                <input name="read" class="input-common" type="number" placeholder=" Xem">
-            </div>
-            <div>
-                <input name="add" class="input-common" type="number" placeholder=" Thêm">
-            </div>
-            <div>
-                <input name="delete" class="input-common" type="number" placeholder=" Xóa">
-            </div>
-            <div>
-                <input name="edit" class="input-common" type="number" placeholder=" Sửa">
-            </div>
-
-            <div class="flex-center">
-                <button type="submit" class="button-orange">Lưu</button>
-            </div>
-        </form>
-    </div>
-</div>
 
 <div id="modal-detail-rights" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeDetailRights()">&times;</span>
+        <input type="hidden" name="id">
+        <input type="hidden" name="idScreen">
+        <input type="hidden" name="idRights">
+        <div >
+            <input name="codeScreen" class="input-common" type="text" placeholder="Mã màn hình">
+        </div>
+        <div >
+            <input name="nameScreen" class="input-common" type="text" placeholder="Tên màn hình">
+        </div>
+        <div >
+            <input name="nameRights" class="input-common" type="text" placeholder="Tên quyền">
+        </div>
+
+
         <table>
             <thead>
             <tr>
-                <th>Tên màn hình</th>
                 <th>Xem</th>
                 <th>Thêm</th>
                 <th>Xóa</th>
@@ -149,23 +129,20 @@
             </thead>
             <tbody>
 
-            <c:forEach var="screenPremissions" items="${screenPremissionss}">
-                <tr>
-                    <td>${screenPremissions.idScreen}</td>
-                    <td>
-                        <input type="checkbox" name="view_${rights.id}" value="view">
-                    </td>
-                    <td>
-                        <input type="checkbox" name="add_${rights.id}" value="add">
-                    </td>
-                    <td>
-                        <input type="checkbox" name="delete_${rights.id}" value="delete">
-                    </td>
-                    <td>
-                        <input type="checkbox" name="edit_${rights.id}" value="edit">
-                    </td>
-                </tr>
-            </c:forEach>
+            <tr>
+                <td>
+                    <input type="checkbox" name="read" value="view">
+                </td>
+                <td>
+                    <input type="checkbox" name="add" value="add">
+                </td>
+                <td>
+                    <input type="checkbox" name="delete" value="delete">
+                </td>
+                <td>
+                    <input type="checkbox" name="edit" value="edit">
+                </td>
+            </tr>
             </tbody>
         </table>
         <div style="text-align: right; margin-top: 10px;">
@@ -177,32 +154,59 @@
 <div id="modal-update-screenPremissions" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeScreenPremissionsUpdateForm()">&times;</span>
+        <div class="modal-content">
+            <form method="post" action="${pageContext.request.contextPath}/admin/screenPremissions/edit">
+                <span class="close-btn" onclick="closeDetailRights()">&times;</span>
+                <input type="hidden" name="id">
+                <input type="hidden" name="idScreen">
+                <input type="hidden" name="idRights">
+                <div style="display: flex;gap:15px; margin-bottom: 20px">
+                    <div >
+                        <input disabled name="codeScreen" class="input-common" type="text" placeholder="Mã màn hình">
+                    </div>
+                    <div >
+                        <input disabled name="nameScreen" class="input-common" type="text" placeholder="Tên màn hình">
+                    </div>
+                    <div >
+                        <input disabled name="nameRights" class="input-common" type="text" placeholder="Tên quyền">
+                    </div>
+                </div>
 
-        <form method="post" action="${pageContext.request.contextPath}/admin/screenPremissions/edit"
-              class="flex-colunm">
-            <h2>Chỉnh sửa màn hình</h2>
-            <input type="hidden" name="id">
-            <div>
-                <input name="idRights" class="input-common" type="number" placeholder=" Mã quyền">
-            </div>
-            <div>
-                <input name="idScreen" class="input-common" type="number" placeholder=" Mã màn hình">
-            </div>
-            <div>
-                <input name="read" class="input-common" type="number" placeholder=" Xem">
-            </div>
-            <div>
-                <input name="add" class="input-common" type="number" placeholder=" Thêm">
-            </div>
-            <div>
-                <input name="delete" class="input-common" type="number" placeholder=" Xóa">
-            </div>
-            <div>
-                <input name="edit" class="input-common" type="number" placeholder=" Sửa">
-            </div>
 
-            <button class="button-orange" type="submit">Lưu</button>
-        </form>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Xem</th>
+                        <th>Thêm</th>
+                        <th>Xóa</th>
+                        <th>Chỉnh sửa</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="read" value="1">
+                        </td>
+                        <td>
+                            <input type="checkbox" name="add" value="1">
+                        </td>
+                        <td>
+                            <input type="checkbox" name="delete" value="1">
+                        </td>
+                        <td>
+                            <input type="checkbox" name="edit" value="1">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="text-align: right; margin-top: 10px;">
+                    <button class="button-orange" type="submit">Lưu</button>
+                </div>
+            </form>
+
+        </div>
     </div>
 
 
@@ -219,13 +223,17 @@
 
     function openScreenPremissionsUpdateForm(screenPremissions) {
         const form = document.getElementById("modal-update-screenPremissions");
-        form.querySelector('input[name="idRights"]').value = screenPremissions.idRights;
+        form.querySelector('input[name="id"]').value = screenPremissions.id;
         form.querySelector('input[name="idScreen"]').value = screenPremissions.idScreen;
-        form.querySelector('input[name="read"]').value = screenPremissions.read;
-        form.querySelector('input[name="add"]').value = screenPremissions.add;
-        form.querySelector('input[name="delete"]').value = screenPremissions.delete;
-        form.querySelector('input[name="edit"]').value = screenPremissions.edit;
+        form.querySelector('input[name="read"]').checked  = screenPremissions.read== 1;
+        form.querySelector('input[name="add"]').checked  = screenPremissions.add==1;
+        form.querySelector('input[name="delete"]').checked  = screenPremissions.delete==1;
+        form.querySelector('input[name="edit"]').checked  = screenPremissions.edit==1;
 
+        form.querySelector('input[name="nameScreen"]').value = screenPremissions.nameScreen;
+        form.querySelector('input[name="codeScreen"]').value = screenPremissions.codeScreen;
+        form.querySelector('input[name="idRights"]').value = screenPremissions.idRights;
+        form.querySelector('input[name="nameRights"]').value = screenPremissions.nameRights;
         form.style.display = "block";
     }
 
@@ -244,7 +252,7 @@
 <script>
     function saveChanges() {
         // Logic để lưu các thay đổi
-        alert("Lưu thay đổi thành công!");
+      //  alert("Lưu thay đổi thành công!");
     }
 </script>
 </body>

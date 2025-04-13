@@ -3,6 +3,8 @@ package vn.edu.hcmuaf.fit.doanweb.controller.admin;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
+import vn.edu.hcmuaf.fit.doanweb.dao.RightsDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.ScreenPremissionsDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Screen;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.ScreenPermissions;
@@ -16,29 +18,21 @@ public class AdminScreenPremissionsListController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ScreenPremissionsDao screenPremissionsDao = new ScreenPremissionsDao();
-        int page = 1;
-        String page_prams= request.getParameter("page");
-        System.out.println("page_prams"+page_prams);
+        ProductDao dao = new ProductDao();
+        int id = Integer.parseInt(request.getParameter("pid"));
+
+        RightsDao rightsDao = new RightsDao();
+
         try {
-            int totalPage = screenPremissionsDao.getPage();
-
-            if(page_prams!=null){
-                page = Integer.parseInt(page_prams);
-            }
-            if(page<1) page=1;
-            if(page>totalPage) page=totalPage;
-
-            List<ScreenPermissions> screenPermissionss = screenPremissionsDao.getList(page);
+            List<ScreenPermissions> screenPermissionss = rightsDao.getListPer(id);
 
             request.setAttribute("screenPremissionss", screenPermissionss);
-            request.setAttribute("totalPage", totalPage);
-            request.setAttribute("page", page);
+
 
             System.out.println(screenPermissionss);
 
-
             request.getRequestDispatcher("/admin/screenPremissions.jsp").forward(request, response);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -46,6 +40,24 @@ public class AdminScreenPremissionsListController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ProductDao dao = new ProductDao();
+        int id = Integer.parseInt(request.getParameter("pid"));
+
+        RightsDao rightsDao = new RightsDao();
+
+        try {
+            List<ScreenPermissions> screenPermissionss = rightsDao.getListPer(id);
+
+            request.setAttribute("screenPremissionss", screenPermissionss);
+
+
+            System.out.println(screenPermissionss);
+
+            request.getRequestDispatcher("/admin/screenPremissions.jsp").forward(request, response);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

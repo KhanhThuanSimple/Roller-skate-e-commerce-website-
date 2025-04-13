@@ -3,19 +3,29 @@ package vn.edu.hcmuaf.fit.doanweb.dao.model;
 import java.io.Serializable;
 
 public class ScreenPermissions implements Serializable {
-    public  int id;
-    public int idRights;
+    public int id;
+
     public int idScreen;
+    public  String nameScreen;
+    public String codeScreen;
+
+
+
+    public int idRights;
+    public String nameRights;
+
     public int read;
     public int add;
     public int delete;
     public int edit;
 
-    public ScreenPermissions(int id, int idRights, int idScreen, int read, int add, int delete, int edit) {
-
+    public ScreenPermissions(int id, int idScreen, String nameScreen, String codeScreen, int idRights, String nameRights, int read, int add, int delete, int edit) {
         this.id = id;
-        this.idRights = idRights;
         this.idScreen = idScreen;
+        this.nameScreen = nameScreen;
+        this.codeScreen = codeScreen;
+        this.idRights = idRights;
+        this.nameRights = nameRights;
         this.read = read;
         this.add = add;
         this.delete = delete;
@@ -34,6 +44,30 @@ public class ScreenPermissions implements Serializable {
         this.id = id;
     }
 
+    public int getIdScreen() {
+        return idScreen;
+    }
+
+    public void setIdScreen(int idScreen) {
+        this.idScreen = idScreen;
+    }
+
+    public String getNameScreen() {
+        return nameScreen;
+    }
+
+    public void setNameScreen(String nameScreen) {
+        this.nameScreen = nameScreen;
+    }
+
+    public String getCodeScreen() {
+        return codeScreen;
+    }
+
+    public void setCodeScreen(String codeScreen) {
+        this.codeScreen = codeScreen;
+    }
+
     public int getIdRights() {
         return idRights;
     }
@@ -42,12 +76,12 @@ public class ScreenPermissions implements Serializable {
         this.idRights = idRights;
     }
 
-    public int getIdScreen() {
-        return idScreen;
+    public String getNameRights() {
+        return nameRights;
     }
 
-    public void setIdScreen(int idScreen) {
-        this.idScreen = idScreen;
+    public void setNameRights(String nameRights) {
+        this.nameRights = nameRights;
     }
 
     public int getRead() {

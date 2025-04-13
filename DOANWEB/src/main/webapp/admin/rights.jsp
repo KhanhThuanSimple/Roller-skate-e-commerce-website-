@@ -67,6 +67,12 @@
                                 </button>
                             </form>
 
+                            <form method="post" action="screenPremissions?pid=${rights.id}">
+                                <button style="border:none;background-color: unset" type="submit">
+                                    <i class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                </button>
+                            </form>
+
 
                         </td>
                     </tr>
@@ -141,45 +147,45 @@
 
 
 
-<%--<div id="modal-detail-rights" class="modal">--%>
-<%--    <div class="modal-content">--%>
-<%--        <span class="close-btn" onclick="closeDetailRights()">&times;</span>--%>
-<%--        <table>--%>
-<%--            <thead>--%>
-<%--            <tr>--%>
-<%--                <th>Tên màn hình</th>--%>
-<%--                <th>Xem</th>--%>
-<%--                <th>Thêm</th>--%>
-<%--                <th>Xóa</th>--%>
-<%--                <th>Chỉnh sửa</th>--%>
-<%--            </tr>--%>
-<%--            </thead>--%>
-<%--            <tbody>--%>
+<div id="modal-detail-rights" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeDetailRights()">&times;</span>
+        <table>
+            <thead>
+            <tr>
+                <th>Tên màn hình</th>
+                <th>Xem</th>
+                <th>Thêm</th>
+                <th>Xóa</th>
+                <th>Chỉnh sửa</th>
+            </tr>
+            </thead>
+            <tbody>
 
-<%--            <c:forEach var="rights" items="${rightss}">--%>
-<%--                <tr>--%>
-<%--                    <td>${rights.name}</td>--%>
-<%--                    <td>--%>
-<%--                        <input type="checkbox" name="view_${rights.id}" value="view">--%>
-<%--                    </td>--%>
-<%--                    <td>--%>
-<%--                        <input type="checkbox" name="add_${rights.id}" value="add">--%>
-<%--                    </td>--%>
-<%--                    <td>--%>
-<%--                        <input type="checkbox" name="delete_${rights.id}" value="delete">--%>
-<%--                    </td>--%>
-<%--                    <td>--%>
-<%--                        <input type="checkbox" name="edit_${rights.id}" value="edit">--%>
-<%--                    </td>--%>
-<%--                </tr>--%>
-<%--            </c:forEach>--%>
-<%--            </tbody>--%>
-<%--        </table>--%>
-<%--        <div style="text-align: right; margin-top: 10px;">--%>
-<%--            <button class="button-orange" onclick="saveChanges()">Lưu</button>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
+            <c:forEach var="rights" items="${rightss}">
+                <tr>
+                    <td>${rights.name}</td>
+                    <td>
+                        <input type="checkbox" name="view_${rights.id}" value="view">
+                    </td>
+                    <td>
+                        <input type="checkbox" name="add_${rights.id}" value="add">
+                    </td>
+                    <td>
+                        <input type="checkbox" name="delete_${rights.id}" value="delete">
+                    </td>
+                    <td>
+                        <input type="checkbox" name="edit_${rights.id}" value="edit">
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+        <div style="text-align: right; margin-top: 10px;">
+            <button class="button-orange" onclick="saveChanges()">Lưu</button>
+        </div>
+    </div>
+</div>
 
 
 

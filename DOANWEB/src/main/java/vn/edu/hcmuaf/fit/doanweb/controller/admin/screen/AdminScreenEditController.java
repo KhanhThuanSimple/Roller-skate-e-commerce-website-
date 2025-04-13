@@ -20,12 +20,12 @@ public class AdminScreenEditController extends HttpServlet {
         ScreenService screenService = new ScreenService();
 
         try{
-            String idScreen=request.getParameter("idScreen");
-            String nameScreen=request.getParameter("nameScreen");
+            String code=request.getParameter("code");
+            String name=request.getParameter("name");
 
             int id=Integer.parseInt(request.getParameter("id"));
 
-            boolean rs =screenService.updateScreen(idScreen,nameScreen,id);
+            boolean rs =screenService.updateScreen(code,name,id);
             System.out.println("KQs");
 
             System.out.println(rs);

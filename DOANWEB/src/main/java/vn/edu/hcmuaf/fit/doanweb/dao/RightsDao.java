@@ -1,10 +1,7 @@
 package vn.edu.hcmuaf.fit.doanweb.dao;
 
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Category;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Rights;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Screen;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class RightsDao {
-    public int limit=10;
+    public int limit = 10;
+
     public ArrayList<Rights> getListRights(int page) throws SQLException {
 
         Statement st = DBConnect.getStatement();
@@ -24,7 +22,7 @@ public class RightsDao {
 
             PreparedStatement pstmt = st.getConnection().prepareStatement(sql);
             // Gán giá trị cho type
-            pstmt.setInt(1, page-1);      // Gán giá trị cho offset
+            pstmt.setInt(1, page - 1);      // Gán giá trị cho offset
             pstmt.setInt(2, this.limit);       // Gán giá trị cho limit
 
 
@@ -78,6 +76,7 @@ public class RightsDao {
             throw new RuntimeException(e);
         }
     }
+
     public boolean insertRights(int id, String name) throws SQLException {
 
         String sql = "insert into rights(id, name) values(?,?)";
@@ -90,7 +89,7 @@ public class RightsDao {
 
             int rs = pre.executeUpdate();
 
-            return rs==1;
+            return rs == 1;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -109,7 +108,7 @@ public class RightsDao {
 
             int rs = pre.executeUpdate();
 
-            return rs==1;
+            return rs == 1;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -125,12 +124,55 @@ public class RightsDao {
 
             int rs = pre.executeUpdate();
 
-            return rs==1;
+            return rs == 1;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    public ArrayList<ScreenPermissions> getListPer(int id) throws SQLException {
 
+        Statement st = DBConnect.getStatement();
+        ResultSet rs = null;
+        ArrayList<ScreenPermissions> screenPermissionss = new ArrayList<>();
+        try {
+            String sql = "SELECT a.id as idScreen, a.code , a.name, c.name as nameRight, b.id, b.idRights, b.`read`, b.`add`, b.`delete`, b.edit from screen as a LEFT JOIN screen_permissions as b on b.idRights=? and b.idScreen = a.id\n" +
+                    "LEFT JOIN rights as c on c.id = b.idRights";
+
+            PreparedStatement pstmt = st.getConnection().prepareStatement(sql);
+            // Gán giá trị cho type
+            pstmt.setInt(1, id);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                ScreenPermissions screenPermissions = new ScreenPermissions();
+                screenPermissions.setId(rs.getInt("id"));
+
+                screenPermissions.setIdScreen(rs.getInt("idScreen"));
+                screenPermissions.setCodeScreen(rs.getString("code"));
+                screenPermissions.setNameScreen(rs.getString("name"));
+
+                screenPermissions.setIdRights(rs.getInt("idRights"));
+                screenPermissions.setNameRights(rs.getString("nameRight"));
+
+                screenPermissions.setRead(rs.getInt("read"));
+                screenPermissions.setAdd(rs.getInt("add"));
+                screenPermissions.setDelete(rs.getInt("delete"));
+                screenPermissions.setEdit(rs.getInt("edit"));
+
+
+                screenPermissionss.add(screenPermissions);
+            }
+            pstmt.close();
+            st.close();
+            rs.close();
+            return screenPermissionss;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 }
