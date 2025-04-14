@@ -1,67 +1,22 @@
 package vn.edu.hcmuaf.fit.doanweb.dao.login;
 
 public class GoogleAccount {
-    private String  id, email, name, first_name, given_name, family_name, picture;
-
+    private String id;
+    private String email;
     private boolean verified_email;
+    private String name;
+    private String given_name;
+    private String family_name;
+    private String picture;
+    private String locale;
 
-    public GoogleAccount(String id, String email, String given_name, String family_name, String first_name, String name, boolean verified_email, String picture) {
+    // Getters & Setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
         this.id = id;
-        this.email = email;
-        this.given_name = given_name;
-        this.family_name = family_name;
-        this.first_name = first_name;
-        this.name = name;
-        this.verified_email = verified_email;
-        this.picture = picture;
-    }
-
-    public boolean isVerified_email() {
-        return verified_email;
-    }
-
-    public void setVerified_email(boolean verified_email) {
-        this.verified_email = verified_email;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public String getFamily_name() {
-        return family_name;
-    }
-
-    public void setFamily_name(String family_name) {
-        this.family_name = family_name;
-    }
-
-    public String getGiven_name() {
-        return given_name;
-    }
-
-    public void setGiven_name(String given_name) {
-        this.given_name = given_name;
-    }
-
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
@@ -72,11 +27,75 @@ public class GoogleAccount {
         this.email = email;
     }
 
-    public String getId() {
-        return id;
+    public boolean isVerified_email() {
+        return verified_email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setVerified_email(boolean verified_email) {
+        this.verified_email = verified_email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGiven_name() {
+        return given_name;
+    }
+
+    public void setGiven_name(String given_name) {
+        this.given_name = given_name;
+    }
+
+    public String getFamily_name() {
+        return family_name;
+    }
+
+    public void setFamily_name(String family_name) {
+        this.family_name = family_name;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
+    @Override
+    public String toString() {
+        return "GoogleAccount{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", given_name='" + given_name + '\'' +
+                ", family_name='" + family_name + '\'' +
+                ", locale='" + locale + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GoogleAccount that = (GoogleAccount) o;
+        return id.equals(that.id);  // So sánh theo ID
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();  // Dùng id để tính hashCode
     }
 }

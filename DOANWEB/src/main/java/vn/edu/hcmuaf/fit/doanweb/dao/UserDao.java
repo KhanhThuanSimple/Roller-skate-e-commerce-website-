@@ -3,9 +3,10 @@ package vn.edu.hcmuaf.fit.doanweb.dao;
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
+import vn.edu.hcmuaf.fit.doanweb.dao.login.GoogleAccount;
+
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class UserDao {
 
@@ -53,7 +54,7 @@ public class UserDao {
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setName(rs.getString("name"));
-                user.setType(rs.getInt("type"));
+                user.setType(rs.getInt("type"));      
                 user.setPhone(rs.getString("phone_number"));
                 user.setAddress(rs.getString("address"));
                 System.out.println("type");
@@ -270,6 +271,65 @@ public class UserDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    /*dăng nhập bằng gg*/
+    public User getOrInsertGoogleUser(GoogleAccount acc) throws SQLException {
+        // Kiểm tra xem người dùng đã tồn tại trong cơ sở dữ liệu chưa, dựa trên google_id
+        User user = findByGoogleId(acc.getId());
+        if (user != null) {
+            return user; // Nếu đã tồn tại, trả về người dùng đó
+        }
+
+        // Nếu người dùng chưa tồn tại, thêm mới người dùng vào cơ sở dữ liệu
+        String sql = "INSERT INTO user (username, password, name, type, phone_number, google_id) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            pstmt.setString(1, acc.getEmail());  // Sử dụng email làm username
+            pstmt.setString(2, "");              // Không sử dụng password, để trống
+            pstmt.setString(3, acc.getName());   // Lưu tên người dùng
+            pstmt.setInt(4, 0);                  // Loại người dùng, 0 là người dùng bình thường
+            pstmt.setString(5, "");              // Không có số điện thoại, có thể để trống
+            pstmt.setString(6, acc.getId());     // Lưu Google ID vào google_id
+
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating user failed, no rows affected.");
+            }
+
+            // Lấy ID người dùng vừa tạo
+            ResultSet generatedKeys = pstmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int newId = generatedKeys.getInt(1);
+                return new User(newId, acc.getEmail(), "", acc.getName(), 0);  // Tạo đối tượng User từ ID và các thông tin
+            } else {
+                throw new SQLException("Creating user failed, no ID obtained.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // Hàm tìm người dùng theo Google ID
+    public User findByGoogleId(String googleId) throws SQLException {
+        String sql = "SELECT * FROM user WHERE google_id = ?";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, googleId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("name"),
+                        rs.getInt("type")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null; // Nếu không tìm thấy người dùng, trả về null
     }
 
 }

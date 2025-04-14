@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.doanweb.controller;
+package vn.edu.hcmuaf.fit.doanweb.controller.login;
 
 import com.mysql.cj.xdevapi.JsonString;
 import jakarta.servlet.ServletException;
