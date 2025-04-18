@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="allowedScreens" value="${sessionScope.allowedScreens}" />
+<c:set var="currentPath" value="${pageContext.request.requestURI}" />
+
 <aside class="sidebar">
     <h2 style="font-size: 24px !important;">Admin Dashboard</h2>
     <ul style="padding-left: 0 !important;">
@@ -14,7 +16,7 @@
             <li><a href="${pageContext.request.contextPath}/admin/user">Tài khoản Admin</a></li>
         </c:if>
         <c:if test="${allowedScreens.contains('dh')}">
-           <li><a href="${pageContext.request.contextPath}/admin/order">Đơn hàng</a></li>
+           <li ><a class="${currentPath.contains('/admin/order') ? 'background-active' : ''}" href="${pageContext.request.contextPath}/admin/order">Đơn hàng</a></li>
         </c:if>
         <c:if test="${allowedScreens.contains('kh')}">
             <li><a   href="${pageContext.request.contextPath}/admin/customer">Khách hàng</a></li>

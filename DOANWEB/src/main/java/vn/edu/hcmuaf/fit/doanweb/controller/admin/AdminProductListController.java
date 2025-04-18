@@ -5,7 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.ScreenPermissions;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 import vn.edu.hcmuaf.fit.doanweb.service.ProductService;
@@ -20,6 +23,9 @@ public class AdminProductListController extends HttpServlet  {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductService productService = new ProductService();
+        UserDao userDao = new UserDao();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
         try {
             List<Product>  products = productService.getAll();
           System.out.println(1234);
@@ -30,6 +36,17 @@ public class AdminProductListController extends HttpServlet  {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        ScreenPermissions permission = null;
+        try {
+            permission = userDao.getPerUserScreen(user.id, "sanpham");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if(permission==null || permission.read!=1) {
+            request.getRequestDispatcher("/admin/dashboard.jsp").forward(request, response);
+        }
+        request.getSession().setAttribute("permission", permission);
+
 
 
     }

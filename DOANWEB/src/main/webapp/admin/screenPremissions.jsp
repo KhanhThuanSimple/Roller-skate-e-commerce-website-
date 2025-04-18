@@ -73,22 +73,23 @@
 
 
                         <td style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-                            <button onclick="openScreenPremissionsUpdateForm({
-                                    id: ${screenPremissions.id},
-                                    idScreen:'${screenPremissions.idScreen}',
-                                    nameScreen:'${screenPremissions.nameScreen}',
-                                    codeScreen:'${screenPremissions.codeScreen}',
-                                    idRights:'${pid}',
-                                    nameRights:'${screenPremissions.nameRights}',
-                                    read:'${screenPremissions.read}',
-                                    add:'${screenPremissions.add}',
-                                    delete:'${screenPremissions.delete}',
-                                    edit:'${screenPremissions.edit}'
+<%--                            <c:if test="${permission.edit == 1}">--%>
+                                <button onclick="openScreenPremissionsUpdateForm({
+                                        id: ${screenPremissions.id},
+                                        idScreen:'${screenPremissions.idScreen}',
+                                        nameScreen:'${screenPremissions.nameScreen}',
+                                        codeScreen:'${screenPremissions.codeScreen}',
+                                        idRights:'${pid}',
+                                        nameRights:'${screenPremissions.nameRights}',
+                                        read:'${screenPremissions.read}',
+                                        add:'${screenPremissions.add}',
+                                        delete:'${screenPremissions.delete}',
+                                        edit:'${screenPremissions.edit}'
+                                        })" style="border:none;background-color: unset">
+                                    <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                </button>
+<%--                            </c:if>--%>
 
-                                    })" style="border:none;background-color: unset">
-                                <i class="fa-solid fa-pen-to-square"
-                                   style="flex:1; padding: 10px; cursor: pointer;"></i>
-                            </button>
                         </td>
                     </tr>
                 </c:forEach>
@@ -155,26 +156,18 @@
     <div class="modal-content">
         <span class="close-btn" onclick="closeScreenPremissionsUpdateForm()">&times;</span>
         <div class="modal-content">
-            <form method="post" action="${pageContext.request.contextPath}/admin/screenPremissions/edit">
-                <span class="close-btn" onclick="closeDetailRights()">&times;</span>
+            <form method="post" action="${pageContext.request.contextPath}/admin/screenPremissions/edit" style="max-width: 400px; margin: auto; padding: 10px;">
                 <input type="hidden" name="id">
                 <input type="hidden" name="idScreen">
                 <input type="hidden" name="idRights">
-                <div style="display: flex;gap:15px; margin-bottom: 20px">
-                    <div >
-                        <input disabled name="codeScreen" class="input-common" type="text" placeholder="Mã màn hình">
-                    </div>
-                    <div >
-                        <input disabled name="nameScreen" class="input-common" type="text" placeholder="Tên màn hình">
-                    </div>
-                    <div >
-                        <input disabled name="nameRights" class="input-common" type="text" placeholder="Tên quyền">
-                    </div>
+
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <input disabled name="codeScreen" class="input-common" type="text" placeholder="Mã màn hình" style="flex: 1; padding: 5px;">
+                    <input disabled name="nameScreen" class="input-common" type="text" placeholder="Tên màn hình" style="flex: 1; padding: 5px;">
+                    <input disabled name="nameRights" class="input-common" type="text" placeholder="Tên quyền" style="flex: 1; padding: 5px;">
                 </div>
 
-
-
-                <table>
+                <table style="width: 100%; margin-bottom: 15px;">
                     <thead>
                     <tr>
                         <th>Xem</th>
@@ -184,29 +177,19 @@
                     </tr>
                     </thead>
                     <tbody>
-
                     <tr>
-                        <td>
-                            <input type="checkbox" name="read" value="1">
-                        </td>
-                        <td>
-                            <input type="checkbox" name="add" value="1">
-                        </td>
-                        <td>
-                            <input type="checkbox" name="delete" value="1">
-                        </td>
-                        <td>
-                            <input type="checkbox" name="edit" value="1">
-                        </td>
+                        <td><input type="checkbox" name="read" value="1"></td>
+                        <td><input type="checkbox" name="add" value="1"></td>
+                        <td><input type="checkbox" name="delete" value="1"></td>
+                        <td><input type="checkbox" name="edit" value="1"></td>
                     </tr>
                     </tbody>
                 </table>
-                <div style="text-align: right; margin-top: 10px;">
-                    <button class="button-orange" type="submit">Lưu</button>
-                </div>
-            </form>
 
-        </div>
+                <div style="text-align: right;">
+                    <button class="button-orange" type="submit" style="padding: 5px 10px;">Lưu</button>
+                </div>
+            </form>        </div>
     </div>
 
 

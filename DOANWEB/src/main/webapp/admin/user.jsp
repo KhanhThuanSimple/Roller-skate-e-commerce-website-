@@ -56,24 +56,30 @@
                         <td>${user.namePer}</td>
                         <td>
 
-                            <button onclick="openUserUpdateForm({
-                                    id: ${user.id},
-                                    name:'${user.name}',
-                                    username:'${user.username}',
-                                    phone:'${user.phone}',
-                                    address:'${user.address}',
-                                    idPer:'${user.idPer}',
-                                    })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-
-
-                            <form action="${pageContext.request.contextPath}/admin/user/delete" method="post"
-                                  style="display:inline;">
-                                <input type="hidden" name="uid" value="${user.id}">
-                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                                        style="border:none;background-color: unset">
-                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+<%--                            <c:if test="${permission.edit == 1}">--%>
+                                <button onclick="openUserUpdateForm({
+                                        id: ${user.id},
+                                        name:'${user.name}',
+                                        username:'${user.username}',
+                                        phone:'${user.phone}',
+                                        address:'${user.address}',
+                                        idPer:'${user.idPer}'
+                                        })" style="border:none;background-color: unset">
+                                    <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
-                            </form>
+<%--                            </c:if>--%>
+
+
+<%--                            <c:if test="${permission.delete == 1}">--%>
+                                <form action="${pageContext.request.contextPath}/admin/user/delete" method="post" style="display:inline;">
+                                    <input type="hidden" name="uid" value="${user.id}">
+                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                            style="border:none;background-color: unset">
+                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                    </button>
+                                </form>
+<%--                            </c:if>--%>
+
                         </td>
                     </tr>
                 </c:forEach>
@@ -91,7 +97,9 @@
 
                         </a>
                     </div>
-                    <button class="button-orange" onclick="openUserForm()">Thêm Tài Khoản</button>
+                    <c:if test="${permission.add == 1}">
+                        <button class="button-orange" onclick="openUserForm()">Thêm Tài Khoản</button>
+                    </c:if>
                 </div>
 
             </table>
@@ -156,7 +164,7 @@
             <div>
                 <textarea name="address" rows="3" class="input-common" placeholder="Địa chỉ"></textarea>
             </div>
-            <select name="role">
+            <select name="role" style="width: 100%; padding: 10px; border-radius: 5px;">
                 <c:forEach var="right" items="${rights}">
                     <option value="${right.id}">${right.name}</option>
                 </c:forEach>

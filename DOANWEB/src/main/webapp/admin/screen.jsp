@@ -51,15 +51,18 @@
 
             <td>
 
-              <button onclick="openScreenUpdateForm({
-                      id: ${screen.id},
-                      code:'${screen.code}',
-                      name:'${screen.name}'
+                <c:if test="${permission.edit == 1}">
+                    <button onclick="openScreenUpdateForm({
+                            id: ${screen.id},
+                            code:'${screen.code}',
+                            name:'${screen.name}'
+                            })" style="border:none;background-color: unset">
+                        <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                    </button>
+                </c:if>
 
-                      })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
-
-              <form action="${pageContext.request.contextPath}/admin/screen/delete" method="post"
+                <form action="${pageContext.request.contextPath}/admin/screen/delete" method="post"
                     style="display:inline;">
                 <input type="hidden" name="uid" value="${screen.id}">
 

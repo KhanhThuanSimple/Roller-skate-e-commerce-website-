@@ -48,24 +48,28 @@
 
 
                         <td style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+                            <c:if test="${permission.edit == 1}">
+                                <button onclick="openRightsUpdateForm({
+                                        id: ${rights.id},
+                                        name:'${rights.name}',
 
-                            <button onclick="openRightsUpdateForm({
-                                    id: ${rights.id},
-                                    name:'${rights.name}',
-
-                                    })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
-                                                                                       style="flex:1; padding: 10px; cursor: pointer;"></i>
-                            </button>
-
-
-                            <form action="${pageContext.request.contextPath}/admin/rights/delete" method="post"
-                                  style="display:inline;">
-                                <input type="hidden" name="uid" value="${rights.id}">
-                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                                        style="border:none;background-color: unset">
-                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                        })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square"
+                                                                                           style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
-                            </form>
+                            </c:if>
+
+
+
+                            <c:if test="${permission.delete == 1}">
+                                <form action="${pageContext.request.contextPath}/admin/rights/delete" method="post"
+                                      style="display:inline;">
+                                    <input type="hidden" name="uid" value="${rights.id}">
+                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                            style="border:none;background-color: unset">
+                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                    </button>
+                                </form>
+                            </c:if>
 
                             <form method="post" action="screenPremissions?pid=${rights.id}">
                                 <button style="border:none;background-color: unset" type="submit">
@@ -91,7 +95,9 @@
 
                         </a>
                     </div>
-                    <button class="button-orange" onclick="openRightsForm()">Thêm</button>
+                    <c:if test="${permission.add == 1}">
+                        <button class="button-orange" onclick="openRightsForm()">Thêm</button>
+                    </c:if>
                 </div>
 
             </table>

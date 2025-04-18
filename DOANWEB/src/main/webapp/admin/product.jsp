@@ -66,30 +66,31 @@
 
                         <td>
 
-                            <button
-                                    type="button" onclick="openProductUpdateForm({
-                                    id: ${product.id},
-                                    name:'${product.name}',
-                                    price:${product.price},
-                                    description:'',
-                                    title:'${product.title}',
-                                    cateId:${product.cateId},
-                                    offer:''
-                                    })" style="border:none;background-color: unset">
-                                <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;">
-
-                                </i>
-                            </button>
-
-
-                            <form action="${pageContext.request.contextPath}/admin/product/delete" method="post"
-                                  style="display:inline;">
-                                <input type="hidden" name="uid" value="${product.id}">
-                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                                        style="border:none;background-color: unset">
-                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            <c:if test="${permission.edit == 1}">
+                                <button
+                                        type="button" onclick="openProductUpdateForm({
+                                        id: ${product.id},
+                                        name:'${product.name}',
+                                        price:${product.price},
+                                        description:'',
+                                        title:'${product.title}',
+                                        cateId:${product.cateId},
+                                        offer:''
+                                        })" style="border:none;background-color: unset">
+                                    <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
-                            </form>
+                            </c:if>
+
+
+                            <c:if test="${permission.delete == 1}">
+                                <form action="${pageContext.request.contextPath}/admin/product/delete" method="post" style="display:inline;">
+                                    <input type="hidden" name="uid" value="${product.id}">
+                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                            style="border:none;background-color: unset">
+                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                    </button>
+                                </form>
+                            </c:if>
                         </td>
                     </tr>
                 </c:forEach>
@@ -103,7 +104,9 @@
                         <span id="pageNumber">1</span> / <span id="totalPages">1</span>
                         <button id="SauPage" class="button-black" type="button">Sau</button>
                     </div>
-                    <button class="button-orange" onclick="openProductForm()">Thêm Sản Phẩm</button>
+                    <c:if test="${permission.add == 1}">
+                        <button class="button-orange" onclick="openProductForm()">Thêm Sản Phẩm</button>
+                    </c:if>
                 </div>
 
             </table>
