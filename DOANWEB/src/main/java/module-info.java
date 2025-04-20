@@ -10,4 +10,5 @@ module DOANWEB {
     requires org.jdbi.v3.core; // Nhập khẩu HttpClient
     requires org.apache.logging.log4j;
     requires jakarta.mail;
+    requires jbcrypt;
 }
