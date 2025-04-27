@@ -2,17 +2,21 @@ package vn.edu.hcmuaf.fit.doanweb.dao.model;
 
 import java.io.Serializable;
 
-public class Stocks implements Serializable {
+public class Stock implements Serializable {
     public  int id;
     public int product_id;
     public String product_name;
     public int quantity_stock;
 
-    public Stocks(int id, int product_id, String product_name, int quantity_stock) {
+    public Stock(int id, int product_id, String product_name, int quantity_stock) {
         this.id = id;
         this.product_id = product_id;
         this.product_name = product_name;
         this.quantity_stock = quantity_stock;
+    }
+
+    public Stock() {
+
     }
 
     public int getId() {
@@ -43,7 +47,7 @@ public class Stocks implements Serializable {
         return quantity_stock;
     }
 
-    public void setQuantity_stock(int quantity_stock) {
+    public void setQuantity_stock(int quantityStock) {
         this.quantity_stock = quantity_stock;
     }
 }
