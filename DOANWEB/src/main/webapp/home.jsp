@@ -56,7 +56,9 @@
                                 <div class="product-info">
                                     <a href="" class="product-cat">${p.name}</a>
                                     <a href="" class="product-name">${p.title}</a>
-                                    <div class="product-price">${p.price}</div>
+                                    <div class="product-price">
+                                        <f:formatNumber value="${p.price}" type="number" maxFractionDigits="0" />đ
+                                    </div>
                                 </div>
                             </div>
                         </li>

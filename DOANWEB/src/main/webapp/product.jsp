@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+
+
 <%
     // Lấy cateID từ URL
     String cateID = request.getParameter("category");
@@ -16,6 +21,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="./css/style.css"/>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/sanpham.css">
@@ -58,7 +65,9 @@
                                 <div class="product-info">
                                     <a href="" class="product-cat">${p.name}</a>
                                     <a href="" class="product-name">${p.title}</a>
-                                    <div class="product-price">${p.price}</div>
+                                    <div class="product-price">
+                                        <fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0" />đ
+                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -66,23 +75,23 @@
                 </c:if>
             </ul>
 
-
             <div class="pagination">
                 <c:if test="${endP > 0}">
-                    <div class="pagination">
-                        <c:forEach begin="1" end="${endP}" var="i">
-                            <c:url var="pageUrl" value="http://localhost:8080/DOANWEB/product">
-                                <c:if test="${not empty cateID}">
-                                    <c:param name="category" value="${cateID}"/>
-                                </c:if>
-                                <c:if test="${not empty param.sort}">
-                                    <c:param name="sort" value="${param.sort}"/> <!-- Giữ lại sort nếu có -->
-                                </c:if>
-                                <c:param name="index" value="${i}"/>
-                            </c:url>
-                            <a href="${pageUrl}" class="page-item ${tag == i ? 'active' : ''}">${i}</a>
-                        </c:forEach>
-                    </div>
+                    <c:forEach begin="1" end="${endP}" var="i">
+                        <c:url var="pageUrl" value="http://localhost:8080/DOANWEB/product">
+                            <c:if test="${not empty cateID}">
+                                <c:param name="category" value="${cateID}"/>
+                            </c:if>
+                            <c:if test="${not empty param.sort}">
+                                <c:param name="sort" value="${param.sort}"/> <!-- Giữ lại sort nếu có -->
+                            </c:if>
+                            <c:if test="${not empty param.addCart}">
+                                <c:param name="addCart" value="${param.addCart}"/> <!-- Giữ lại addCart nếu có -->
+                            </c:if>
+                            <c:param name="index" value="${i}"/>
+                        </c:url>
+                        <a href="${pageUrl}" class="page-item ${tag == i ? 'active' : ''}">${i}</a>
+                    </c:forEach>
                 </c:if>
             </div>
         </div>

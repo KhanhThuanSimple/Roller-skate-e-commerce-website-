@@ -25,6 +25,7 @@ public class ListProduct extends BaseServlet {
         String cateID = request.getParameter("category");
         String search = request.getParameter("txt");
 
+
         if (indexPage == null) {
             indexPage = "1";
         }
