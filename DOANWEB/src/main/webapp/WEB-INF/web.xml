@@ -3,7 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
+    <servlet>
+        <servlet-name>FavoriteServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.favorites.FavoriteServlet</servlet-class>
+    </servlet>
 
+    <!-- Servlet Mapping -->
+    <servlet-mapping>
+        <servlet-name>FavoriteServlet</servlet-name>
+        <url-pattern>/favorite</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ListProduct</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.ListProduct</servlet-class>
@@ -92,14 +101,8 @@
         <servlet-name>ShowCart</servlet-name>
         <url-pattern>/ShowCart</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>ShippingController</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.shipping.ShippingController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ShippingController</servlet-name>
-        <url-pattern>/shipping</url-pattern>
-    </servlet-mapping>
+
+
     <servlet>
         <servlet-name>Remove</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.cart.Remove</servlet-class>

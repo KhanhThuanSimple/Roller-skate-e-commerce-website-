@@ -42,3 +42,6 @@ function sortProducts(order) {
     productList.innerHTML = '';
     products.forEach(product => productList.appendChild(product));
 }
+function confirmUnfavorite(form) {
+    return confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi danh sách yêu thích?");
+}

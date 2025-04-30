@@ -11,6 +11,7 @@ public class Product implements java.io.Serializable {
     public String description;
     public int cateId;
     public String offer;
+    private boolean favorited;
 
     public Product(int id, String name, String img, double price, String title, String description,int cateId, String offer) {
         this.id = id;
@@ -88,6 +89,13 @@ public class Product implements java.io.Serializable {
     }
 
     public Product() {
+    }
+    public boolean isFavorited() {
+        return favorited;
+    }
+
+    public void setFavorited(boolean favorited) {
+        this.favorited = favorited;
     }
 
     @Override

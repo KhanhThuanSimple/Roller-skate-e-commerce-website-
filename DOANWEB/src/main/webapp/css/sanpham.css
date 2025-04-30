@@ -170,3 +170,26 @@ ul.product li:hover .button-container {
   cursor: default;
   font-weight: bold;
 }
+
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 5px;
+  font-size: 1.2rem;
+  color: #ccc; /* Màu viền */
+  transition: all 0.3s;
+}
+
+.favorite-btn:hover {
+  color: #f44336; /* Màu viền khi hover */
+}
+
+.favorite-btn.active i.fas {
+  color: #f44336; /* Màu đỏ đầy khi active */
+}
+
+.favorite-btn i.far {
+  color: #f44336; /* Màu viền đỏ */
+}
