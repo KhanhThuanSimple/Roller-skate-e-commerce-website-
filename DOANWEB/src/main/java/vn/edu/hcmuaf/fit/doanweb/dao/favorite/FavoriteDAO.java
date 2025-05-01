@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.doanweb.dao.favorite;
 
+import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 
@@ -26,8 +27,8 @@ public class FavoriteDAO {
     }
 
     public boolean removeFavorite(int userId, int productId) {
-        String sql = "UPDATE favorites SET is_active = FALSE WHERE user_id = ? AND product_id = ?";
-        try (Connection conn =DBConnect.getConn();
+        String sql = "DELETE FROM favorites WHERE user_id = ? AND product_id = ?";
+        try (Connection conn = DBConnect.getConn();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, userId);
             pstmt.setInt(2, productId);
@@ -37,7 +38,6 @@ public class FavoriteDAO {
             return false;
         }
     }
-
     public static boolean isFavorited(int userId, int productId) {
         String sql = "SELECT COUNT(*) FROM favorites WHERE user_id = ? AND product_id = ? AND is_active = TRUE";
         try (Connection conn = DBConnect.getConn();
@@ -57,7 +57,7 @@ public class FavoriteDAO {
 
     public List<Product> getUserFavorites(int userId) {
         List<Product> favorites = new ArrayList<>();
-        String sql = "SELECT p.* FROM products p " +
+        String sql = "SELECT p.id,p.title,p.price,p.img FROM product p " +
                 "JOIN favorites f ON p.id = f.product_id " +
                 "WHERE f.user_id = ? AND f.is_active = TRUE";
 
@@ -68,9 +68,9 @@ public class FavoriteDAO {
                 while (rs.next()) {
                     Product product = new Product();
                     product.setId(rs.getInt("id"));
-                    product.setName(rs.getString("name"));
+                    product.setName(rs.getString("title"));
                     product.setPrice(rs.getDouble("price"));
-                    product.setImg(rs.getString("image"));
+                    product.setImg(rs.getString("img"));
                     // Thêm các thuộc tính khác nếu cần
                     favorites.add(product);
                 }
@@ -79,5 +79,14 @@ public class FavoriteDAO {
             e.printStackTrace();
         }
         return favorites;
+    }
+
+    public static void main(String[] args) {
+        FavoriteDAO favoriteDAO = new FavoriteDAO();
+
+        List<Product> products = favoriteDAO.getUserFavorites(1);
+        for (Product product : products) {
+            System.out.println(product);
+        }
     }
 };
