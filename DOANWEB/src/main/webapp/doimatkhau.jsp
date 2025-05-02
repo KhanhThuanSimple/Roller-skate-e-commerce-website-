@@ -44,22 +44,23 @@
                         </div>
 
                         <div class="In4Avt">
-                            <span class="username">user1</span>
-                            <a href="canhan" class="suaHoSo">
-                                <p>Sửa Hồ Sơ</p>
-                            </a>
+                            <span class="username">${message.name}</span>
+                            <a href="#" class="edit-profile"><i class="fas fa-pencil-alt"></i> Chỉnh sửa</a>
                         </div>
                     </div>
 
 
                     <h3>QUẢN LÝ TÀI KHOẢN</h3>
                     <ul>
-                        <li><a href="canhan"> Hồ Sơ Cá Nhân</a></li>
-                        <li><a href="doimatkhau.jsp"> Đổi Mật Khẩu</a></li>
+                        <li><a href="canhan" class="active"><i class="fas fa-user"></i> Hồ Sơ Cá Nhân</a></li>
+                        <form method="get" action="changePassword">
+                            <li><a href="changePassword"><i class="fas fa-lock"></i> Đổi Mật Khẩu</a></li>
+                        </form>
                     </ul>
                     <h3>QUẢN LÝ GIAO DỊCH</h3>
                     <ul>
-                        <li><a href="lichsu">Đơn hàng của bạn</a></li>
+                        <li><a href="lichsu"><i class="fas fa-clipboard-list"></i> Đơn hàng của bạn</a></li>
+                        <li><a href="listFavorites"><i class="fas fa-heart"></i> Sản phẩm yêu thích</a></li>
                     </ul>
                     <button id="DangXuat" class="dangxuat" onclick="moChacChanDX()"> Đăng Xuất</button>
                 </div>
