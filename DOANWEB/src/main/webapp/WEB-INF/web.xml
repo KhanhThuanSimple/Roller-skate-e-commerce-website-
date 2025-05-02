@@ -7,6 +7,15 @@
         <servlet-name>FavoriteServlet</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.favorites.FavoriteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddMultipleToCart</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.favorites.AddMultipleToCart</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddMultipleToCart</servlet-name>
+        <url-pattern>/add-multiple-to-cart</url-pattern>
+    </servlet-mapping>
 
     <!-- Servlet Mapping -->
     <servlet-mapping>

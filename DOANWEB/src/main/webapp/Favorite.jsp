@@ -175,8 +175,6 @@
         <h1>Sản phẩm yêu thích</h1>
     </div>
 
-    <!-- Form riêng cho việc mua hàng -->
-<%--    <form id="checkoutForm" action="CheckoutServlet" method="post">--%>
         <div class="product-container">
             <c:forEach var="product" items="${favorites}">
                 <div class="product-card">
@@ -185,8 +183,11 @@
                     <div class="product-price">
                         <fmt:formatNumber value="${product.price}" type="number" maxFractionDigits="0" />đ
                     </div>
+
+
                     <div class="action-buttons">
-                        <input type="checkbox" name="productIds" value="${product.id}">
+                        <input type="checkbox" name="productIds" value="${product.id}" class="product-checkbox">
+
                         <form method="post" action="listFavorites" style="margin: 0;">
                             <input type="hidden" name="productId" value="${product.id}">
                             <button type="submit" class="delete-btn">
@@ -199,9 +200,33 @@
         </div>
 
         <div style="text-align: center; margin: 20px;">
-            <button type="submit" class="buy-btn">Mua hàng đã chọn</button>
+            <button type="button" class="buy-btn" onclick="submitSelectedProducts()">Mua hàng đã chọn</button>
         </div>
-<%--    </form>--%>
+    <script>
+        function submitSelectedProducts() {
+            const selectedCheckboxes = document.querySelectorAll('.product-checkbox:checked');
+            if (selectedCheckboxes.length === 0) {
+                alert("Vui lòng chọn ít nhất một sản phẩm để mua.");
+                return;
+            }
+
+            // Tạo form để gửi dữ liệu
+            const form = document.createElement("form");
+            form.method = "POST";
+            form.action = "add-multiple-to-cart";
+
+            selectedCheckboxes.forEach(checkbox => {
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.name = "productIds";
+                input.value = checkbox.value;
+                form.appendChild(input);
+            });
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
 
 
     <jsp:include page="comon/footer.jsp" />
