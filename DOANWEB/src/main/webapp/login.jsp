@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: PC
-  Date: 22/12/2024
-  Time: 4:14 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +12,10 @@
 
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/login.css">
-
 </head>
 
 <body>
 <div id="wrapper"></div>
-
-
 
 <div class="login-container flex-colunm">
     <img class="img-banner" src="./image/login.jpg">
@@ -37,7 +27,6 @@
         if(error==null) error ="";
         if (uname==null) uname ="";
     %>
-
 
     <form method="post" action="login" class="login-container">
         <div class="logo">
@@ -53,6 +42,10 @@
         <div>
             <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">
         </div>
+
+        <!-- Google reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="6LcukywrAAAAAAOP_B9fUA1IGmmQvkXOxez3CBMS-"></div>
+
 
         <p class="error-message">
             <%=error%>
@@ -106,7 +99,9 @@
         </div>
     </div>
 </footer>
-</div>
+
+<!-- Google reCAPTCHA script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>
