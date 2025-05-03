@@ -8,13 +8,14 @@ import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleAccount;
 import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleLogin;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import vn.edu.hcmuaf.fit.doanweb.dao.UserDao ;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 @WebServlet(name = "HomeServlet", urlPatterns = "/home")
 public class HomeServlet extends BaseServlet {
@@ -28,15 +29,37 @@ public class HomeServlet extends BaseServlet {
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         String code = request.getParameter("code");
         GoogleLogin gg = new GoogleLogin();
-        String accessToken =  gg.getToken(code);
+        String accessToken = gg.getToken(code);
         GoogleAccount acc = gg.getUserInfo(accessToken);
         System.out.println(acc);
 
+        // Lấy thông tin từ GoogleAccount
+        String email = acc.getEmail();
+        String name = acc.getName();
+        String picture = acc.getPicture();
 
+        UserDao userDao = new UserDao();
+        User user = userDao.getUserByEmail(email);
+
+        // Nếu chưa có người dùng, thêm mới vào DB
+        if (user == null) {
+            // Tạo user mới với thông tin từ Google
+            user = new User(email, name, picture);
+            userDao.insertUser(name, email, "", "", "", 0);  // Thêm user vào DB (không có mật khẩu, không có thông tin thêm)
+            // Lấy lại từ DB nếu cần ID
+            user = userDao.getUserByEmail(email);
+        }
+
+        // Tạo session đăng nhập
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
+
+        // Chuyển hướng về trang chính
+        response.sendRedirect("home.jsp");
     }
 }
 

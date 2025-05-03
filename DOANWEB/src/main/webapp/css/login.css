@@ -1,38 +1,49 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 .login-container {
   min-height: 100vh;
   position: relative;
+}
 
-
+.img-banner {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
 }
 
 form {
-  width: 350px;
-  height: max-content !important;
+  width: 350px; /* Chiều rộng khung đăng nhập */
   background-color: white;
   border-radius: 10px;
   padding: 40px;
   position: absolute;
-  right: 100px;
-  top: 40px;
-  z-index: 999999999999999;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-
-.img-banner {
-
-  max-width: 100%;
-  /* width: 100vw; */
-  height: 100vh;
-  object-fit: cover;
-  background-color: rgba(#000, #000, #000, 0.6);
+  left: 1000px; /* Khoảng cách từ lề phải */
+  top: 40px; /* Khoảng cách từ đỉnh trang */
+  z-index: 999;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+  rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .logo img {
   margin-top: -8px;
   width: 70px;
   height: 70px;
-
-
 }
 
 .flex-row {
@@ -41,7 +52,7 @@ form {
   gap: 20px;
 }
 
-.flex-colunm {
+.flex-column {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -51,22 +62,14 @@ form {
   flex: 1;
 }
 
-.mask {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  top: 0;
-  left: 0;
-  background-color: rgba(0.4, 0.6, 0.4, 0.2);
-}
-
 .input-common {
   min-height: 30px;
   outline: none;
   border-radius: 5px;
   border: 1px solid #b8b8b8;
   width: 100%;
-  padding: 3px;
+  padding: 8px 12px;
+  font-size: 14px;
 }
 
 .button-orange {
@@ -76,34 +79,22 @@ form {
   border: 1px solid orange;
   background-color: orange;
   padding: 10px;
-  padding-right: 20px;
-  padding-left: 20px;
   color: #fff;
   font-size: 16px;
-  font-weight: 500px;
+  font-weight: 500;
   cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.button-orange:hover {
+  background-color: #e05e00;
 }
 
 .flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.gallery-wrap {
-  width: 500%;
-  animation: slideShow 16s infinite;
-}
-
-.image {
-  float: left;
-  height: 628px;
-  width: 1080px;
-  display: flex;
-  top: 1px;
-  justify-content: center;
-  align-items: center;
-  -webkit-box-reflect: below 1px -webkit-gradient(linear, right top, right bottom, form(transparent), to(rgba(255, 255, 255, 0.3)));
 }
 
 .text-14 {
@@ -114,4 +105,80 @@ form {
 .text-link {
   font-size: 14px;
   color: #056bf1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.text-link:hover {
+  color: #0347a3;
+  text-decoration: underline;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+
+.google-btn {
+  background-color: white;
+  color: #5F6368;
+}
+
+.google-btn:hover {
+  background-color: #f8f8f8;
+}
+
+.facebook-btn {
+  background-color: #1877F2;
+  border-color: #1877F2;
+  color: white;
+}
+
+.facebook-btn:hover {
+  background-color: #166FE5;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider::before {
+  margin-right: 16px;
+}
+
+.divider::after {
+  margin-left: 16px;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 14px;
+  text-align: center;
 }

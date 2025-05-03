@@ -39,47 +39,47 @@
     %>
 
 
-    <form method="post" action="login" class="flex-colunm">
+    <form method="post" action="login" class="login-container">
         <div class="logo">
             <img src="./image/logo1.png" alt="logo">
+        </div>
 
-        </div>
-        <div>
-            <h2>Đăng nhập</h2>
-        </div>
+        <h2>Đăng nhập</h2>
+
         <div>
             <input class="input-common" type="text" placeholder="Email" value="<%=uname%>" name="uname">
         </div>
+
         <div>
             <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">
         </div>
 
-        <p>
+        <p class="error-message">
             <%=error%>
         </p>
-        <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/DOANWEB/home&response_type=code&client_id=862213844351-dv5kqbmf8vik0mvbkl27lrqgntgevp91.apps.googleusercontent.com&approval_prompt=force"
-           class="flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-md text-gray-700 hover:bg-gray-100 transition duration-200"
-           style="text-decoration: none;">
-            <i class="fa-brands fa-google text-red-500 text-lg"></i>
-            <span>Đăng nhập với Google</span>
-        </a>
 
-        <div class="flex-center">
+        <button type="submit" class="button-orange">Đăng nhập</button>
 
-            <button type="submit" class="button-orange">Đăng
-                nhập</button>
+        <div class="divider">hoặc</div>
 
+        <div class="social-login">
+            <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/DOANWEB/home&response_type=code&client_id=862213844351-dv5kqbmf8vik0mvbkl27lrqgntgevp91.apps.googleusercontent.com&approval_prompt=force"
+               class="social-btn google-btn">
+                <i class="fab fa-google"></i>
+                <span>Đăng nhập với Google</span>
+            </a>
 
+            <a href="#" onclick="loginWithFacebook()"
+               class="social-btn facebook-btn">
+                <i class="fab fa-facebook-f"></i>
+                <span>Đăng nhập với Facebook</span>
+            </a>
         </div>
-
 
         <div class="flex-row">
-         <a class="text-link flex-1" href="forgot-password.jsp"> Quên mật khẩu?</a>
-
-            <a class="text-link flex-1" href="register.jsp"> Đăng kí tài khoản.</a>
-
+            <a class="text-link" href="forgot-password.jsp">Quên mật khẩu?</a>
+            <a class="text-link" href="register.jsp">Đăng ký tài khoản</a>
         </div>
-
     </form>
 </div>
 

@@ -273,5 +273,48 @@ public class UserDao {
         }
     }
     /*dăng nhập bằng gg*/
+    public User getUserByEmail(String email) {
+        String sql = "SELECT * FROM user WHERE username=?";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new User(
+                            rs.getInt("id"),
+                            rs.getString("username"),
+                            rs.getString("name"),
+                            rs.getInt("type"),
+                            rs.getString("phone_number"),
+                            rs.getString("address")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
+    // Đăng nhập Google: save user
+    public User saveGoogleUserIfNotExists(String email, String name) {
+        User user = getUserByEmail(email);
+        if (user != null) return user;
+
+        String sql = "INSERT INTO user(username,password,name,phone_number,address,type) VALUES(?,'',?, '', '', 0)";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, email);
+            ps.setString(2, name);
+            ps.executeUpdate();
+            try (ResultSet keys = ps.getGeneratedKeys()) {
+                if (keys.next()) {
+                    return new User(keys.getInt(1), email, name, 0, "", "");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
