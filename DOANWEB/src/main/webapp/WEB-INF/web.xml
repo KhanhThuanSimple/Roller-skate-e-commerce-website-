@@ -23,6 +23,15 @@
         <url-pattern>/favorite</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>ReviewServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.review.ReviewServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ReviewServlet</servlet-name>
+        <url-pattern>/review</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ListProduct</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.ListProduct</servlet-class>
     </servlet>
@@ -36,6 +45,9 @@
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.HomeServlet</servlet-class>
     </servlet>
 
+    <welcome-file-list>
+        <welcome-file>predict.jsp</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>CategoryServlet</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.CategoryServlet</servlet-class>

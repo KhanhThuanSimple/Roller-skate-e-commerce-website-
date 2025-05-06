@@ -62,7 +62,7 @@
                                                 <input type="hidden" name="action" value="remove">
                                                 <button type="submit" style="border: none; background: none; cursor: pointer;">
                                                     <!-- Trái tim đầy (đã yêu thích) -->
-                                                    <i class="fa-solid fa-heart" style="color: #e74c3c; font-size: 20px;"></i>
+                                                    <i class="fa-solid fa-heart" style="color: #e74c3c; font-size: 20px;padding: 20px;margin-left: 145px"></i>
                                                 </button>
                                             </form>
                                         </c:when>
@@ -73,7 +73,7 @@
                                                 <input type="hidden" name="action" value="add">
                                                 <button type="submit" style="border: none; background: none; cursor: pointer;">
                                                     <!-- Trái tim viền (chưa yêu thích) -->
-                                                    <i class="fa-regular fa-heart" style="color: #e74c3c; font-size: 20px;"></i>
+                                                    <i class="fa-regular fa-heart" style="color: #e74c3c; font-size: 20px;padding: 20px;margin-left: 145px"></i>
                                                 </button>
                                             </form>
                                         </c:otherwise>
