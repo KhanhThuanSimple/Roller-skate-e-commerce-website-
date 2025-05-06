@@ -52,24 +52,45 @@
 
 
                         <td>
+                            <c:if test="${permission.edit == 1}">
+                                <button onclick="openStockUpdateForm({
+                                        id: ${stock.id},
+                                        product_id:'${stock.product_id}',
+                                        product_name:'${stock.product_name}',
+                                        quantity_stock:'${stock.quantity_stock}'
 
-                            <button onclick="openStockUpdateForm({
-                                    id: ${stock.id},
-                                    product_id:'${stock.product_id}',
-                                    product_name:'${stock.product_name}',
-                                    quantity_stock:'${stock.quantity_stock}'
-
-                                    })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-
-
-                            <form action="${pageContext.request.contextPath}/admin/stock/delete" method="post"
-                                  style="display:inline;">
-                                <input type="hidden" name="uid" value="${stock.id}">
-                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                                        style="border:none;background-color: unset">
-                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                        })" style="border:none;background-color: unset">
+                                    <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
-                            </form>
+                            </c:if>
+
+                            <c:if test="${permission.delete == 1}">
+                                <form action="${pageContext.request.contextPath}/admin/stock/delete" method="post" style="display:inline;">
+                                    <input type="hidden" name="uid" value="${stock.id}">
+                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                            style="border:none;background-color: unset">
+                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                    </button>
+                                </form>
+                            </c:if>
+
+<%--                            <button onclick="openStockUpdateForm({--%>
+<%--                                    id: ${stock.id},--%>
+<%--                                    product_id:'${stock.product_id}',--%>
+<%--                                    product_name:'${stock.product_name}',--%>
+<%--                                    quantity_stock:'${stock.quantity_stock}'--%>
+
+<%--                                    })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>--%>
+
+
+<%--                            <form action="${pageContext.request.contextPath}/admin/stock/delete" method="post"--%>
+<%--                                  style="display:inline;">--%>
+<%--                                <input type="hidden" name="uid" value="${stock.id}">--%>
+<%--                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"--%>
+<%--                                        style="border:none;background-color: unset">--%>
+<%--                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>--%>
+<%--                                </button>--%>
+<%--                            </form>--%>
                         </td>
                     </tr>
                 </c:forEach>
@@ -87,7 +108,7 @@
 
                         </a>
                     </div>
-                    <button class="button-orange" onclick="openStockForm()">Thêm màn hình</button>
+                    <button class="button-orange" onclick="openStockForm()">Thêm sản phẩm</button>
                 </div>
 
             </table>
