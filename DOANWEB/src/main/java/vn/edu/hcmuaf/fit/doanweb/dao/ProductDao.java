@@ -612,16 +612,76 @@ public class ProductDao {
 
         return products;
     }
+    public List<Product> getProductsPurchasedNotReviewed(int userId) {
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT p.* FROM product p " +
+                "JOIN order_details od ON p.id = od.product_id " +
+                "JOIN orders o ON od.order_id = o.id " +
+                "LEFT JOIN reviews r ON p.id = r.product_id AND r.user_id = ? " +
+                "WHERE o.user_id = ? AND r.id IS NULL " +
+                "GROUP BY p.id";
 
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.setInt(2, userId);
 
-    public static void main(String[] args) {
-        ProductDao dao = new ProductDao();
-        List<Product> products = dao.getProductsByCategoryAndSort("1","ASC");
-        for (Product product : products) {
-            System.out.println(product);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Product product = new Product();
+                    product.setId(rs.getInt("id"));
+                    product.setName(rs.getString("name"));
+                    product.setPrice(rs.getDouble("price"));
+                    product.setImg(rs.getString("img"));
+                    // Set other properties as needed
+                    products.add(product);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
+        return products;
+    }
 
+    public boolean addProductReview(int userId, int productId, int rating, String comment) {
+        String sql = "INSERT INTO reviews (user_id, product_id, rating, comment, created_at) " +
+                "VALUES (?, ?, ?, ?, NOW())";
+
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.setInt(2, productId);
+            ps.setInt(3, rating);
+            ps.setString(4, comment);
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+//    public static void main(String[] args) {
+//        ProductDao dao = new ProductDao();
+//        List<Product> products = dao.getProductsByCategoryAndSort("1","ASC");
+//        for (Product product : products) {
+//            System.out.println(product);
+//        }
+//
+//
+//    }
+
+    public List<Product> getProductsPurchased(int id) {
+        return getProductsPurchasedNotReviewed(id);
+    }
+
+    public List<Product> getProductsReviewed(int id) {
+        return getProductsPurchasedNotReviewed(id);
+    }
+
+    public List<Product> getProductsNotReviewed(int id) {
+        return getProductsPurchasedNotReviewed(id);
     }
 }
 

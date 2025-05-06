@@ -11,7 +11,15 @@
         <servlet-name>AddMultipleToCart</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.favorites.AddMultipleToCart</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DanhGiaSanPham</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.DanhGiaSanPham</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>DanhGiaSanPham</servlet-name>
+        <url-pattern>/danhgia</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddMultipleToCart</servlet-name>
         <url-pattern>/add-multiple-to-cart</url-pattern>

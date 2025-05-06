@@ -51,6 +51,8 @@
                     <ul>
                         <li><a href="lichsu"><i class="fas fa-clipboard-list"></i> Đơn hàng của bạn</a></li>
                         <li><a href="listFavorites"><i class="fas fa-heart"></i> Sản phẩm yêu thích</a></li>
+                        <li><a href="danhgia"><i class="fas fa-heart"></i> Sản phẩm đã mua</a></li>
+
                     </ul>
 
                     <button id="DangXuat" class="dangxuat" onclick="moChacChanDX()">
