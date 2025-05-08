@@ -17,7 +17,7 @@
 <body>
 <div id="wrapper"></div>
 
-<div class="login-container flex-colunm">
+<div class="login-container">
     <img class="img-banner" src="./image/login.jpg">
     <div class="mask"></div>
 
@@ -28,28 +28,20 @@
         if (uname==null) uname ="";
     %>
 
-    <form method="post" action="login" class="login-container">
+    <form method="post" action="login">
         <div class="logo">
             <img src="./image/logo1.png" alt="logo">
         </div>
 
         <h2>Đăng nhập</h2>
 
-        <div>
-            <input class="input-common" type="text" placeholder="Email" value="<%=uname%>" name="uname">
-        </div>
-
-        <div>
-            <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">
-        </div>
+        <input class="input-common" type="text" placeholder="Email" value="<%=uname%>" name="uname">
+        <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">
 
         <!-- Google reCAPTCHA -->
         <div class="g-recaptcha" data-sitekey="6LeLFDIrAAAAAOExThqa_90MZ3f3yYZzLu3_ux8m"></div>
 
-
-        <p class="error-message">
-            <%=error%>
-        </p>
+        <p class="error-message"><%=error%></p>
 
         <button type="submit" class="button-orange">Đăng nhập</button>
 
@@ -62,8 +54,7 @@
                 <span>Đăng nhập với Google</span>
             </a>
 
-            <a href="#" onclick="loginWithFacebook()"
-               class="social-btn facebook-btn">
+            <a href="#" onclick="loginWithFacebook()" class="social-btn facebook-btn">
                 <i class="fab fa-facebook-f"></i>
                 <span>Đăng nhập với Facebook</span>
             </a>
@@ -93,8 +84,7 @@
             <div class="social-link">
                 <p><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></p>
                 <p><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></p>
-                <p><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                </p>
+                <p><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></p>
             </div>
         </div>
     </div>
