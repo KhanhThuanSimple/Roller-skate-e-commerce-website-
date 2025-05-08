@@ -111,7 +111,11 @@
         <!--            <scope>provided</scope>-->
         <!--        </dependency>-->
 
-
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20231013</version> <!-- Phiên bản mới nhất -->
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>

@@ -44,7 +44,7 @@
         </div>
 
         <!-- Google reCAPTCHA -->
-        <div class="g-recaptcha" data-sitekey="6LcukywrAAAAAAOP_B9fUA1IGmmQvkXOxez3CBMS-"></div>
+        <div class="g-recaptcha" data-sitekey="6LeLFDIrAAAAAOExThqa_90MZ3f3yYZzLu3_ux8m"></div>
 
 
         <p class="error-message">

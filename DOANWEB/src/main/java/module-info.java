@@ -11,4 +11,6 @@ module DOANWEB {
     requires org.apache.logging.log4j;
     requires jakarta.mail;
     requires jbcrypt;
+    requires org.json;
+
 }
