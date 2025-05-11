@@ -443,7 +443,7 @@ public class ProductDao {
 
     public List<Order> getOrdersWithProducts(int userId) {
         List<Order> orders = new ArrayList<>();
-        String queryOrders = "SELECT * FROM orders WHERE ?=0 OR user_id = ?";
+        String queryOrders = "SELECT * FROM orders WHERE  user_id = ?";
 
 
         try (Connection cons = DBConnect.getConn()) {
@@ -452,21 +452,24 @@ public class ProductDao {
             }
             try (PreparedStatement statement = cons.prepareStatement(queryOrders)) {
                 statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị userId
-                statement.setInt(2, userId); // Sửa ở đây để truyền đúng giá trị userId
                 try (ResultSet rs = statement.executeQuery()) {
                     System.out.println(statement);
                     while (rs.next()) {
                         Order order = new Order();
-                        order.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setUser_id(rs.getInt("user_id")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setName(rs.getString("name")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setPhone(rs.getString("phone")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setAddress(rs.getString("address")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setPaymentMethod(rs.getString("paymentMethod")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setTotalAmount(rs.getDouble("totalAmount")); // Sửa để lấy đúng giá trị từ cột "totalAmount"
-                        order.setStatus(rs.getString("status")); // Sửa để lấy đúng giá trị từ cột "status"
-
-
+                        order.setId(rs.getInt("id"));
+                        order.setUser_id(rs.getInt("user_id"));
+                        order.setProvince(rs.getString("province"));
+                        order.setDistrict(rs.getString("district"));
+                        order.setWard(rs.getString("ward"));
+                        order.setAddress(rs.getString("address"));
+                        order.setName(rs.getString("name"));
+                        order.setPhone(rs.getString("phone"));
+                        order.setNote(rs.getString("note"));
+                        order.setTotalAmount(rs.getDouble("total_amount"));
+                        order.setPaymentMethod(rs.getString("payment_method"));
+                        order.setStatus(rs.getString("status"));
+                        order.setDiscountCode(rs.getString("discount_code"));
+                        order.setShippingFee(rs.getDouble("shipping_fee"));
                         // Ví dụ: order.addProduct(product, orderItem);
                         orders.add(order); // Thêm đơn hàng vào danh sách
                     }
@@ -482,11 +485,11 @@ public class ProductDao {
 
     public List<OrderDetail> getOrderDetails(int userId, int orderId) {
         List<OrderDetail> orders = new ArrayList<>();
-        String query = "SELECT p.id,p.title,oi.quantity,oi.price,o.id,o.name,o.totalAmount,o.status,o.paymentMethod " +
+        String query = "SELECT p.id,p.title,oi.quantity,oi.price,o.id,o.name,o.total_amount,o.status,o.payment_method " +
                 "FROM product p " +
                 "JOIN order_items oi ON p.id = oi.product_id " +
                 "JOIN orders o ON oi.order_id = o.id " +
-                "WHERE (?=0 OR o.user_id = ?) AND o.id = ?";
+                "WHERE   o.user_id = ? AND o.id = ?";
 
         try (Connection cons = DBConnect.getConn()) {
             if (cons == null) {
@@ -494,17 +497,15 @@ public class ProductDao {
             }
             try (PreparedStatement statement = cons.prepareStatement(query)) {
                 statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị userId
-                statement.setInt(2, userId); // Sửa ở đây để truyền đúng giá trị userId
-                statement.setInt(3, orderId);
+                statement.setInt(2, orderId);
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
                         Order order = new Order();
-                        order.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setTotalAmount(rs.getDouble("totalAmount")); // Sửa để lấy đúng giá trị từ cột "totalAmount"
-                        order.setStatus(rs.getString("status")); // Sửa để lấy đúng giá trị từ cột "status"
-                        order.setPaymentMethod(rs.getString("paymentMethod")); // Sửa để lấy đúng giá trị từ cột "status"
-                        order.setName(rs.getString("name")); // Sửa để lấy đúng giá trị từ cột "status"
-
+                        order.setId(rs.getInt("id"));
+                        order.setPhone(rs.getString("name"));
+                        order.setTotalAmount(rs.getDouble("total_amount"));
+                        order.setPaymentMethod(rs.getString("payment_method"));
+                        order.setStatus(rs.getString("status"));
                         Product product = new Product();
                         product.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id" của sản phẩm
                         product.setTitle(rs.getString("title")); // Lấy tiêu đề sản phẩm
