@@ -2,6 +2,7 @@
 package vn.edu.hcmuaf.fit.doanweb.controller.payment;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -11,7 +12,7 @@ import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartP;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartProduct;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderItems;
-import vn.edu.hcmuaf.fit.doanweb.dao.order.OderDao_vnpay;
+import vn.edu.hcmuaf.fit.doanweb.dao.order.OderDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.order.OrderItemDAO;
 import vn.edu.hcmuaf.fit.doanweb.log.Log;
 import java.io.IOException;
@@ -20,23 +21,24 @@ import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+@WebServlet(name = "ajaxServlet", value = "/bank-code")
 
 public class ajaxServlet extends BaseServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String bankCode = req.getParameter("bankCode");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String bankCode = request.getParameter("bankCode");
         Log.info("Bank Code: " + bankCode);
 
-        if (req.getParameter("totalBill") == null) {
-            resp.sendRedirect("cart");
+        if (request.getParameter("totalBill") == null) {
+            response.sendRedirect("cart");
             Log.warn("Total bill is null, redirecting to cart");
             return;
         }
 
-        double amountDouble = Double.parseDouble(req.getParameter("totalBill"));
+        double amountDouble = Double.parseDouble(request.getParameter("totalBill"));
         Log.info("Total Bill Amount: " + amountDouble);
-        HttpSession session = req.getSession();
+        HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
         CartP cart = (CartP) session.getAttribute("cart");
         if (user != null) {
@@ -45,64 +47,85 @@ public class ajaxServlet extends BaseServlet {
             Log.info("User ID: " + user.getId());
         } else {
             Log.warn("User is not authenticated, redirecting to login");
-            resp.sendRedirect("login");
+            response.sendRedirect("login");
             return;
         }
-        OderDao_vnpay dao_vnpay = new OderDao_vnpay();
-    Order order = new Order();
-        order.setUser_id(user.getId());
-        order.setName(req.getParameter("fullName"));
-        order.setPhone(req.getParameter("phone"));
-        order.setAddress(req.getParameter("address"));
-        order.setDiscountCode(req.getParameter("discountCode"));
-        order.setTotalAmount(amountDouble);
+        String province = request.getParameter("province");
+        String district = request.getParameter("district");
+        String ward = request.getParameter("ward");
+        String addressDetail = request.getParameter("shippingAddress");
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String note = request.getParameter("note");
+        String paymentMethod = request.getParameter("paymentMethod");
+        String discountCode = request.getParameter("discountCode");
+        String shippingFeeStr = request.getParameter("shippingFee");
+
+        // Chuyển đổi phí vận chuyển
+        double shippingFee = 0;
+        try {
+            shippingFee = Double.parseDouble(shippingFeeStr);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+        // Tính tổng tiền
+        double totalAmount = cart.getTotal() + shippingFee;
+        try {
+            OderDao orderDao = new OderDao();
+            Order order = new Order();
+
+            // Thiết lập thông tin đơn hàng
+            order.setUser_id(user.getId());
+            order.setProvince(province);
+            order.setDistrict(district);
+            order.setWard(ward);
+            order.setAddress(addressDetail);
+            order.setName(name);
+            order.setPhone(phone);
+            order.setNote(note);
+            order.setTotalAmount(totalAmount);
+            order.setPaymentMethod(paymentMethod);
+            order.setStatus("Bank".equalsIgnoreCase(paymentMethod) ? "Đã thanh toán" : "Đang xử lí");
+            order.setDiscountCode(discountCode);
+            order.setShippingFee(shippingFee);
 
 
         int  orderId = 0;
         try {
-            orderId = dao_vnpay.insertOrder(order);
+            orderId =orderDao.insertOrder (order);
+            order.setId(orderId);
+
             Log.info("Order ID inserted: " + orderId);
         } catch (SQLException e) {
             Log.error("SQL Exception while inserting order: " + e.getMessage());
             throw new RuntimeException(e);
         }
 
-
-        if( orderId < 1 ){
-            resp.sendRedirect("cart");
-            Log.warn("Order ID is less than 1, redirecting to cart");
-            return;
-        }
-        OrderItemDAO daoItem = new OrderItemDAO();
-        if (cart != null && cart.getList().size() > 0) {
-
+            // Thêm chi tiết đơn hàng
+            OrderItemDAO orderItemDAO = new OrderItemDAO();
 
             for (CartProduct cartProduct : cart.getList()) {
-                int productId = cartProduct.getId();
-                int quantity = cartProduct.getQuantity();
-                double price = cartProduct.getPrice();
-// Tạo đối tượng OrderItems để lưu chi tiết sản phẩm
-                OrderItems orderItem = new OrderItems();
-                orderItem.setOrder_id(orderId);
-                orderItem.setProduct_id(productId);
-                orderItem.setQuantity(quantity);
-                orderItem.setPrice(price);
 
-                // Chèn chi tiết sản phẩm vào cơ sở dữ liệu
-                try {
-                    daoItem.insertOrderItems(orderItem);
-                    Log.warn("Order ID is less than 1, redirecting to cart");
-                } catch (SQLException e) {
-                    Log.error("SQL Exception while inserting order item: " + e.getMessage());
-                    throw new RuntimeException(e);
-                }
+                OrderItems orderItem = new OrderItems();
+                orderItem.setOrder_id(order.getId());
+                orderItem.setProduct_id(cartProduct.getId());
+                orderItem.setQuantity(cartProduct.getQuantity());
+                orderItem.setPrice(cartProduct.getPrice());
+                orderItemDAO.insertOrderItems(orderItem);
+            }
+            session.removeAttribute("cart");
+            if (!"Bank".equalsIgnoreCase(paymentMethod)) {
+                // Nếu COD → không đi qua VNPay
+                response.sendRedirect("success.jsp?orderId=" + order.getId());
+                return;
             }
 
-        }
+
 
         long amount = (long) (amountDouble * 100); // Chuyển đổi sang đơn vị đồng
         String vnp_TxnRef = orderId+"";
-        String vnp_IpAddr = Config.getIpAddress(req);
+        String vnp_IpAddr = Config.getIpAddress(request);
         Log.info("Preparing VNPay payment - Amount: " + amount +
                 ", OrderID: " + vnp_TxnRef + ", IP: " + vnp_IpAddr);
 
@@ -128,7 +151,7 @@ public class ajaxServlet extends BaseServlet {
         vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
         vnp_Params.put("vnp_OrderType", orderType);
 
-        String locate = req.getParameter("language");
+        String locate = request.getParameter("language");
         if (locate != null && !locate.isEmpty()) {
             vnp_Params.put("vnp_Locale", locate);
         } else {
@@ -175,6 +198,11 @@ public class ajaxServlet extends BaseServlet {
         queryUrl += "&vnp_SecureHash=" + vnp_SecureHash;
         String paymentUrl = Config.vnp_PayUrl + "?" + queryUrl;
         Log.info( "Redirecting to VNPay payment URL");
-        resp.sendRedirect(paymentUrl);
+        response.sendRedirect(paymentUrl);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Có lỗi xảy ra khi đặt hàng. Vui lòng thử lại.");
+            request.getRequestDispatcher("thanhtoan1.jsp").forward(request, response);
+        }
     }
     }
