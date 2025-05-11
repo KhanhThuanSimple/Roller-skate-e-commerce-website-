@@ -31,4 +31,7 @@ public class Log {
     public static void fatal(String message) {
         logger.fatal(message);
     }
+
+    public static void error(String format, Exception e) {
+    }
 }
