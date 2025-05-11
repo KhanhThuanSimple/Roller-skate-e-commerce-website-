@@ -1,36 +1,29 @@
 package vn.edu.hcmuaf.fit.doanweb.dao.model.order;
 
-import java.io.Serializable;
-
-public class Order implements Serializable {
-
+public class Order {
     private int id;
     private int user_id;
-    private String name;
-    private String phone;
+    private String province;
+    private String district;
+    private String ward;
     private String address;
-    private String paymentMethod;
+    private String name;
+
+    private String phone;
+    private String note;
     private double totalAmount;
+    private String paymentMethod;
     private String status;
-    private String discountCode; // Thêm trường mã giảm giá tạm thời
+    private String discountCode;
+    private double shippingFee;
+    // Thêm getter và setter
 
+    public String getName() {
+        return name;
+    }
 
-    public Order(int user_id, String name, String phone, String address, String paymentMethod, double totalAmount, String status) {
-        this.user_id = user_id;
+    public void setName(String name) {
         this.name = name;
-        this.phone = phone;
-        this.address = address;
-        this.paymentMethod = paymentMethod;
-        this.totalAmount = totalAmount;
-        this.status = status;
-    }
-
-    public String getDiscountCode() {
-        return discountCode;
-    }
-
-    public void setDiscountCode(String discountCode) {
-        this.discountCode = discountCode;
     }
 
     public int getId() {
@@ -49,12 +42,36 @@ public class Order implements Serializable {
         this.user_id = user_id;
     }
 
-    public String getName() {
-        return name;
+    public String getProvince() {
+        return province;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhone() {
@@ -65,22 +82,12 @@ public class Order implements Serializable {
         this.phone = phone;
     }
 
-
-
-    public String getAddress() {
-        return address;
+    public String getNote() {
+        return note;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public double getTotalAmount() {
@@ -91,6 +98,14 @@ public class Order implements Serializable {
         this.totalAmount = totalAmount;
     }
 
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -99,20 +114,19 @@ public class Order implements Serializable {
         this.status = status;
     }
 
-    public Order() {
+    public String getDiscountCode() {
+        return discountCode;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", user_id=" + user_id +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                ", totalAmount=" + totalAmount +
-                ", status='" + status + '\'' +
-                '}';
+    public void setDiscountCode(String discountCode) {
+        this.discountCode = discountCode;
+    }
+
+    public double getShippingFee() {
+        return shippingFee;
+    }
+
+    public void setShippingFee(double shippingFee) {
+        this.shippingFee = shippingFee;
     }
 }

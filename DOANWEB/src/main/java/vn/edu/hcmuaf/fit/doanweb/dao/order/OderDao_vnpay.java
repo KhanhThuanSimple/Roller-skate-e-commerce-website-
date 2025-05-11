@@ -27,7 +27,7 @@ public class OderDao_vnpay {
 
         PreparedStatement stmt = statement.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setInt(1, order.getUser_id());
-        stmt.setString(2, order.getName());
+//        stmt.setString(2, order.getName());
         stmt.setString(3, order.getPhone());
         stmt.setString(4, order.getAddress());
         stmt.setString(5, order.getPaymentMethod());
@@ -76,7 +76,7 @@ public class OderDao_vnpay {
             while (rs.next()) {
                 Order order = new Order();
                 order.setUser_id(rs.getInt("user_id"));
-                order.setName(rs.getString("name"));
+//                order.setName(rs.getString("name"));
                 order.setPhone(rs.getString("phone"));
                 order.setAddress(rs.getString("adress"));
                 order.setTotalAmount(rs.getDouble("totalAmount"));

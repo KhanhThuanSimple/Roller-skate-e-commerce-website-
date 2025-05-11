@@ -25,9 +25,13 @@ public class Payment extends BaseServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         loadCommonData(request); // Gọi phương thức chung
-
+        User user = (User) session.getAttribute("auth");
         CartP cart = (CartP) session.getAttribute("cart");
 
+        if (user == null) {
+            response.sendRedirect("login");
+            return;
+        }
         if (cart == null) {
             cart = new CartP();
             session.setAttribute("cart", cart);
@@ -43,7 +47,7 @@ public class Payment extends BaseServlet {
         session.setAttribute("totalAmount", totalAmount);
 
         // Chuyển hướng đến trang thanh toán
-        request.getRequestDispatcher("thanhtoan.jsp").forward(request, response);
+        request.getRequestDispatcher("thanhtoan1.jsp").forward(request, response);
     }
 
     @Override
@@ -74,7 +78,7 @@ public class Payment extends BaseServlet {
             Order order = new Order();
 
             order.setUser_id(user.getId());
-            order.setName(name);
+//            order.setName(name);
             order.setPhone(phone);
             order.setAddress(address);
             order.setTotalAmount(totalAmount);
@@ -88,7 +92,7 @@ public class Payment extends BaseServlet {
             order.setStatus(status);
             order.setDiscountCode(discountCode);
 
-            dao.insertOrder(order);  // Phương thức này sẽ tự động cập nhật ID của đơn hàng
+//            dao.insertOrder(order);  // Phương thức này sẽ tự động cập nhật ID của đơn hàng
 
 
             int orderId = order.getId();
