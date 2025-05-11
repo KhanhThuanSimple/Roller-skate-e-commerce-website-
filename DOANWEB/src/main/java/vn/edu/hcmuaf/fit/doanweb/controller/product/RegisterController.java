@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
-import vn.edu.hcmuaf.fit.doanweb.utils.PasswordUtil;
 
 import java.io.IOException;
 
@@ -15,6 +14,7 @@ import java.io.IOException;
 public class RegisterController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("register.jsp").forward(request, response);
+
     }
 
     @Override
@@ -33,23 +33,27 @@ public class RegisterController extends HttpServlet {
             if (!pass.equals(repass)) {
                 request.setAttribute("errorMessage", "Mật khẩu không khớp!");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
+
             } else {
                 User user = authService.findByUsername(uname);
                 if (user == null) {
-                    // Mã hóa mật khẩu bằng bcrypt
-                    String hashedPassword = PasswordUtil.hashPassword(pass);
-                    boolean rs = authService.insert(name, uname, hashedPassword, address, phone, 0);
-                    if (rs) {
+                    boolean rs = authService.insert(name, uname, pass,address,phone, 0);
+                    if(rs){
                         response.sendRedirect(request.getContextPath() + "/login");
-                    } else {
+
+                    }else{
                         request.getRequestDispatcher("register.jsp").forward(request, response);
                     }
+
                 } else {
                     response.sendRedirect("register.jsp");
                 }
+
             }
-        } catch (Exception e) {
-            e.printStackTrace(); // nên in log ra để debug dễ hơn
-        }
+
+
+
+
+        }catch (Exception e) {}
     }
 }

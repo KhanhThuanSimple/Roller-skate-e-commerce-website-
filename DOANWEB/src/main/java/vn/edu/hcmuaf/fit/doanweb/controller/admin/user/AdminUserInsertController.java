@@ -28,7 +28,8 @@ public class AdminUserInsertController extends HttpServlet  {
             String pass= request.getParameter("pass");
             String phone=request.getParameter("phone");
             String address=request.getParameter("address");
-            boolean rs =authService.insert(name,username,pass,address,phone,1);
+            int role= Integer.parseInt(request.getParameter("role"));
+            boolean rs =authService.insert(name,username,pass,address,phone,1, role);
             if(rs) {
                 request.setAttribute("message", "Thêm thành công!");
             }else{

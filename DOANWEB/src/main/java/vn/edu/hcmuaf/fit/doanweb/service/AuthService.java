@@ -40,14 +40,14 @@ public class AuthService {
 
 
 
-    public boolean insert(String name, String email, String pass,String address,String phone, int type) throws SQLException {
+    public boolean insert(String name, String email, String pass,String address,String phone, int type, int role) throws SQLException {
         UserDao userDao = new UserDao();
-        return userDao.insertUser(name,email,pass,address,phone,type);
+        return userDao.insertUser(name,email,pass,address,phone,type,role);
     }
 
-    public boolean update(String name, String email,String address,String phone, int type, int id) throws SQLException {
+    public boolean update(String name, String email,String address,String phone, int type, int id, int role) throws SQLException {
         UserDao userDao = new UserDao();
-        return userDao.updateUser(name,email,address,phone,type, id);
+        return userDao.updateUser(name,email,address,phone,type, id,role);
     }
 
     public boolean delete(int id) throws SQLException {

@@ -1,6 +1,6 @@
-package vn.edu.hcmuaf.fit.doanweb.dao.model;
+package vn.edu.hcmuaf.fit.doanweb.dao.model.cart;
 
-import org.jdbi.v3.core.statement.Update;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class CartP {
-    Map<Integer,CartProduct> data = new HashMap<>();
+    Map<Integer, CartProduct> data = new HashMap<>();
     public boolean addProduct(Product p) {
         if (data.containsKey(p.getId())) {
             return update(p.getId(),data.get(p.getId()).getQuantity()+1);

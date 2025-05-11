@@ -92,7 +92,14 @@
         <servlet-name>ShowCart</servlet-name>
         <url-pattern>/ShowCart</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>ShippingController</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.shipping.ShippingController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShippingController</servlet-name>
+        <url-pattern>/shipping</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>Remove</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.cart.Remove</servlet-class>
@@ -124,7 +131,25 @@
         <servlet-name>ChangePassword</servlet-name>
         <url-pattern>/changePassword</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.payment.ajaxServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VnpayReturn</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.payment.vnpayRefund</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VnpayReturn</servlet-name>
+        <url-pattern>/vnpayReturn</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>

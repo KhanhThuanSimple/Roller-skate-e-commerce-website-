@@ -90,9 +90,10 @@
         <!-- Footer Section -->
         <div class="p-4 mt-4 bg-light rounded shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
-                <p class="m-0">Tổng tiền: <span class="fw-bold text-primary">${sessionScope.cart.getTotal()}đ</span></p>
+                    <p class="m-0">Tổng tiền: <span class="fw-bold text-primary">${sessionScope.cart.getTotal()}</span></p>
                 <a id="XemThemSP" href="product" class="btn btn-outline-secondary me-2">Xem thêm sản phẩm</a>
                 <a id="ThanhToan" href="checkout" class="btn btn-primary">Thanh toán</a>
+
 
             </div>
         </div>

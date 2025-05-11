@@ -2,43 +2,43 @@ package vn.edu.hcmuaf.fit.doanweb.dao.order;
 
 
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Order;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class OderDao {
 
-    public void insertOrder(Order order) throws SQLException {
-        Statement statement = DBConnect.getStatement();
-        String sql = "INSERT INTO orders (user_id, name, phone, address, paymentMethod, totalAmount,status) VALUES ( ?,?, ?, ?, ?, ?,?)";
+        public void insertOrder(Order order) throws SQLException {
+            Statement statement = DBConnect.getStatement();
+            String sql = "INSERT INTO orders (user_id, name, phone, address, paymentMethod, totalAmount,status) VALUES ( ?,?, ?, ?, ?, ?,?)";
 
 
-        double discount = calculateDiscount(order.getDiscountCode());
-        double finalAmount = order.getTotalAmount() - (order.getTotalAmount() * discount); // T tính tổng tiền sau giảm giá
-        String status = "Đang xử lí"; // Mặc định
-        if ("Bank".equalsIgnoreCase(order.getPaymentMethod())) {
-            status = "Đã thanh toán";
-        }
-        PreparedStatement stmt = statement.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        stmt.setInt(1, order.getUser_id());
-        stmt.setString(2, order.getName());
-        stmt.setString(3, order.getPhone());
-        stmt.setString(4, order.getAddress());
-        stmt.setString(5, order.getPaymentMethod());
-        stmt.setDouble(6, finalAmount);
-        stmt.setString(7, status);
+            double discount = calculateDiscount(order.getDiscountCode());
+            double finalAmount = order.getTotalAmount() - (order.getTotalAmount() * discount); // T tính tổng tiền sau giảm giá
+            String status = "Đang xử lí"; // Mặc định
+            if ("Bank".equalsIgnoreCase(order.getPaymentMethod())) {
+                status = "Đã thanh toán";
+            }
+            PreparedStatement stmt = statement.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, order.getUser_id());
+            stmt.setString(2, order.getName());
+            stmt.setString(3, order.getPhone());
+            stmt.setString(4, order.getAddress());
+            stmt.setString(5, order.getPaymentMethod());
+            stmt.setDouble(6, finalAmount);
+            stmt.setString(7, status);
 
-        stmt.executeUpdate();  // Thực thi câu lệnh INSERT
+            stmt.executeUpdate();  // Thực thi câu lệnh INSERT
 
-        // Lấy ID vừa tạo ra
-        try (ResultSet rs = stmt.getGeneratedKeys()) {
-            if (rs.next()) {
-                int orderId = rs.getInt(1);  // Lấy ID của đơn hàng vừa được tạo
-                order.setId(orderId);  // Gán lại ID cho đối tượng Order
+            // Lấy ID vừa tạo ra
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    int orderId = rs.getInt(1);  // Lấy ID của đơn hàng vừa được tạo
+                    order.setId(orderId);  // Gán lại ID cho đối tượng Order
+                }
             }
         }
-    }
 
     private double calculateDiscount(String discountCode) {
         // Logic để kiểm tra mã giảm giá và tính toán

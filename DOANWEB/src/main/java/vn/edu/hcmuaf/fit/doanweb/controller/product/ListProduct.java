@@ -37,7 +37,10 @@ public class ListProduct extends BaseServlet {
         } else {
             products = productDao.getAll();
         }
+        if (cateID != null && sort != null) {
+            products=productDao.getProductsByCategoryAndSort(cateID, sort);
 
+        }else
         if (sort != null && !sort.isEmpty()) {
             products = productDao.getProductByOrder(sort);
         }

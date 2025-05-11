@@ -3,7 +3,7 @@ package vn.edu.hcmuaf.fit.doanweb.controller.cart;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.CartP;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartP;
 import vn.edu.hcmuaf.fit.doanweb.log.Log;
 import java.io.IOException;
 

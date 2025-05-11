@@ -3,7 +3,6 @@ package vn.edu.hcmuaf.fit.doanweb.controller.admin.screen;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 import vn.edu.hcmuaf.fit.doanweb.service.ScreenService;
 
 import java.io.IOException;
