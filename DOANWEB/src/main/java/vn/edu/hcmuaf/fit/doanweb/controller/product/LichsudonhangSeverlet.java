@@ -39,7 +39,6 @@ public class LichsudonhangSeverlet extends BaseServlet {
         // Đặt danh sách đơn hàng vào request để chuyển sang JSP
         request.setAttribute("list", list);
 
-        request.setAttribute("list", list);
         // Chuyển tiếp đến trang JSP hiển thị chi tiết đơn hàng
         request.getRequestDispatcher("lichsudonhang.jsp").forward(request, response);
 
