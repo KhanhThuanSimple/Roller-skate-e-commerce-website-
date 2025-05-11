@@ -96,11 +96,6 @@
             </div>
         </div>
 
-<%--        <div class="edit-button-container" style="text-align: right; margin-top: 30px;">--%>
-<%--            <button class="edit-button" onclick="location.href='#'">--%>
-<%--                <i class="fas fa-edit"></i> Chỉnh sửa hồ sơ--%>
-<%--            </button>--%>
-<%--        </div>--%>
 
     </main>
 

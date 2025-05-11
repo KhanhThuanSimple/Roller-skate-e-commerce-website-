@@ -78,7 +78,6 @@ public class Payment extends BaseServlet {
             Order order = new Order();
 
             order.setUser_id(user.getId());
-//            order.setName(name);
             order.setPhone(phone);
             order.setAddress(address);
             order.setTotalAmount(totalAmount);
@@ -92,7 +91,6 @@ public class Payment extends BaseServlet {
             order.setStatus(status);
             order.setDiscountCode(discountCode);
 
-//            dao.insertOrder(order);  // Phương thức này sẽ tự động cập nhật ID của đơn hàng
 
 
             int orderId = order.getId();
