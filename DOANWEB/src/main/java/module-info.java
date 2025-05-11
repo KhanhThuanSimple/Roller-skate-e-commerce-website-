@@ -1,7 +1,6 @@
 module DOANWEB {
-    requires jakarta.servlet;
-
     requires com.google.gson;
+    requires jakarta.servlet;
     requires jakarta.servlet.jsp.jstl;
     requires org.apache.httpcomponents.httpcore;
     requires org.apache.httpcomponents.httpclient;
@@ -12,8 +11,6 @@ module DOANWEB {
     requires org.apache.logging.log4j;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.annotation;
-    requires com.fasterxml.jackson.databind;
-    requires java.management;
-    requires weka.stable; // Để sử dụng ObjectMapper
+    requires com.fasterxml.jackson.databind; // Để sử dụng ObjectMapper
 
 }

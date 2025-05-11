@@ -46,22 +46,26 @@
 
                         <td> ${customer.address}</td>
                         <td>
-                            <button onclick="openCustomerUpdateForm({
-                                    id: ${customer.id},
-                                    name:'${customer.name}',
-                                    username:'${customer.username}',
-                                    phone:'${customer.phone}',
-                                    address:'${customer.address}'
-                                    })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-
-                            <form action="${pageContext.request.contextPath}/admin/customer/delete" method="post"
-                                  style="display:inline;">
-                                <input type="hidden" name="uid" value="${customer.id}">
-                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                                        style="border:none;background-color: unset">
-                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            <c:if test="${permission.edit == 1}">
+                                <button onclick="openCustomerUpdateForm({
+                                        id: ${customer.id},
+                                        name:'${customer.name}',
+                                        username:'${customer.username}',
+                                        phone:'${customer.phone}',
+                                        address:'${customer.address}'
+                                        })" style="border:none;background-color: unset">
+                                    <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
-                            </form>
+                            </c:if>
+                            <c:if test="${permission.delete == 1}">
+                                <form action="${pageContext.request.contextPath}/admin/customer/delete" method="post" style="display:inline;">
+                                    <input type="hidden" name="uid" value="${customer.id}">
+                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                            style="border:none;background-color: unset">
+                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                    </button>
+                                </form>
+                            </c:if>
                         </td>
                     </tr>
                 </c:forEach>
@@ -82,7 +86,9 @@
 
                         </a>
                     </div>
-                    <button class="button-orange" onclick="openProductForm()">Thêm Khách Hàng</button>
+                    <c:if test="${permission.add == 1}">
+                        <button class="button-orange" onclick="openProductForm()">Thêm Khách Hàng</button>
+                    </c:if>
 
                 </div>
 

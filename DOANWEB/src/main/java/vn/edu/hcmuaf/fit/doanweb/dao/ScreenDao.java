@@ -32,8 +32,8 @@ public class ScreenDao {
             while (rs.next()) {
                 Screen screen = new Screen();
                 screen.setId(rs.getInt("id"));
-                screen.setIdScreen(rs.getString("idScreen"));
-                screen.setNameScreen(rs.getString("nameScreen"));
+                screen.setCode(rs.getString("code"));
+                screen.setName(rs.getString("name"));
 
                 screens.add(screen);
             }
@@ -77,14 +77,14 @@ public class ScreenDao {
             throw new RuntimeException(e);
         }
     }
-    public boolean insertScreen(String idScreen,String nameScreen ) throws SQLException {
+    public boolean insertScreen(String code,String name ) throws SQLException {
 
-        String sql = "insert into screen(idScreen,nameScreen) values(?,?)";
+        String sql = "insert into screen(code,name) values(?,?)";
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
-            pre.setString(1, idScreen);
-            pre.setString(1, nameScreen);
+            pre.setString(1, code);
+            pre.setString(2, name);
 
 
             int rs = pre.executeUpdate();
@@ -96,14 +96,14 @@ public class ScreenDao {
         }
     }
 
-    public boolean updateScreen(String idScreen,String nameScreen,  int id) throws SQLException {
-        String sql = "UPDATE screen SET  idScreen = ?, nameScreen=?  WHERE id = ?";
+    public boolean updateScreen(String code,String name,  int id) throws SQLException {
+        String sql = "UPDATE screen SET  code = ?, name=?  WHERE id = ?";
 
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
-            pre.setString(1, idScreen);
-            pre.setString(2, nameScreen);
+            pre.setString(1, code);
+            pre.setString(2, name);
             pre.setInt(3, id);
 
             int rs = pre.executeUpdate();

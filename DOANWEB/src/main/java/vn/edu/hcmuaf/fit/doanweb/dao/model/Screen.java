@@ -4,40 +4,42 @@ import java.io.Serializable;
 
 public class Screen implements Serializable {
     public  int id;
-    public String idScreen;
-    public String nameScreen;
+    public String code;
+    public String name;
 
-    public Screen(int id, String idScreen, String nameScreen) {
-        this.id = id;
-        this.idScreen = idScreen;
-        this.nameScreen = nameScreen;
-    }
+
 
     public Screen() {
 
     }
 
-    public String getIdScreen() {
-        return idScreen;
-    }
-
-    public void setIdScreen(String idScreen) {
-        this.idScreen = idScreen;
+    public Screen(int id, String code, String name) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
     }
 
     public int getId() {
         return id;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getNameScreen() {
-        return nameScreen;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public void setNameScreen(String nameScreen) {
-        this.nameScreen = nameScreen;
+    public void setName(String name) {
+        this.name = name;
     }
 }

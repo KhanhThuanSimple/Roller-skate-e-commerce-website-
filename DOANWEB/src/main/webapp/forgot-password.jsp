@@ -18,7 +18,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/password.css">
     <script src="./login.js"></script>
 </head>
 
@@ -30,32 +30,26 @@
 <div class="login-container flex-colunm">
     <img class="img-banner" src="image/login.jpg">
     <div class="mask"></div>
-    <form action="post" class="flex-colunm">
+    <form action="forgot-password" method="post" class="flex-colunm">
         <div class="logo">
             <img src="./image/logo1.png" alt="logo">
-
         </div>
+
         <div>
             <h2>Quên mật khẩu</h2>
         </div>
 
         <div>
-            <input class="input-common" type="email" placeholder="Nhập email để lấy lại mật khẩu">
+            <input class="input-common" type="email" name="email" placeholder="Nhập email để lấy lại mật khẩu" required>
         </div>
 
         <div class="flex-center">
-
-
-            <button type="button" onclick="window.location.href='forgot-password-new.jsp'" class="button-orange">Gưỉ mail</button>
-
-
+            <button type="submit" class="button-orange">Gửi mail</button>
         </div>
+
         <div class="flex-row">
-
-            <a class="text-link flex-1" href="login"> Trở lại đăng nhập.</a>
-
+            <a class="text-link flex-1" href="login">Trở lại đăng nhập</a>
         </div>
-
     </form>
 </div>
 

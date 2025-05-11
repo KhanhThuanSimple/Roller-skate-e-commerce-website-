@@ -3,15 +3,17 @@ package vn.edu.hcmuaf.fit.doanweb.controller.login;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Form;
 import vn.edu.hcmuaf.fit.doanweb.constant.Iconstant;
-import vn.edu.hcmuaf.fit.doanweb.dao.login.GoogleAccount;
+
+
 
 import java.io.IOException;
 
 public class GoogleLogin {
+
+    // Lấy token từ mã code (authorization code)
     public static String getToken(String code) throws ClientProtocolException, IOException {
 
         String response = Request.Post(Iconstant.GOOGLE_LINK_GET_TOKEN)
@@ -45,6 +47,8 @@ public class GoogleLogin {
         return accessToken;
 
     }
+
+
     public static GoogleAccount getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
 
         String link = Iconstant.GOOGLE_LINK_GET_USER_INFO + accessToken;

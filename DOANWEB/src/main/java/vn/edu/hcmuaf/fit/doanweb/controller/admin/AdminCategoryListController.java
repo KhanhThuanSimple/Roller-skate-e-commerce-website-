@@ -3,7 +3,9 @@ package vn.edu.hcmuaf.fit.doanweb.controller.admin;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Category;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.ScreenPermissions;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 import vn.edu.hcmuaf.fit.doanweb.service.CategoryService;
@@ -18,6 +20,9 @@ public class AdminCategoryListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CategoryService categoryService = new CategoryService();
+        UserDao userDao = new UserDao();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
         int page = 1;
         String page_prams= request.getParameter("page");
         System.out.println("page_prams"+page_prams);
@@ -31,6 +36,12 @@ public class AdminCategoryListController extends HttpServlet {
             if(page>totalPage) page=totalPage;
 
             List<Category> categories = categoryService.getListCategory(page);
+            ScreenPermissions permission = userDao.getPerUserScreen(user.id, "lsp");
+            if(permission==null || permission.read!=1) {
+                request.getRequestDispatcher("/admin/dashboard.jsp").forward(request, response);
+            }
+            request.getSession().setAttribute("permission", permission);
+
 
             request.setAttribute("categories", categories);
             request.setAttribute("totalPage", totalPage);

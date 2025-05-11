@@ -41,21 +41,24 @@
 
                         <td>
 
-                            <button onclick="openCategoryUpdateForm({
-                                    id: ${category.id},
-                                    name:'${category.name}'
-
-                                    })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
-
-
-                            <form action="${pageContext.request.contextPath}/admin/category/delete" method="post"
-                                  style="display:inline;">
-                                <input type="hidden" name="uid" value="${category.id}">
-                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                                        style="border:none;background-color: unset">
-                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                            <c:if test="${permission.edit == 1}">
+                                <button onclick="openCategoryUpdateForm({
+                                        id: ${category.id},
+                                        name:'${category.name}'
+                                        })" style="border:none;background-color: unset">
+                                    <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
-                            </form>
+                            </c:if>
+
+                            <c:if test="${permission.delete == 1}">
+                                <form action="${pageContext.request.contextPath}/admin/category/delete" method="post" style="display:inline;">
+                                    <input type="hidden" name="uid" value="${category.id}">
+                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                            style="border:none;background-color: unset">
+                                        <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                    </button>
+                                </form>
+                            </c:if>
                         </td>
                     </tr>
                 </c:forEach>
@@ -73,7 +76,9 @@
 
                         </a>
                     </div>
-                    <button class="button-orange" onclick="openCategorytForm()">Thêm Loại Sản Phẩm  </button>
+                    <c:if test="${permission.add == 1}">
+                        <button class="button-orange" onclick="openCategorytForm()">Thêm Loại Sản Phẩm</button>
+                    </c:if>
                 </div>
 
             </table>

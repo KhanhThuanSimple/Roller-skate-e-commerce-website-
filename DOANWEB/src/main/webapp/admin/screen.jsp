@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản lý User</title>
+  <title>Quản lý màn hình</title>
   <link rel="stylesheet" href="admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
@@ -45,28 +45,37 @@
         <c:forEach var="screen" items="${screens}">
           <tr>
             <td>${screen.id}</td>
-            <td>${screen.idScreen}</td>
-            <td>${screen.nameScreen}</td>
+            <td>${screen.code}</td>
+            <td>${screen.name}</td>
 
 
             <td>
 
-              <button onclick="openScreenUpdateForm({
-                      id: ${screen.id},
-                      name:'${screen.idScreen}',
-                      username:'${screen.nameScreen}'
+                <c:if test="${permission.edit == 1}">
+                    <button onclick="openScreenUpdateForm({
+                            id: ${screen.id},
+                            code:'${screen.code}',
+                            name:'${screen.name}'
+                            })" style="border:none;background-color: unset">
+                        <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                    </button>
+                </c:if>
 
-                      })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
-
-              <form action="${pageContext.request.contextPath}/admin/screen/delete" method="post"
+                <form action="${pageContext.request.contextPath}/admin/screen/delete" method="post"
                     style="display:inline;">
                 <input type="hidden" name="uid" value="${screen.id}">
-                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                        style="border:none;background-color: unset">
-                  <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                </button>
+
+                <c:if test="${permission.delete == 1}">
+                  <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                          style="border:none;background-color: unset">
+                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                  </button>                </c:if>
+
+
               </form>
+
+
             </td>
           </tr>
         </c:forEach>
@@ -84,7 +93,10 @@
 
             </a>
           </div>
-          <button class="button-orange" onclick="openScreenForm()">Thêm màn hình</button>
+          <c:if test="${permission.add == 1}">
+            <button class="button-orange" onclick="openScreenForm()">Thêm màn hình</button>
+          </c:if>
+
         </div>
 
       </table>
@@ -97,13 +109,13 @@
   <div class="modal-content">
     <span class="close-btn" onclick="closeScreenForm()">&times;</span>
 
-    <form method="post" action="${pageContext.request.contextPath}/admin/screen/insert" class="flex-colunm">
+    <form method="post" action="${pageContext.request.contextPath}/admin/screen/add" class="flex-colunm">
       <h2>Thêm màn hình</h2>
       <div>
-        <input name="idScreen" class="input-common" type="text" placeholder=" Mã màn hình">
+        <input name="code" class="input-common" type="text" placeholder=" Mã màn hình">
       </div>
       <div>
-        <input name="nameScreen" class="input-common" type="text" placeholder=" Tên màn hình">
+        <input name="name" class="input-common" type="text" placeholder=" Tên màn hình">
       </div>
 
 
@@ -120,14 +132,14 @@
   <div class="modal-content">
     <span class="close-btn" onclick="closeScreenUpdateForm()">&times;</span>
 
-    <form method="post" action="${pageContext.request.contextPath}/admin/screen/update" class="flex-colunm">
+    <form method="post" action="${pageContext.request.contextPath}/admin/screen/edit" class="flex-colunm">
       <h2>Chỉnh sửa màn hình</h2>
       <input type="hidden" name="id">
       <div>
-        <input name="idScreen" class="input-common" type="text" placeholder=" Mã màn hình ">
+        <input name="code" class="input-common" type="text" placeholder=" Mã màn hình ">
       </div>
       <div>
-        <input name="nameScreen" class="input-common" type="text" placeholder=" Tên màn hình ">
+        <input name="name" class="input-common" type="text" placeholder=" Tên màn hình ">
       </div>
 
 
@@ -153,8 +165,8 @@
   function openScreenUpdateForm(screen) {
     const form = document.getElementById("modal-update-screen");
     form.querySelector('input[name="id"]').value = screen.id;
-    form.querySelector('input[name="idScreen"]').value = screen.idScreen;
-    form.querySelector('input[name="nameScreen"]').value = screen.nameScreen;
+    form.querySelector('input[name="code"]').value = screen.code;
+    form.querySelector('input[name="name"]').value = screen.name;
 
     form.style.display = "block";
   }

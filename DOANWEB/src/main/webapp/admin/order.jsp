@@ -119,14 +119,15 @@
                                                 })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
 
-                                        <form action="${pageContext.request.contextPath}/admin/order/delete" method="post"
-                                              style="display:inline;">
-                                            <input type="hidden" name="uid" value="${orderDetail.id}">
-                                            <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                                                    style="border:none;background-color: unset">
-                                                <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
-                                            </button>
-                                        </form>
+                                        <c:if test="${permission.delete == 1}">
+                                            <form action="${pageContext.request.contextPath}/admin/order/delete" method="post" style="display:inline;">
+                                                <input type="hidden" name="uid" value="${orderDetail.id}">
+                                                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+                                                        style="border:none;background-color: unset">
+                                                    <i class="fa-solid fa-trash" style="flex:1; padding: 10px; cursor: pointer;"></i>
+                                                </button>
+                                            </form>
+                                        </c:if>
 
                                     </td>
                                 </tr>

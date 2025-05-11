@@ -29,7 +29,7 @@ public class AdminCustomerAddController extends  HttpServlet {
             String phone=request.getParameter("phone");
             String address=request.getParameter("address");
 
-            boolean rs =authService.insert(name,username,pass,address,phone,0);
+            boolean rs =authService.insert(name,username,pass,address,phone,0,0);
             if(rs) {
                 request.setAttribute("message", "Thêm thành công!");
             }else{

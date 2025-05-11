@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: PC
-  Date: 22/12/2024
-  Time: 4:14 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,15 +12,12 @@
 
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/login.css">
-
 </head>
 
 <body>
 <div id="wrapper"></div>
 
-
-
-<div class="login-container flex-colunm">
+<div class="login-container">
     <img class="img-banner" src="./image/login.jpg">
     <div class="mask"></div>
 
@@ -38,47 +28,42 @@
         if (uname==null) uname ="";
     %>
 
-
-    <form method="post" action="login" class="flex-colunm">
+    <form method="post" action="login">
         <div class="logo">
             <img src="./image/logo1.png" alt="logo">
-
-        </div>
-        <div>
-            <h2>Đăng nhập</h2>
-        </div>
-        <div>
-            <input class="input-common" type="text" placeholder="Email" value="<%=uname%>" name="uname">
-        </div>
-        <div>
-            <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">
         </div>
 
-        <p>
-            <%=error%>
-        </p>
-        <div class="flex-center">
+        <h2>Đăng nhập</h2>
 
-            <button type="submit" class="button-orange">Đăng
-                nhập</button>
+        <input class="input-common" type="text" placeholder="Email" value="<%=uname%>" name="uname">
+        <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">
 
+        <!-- Google reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="6LeLFDIrAAAAAOExThqa_90MZ3f3yYZzLu3_ux8m"></div>
 
+        <p class="error-message"><%=error%></p>
+
+        <button type="submit" class="button-orange">Đăng nhập</button>
+
+        <div class="divider">hoặc</div>
+
+        <div class="social-login">
+            <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/DOANWEB/home&response_type=code&client_id=862213844351-dv5kqbmf8vik0mvbkl27lrqgntgevp91.apps.googleusercontent.com&approval_prompt=force"
+               class="social-btn google-btn">
+                <i class="fab fa-google"></i>
+                <span>Đăng nhập với Google</span>
+            </a>
+
+            <a href="#" onclick="loginWithFacebook()" class="social-btn facebook-btn">
+                <i class="fab fa-facebook-f"></i>
+                <span>Đăng nhập với Facebook</span>
+            </a>
         </div>
+
         <div class="flex-row">
-<%--            <a class="text-link flex-1" href="forgot-password.jsp"> Quên mật khẩu?</a>--%>
-            <a class="text-link flex-1" href="https://accounts.google.com/o/oauth2/auth?scope=email profile openid
-
-&redirect_uri=http://localhost:8080/DOANWEB/login
-
-&response_type=code
-
-&client_id=839747132596-cgvivf8uqtd2512b4fnev7rjjqh2l8lg.apps.googleusercontent.com
-
-&approval_prompt=force"> Quên mật khẩu?</a>
-            <a class="text-link flex-1" href="register.jsp"> Đăng kí tài khoản.</a>
-
+            <a class="text-link" href="forgot-password.jsp">Quên mật khẩu?</a>
+            <a class="text-link" href="register.jsp">Đăng ký tài khoản</a>
         </div>
-
     </form>
 </div>
 
@@ -99,13 +84,14 @@
             <div class="social-link">
                 <p><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></p>
                 <p><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></p>
-                <p><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                </p>
+                <p><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></p>
             </div>
         </div>
     </div>
 </footer>
-</div>
+
+<!-- Google reCAPTCHA script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>
