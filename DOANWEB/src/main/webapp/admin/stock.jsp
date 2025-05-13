@@ -48,7 +48,7 @@
                         <td>${stock.id}</td>
                         <td>${stock.product_id}</td>
                         <td>${stock.product_name}</td>
-                        <td><%= request.getAttribute("quantityStock") %></td>
+                        <td>${stock.quantity_stock}></td>
 
 
                         <td>

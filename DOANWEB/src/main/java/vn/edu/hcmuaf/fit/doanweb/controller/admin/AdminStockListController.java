@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "AdminStocListController", value = "/AdminStocListController")
-public class AdminStocListController extends HttpServlet {
+@WebServlet(name = "AdminStocListController", value = "/admin/stock")
+public class AdminStockListController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
