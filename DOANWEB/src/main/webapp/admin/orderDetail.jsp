@@ -18,8 +18,10 @@
 
     <!-- Thư viện xuất file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/html-docx.min.js"></script>
+    <!-- Thư viện FileSaver -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <!-- Thư viện html-docx từ unpkg (phiên bản ổn định) -->
+    <script src="https://unpkg.com/html-docx-js@0.3.1/dist/html-docx.js"></script>
 
     <style>
         .order-summary {
@@ -76,7 +78,7 @@
                             <th>Thành Tiền (VNĐ)</th>
                         </tr>
                         </thead>
-                        <c:set var="totalAmount" value="0" /> <!-- Khởi tạo totalAmount -->
+                        <c:set var="totalAmount" value="0" />
                         <c:forEach var="p" items="${list}">
                             <tbody>
                             <tr>
@@ -128,59 +130,71 @@
     // Xuất Word
     function exportToWord() {
         try {
+            // Kiểm tra và log trạng thái thư viện
+            console.log('htmlDocx available:', typeof htmlDocx !== 'undefined');
+            console.log('saveAs available:', typeof saveAs !== 'undefined');
+
             if (typeof htmlDocx === 'undefined') {
-                console.error('Thư viện html-docx-js không được tải.');
-                alert('Không thể xuất file Word. Vui lòng thử lại sau.');
+                // Nếu thư viện chưa sẵn sàng, thử tải lại
+                alert('Đang tải thư viện... Vui lòng nhấn nút "Xuất Word" lần nữa sau 2 giây.');
+
+                // Tải thư viện động
+                const script = document.createElement('script');
+                script.src = 'https://unpkg.com/html-docx-js@0.3.1/dist/html-docx.js';
+                script.onload = function() {
+                    console.log('Đã tải thư viện htmlDocx thành công!');
+                };
+                document.head.appendChild(script);
+
                 return;
             }
+
+            // Lấy phần tử chứa chi tiết đơn hàng
             const element = document.getElementById('order-details');
             if (!element) {
-                console.error('Không tìm thấy phần tử order-details');
+                console.error('Không tìm thấy phần tử có ID "order-details".');
                 alert('Lỗi: Không tìm thấy nội dung đơn hàng.');
                 return;
             }
-            const clonedElement = element.cloneNode(true);
-            const buttons = clonedElement.querySelectorAll('.export-buttons');
-            buttons.forEach(button => button.remove());
-            // Loại bỏ các lớp Bootstrap không cần thiết
-            clonedElement.querySelectorAll('[class*="bg-"], [class*="text-"], [class*="badge"]').forEach(el => {
-                el.removeAttribute('class');
-            });
+
+            // Lấy mã đơn hàng
+            const orderId = '${list[0].order.id}';
+
+            // Chuẩn bị nội dung HTML đơn giản hơn
             const htmlContent = `
                 <html>
                     <head>
                         <meta charset="UTF-8">
                         <style>
-                            .order-summary {
-                                padding: 20px;
-                            }
-                            .total-amount {
-                                font-weight: bold;
-                                color: #28a745;
-                            }
-                            table {
-                                width: 100%;
-                                border-collapse: collapse;
-                            }
-                            th, td {
-                                border: 1px solid #000;
-                                padding: 8px;
-                            }
-                            .text-end {
-                                text-align: right;
-                            }
+                            body { font-family: Arial, sans-serif; margin: 20px; }
+                            table { width: 100%; border-collapse: collapse; }
+                            th, td { border: 1px solid #000; padding: 8px; }
+                            th { background-color: #f2f2f2; }
                         </style>
                     </head>
                     <body>
-                        ${clonedElement.innerHTML}
+                        <h2>Chi Tiết Đơn Hàng #${list[0].order.id}</h2>
+                        <div>
+                            <p><strong>Tên Khách Hàng:</strong> ${list[0].order.name}</p>
+                            <p><strong>Trạng Thái:</strong> Đã Giao Hàng</p>
+                        </div>
+                        ${element.querySelector('table').outerHTML}
                     </body>
                 </html>
             `;
+
+            // Chuyển đổi HTML sang Word document
+            console.log('Bắt đầu chuyển đổi HTML sang Word...');
             const converted = htmlDocx.asBlob(htmlContent);
-            saveAs(converted, 'ChiTietDonHang_${list[0].order.id}.docx');
+            console.log('Chuyển đổi thành công!');
+
+            // Tải xuống file
+            console.log('Đang tải xuống file...');
+            saveAs(converted, `ChiTietDonHang_${orderId}.docx`);
+
         } catch (error) {
-            console.error('Lỗi khi xuất Word:', error);
-            alert('Có lỗi xảy ra khi xuất file Word: ' + error.message);
+            console.error('Lỗi chi tiết khi xuất file Word:', error);
+            alert('Có lỗi xảy ra khi xuất file Word. Vui lòng xem Console (F12) để biết chi tiết.');
         }
     }
 </script>

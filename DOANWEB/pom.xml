@@ -18,6 +18,9 @@
     </properties>
 
     <dependencies>
+
+
+
         <!-- Jakarta Servlet API -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
@@ -123,7 +126,24 @@
             <version>5.0.0</version> <!-- Bạn có thể thay đổi phiên bản nếu cần -->
             <scope>provided</scope>
         </dependency>
+
+
+
     </dependencies>
+
+    <!-- Repositories -->
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -134,6 +154,9 @@
             </plugin>
         </plugins>
     </build>
+
+
+
 
 
 
