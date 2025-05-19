@@ -47,8 +47,7 @@
                     </div>
 
                     <div class="product-price">
-                        <p class="new-price">Giá: <span>${detail.price}đ</span></p>
-                    </div>
+                        <p class="new-price">Giá: <span><f:formatNumber value="${detail.price}" type="number" />đ</span></p>                    </div>
 
                     <div class="product-detail">
                         <h2>Thông tin sản phẩm:</h2>
@@ -86,6 +85,7 @@
                         <button type="button" class="btn" id="firsts">
                             <a href="product" >Xem Thêm Sản Phẩm</a>
                         </button>
+
                         </a>
                     </div>
 

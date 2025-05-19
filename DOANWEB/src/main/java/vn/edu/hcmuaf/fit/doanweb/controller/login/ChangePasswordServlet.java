@@ -26,7 +26,11 @@ public class ChangePasswordServlet extends HttpServlet {
         System.out.println(newPassword);
         System.out.println(confirmPassword);
         System.out.println(user);
-
+        if (user == null) {
+            // Nếu không có userId trong session, chuyển hướng người dùng đến trang đăng nhập
+            response.sendRedirect("login");
+            return;
+        }
 
         String message;
         // Kiểm tra mật khẩu cũ và xác nhận mật khẩu mới

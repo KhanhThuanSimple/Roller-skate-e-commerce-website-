@@ -6,15 +6,12 @@ public class User implements Serializable {
     public int id;
     private String username;
     private String password;
-    private String name;
+    public String name;
     private int type;
     private String phone;
     private String address;
-    private String email;
 
-    // Constructor đầy đủ
-    public User(int id, String username, String password, String name,
-                int type, String phone, String address, String email) {
+    public User(int id, String username, String password, String name, int type) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -22,79 +19,39 @@ public class User implements Serializable {
         this.type = type;
         this.phone = phone;
         this.address = address;
-        this.email = email;
     }
 
+    public User() {}
 
-    public User() {
+    public User(int id, String username, String name, int type, String phone, String address) {}
 
-    }
+    public User(String name, String uname, String pass, String phone, String address) {}
 
-    public User(int id, String username, String name, int type, String phone, String address) {
-    }
+    public User(String name, String username, String password) {}
 
-    public User(String name, String uname, String pass, String phone, String address) {
-    }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    public User(String name, String username, String password) {
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
-    public String getUsername() {
-        return username;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public int getType() { return type; }
+    public void setType(int type) { this.type = type; }
 
-    public String getPassword() {
-        return password;
-    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
-    public String getName() {
-        return name;
-    }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getType() {
-        return type;
-    }
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public String getAddress() {
-        return address;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String getFullName() {
+        return this.name;
     }
 
     @Override
@@ -109,13 +66,4 @@ public class User implements Serializable {
                 ", address='" + address + '\'' +
                 '}';
     }
-
-    public void setIdPer(int idPer) {
-    }
-
-    public void setNamePer(String perName) {
-    }
-
-
-    public String getFullName() { return name;
-    }}
+}

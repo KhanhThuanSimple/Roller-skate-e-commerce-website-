@@ -3,7 +3,60 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
+    <servlet>
+        <servlet-name>Payment1</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.payment.Payment1</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>Payment1</servlet-name>
+        <url-pattern>/Payment1</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.payment.ajaxServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/bank-code</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FavoriteServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.favorites.FavoriteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddMultipleToCart</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.favorites.AddMultipleToCart</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DanhGiaSanPham</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.DanhGiaSanPham</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DanhGiaSanPham</servlet-name>
+        <url-pattern>/danhgia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMultipleToCart</servlet-name>
+        <url-pattern>/add-multiple-to-cart</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlet Mapping -->
+    <servlet-mapping>
+        <servlet-name>FavoriteServlet</servlet-name>
+        <url-pattern>/favorite</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ReviewServlet</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.review.ReviewServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ReviewServlet</servlet-name>
+        <url-pattern>/review</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ListProduct</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.ListProduct</servlet-class>
@@ -18,6 +71,9 @@
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.HomeServlet</servlet-class>
     </servlet>
 
+    <welcome-file-list>
+        <welcome-file>predict.jsp</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>CategoryServlet</servlet-name>
         <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.CategoryServlet</servlet-class>
@@ -59,16 +115,16 @@
         <servlet-name>SortServlet</servlet-name>
         <url-pattern>/sort</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>ListTotal</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.ListTotal</servlet-class>
-    </servlet>
+<!--    <servlet>-->
+<!--        <servlet-name>ListTotal</servlet-name>-->
+<!--        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.product.ListTotal</servlet-class>-->
+<!--    </servlet>-->
 
 
-    <servlet-mapping>
-        <servlet-name>ListTotal</servlet-name>
-        <url-pattern>/list</url-pattern>
-    </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>ListTotal</servlet-name>-->
+<!--        <url-pattern>/list</url-pattern>-->
+<!--    </servlet-mapping>-->
 
     <servlet>
         <servlet-name>Add</servlet-name>
@@ -92,6 +148,7 @@
         <servlet-name>ShowCart</servlet-name>
         <url-pattern>/ShowCart</url-pattern>
     </servlet-mapping>
+
 
     <servlet>
         <servlet-name>Remove</servlet-name>
@@ -124,7 +181,25 @@
         <servlet-name>ChangePassword</servlet-name>
         <url-pattern>/changePassword</url-pattern>
     </servlet-mapping>
+<!--    <servlet>-->
+<!--        <servlet-name>ajaxServlet</servlet-name>-->
+<!--        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.payment.ajaxServlet</servlet-class>-->
+<!--    </servlet>-->
 
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>ajaxServlet</servlet-name>-->
+<!--        <url-pattern>/payment</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+    <servlet>
+        <servlet-name>VnpayReturn</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.payment.VnpayReturn</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VnpayReturn</servlet-name>
+        <url-pattern>/vnpayReturn</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>

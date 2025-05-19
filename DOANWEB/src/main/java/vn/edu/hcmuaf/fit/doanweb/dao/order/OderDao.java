@@ -2,43 +2,53 @@ package vn.edu.hcmuaf.fit.doanweb.dao.order;
 
 
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Order;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class OderDao {
 
-    public void insertOrder(Order order) throws SQLException {
-        Statement statement = DBConnect.getStatement();
-        String sql = "INSERT INTO orders (user_id, name, phone, address, paymentMethod, totalAmount,status) VALUES ( ?,?, ?, ?, ?, ?,?)";
+    public int insertOrder(Order order) throws SQLException {
+        String sql = "INSERT INTO orders (user_id, province, district, ward, address,name, phone, note, " +
+                "total_amount, payment_method, status, discount_code, shipping_fee, created_at) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, NOW())";
 
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-        double discount = calculateDiscount(order.getDiscountCode());
-        double finalAmount = order.getTotalAmount() - (order.getTotalAmount() * discount); // T tính tổng tiền sau giảm giá
-        String status = "Đang xử lí"; // Mặc định
-        if ("Bank".equalsIgnoreCase(order.getPaymentMethod())) {
-            status = "Đã thanh toán";
-        }
-        PreparedStatement stmt = statement.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        stmt.setInt(1, order.getUser_id());
-        stmt.setString(2, order.getName());
-        stmt.setString(3, order.getPhone());
-        stmt.setString(4, order.getAddress());
-        stmt.setString(5, order.getPaymentMethod());
-        stmt.setDouble(6, finalAmount);
-        stmt.setString(7, status);
+            pstmt.setInt(1, order.getUser_id());
+            pstmt.setString(2, order.getProvince());
+            pstmt.setString(3, order.getDistrict());
+            pstmt.setString(4, order.getWard());
+            pstmt.setString(5, order.getAddress());
+            pstmt.setString(6, order.getName());
+            pstmt.setString(7, order.getPhone());
+            pstmt.setString(8, order.getNote());
+            pstmt.setDouble(9, order.getTotalAmount());
+            pstmt.setString(10, order.getPaymentMethod());
+            pstmt.setString(11, order.getStatus());
+            pstmt.setString(12, order.getDiscountCode());
+            pstmt.setDouble(13, order.getShippingFee());
 
-        stmt.executeUpdate();  // Thực thi câu lệnh INSERT
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating order failed, no rows affected.");
+            }
 
-        // Lấy ID vừa tạo ra
-        try (ResultSet rs = stmt.getGeneratedKeys()) {
-            if (rs.next()) {
-                int orderId = rs.getInt(1);  // Lấy ID của đơn hàng vừa được tạo
-                order.setId(orderId);  // Gán lại ID cho đối tượng Order
+            // Lấy ID của đơn hàng vừa tạo
+            try (ResultSet rs = pstmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    int orderId = rs.getInt(1);  // Lấy ID của đơn hàng vừa được tạo
+                    order.setId(orderId);  // Gán lại ID cho đối tượng Order
+                    return orderId;
+                } else {
+                    throw new SQLException("Creating order failed, no ID obtained.");
+                }
             }
         }
     }
+
 
     private double calculateDiscount(String discountCode) {
         // Logic để kiểm tra mã giảm giá và tính toán
@@ -55,28 +65,42 @@ public class OderDao {
     }
 
     public ArrayList<Order> getListOrder() {
-        try {
-            Statement statement = DBConnect.getStatement();
-            String sql = "SELECT * FROM orders";
-            PreparedStatement ps = statement.getConnection().prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            ArrayList<Order> orders = new ArrayList<>();
+        // Truy vấn SQL để lấy danh sách đơn hàng
+        String sql = "SELECT * FROM orders"; // Hoặc thay đổi theo cấu trúc của bảng 'orders'
+        ArrayList<Order> orders = new ArrayList<>();
+
+        // Sử dụng try-with-resources để tự động đóng tài nguyên
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            // Duyệt qua kết quả trả về từ cơ sở dữ liệu
             while (rs.next()) {
                 Order order = new Order();
+                order.setId(rs.getInt("id"));
                 order.setUser_id(rs.getInt("user_id"));
+                order.setProvince(rs.getString("province"));
+                order.setDistrict(rs.getString("district"));
+                order.setWard(rs.getString("ward"));
+                order.setAddress(rs.getString("address"));
                 order.setName(rs.getString("name"));
                 order.setPhone(rs.getString("phone"));
-                order.setAddress(rs.getString("adress"));
-                order.setTotalAmount(rs.getDouble("totalAmount"));
+                order.setNote(rs.getString("note"));
+                order.setTotalAmount(rs.getDouble("total_amount"));
                 order.setPaymentMethod(rs.getString("payment_method"));
                 order.setStatus(rs.getString("status"));
+                order.setDiscountCode(rs.getString("discount_code"));
+                order.setShippingFee(rs.getDouble("shipping_fee"));
+
+                // Thêm đơn hàng vào danh sách
                 orders.add(order);
             }
-            return orders;
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // In lỗi ra nếu có
         }
-        return null;
+
+        return orders; // Trả về danh sách các đơn hàng
     }
 
 }

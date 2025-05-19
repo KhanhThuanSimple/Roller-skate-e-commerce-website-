@@ -6,7 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
+import vn.edu.hcmuaf.fit.doanweb.dao.favorite.FavoriteDAO;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class ListProduct extends BaseServlet {
         String sort = request.getParameter("sort");
         String cateID = request.getParameter("category");
         String search = request.getParameter("txt");
+        User user = (User) request.getSession().getAttribute("auth");
 
         if (indexPage == null) {
             indexPage = "1";
@@ -37,11 +40,19 @@ public class ListProduct extends BaseServlet {
         } else {
             products = productDao.getAll();
         }
+        if (cateID != null && sort != null) {
+            products=productDao.getProductsByCategoryAndSort(cateID, sort);
 
+        }else
         if (sort != null && !sort.isEmpty()) {
             products = productDao.getProductByOrder(sort);
         }
-
+        if (user != null) {
+            for (Product p : products) {
+                boolean isFav = FavoriteDAO.isFavorited(user.getId(), p.getId());
+                p.setFavorited(isFav);
+            }
+        }
         int count = products.size();
         int endPage = (int) Math.ceil((double) count / 20);
 

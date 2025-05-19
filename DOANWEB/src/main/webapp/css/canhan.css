@@ -1,273 +1,368 @@
-/* Phần Main cá nhân*/
-/*body phan ca nhan*/
+:root {
+    --primary-color: #4a6bff;
+    --secondary-color: #f8faff;
+    --danger-color: #ff4757;
+    --text-color: #2d3748;
+    --text-light: #718096;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+body, html {
+    height: 100%;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main.container {
+    flex: 1;
+    padding: 0;
+}
+
 #bodyCN {
-    color: black;
-    text-align: justify;
-    height: 700px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
+    background-color: white;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    border: none;
+    height: 100%;
+    display: flex;
 }
 
 .flex-container {
     display: flex;
-    height: 700px;
+    flex-wrap: wrap;
     width: 100%;
-    background-color: #f3f2ec;
-    padding: 0;
-    margin: 0;
+    height: 100%;
 }
 
-/*css left-cn*/
 .left-cn {
-    width: 30%;
-    height: 600px;
-}
-
-h3 {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-h3 a {
-    text-decoration: none;
-    color: black;
-}
-
-.left-cn ul {
-    margin: 10px;
-}
-
-.left-cn ul li {
-    padding: 10px;
-    marrgin-top: 10px;
-}
-
-.left-cn ul li a {
-    text-decoration: none;
-    display: block;
-    color: #F8A330;
-
-}
-
-/* avtatr*/
-.flex-avtar {
-    display: flex;
-    padding: 20px;
-}
-
-.avatar {
-    width: 20%;
-}
-
-.avatar img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    /* Bo tròn */
-}
-
-.In4Avt {
-    flex: 1;
-    margin-left: 0;
-}
-
-.username {
-    font-weight: bold;
-    font-size: 25px;
+    flex: 0 0 280px;
+    background-color: var(--secondary-color);
+    padding: 30px;
+    border-right: 1px solid var(--border-color);
+    height: 661px;
+    position: relative;
 }
 
 .right-cn {
     flex: 1;
     background-color: white;
-    height: 500px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
 }
 
+.flex-avtar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+}
 
-.suaHoSo {
+.avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    border: 3px solid white;
+    box-shadow: var(--shadow);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.In4Avt .username {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.In4Avt .edit-profile {
+    font-size: 13px;
+    color: var(--primary-color);
     text-decoration: none;
-    color: black;
+    display: inline-block;
+    margin-top: 5px;
 }
 
-/*css right-cn*/
+.left-cn h3 {
+    font-size: 13px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin: 30px 0 15px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
 
-.head-rightcn {
-    height: 15%;
+.left-cn ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px;
+}
+
+.left-cn ul li {
+    margin-bottom: 5px;
+}
+
+.left-cn ul li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+.left-cn ul li a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.left-cn ul li a:hover,
+.left-cn ul li a.active {
+    background-color: rgba(74, 107, 255, 0.1);
+    color: var(--primary-color);
+}
+
+.dangxuat {
+    width: calc(90% - 60px);
     padding: 10px;
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 30px;
+}
 
+.dangxuat i {
+    margin-right: 8px;
+}
+
+.dangxuat:hover {
+    background-color: #e63946;
+    transform: translateY(-2px);
+}
+
+.button-dx a {
+    text-decoration: none;
+    color: white;
 }
 
 .head-rightcn p {
     font-size: 28px;
-    font-weight: bold;
+    font-weight: 700;
+    margin: 0 0 10px;
+    color: var(--text-color);
 }
 
-.head-rightcn .pHoSo {
-    color: #8e8d8a;
-    font-size: 20px;
+.pHoSo {
+    color: var(--text-light);
+    font-size: 15px;
+    margin-bottom: 25px;
 }
 
-
-.bot-rightcn {
-    height: 425px;
+.nganCachHead {
+    border: none;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 25px 0;
 }
 
-/*css phan thong tin kh*/
 .formThongTinCaNhan {
-    width: 100%;
-    max-width: 700px;
-    height: 400px;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-    color: #333;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
 }
 
 .form-group {
-    margin-bottom: 15px;
     display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    color: var(--text-light);
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group span {
+    color: var(--text-color);
+    font-size: 16px;
+    padding: 12px 15px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.edit-button-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+
+.edit-button {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-}
-
-label {
-    flex: 1;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-input[type="text"] {
-    flex: 2;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-span {
-    flex: 2;
-    font-size: 18px;
-}
-
-a {
-    color: #F8A330;
-    text-decoration: none;
-    font-size: 18px;
-    margin-left: 5px;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-input[type="radio"] {
-    margin-left: 10px;
-    margin-right: 5px;
-}
-
-.nutLuu {
-    display: block;
-    width: 20%;
-    padding: 10px 15px;
-    background-color: orange;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
-    text-align: center;
-    margin-left: 580px;
+    font-weight: 500;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(74, 107, 255, 0.3);
 }
 
-.nutLuu:hover {
-    background-color: darkorange;
+.edit-button i {
+    margin-right: 8px;
 }
 
-.dangxuat {
-    display: block;
-    width: 150px;
-    padding: 10px 15px;
-    background-color: orange;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-    margin-left: 20px;
-    margin-top: 20px;
+.edit-button:hover {
+    background-color: #3a56e8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(74, 107, 255, 0.4);
 }
 
-.dangxuat:hover {
-    background-color: darkorange;
-}
-
-/*phần overlay bạn muốn đăng xuất*/
-#modal_dangxuat {
-    display: none;
-}
-
+/* Modal đăng xuất */
 .modal_dangxuat {
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
     right: 0;
-    display: flex;
-    z-index: 10000;
-
+    bottom: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
 .modal_overlay {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
 }
 
 .modal_body {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    z-index: 1;
     width: 450px;
-    height: 200px;
-    margin: 300px auto;
-    background: #fff;
-    padding: 20px;
-    border: 0.5px solid #ddd;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.modal_body h1 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.modal_body button {
+    padding: 10px 25px;
+    margin: 0 10px;
+    border: none;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-h1 {
-    font-size: 24px;
-    margin-top: 20px;
-    color: orange;
-}
-
-.button-dx {
-    display: flex;
-    justify-content: space-between;
-    /* Dàn đều hai nút sang hai bên */
-    margin-top: 20px;
-    height: 100px;
-
-}
-
-.button-dx button {
-    background-color: orange;
-    width: 40%;
-    height: 35px;
-    padding: 10px;
-    font-size: 16px;
     cursor: pointer;
-    margin-top: 50px;
-    border: 0.5px solid black;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.modal_body button:first-child {
+    background-color: #f1f5f9;
+    color: var(--text-color);
+}
+
+.modal_body button:first-child:hover {
+    background-color: #e2e8f0;
+}
+
+.modal_body button:last-child {
+    background-color: var(--danger-color);
     color: white;
 }
 
-button:hover {
-    background-color: darkorange;
+.modal_body button:last-child:hover {
+    background-color: #e63946;
 }
 
+/* Responsive */
+@media (max-width: 992px) {
+    .formThongTinCaNhan {
+        grid-template-columns: 1fr;
+    }
+}
 
+@media (max-width: 768px) {
+    #bodyCN {
+        flex-direction: column;
+    }
+
+    .left-cn {
+        width: 100%;
+        flex: none;
+        height: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .right-cn {
+        padding: 30px 20px;
+        height: auto;
+    }
+
+    .dangxuat {
+        position: relative;
+        bottom: auto;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .edit-button-container {
+        position: static;
+        margin-top: 50px;
+        text-align: center;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.right-cn {
+    animation: fadeIn 0.5s ease-out;
+}

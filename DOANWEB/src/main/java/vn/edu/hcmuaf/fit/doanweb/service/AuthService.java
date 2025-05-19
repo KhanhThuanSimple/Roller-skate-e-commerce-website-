@@ -5,6 +5,7 @@ import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AuthService {
 
@@ -41,13 +42,12 @@ public class AuthService {
 
     public boolean insert(String name, String email, String pass,String address,String phone, int type) throws SQLException {
         UserDao userDao = new UserDao();
-        int role=1;
-        return userDao.insertUser(name,email,pass,address,phone,type,role);
+        return userDao.insertUser(name,email,pass,address,phone,type);
     }
 
-    public boolean update(String name, String email,String address,String phone, int type, int id, int role) throws SQLException {
+    public boolean update(String name, String email,String address,String phone, int type, int id) throws SQLException {
         UserDao userDao = new UserDao();
-        return userDao.updateUser(name,email,address,phone,type, id,role);
+        return userDao.updateUser(name,email,address,phone,type, id);
     }
 
     public boolean delete(int id) throws SQLException {
@@ -74,7 +74,7 @@ public class AuthService {
 
 
     public boolean insertImport(int product_id,double purchase_price,int quantity) throws SQLException {
-        ImportDao importDao = new ImportDao();
+       ImportDao importDao = new ImportDao();
         return importDao.insertImport(product_id,purchase_price,quantity);
     }
     public boolean updateImport(int product_id, double purchase_price, int quantity, int id) throws SQLException {

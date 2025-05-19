@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.doanweb.dao.model;
+package vn.edu.hcmuaf.fit.doanweb.dao.model.order;
 
 import java.io.Serializable;
 

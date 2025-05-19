@@ -5,6 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.ScreenPermissions;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 
@@ -17,6 +20,9 @@ public class AdminCustomerListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AuthService authService = new AuthService();
+        UserDao userDao = new UserDao();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
         int page = 1;
         String page_prams= request.getParameter("page");
         try {
@@ -29,6 +35,12 @@ public class AdminCustomerListController extends HttpServlet {
             if(page>totalPage) page=totalPage;
 
             List<User>  customers = authService.getList(page, 0);
+            ScreenPermissions permission = userDao.getPerUserScreen(user.id, "kh");
+            if(permission==null || permission.read!=1) {
+                request.getRequestDispatcher("/admin/dashboard.jsp").forward(request, response);
+            }
+            request.getSession().setAttribute("permission", permission);
+
 
             request.setAttribute("customers", customers);
             request.setAttribute("totalPage", totalPage);

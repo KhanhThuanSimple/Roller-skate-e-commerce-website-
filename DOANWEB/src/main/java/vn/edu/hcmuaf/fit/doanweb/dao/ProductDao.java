@@ -2,6 +2,9 @@ package vn.edu.hcmuaf.fit.doanweb.dao;
 
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderDetail;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderItems;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -83,10 +86,6 @@ public class ProductDao {
     public List<Product> getProductByOrder(String order) {
         List<Product> products = new ArrayList<>();
 
-        // Kiểm tra giá trị order
-
-
-        // Dùng cột mà bạn muốn sắp xếp, ví dụ là "price"
         String query = "SELECT * FROM product ORDER BY price " + order;
 
         try (Connection cons = DBConnect.getConn()) {
@@ -285,7 +284,8 @@ public class ProductDao {
         }
         return lists;
     }
-    public boolean insertProduct(String name, String img, double price,String title,String description, int cateID,String offer) throws SQLException {
+
+    public boolean insertProduct(String name, String img, double price, String title, String description, int cateID, String offer) throws SQLException {
         String sql = "insert into product(name,img,price,title, description,cateID,offer) values(?,?,?, ?,?,?,?)";
         try {
             Statement st = DBConnect.getStatement();
@@ -300,17 +300,16 @@ public class ProductDao {
             System.out.println(pre);
 
 
-
             int rs = pre.executeUpdate();
 
-            return rs==1;
+            return rs == 1;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public boolean updateProduct(String name, String img, double price,String title,String description, int cateID,String offer, int id) throws SQLException {
+    public boolean updateProduct(String name, String img, double price, String title, String description, int cateID, String offer, int id) throws SQLException {
         String sql = "UPDATE product SET name = ?, img = ?, price = ?, title = ?, description = ? ,cateID = ? ,offer = ? WHERE id = ?";
 
         try {
@@ -329,7 +328,7 @@ public class ProductDao {
 
             int rs = pre.executeUpdate();
 
-            return rs==1;
+            return rs == 1;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -345,7 +344,7 @@ public class ProductDao {
 
             int rs = pre.executeUpdate();
 
-            return rs==1;
+            return rs == 1;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -443,8 +442,8 @@ public class ProductDao {
     }
 
     public List<Order> getOrdersWithProducts(int userId) {
-            List<Order> orders = new ArrayList<>();
-        String queryOrders = "SELECT * FROM orders WHERE ?=0 OR user_id = ?";
+        List<Order> orders = new ArrayList<>();
+        String queryOrders = "SELECT * FROM orders WHERE  user_id = ?";
 
 
         try (Connection cons = DBConnect.getConn()) {
@@ -453,22 +452,24 @@ public class ProductDao {
             }
             try (PreparedStatement statement = cons.prepareStatement(queryOrders)) {
                 statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị userId
-                statement.setInt(2, userId); // Sửa ở đây để truyền đúng giá trị userId
                 try (ResultSet rs = statement.executeQuery()) {
                     System.out.println(statement);
                     while (rs.next()) {
                         Order order = new Order();
-                        order.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setUser_id(rs.getInt("user_id")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setName(rs.getString("name")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setPhone(rs.getString("phone")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setAddress(rs.getString("address")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setPaymentMethod(rs.getString("paymentMethod")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setTotalAmount(rs.getDouble("totalAmount")); // Sửa để lấy đúng giá trị từ cột "totalAmount"
-                        order.setStatus(rs.getString("status")); // Sửa để lấy đúng giá trị từ cột "status"
-
-
-
+                        order.setId(rs.getInt("id"));
+                        order.setUser_id(rs.getInt("user_id"));
+                        order.setProvince(rs.getString("province"));
+                        order.setDistrict(rs.getString("district"));
+                        order.setWard(rs.getString("ward"));
+                        order.setAddress(rs.getString("address"));
+                        order.setName(rs.getString("name"));
+                        order.setPhone(rs.getString("phone"));
+                        order.setNote(rs.getString("note"));
+                        order.setTotalAmount(rs.getDouble("total_amount"));
+                        order.setPaymentMethod(rs.getString("payment_method"));
+                        order.setStatus(rs.getString("status"));
+                        order.setDiscountCode(rs.getString("discount_code"));
+                        order.setShippingFee(rs.getDouble("shipping_fee"));
                         // Ví dụ: order.addProduct(product, orderItem);
                         orders.add(order); // Thêm đơn hàng vào danh sách
                     }
@@ -484,11 +485,11 @@ public class ProductDao {
 
     public List<OrderDetail> getOrderDetails(int userId, int orderId) {
         List<OrderDetail> orders = new ArrayList<>();
-        String query = "SELECT p.id,p.title,oi.quantity,oi.price,o.id,o.name,o.totalAmount,o.status,o.paymentMethod " +
+        String query = "SELECT p.id,p.title,oi.quantity,oi.price,o.id,o.name,o.total_amount,o.status,o.payment_method " +
                 "FROM product p " +
                 "JOIN order_items oi ON p.id = oi.product_id " +
                 "JOIN orders o ON oi.order_id = o.id " +
-                "WHERE (?=0 OR o.user_id = ?) AND o.id = ?";
+                "WHERE   o.user_id = ? AND o.id = ?";
 
         try (Connection cons = DBConnect.getConn()) {
             if (cons == null) {
@@ -496,17 +497,15 @@ public class ProductDao {
             }
             try (PreparedStatement statement = cons.prepareStatement(query)) {
                 statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị userId
-                statement.setInt(2, userId); // Sửa ở đây để truyền đúng giá trị userId
-                statement.setInt(3, orderId);
+                statement.setInt(2, orderId);
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
                         Order order = new Order();
-                        order.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id"
-                        order.setTotalAmount(rs.getDouble("totalAmount")); // Sửa để lấy đúng giá trị từ cột "totalAmount"
-                        order.setStatus(rs.getString("status")); // Sửa để lấy đúng giá trị từ cột "status"
-                        order.setPaymentMethod(rs.getString("paymentMethod")); // Sửa để lấy đúng giá trị từ cột "status"
-                        order.setName(rs.getString("name")); // Sửa để lấy đúng giá trị từ cột "status"
-
+                        order.setId(rs.getInt("id"));
+                        order.setPhone(rs.getString("name"));
+                        order.setTotalAmount(rs.getDouble("total_amount"));
+                        order.setPaymentMethod(rs.getString("payment_method"));
+                        order.setStatus(rs.getString("status"));
                         Product product = new Product();
                         product.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id" của sản phẩm
                         product.setTitle(rs.getString("title")); // Lấy tiêu đề sản phẩm
@@ -527,6 +526,7 @@ public class ProductDao {
 
         return orders;
     }
+
     public static double getDiscountValue(String couponCode) {
         double discount = 0.0;
         String query = "SELECT discount_value FROM Coupon WHERE code = ? AND is_active = TRUE";
@@ -551,7 +551,7 @@ public class ProductDao {
         String query = "SELECT * FROM `user` WHERE id = ?";
         User user = null;
         try (Connection conn = DBConnect.getConn();
-                PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             // Gán giá trị cho tham số id
             preparedStatement.setInt(1, id);
 
@@ -573,14 +573,116 @@ public class ProductDao {
         return user;
     }
 
-    public static void main(String[] args) {
-        ProductDao dao = new ProductDao();
-        List<Product> products = dao.getProductByTitle("patin");
-        for (Product product : products) {
-            System.out.println(product);
+    public List<Product> getProductsByCategoryAndSort(String cateID, String order) {
+        List<Product> products = new ArrayList<>();
+        String sortOrder = "asc".equalsIgnoreCase(order) ? "asc" : "desc";
+        String query = "SELECT * FROM product WHERE cateID = ? ORDER BY price " + sortOrder;
+
+        try (Connection cons = DBConnect.getConn()) {
+            if (cons == null) {
+                throw new SQLException("Kết nối không thành công.");
+            }
+
+            try (PreparedStatement statement = cons.prepareStatement(query)) {
+                // Thiết lập tham số cho câu truy vấn
+                statement.setString(1, cateID);
+
+                try (ResultSet rs = statement.executeQuery()) {
+                    while (rs.next()) {
+                        // Thêm sản phẩm vào danh sách
+                        products.add(new Product(
+                                rs.getInt("id"),
+                                rs.getString("name"),
+                                rs.getString("img"),
+                                rs.getDouble("price"),
+                                rs.getString("title"),
+                                rs.getString("description"),
+                                rs.getInt("cateID"),
+                                rs.getString("offer")
+                        ));
+                    }
+                }
+            }
+
+            if (products.isEmpty()) {
+                System.out.println("Không có sản phẩm nào được tìm thấy.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy sản phẩm: " + e.getMessage());
         }
 
+        return products;
+    }
+    public List<Product> getProductsPurchasedNotReviewed(int userId) {
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT p.* FROM product p " +
+                "JOIN order_details od ON p.id = od.product_id " +
+                "JOIN orders o ON od.order_id = o.id " +
+                "LEFT JOIN reviews r ON p.id = r.product_id AND r.user_id = ? " +
+                "WHERE o.user_id = ? AND r.id IS NULL " +
+                "GROUP BY p.id";
 
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.setInt(2, userId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Product product = new Product();
+                    product.setId(rs.getInt("id"));
+                    product.setName(rs.getString("name"));
+                    product.setPrice(rs.getDouble("price"));
+                    product.setImg(rs.getString("img"));
+                    // Set other properties as needed
+                    products.add(product);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return products;
+    }
+
+    public boolean addProductReview(int userId, int productId, int rating, String comment) {
+        String sql = "INSERT INTO reviews (user_id, product_id, rating, comment, created_at) " +
+                "VALUES (?, ?, ?, ?, NOW())";
+
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.setInt(2, productId);
+            ps.setInt(3, rating);
+            ps.setString(4, comment);
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+//    public static void main(String[] args) {
+//        ProductDao dao = new ProductDao();
+//        List<Product> products = dao.getProductsByCategoryAndSort("1","ASC");
+//        for (Product product : products) {
+//            System.out.println(product);
+//        }
+//
+//
+//    }
+
+    public List<Product> getProductsPurchased(int id) {
+        return getProductsPurchasedNotReviewed(id);
+    }
+
+    public List<Product> getProductsReviewed(int id) {
+        return getProductsPurchasedNotReviewed(id);
+    }
+
+    public List<Product> getProductsNotReviewed(int id) {
+        return getProductsPurchasedNotReviewed(id);
     }
 }
 

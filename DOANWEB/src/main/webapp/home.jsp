@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,6 +46,31 @@
                         <li>
                             <div class="product-item">
                                 <div class="product-top">
+                                    <c:choose>
+                                        <c:when test="${p.favorited}">
+                                            <!-- Sản phẩm đã có trong danh sách yêu thích, hiển thị nút xóa yêu thích -->
+                                            <form action="${pageContext.request.contextPath}/favorite" method="post" style="display: inline;">
+                                                <input type="hidden" name="productId" value="${p.id}">
+                                                <input type="hidden" name="action" value="remove">
+                                                <button type="submit" style="border: none; background: none; cursor: pointer;">
+                                                    <!-- Trái tim đầy (đã yêu thích) -->
+                                                    <i class="fa-solid fa-heart" style="color: #e74c3c; font-size: 20px;padding: 20px;margin-left: 145px"></i>
+                                                </button>
+                                            </form>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <!-- Sản phẩm chưa có trong danh sách yêu thích, hiển thị nút thêm yêu thích -->
+                                            <form action="${pageContext.request.contextPath}/favorite" method="post" style="display: inline;">
+                                                <input type="hidden" name="productId" value="${p.id}">
+                                                <input type="hidden" name="action" value="add">
+                                                <button type="submit" style="border: none; background: none; cursor: pointer;">
+                                                    <!-- Trái tim viền (chưa yêu thích) -->
+                                                    <i class="fa-regular fa-heart" style="color: #e74c3c; font-size: 20px;padding: 20px;margin-left: 145px"></i>
+                                                </button>
+                                            </form>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                     <a href="" class="product-thumb">
                                         <img src="${p.img}" alt=""/>
                                     </a>
@@ -56,7 +82,9 @@
                                 <div class="product-info">
                                     <a href="" class="product-cat">${p.name}</a>
                                     <a href="" class="product-name">${p.title}</a>
-                                    <div class="product-price">${p.price}</div>
+                                    <div class="product-price">
+                                        <f:formatNumber value="${p.price}" type="number" maxFractionDigits="0" />đ
+                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -66,6 +94,7 @@
 
         </div>
     </div>
+<script src="js/script.js"></script>
 
 
     <jsp:include page="comon/footer.jsp"/>

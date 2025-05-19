@@ -1,4 +1,5 @@
 package vn.edu.hcmuaf.fit.doanweb.log;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,5 +30,8 @@ public class Log {
     // Phương thức để ghi log mức FATAL
     public static void fatal(String message) {
         logger.fatal(message);
+    }
+
+    public static void error(String format, Exception e) {
     }
 }

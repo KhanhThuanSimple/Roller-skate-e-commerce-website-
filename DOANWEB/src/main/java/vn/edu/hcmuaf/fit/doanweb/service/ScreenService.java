@@ -13,9 +13,9 @@ public class ScreenService {
         ScreenDao screenDao = new ScreenDao();
         return screenDao.insertScreen(idScreen,nameScreen);
     }
-    public boolean updateScreen(String idScreen,String nameScreen, int id) throws SQLException {
+    public boolean updateScreen(String code,String name, int id) throws SQLException {
         ScreenDao screenDao = new ScreenDao();
-        return screenDao.updateScreen(idScreen,nameScreen,id);
+        return screenDao.updateScreen(code,name,id);
     }
     public boolean deleteSreen(int id) throws SQLException {
         ScreenDao screenDao = new ScreenDao();

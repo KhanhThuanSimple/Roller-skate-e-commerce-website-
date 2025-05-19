@@ -13,6 +13,7 @@
 <body>
 
 </body>
+
 <!-- footer.jsp -->
 <footer id="footer">
   <div class="footer-container">

@@ -37,7 +37,7 @@
                     <div class="col-md-7">
                         <div class="card-body">
                             <h5 class="card-title">${cp.title}</h5>
-                            <p class="card-text">Đơn giá: <span class="fw-bold text-danger">${cp.price} đ</span></p>
+                            <p class="card-text">Đơn giá: <span  class="fw-bold text-danger"> <f:formatNumber value=" ${cp.price}" type="number"/> đ</span></p>
                             <div class="input-group" style="max-width: 150px;">
                                 <!-- Increase and Decrease buttons -->
 
@@ -68,8 +68,11 @@
                         </form>
                     </div>
                     <div class="col-md-2 d-flex align-items-center justify-content-center">
-                        <p class="m-0">Thành tiền: <span class="fw-bold text-primary">${cp.price * cp.quantity}đ</span></p>
-                    </div>
+                        <p class="m-0">Thành tiền:
+                            <span class="fw-bold text-primary">
+        <f:formatNumber value="${cp.price * cp.quantity}" pattern="#,##0" />đ
+    </span>
+                        </p>                    </div>
                     <div class="col-md-1 d-flex align-items-center justify-content-center">
                         <!-- Delete button next to "Thành tiền" -->
                         <button class="btn btn-danger delete-item" data-product-id="${cp.id}">
@@ -90,9 +93,20 @@
         <!-- Footer Section -->
         <div class="p-4 mt-4 bg-light rounded shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
-                <p class="m-0">Tổng tiền: <span class="fw-bold text-primary">${sessionScope.cart.getTotal()}đ</span></p>
-                <a id="XemThemSP" href="product" class="btn btn-outline-secondary me-2">Xem thêm sản phẩm</a>
+                <p class="m-0">Tổng tiền:
+                    <span class="fw-bold text-primary">
+        <c:choose>
+            <c:when test="${not empty sessionScope.cart and not empty sessionScope.cart.total}">
+                <f:formatNumber value="${sessionScope.cart.total}"
+                                type="number"
+                                maxFractionDigits="0" />đ
+            </c:when>
+            <c:otherwise>0đ</c:otherwise>
+        </c:choose>
+    </span>
+                </p>                <a id="XemThemSP" href="product" class="btn btn-outline-secondary me-2">Xem thêm sản phẩm</a>
                 <a id="ThanhToan" href="checkout" class="btn btn-primary">Thanh toán</a>
+
 
             </div>
         </div>
