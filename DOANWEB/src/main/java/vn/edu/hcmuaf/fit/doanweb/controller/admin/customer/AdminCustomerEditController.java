@@ -29,7 +29,8 @@ public class AdminCustomerEditController extends HttpServlet {
             String address=request.getParameter("address");
             int id=Integer.parseInt(request.getParameter("id"));
 
-            boolean rs =authService.update(name,username,address,phone,0,id,0);
+            boolean rs = authService.update(name, username, address, phone, 0, id);
+
             System.out.println("KQs");
 
             System.out.println(rs);

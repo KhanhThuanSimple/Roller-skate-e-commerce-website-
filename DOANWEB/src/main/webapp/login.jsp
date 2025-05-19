@@ -1,45 +1,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Đăng nhập</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/login.css">
-
+    <link rel="stylesheet" href="./css/login.css" />
 </head>
-
 <body>
-<div id="wrapper"></div>
-
 <div class="login-container">
-    <img class="img-banner" src="./image/login.jpg">
+    <img class="img-banner" src="./image/login.jpg" alt="banner">
     <div class="mask"></div>
 
     <%
         String error = (String) request.getAttribute("error");
         String uname = (String) request.getParameter("uname");
-        String showOtpModal = (String) request.getAttribute("showOtpModal");
         if(error == null) error = "";
         if(uname == null) uname = "";
-        if(showOtpModal == null) showOtpModal = "false";
     %>
 
     <form method="post" action="login" id="loginForm">
         <div class="logo">
-            <img src="./image/logo1.png" alt="logo">
+            <img src="./image/logo1.png" alt="logo" />
         </div>
 
         <h2>Đăng nhập</h2>
 
-        <input class="input-common" type="text" placeholder="Email" value="<%=uname%>" name="uname">
-        <input class="input-common" type="password" placeholder="Mật khẩu" name="pass">
+        <input class="input-common" type="text" placeholder="Email" value="<%=uname%>" name="uname" required />
+        <input class="input-common" type="password" placeholder="Mật khẩu" name="pass" required />
 
         <!-- Google reCAPTCHA -->
         <div class="g-recaptcha" data-sitekey="6LeLFDIrAAAAAOExThqa_90MZ3f3yYZzLu3_ux8m"></div>
@@ -70,8 +60,6 @@
     </form>
 </div>
 
-<
-
 <footer id="footer">
     <div class="footer-container">
         <div class="footer-section">
@@ -95,56 +83,7 @@
     </div>
 </footer>
 
-<!-- Google reCAPTCHA script -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<script>
-    // Tự động chuyển focus khi nhập OTP
-    const otpInputs = document.querySelectorAll('.otp-inputs input');
-
-    otpInputs.forEach((input, index) => {
-        input.addEventListener('input', () => {
-            if (input.value.length === 1 && index < otpInputs.length - 1) {
-                otpInputs[index + 1].focus();
-            }
-        });
-
-        input.addEventListener('keydown', (e) => {
-            if (e.key === "Backspace" && input.value.length === 0 && index > 0) {
-                otpInputs[index - 1].focus();
-            }
-        });
-    });
-
-    // Khi submit OTP form, gom 6 ô thành 1 chuỗi otp gửi server
-    document.getElementById('otpForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        let otp = '';
-        otpInputs.forEach(input => {
-            otp += input.value;
-        });
-
-        if (otp.length !== 6 || !/^\d{6}$/.test(otp)) {
-            document.querySelector('.otp-error').textContent = 'Vui lòng nhập đủ 6 chữ số mã OTP.';
-            return;
-        }
-
-        // Tạo input ẩn để gửi giá trị otp gộp
-        let hiddenInput = document.createElement('input');
-        hiddenInput.type = 'hidden';
-        hiddenInput.name = 'otp';
-        hiddenInput.value = otp;
-
-        this.appendChild(hiddenInput);
-
-        // Gửi form
-        this.submit();
-    });
-
-    // Nếu có lỗi OTP, hiển thị modal
-    <% if(request.getAttribute("otpError") != null) { %>
-    document.getElementById('otpModal').style.display = 'flex';
-    <% } %>
-</script>
 </body>
 </html>

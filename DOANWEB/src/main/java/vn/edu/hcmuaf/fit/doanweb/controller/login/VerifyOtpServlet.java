@@ -93,4 +93,8 @@ public class VerifyOtpServlet extends HttpServlet {
     private boolean isOtpExpired(long otpCreationTime) {
         return System.currentTimeMillis() - otpCreationTime > OTP_VALID_DURATION;
     }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Chuyển hướng về trang nhập OTP để tránh lỗi 405
+        request.getRequestDispatcher("verify-otp.jsp").forward(request, response);
+    }
 }
