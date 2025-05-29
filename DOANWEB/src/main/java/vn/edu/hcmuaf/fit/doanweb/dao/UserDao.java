@@ -4,7 +4,7 @@ import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.ScreenPermissions;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
-import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleAccount;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,30 +13,30 @@ public class UserDao {
 
     public int limit = 10;
 
+    // ĐĂNG NHẬP
     public User login1(String username, String password) throws SQLException {
-        String sql="select * from user where username=? and password=?";
+        String sql = "SELECT * FROM user WHERE username=?";
         try {
             Statement st = DBConnect.getStatement();
-            ResultSet rs = null;
-           PreparedStatement pre= st.getConnection().prepareStatement(sql);
-           pre.setString(1, username);
-           pre.setString(2, password);
-           rs = pre.executeQuery();
-           while (rs.next()) {
-               return new User(
-                       rs.getInt("id"),
-                       rs.getString("username"),
-                       rs.getString("password"),
-                       rs.getString("name"),
-                       rs.getInt("type"));
-           }
-
-        }catch (SQLException e) {
-
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setString(1, username);
+            ResultSet rs = pre.executeQuery();
+            if (rs.next()) {
+                String hashedPassword = rs.getString("password");
+                if (BCrypt.checkpw(password, hashedPassword)) {
+                    return new User(
+                            rs.getInt("id"),
+                            rs.getString("username"),
+                            hashedPassword,
+                            rs.getString("name"),
+                            rs.getInt("type")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-
-        return  null;
-
+        return null;
     }
 
     public User findUserByUserName(String username) throws SQLException {
@@ -55,7 +55,7 @@ public class UserDao {
                 user.setType(rs.getInt("type"));
                 user.setPhone(rs.getString("phone_number"));
                 user.setAddress(rs.getString("address"));
-                user.setEmail(rs.getString("username")); // map username là email
+                user.setEmail(rs.getString("username"));
                 return user;
             } else {
                 return null;
@@ -65,21 +65,16 @@ public class UserDao {
         }
     }
 
-
     public ArrayList<User> getList(int page, int type) throws SQLException {
-
         Statement st = DBConnect.getStatement();
         ResultSet rs = null;
         ArrayList<User> users = new ArrayList<>();
         try {
             String sql = "SELECT * FROM user WHERE type = ? ORDER BY id LIMIT ?, ?";
-
             PreparedStatement pstmt = st.getConnection().prepareStatement(sql);
-            pstmt.setInt(1, type); // Gán giá trị cho type
-            pstmt.setInt(2, page-1);      // Gán giá trị cho offset
-            pstmt.setInt(3, this.limit);       // Gán giá trị cho limit
-
-
+            pstmt.setInt(1, type);
+            pstmt.setInt(2, (page - 1) * this.limit);
+            pstmt.setInt(3, this.limit);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -97,68 +92,59 @@ public class UserDao {
             st.close();
             rs.close();
             return users;
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public int getPage(int type) throws SQLException {
         Statement st = DBConnect.getStatement();
         ResultSet rs = null;
-        String sql = "SELECT CEIL(COUNT(*) / ?) AS total_pages FROM user WHERE type = ?"; // Query tính số trang
-
+        String sql = "SELECT CEIL(COUNT(*) / ?) AS total_pages FROM user WHERE type = ?";
         try {
             PreparedStatement pstmt = st.getConnection().prepareStatement(sql);
             pstmt.setInt(1, this.limit);
-            pstmt.setInt(2, type);  // Đặt giá trị của type vào câu lệnh SQL
-
-            System.out.println(pstmt);
-
+            pstmt.setInt(2, type);
             rs = pstmt.executeQuery();
-
             int totalPages = 0;
             if (rs.next()) {
-                totalPages = rs.getInt("total_pages"); // Lấy tổng số trang
+                totalPages = rs.getInt("total_pages");
             }
-
             pstmt.close();
             st.close();
             rs.close();
-
-            return totalPages;  // Trả về tổng số trang
-
+            return totalPages;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public boolean insertUser(String name, String email, String pass,String address,String phone, int type) throws SQLException {
-        String sql = "insert into user(username,password,name,phone_number,address, type) values(?,?,?, ?,?,?)";
+    // ĐĂNG KÝ
+    public boolean insertUser(String name, String email, String pass, String address, String phone, int type) throws SQLException {
+        String sql = "insert into user(username,password,name,phone_number,address, type) values(?,?,?,?,?,?)";
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
+
+            // Băm mật khẩu bằng BCrypt
+            String hashedPassword = BCrypt.hashpw(pass, BCrypt.gensalt());
+
             pre.setString(1, email);
-            pre.setString(2, pass);
+            pre.setString(2, hashedPassword);
             pre.setString(3, name);
             pre.setString(4, phone);
             pre.setString(5, address);
-
             pre.setInt(6, type);
 
             int rs = pre.executeUpdate();
-
-            return rs==1;
-
+            return rs == 1;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public boolean updateUser(String name, String email,String address,String phone, int type, int id) throws SQLException {
+    public boolean updateUser(String name, String email, String address, String phone, int type, int id) throws SQLException {
         String sql = "UPDATE user SET username = ?, name = ?, phone_number = ?, address = ?, type = ? WHERE id = ?";
-
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
@@ -166,14 +152,10 @@ public class UserDao {
             pre.setString(2, name);
             pre.setString(3, phone);
             pre.setString(4, address);
-
             pre.setInt(5, type);
             pre.setInt(6, id);
-
             int rs = pre.executeUpdate();
-
-            return rs==1;
-
+            return rs == 1;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -185,11 +167,8 @@ public class UserDao {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
             pre.setInt(1, uid);
-
-           int rs = pre.executeUpdate();
-
-           return rs==1;
-
+            int rs = pre.executeUpdate();
+            return rs == 1;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -201,16 +180,10 @@ public class UserDao {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
             pre.setInt(1, id);
-
             ResultSet rs = pre.executeQuery();
-
             while (rs.next()) {
-                return new User(rs.getString("name"),
-                        rs.getString("username"),
-                        rs.getString("password"));
+                return new User(rs.getString("name"), rs.getString("username"), rs.getString("password"));
             }
-
-            // System.out.println(rs);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -218,25 +191,39 @@ public class UserDao {
     }
 
     public boolean updatePassword(int id, String newPassword, String oldPassword) throws SQLException {
-        String sql = "UPDATE user SET password = ? WHERE id = ? AND password = ?";
+        // Get current password to verify
+        String getSql = "SELECT password FROM user WHERE id = ?";
         try (Connection conn = DBConnect.getConn();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, newPassword);
-            pstmt.setInt(2, id);
-            pstmt.setString(3, oldPassword);
+             PreparedStatement getStmt = conn.prepareStatement(getSql)) {
+            getStmt.setInt(1, id);
+            ResultSet rs = getStmt.executeQuery();
+            if (rs.next()) {
+                String currentHashed = rs.getString("password");
+                if (!BCrypt.checkpw(oldPassword, currentHashed)) {
+                    return false; // Old password không đúng
+                }
+            } else {
+                return false; // User không tồn tại
+            }
+        }
 
-            System.out.println(pstmt);
-            int rs = pstmt.executeUpdate(); // Thực hiện cập nhật
-            return rs==1;
+        // Update mật khẩu mới
+        String updateSql = "UPDATE user SET password = ? WHERE id = ?";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement pstmt = conn.prepareStatement(updateSql)) {
+            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            pstmt.setString(1, hashedPassword);
+            pstmt.setInt(2, id);
+            return pstmt.executeUpdate() == 1;
         }
     }
+
     public User findByEmail(String email) throws SQLException {
         String sql = "SELECT * FROM user WHERE username = ?";
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
             pre.setString(1, email);
-
             ResultSet rs = pre.executeQuery();
             if (rs.next()) {
                 User user = new User();
@@ -247,7 +234,7 @@ public class UserDao {
                 user.setType(rs.getInt("type"));
                 user.setPhone(rs.getString("phone_number"));
                 user.setAddress(rs.getString("address"));
-                user.setEmail(rs.getString("username")); // map username là email
+                user.setEmail(rs.getString("username"));
                 return user;
             }
         } catch (SQLException e) {
@@ -255,6 +242,7 @@ public class UserDao {
         }
         return null;
     }
+
     public void savePasswordResetToken(int userId, String token, Timestamp expiryTime) throws SQLException {
         String sql = "UPDATE user SET reset_token = ?, token_expiry = ? WHERE id = ?";
         try {
@@ -268,7 +256,7 @@ public class UserDao {
             throw new RuntimeException(e);
         }
     }
-    /*dăng nhập bằng gg*/
+
     public User getUserByEmail(String email) {
         String sql = "SELECT * FROM user WHERE username=?";
         try (Connection conn = DBConnect.getConn();
@@ -292,7 +280,6 @@ public class UserDao {
         return null;
     }
 
-    // Đăng nhập Google: save user
     public User saveGoogleUserIfNotExists(String email, String name) {
         User user = getUserByEmail(email);
         if (user != null) return user;
@@ -315,18 +302,11 @@ public class UserDao {
     }
 
     public ScreenPermissions getPerUserScreen(int user_id, String code) throws SQLException {
-
-        String sql = "SELECT sp.*\n" +
-                "FROM user u\n" +
-                "JOIN screen_permissions sp ON u.idPer = sp.idRights\n" +
-                "JOIN screen s ON sp.idScreen = s.id\n" +
-                "WHERE u.id = ? AND s.code = ?;";
+        String sql = "SELECT sp.* FROM user u JOIN screen_permissions sp ON u.idPer = sp.idRights JOIN screen s ON sp.idScreen = s.id WHERE u.id = ? AND s.code = ?";
         Statement st = DBConnect.getStatement();
         PreparedStatement pre = st.getConnection().prepareStatement(sql);
-        System.out.println(pre.toString());
         pre.setInt(1, user_id);
         pre.setString(2, code);
-
         ResultSet rs = pre.executeQuery();
         while (rs.next()) {
             ScreenPermissions screenPermissions = new ScreenPermissions();
@@ -337,9 +317,7 @@ public class UserDao {
             screenPermissions.setAdd(rs.getInt("add"));
             screenPermissions.setDelete(rs.getInt("delete"));
             screenPermissions.setEdit(rs.getInt("edit"));
-
             return screenPermissions;
-
         }
         return null;
     }
