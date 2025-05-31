@@ -5,17 +5,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
+import vn.edu.hcmuaf.fit.doanweb.log.Log;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.concurrent.CompletableFuture;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @WebServlet(name = "LoginController", value = "/login")
 public class LoginController extends HttpServlet {
-
-    private static final Logger logger = Logger.getLogger(LoginController.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -26,28 +23,31 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String uname = request.getParameter("uname");
-        String pass = request.getParameter("pass");
+        String clientIP = request.getRemoteAddr();
+        String username = request.getParameter("uname");
+        String password = request.getParameter("pass");
         String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 
-        if (uname == null || uname.isBlank() || pass == null || pass.isBlank()) {
+        if (username == null || username.isBlank() || password == null || password.isBlank()) {
+            Log.warn(username, "LOGIN_ATTEMPT", "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.", clientIP);
             request.setAttribute("error", "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
 
-        // Xác thực reCAPTCHA
-        boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse, request.getRemoteAddr());
+        boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse, clientIP);
         if (!verify) {
-            request.setAttribute("error", "Xác thực reCAPTCHA không thành công. Vui lòng thử lại.");
+            Log.warn(username, "LOGIN_ATTEMPT", "Xác thực reCAPTCHA không thành công.", clientIP);
+            request.setAttribute("error", "Xác thực reCAPTCHA không thành công.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
 
         AuthService authService = new AuthService();
         try {
-            User user = authService.findByUsername(uname);
-            if (user == null || !authService.checkPassword(pass, user.getPassword())) {
+            User user = authService.findByUsername(username);
+            if (user == null || !authService.checkPassword(password, user.getPassword())) {
+                Log.warn(username, "LOGIN_ATTEMPT", "Tên đăng nhập hoặc mật khẩu không đúng.", clientIP);
                 request.setAttribute("error", "Tên đăng nhập hoặc mật khẩu không đúng.");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
@@ -60,31 +60,36 @@ public class LoginController extends HttpServlet {
             session.setAttribute("otpCreationTime", System.currentTimeMillis());
             session.setAttribute("pendingUser", user);
 
-            // Gửi mail bất đồng bộ để không block luồng chính
             CompletableFuture.runAsync(() -> {
                 try {
                     boolean success = EmailUtil.sendEmail(user.getEmail(),
                             "Mã OTP đăng nhập của bạn",
                             "Mã OTP của bạn là: " + otp + ". Vui lòng không chia sẻ mã này với ai.");
                     if (!success) {
-                        logger.warning("Gửi email OTP thất bại tới " + user.getEmail());
+                        Log.warn(username, "SEND_OTP_EMAIL", "Gửi email OTP thất bại tới " + user.getEmail(), clientIP);
+                    } else {
+                        Log.info(username, "SEND_OTP_EMAIL", "Gửi email OTP thành công tới " + user.getEmail(), clientIP);
                     }
                 } catch (Exception e) {
-                    logger.log(Level.SEVERE, "Lỗi gửi email OTP: ", e);
+                    Log.error(username, "SEND_OTP_EMAIL", "Lỗi gửi email OTP: " + e.getMessage(), clientIP, e);
                 }
             });
 
-            // Redirect sang trang nhập OTP (không forward để tránh reload gửi lại form)
-            response.sendRedirect(request.getContextPath() + "/verify-otp");
+            Log.info(username, "LOGIN_SUCCESS", "Đăng nhập thành công, chờ xác thực OTP", clientIP);
+
+            // Gửi email thành công → quay lại login.jsp và bật modal OTP
+            request.setAttribute("otpModal", true);
+            request.setAttribute("emailForOtp", user.getEmail());
+            request.getRequestDispatcher("login.jsp").forward(request, response);
 
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Lỗi khi truy vấn user: ", e);
+            Log.error(username, "LOGIN_ATTEMPT", "Lỗi khi truy vấn user: " + e.getMessage(), clientIP, e);
             throw new ServletException("Lỗi hệ thống, vui lòng thử lại sau.");
         }
     }
-
     private String generateOtp() {
-        int otpInt = (int) (Math.random() * 900000) + 100000; // 100000 - 999999
-        return String.valueOf(otpInt);
+        int otp = (int)(Math.random() * 900000) + 100000; // 6 chữ số
+        return String.valueOf(otp);
     }
+
 }

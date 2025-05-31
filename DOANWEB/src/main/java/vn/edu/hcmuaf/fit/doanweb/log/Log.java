@@ -87,4 +87,8 @@ public class Log {
         logger.fatal(logMessage);
         writeToDB(username, action, ipAddress);
     }
+    public static void main(String[] args) {
+        info("testuser", "TEST_ACTION", "Test log message", "127.0.0.1");
+        System.out.println("Test completed. Check logs/app.log and database.");
+    }
 }

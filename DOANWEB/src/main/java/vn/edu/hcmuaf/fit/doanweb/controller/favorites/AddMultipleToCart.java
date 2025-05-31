@@ -19,17 +19,28 @@ public class AddMultipleToCart extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductDao dao = new ProductDao();
 
+        // Lấy IP và username cho log
+        String clientIP = request.getRemoteAddr();
+        HttpSession session = request.getSession();
+        String username = "Guest";
+
+        // Lấy username từ session
+        Object auth = session.getAttribute("auth");
+        if (auth != null) {
+            username = (auth instanceof String) ? (String) auth : auth.toString();
+        }
+
         // Lấy danh sách các ID sản phẩm được chọn
         String[] productIds = request.getParameterValues("productIds");
 
         if (productIds == null || productIds.length == 0) {
             // Nếu không có sản phẩm nào được chọn
+            Log.warn(username, "ADD_TO_CART", "No products selected to add to cart from favorites", clientIP);
             response.sendRedirect("listFavorites?error=no_selection");
             return;
         }
 
         // Lấy giỏ hàng từ session
-        HttpSession session = request.getSession();
         CartP cart = (CartP) session.getAttribute("cart");
         if (cart == null) {
             cart = new CartP();
@@ -40,7 +51,9 @@ public class AddMultipleToCart extends HttpServlet {
             Product product = dao.getAllProductId(productId);
             if (product != null) {
                 cart.addProduct(product);
-                Log.info("Added product ID " + productId + " to cart from favorites.");
+                Log.info(username, "ADD_TO_CART", "Added product ID " + productId + " to cart from favorites", clientIP);
+            } else {
+                Log.warn(username, "ADD_TO_CART", "Product ID " + productId + " not found", clientIP);
             }
         }
 
@@ -49,14 +62,11 @@ public class AddMultipleToCart extends HttpServlet {
         String referer = request.getHeader("Referer");
 
         // Nếu không có referer (chẳng hạn khi người dùng trực tiếp truy cập trang), điều hướng đến trang sản phẩm
-
-        // Chuyển hướng người dùng quay lại trang trước đó
         if (referer == null || referer.isEmpty()) {
             referer = "listFavorites";
         }
 
-        response.sendRedirect( "ShowCart?addMultiple=success");
-        // Chuyển hướng về trang giỏ hàng hoặc trang trước đó
-//        response.sendRedirect("cart?addMultiple=success");
+        // Chuyển hướng đến trang giỏ hàng
+        response.sendRedirect("ShowCart?addMultiple=success");
     }
 }

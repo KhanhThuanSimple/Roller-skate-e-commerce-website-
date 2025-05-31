@@ -4,23 +4,16 @@
         <Console name="LogToConsole" target="SYSTEM_OUT">
             <PatternLayout pattern="[%5level] %d{dd-MM-yyyy HH:mm:ss} [%t] %c{1} - %msg%n" />
         </Console>
-        <RollingFile name="LogToRollingFile" fileName="logs/app.log"
-                     filePattern="logs/app-%d{yyyy-MM-dd}.log.gz">
-            <PatternLayout pattern="[%5level] %d{dd-MM-yyyy HH:mm:ss} [%t] %c{1} - %msg%n" />
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
-                <SizeBasedTriggeringPolicy size="10 MB" />
-            </Policies>
-        </RollingFile>
     </Appenders>
 
     <Loggers>
-        <Logger name="vn.edu.hcmuaf.fit.doanweb" level="info" additivity="false">
-            <AppenderRef ref="LogToRollingFile"/>
+        <Logger name="org.apache.logging.log4j" level="debug" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        <Logger name="vn.edu.hcmuaf.fit.doanweb" level="debug" additivity="false">
             <AppenderRef ref="LogToConsole"/>
         </Logger>
         <Root level="error">
-            <AppenderRef ref="LogToRollingFile"/>
             <AppenderRef ref="LogToConsole"/>
         </Root>
     </Loggers>

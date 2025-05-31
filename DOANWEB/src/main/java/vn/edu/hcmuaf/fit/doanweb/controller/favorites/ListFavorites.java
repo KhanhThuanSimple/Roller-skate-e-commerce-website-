@@ -7,7 +7,6 @@ import vn.edu.hcmuaf.fit.doanweb.controller.product.BaseServlet;
 import vn.edu.hcmuaf.fit.doanweb.dao.favorite.FavoriteDAO;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
 import vn.edu.hcmuaf.fit.doanweb.log.Log;
 
 import java.io.IOException;
@@ -31,6 +30,7 @@ public class ListFavorites extends BaseServlet {
         request.setAttribute("favorites", favorites);
         request.getRequestDispatcher("Favorite.jsp").forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         FavoriteDAO favoriteDAO = new FavoriteDAO();
@@ -42,12 +42,15 @@ public class ListFavorites extends BaseServlet {
             return;
         }
 
+        String clientIP = request.getRemoteAddr();
+        String username = user.getUsername(); // Giả định User có getUsername()
+
         try {
             int productId = Integer.parseInt(request.getParameter("productId"));
             favoriteDAO.removeFavorite(user.getId(), productId);
-            Log.info("Removed product ID " + productId + " from favorites.");
+            Log.info(username, "REMOVE_FAVORITE", "Removed product ID " + productId + " from favorites", clientIP);
         } catch (NumberFormatException e) {
-            Log.error("Invalid productId parameter");
+            Log.error(username, "REMOVE_FAVORITE", "Invalid productId parameter: " + request.getParameter("productId"), clientIP, e);
         }
 
         // Chuyển hướng về trang danh sách yêu thích để tải lại dữ liệu
