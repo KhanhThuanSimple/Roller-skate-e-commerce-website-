@@ -251,73 +251,71 @@ main.container {
     box-shadow: 0 6px 16px rgba(74, 107, 255, 0.4);
 }
 
-/* Modal đăng xuất */
 .modal_dangxuat {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     display: none;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     z-index: 1000;
 }
 
 .modal_overlay {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal_body {
     background-color: white;
     padding: 30px;
-    border-radius: 12px;
-    z-index: 1;
-    width: 450px;
-    max-width: 90%;
-    text-align: center;
-    box-shadow: var(--shadow);
-}
-
-.modal_body h1 {
-    font-size: 20px;
-    margin-bottom: 25px;
-    color: var(--text-color);
-    font-weight: 600;
-}
-
-.modal_body button {
-    padding: 10px 25px;
-    margin: 0 10px;
-    border: none;
     border-radius: 8px;
+    z-index: 1001;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.button-dx {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.button-dx button {
+    padding: 8px 25px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: 500;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
-.modal_body button:first-child {
+.button-dx button:first-child {
     background-color: #f1f5f9;
-    color: var(--text-color);
+    color: #2d3748;
+    border: 1px solid #e2e8f0;
 }
 
-.modal_body button:first-child:hover {
+.button-dx button:first-child:hover {
     background-color: #e2e8f0;
 }
 
-.modal_body button:last-child {
-    background-color: var(--danger-color);
+.button-dx button:last-child {
+    background-color: #ff4757;
     color: white;
+    border: none;
 }
 
-.modal_body button:last-child:hover {
+.button-dx button:last-child:hover {
     background-color: #e63946;
 }
-
 /* Responsive */
 @media (max-width: 992px) {
     .formThongTinCaNhan {

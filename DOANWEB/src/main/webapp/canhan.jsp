@@ -58,6 +58,7 @@
                     <button id="DangXuat" class="dangxuat" onclick="moChacChanDX()">
                         <i class="fas fa-sign-out-alt"></i> Đăng Xuất
                     </button>
+
                 </div>
 
                 <div class="right-cn">
@@ -104,19 +105,18 @@
 
     <!-- Modal đăng xuất -->
     <div id="modal_dangxuat" class="modal_dangxuat">
-        <div class="modal_overlay"></div>
+        <div class="modal_overlay" onclick="dongChacChanDX()"></div>
         <div class="modal_body">
             <h1>Bạn chắc chắn muốn đăng xuất?</h1>
             <div class="button-dx">
-                <button onclick="dongChacChanDX()">Không</button>
-                <button>
-                    <a href="${pageContext.request.contextPath}/logout">OK</a>
-                </button>
+                <button type="button" onclick="dongChacChanDX()">Không</button>
+                <button type="button" id="btnConfirmLogout">OK</button>
             </div>
         </div>
     </div>
 </div>
 
-<script src="./js/canhan.js"></script>
+<script src="./js/logout.js"></script>
+
 </body>
 </html>

@@ -36,8 +36,10 @@ public class VerifyOtpServlet extends HttpServlet {
         long otpCreationTime = (Long) otpCreationObj;
 
         if (inputOtp == null || inputOtp.trim().isEmpty()) {
-            request.setAttribute("error", "Vui lòng nhập mã OTP");
-            request.getRequestDispatcher("verify-otp.jsp").forward(request, response);
+            request.setAttribute("otpModal", true);
+            request.setAttribute("otpError", "Vui lòng nhập mã OTP");
+            request.setAttribute("emailForOtp", ((User) session.getAttribute("pendingUser")).getEmail());
+            request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
 
@@ -51,7 +53,6 @@ public class VerifyOtpServlet extends HttpServlet {
         String sessionOtp = (String) session.getAttribute("otp");
 
         if (!sessionOtp.equals(inputOtp)) {
-            // Lấy số lần thử hiện tại, nếu chưa có thì khởi tạo 0
             Integer otpAttempts = (Integer) session.getAttribute("otpAttempts");
             if (otpAttempts == null) {
                 otpAttempts = 0;
@@ -59,42 +60,42 @@ public class VerifyOtpServlet extends HttpServlet {
             otpAttempts++;
 
             if (otpAttempts >= MAX_OTP_ATTEMPTS) {
-                // Quá số lần thử, xóa session và yêu cầu đăng nhập lại
                 session.invalidate();
                 request.setAttribute("error", "Bạn đã nhập sai OTP quá 3 lần. Vui lòng đăng nhập lại.");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
             } else {
-                // Cập nhật lại số lần thử trong session
                 session.setAttribute("otpAttempts", otpAttempts);
-                request.setAttribute("error", "Mã OTP không đúng. Bạn còn " + (MAX_OTP_ATTEMPTS - otpAttempts) + " lần thử.");
-                request.getRequestDispatcher("verify-otp.jsp").forward(request, response);
+                request.setAttribute("otpModal", true);
+                request.setAttribute("otpError", "Mã OTP không đúng. Bạn còn " + (MAX_OTP_ATTEMPTS - otpAttempts) + " lần thử.");
+                request.setAttribute("emailForOtp", ((User) session.getAttribute("pendingUser")).getEmail());
+                request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
             }
         }
 
-        // Nếu OTP đúng thì xóa các thuộc tính liên quan đến OTP và số lần thử
+        // OTP hợp lệ, xóa các thuộc tính liên quan OTP
         session.removeAttribute("otp");
         session.removeAttribute("otpCreationTime");
         session.removeAttribute("otpAttempts");
+
         User pendingUser = (User) session.getAttribute("pendingUser");
         session.removeAttribute("pendingUser");
 
         session.setAttribute("auth", pendingUser);
         session.setAttribute("user", pendingUser.getId());
 
-        if (pendingUser.getType() == 1) {
-            response.sendRedirect(request.getContextPath() + "/admin/dashboard.jsp");
-        } else {
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
-        }
+        // Chuyển về trang home sau khi xác thực OTP thành công
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 
     private boolean isOtpExpired(long otpCreationTime) {
         return System.currentTimeMillis() - otpCreationTime > OTP_VALID_DURATION;
     }
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Chuyển hướng về trang nhập OTP để tránh lỗi 405
-        request.getRequestDispatcher("verify-otp.jsp").forward(request, response);
+        // Chuyển hướng về trang login để tránh lỗi 405 và mở modal nếu cần
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 }
