@@ -163,13 +163,7 @@
                                 </label>
                             </div>
 
-<%--                            <div id="bankInfo" class="mt-3 p-3 bg-light rounded" style="display: none;">--%>
-<%--                                <h6>Thông tin chuyển khoản:</h6>--%>
-<%--                                <p>Ngân hàng: Vietcombank</p>--%>
-<%--                                <p>Số tài khoản: 123456789</p>--%>
-<%--                                <p>Chủ tài khoản: Công ty TNHH Your Store</p>--%>
-<%--                                <p>Nội dung chuyển khoản: Mã đơn hàng của bạn</p>--%>
-<%--                            </div>--%>
+
                         </div>
                     </div>
                 </div>
@@ -334,24 +328,24 @@
             fee = resultText ? parseInt(resultText.replace(/[^\d]/g, '')) : 0;
         }
 
-        // Hiển thị phí ship
-        $('#shippingFee').text(fee.toLocaleString('vi-VN') + 'đ');
+        // Hiển thị phí vận chuyển
+        $('#result').text(fee.toLocaleString('vi-VN') + 'đ');
 
-        // Lấy tổng ban đầu
+        // Lấy tổng ban đầu từ JSP
         const originalTotal = ${sessionScope.cart.getTotal()};
 
-        // Lấy giảm giá
+        // Lấy giảm giá nếu có
         const discountText = $('#discountAmount').text();
-        const discount = discountText === '0đ' ? 0 : parseInt(discountText.replace(/[^\d]/g, ''));
+        const discount = discountText ? parseInt(discountText.replace(/[^\d]/g, '')) : 0;
 
-        // Tính tổng mới: tổng đơn + phí ship - giảm giá
+        // Tính tổng mới
         const newTotal = originalTotal + fee - discount;
 
-        // Đảm bảo không âm
-        const finalTotal = newTotal >= 0 ? newTotal : 0;
+        // Cập nhật giao diện
+        $('#totalAmount').text(newTotal.toLocaleString('vi-VN') + 'đ');
 
-        // Cập nhật tổng cộng
-        $('#totalAmount').text(finalTotal.toLocaleString('vi-VN') + 'đ');
+        // Cập nhật vào input ẩn để submit
+        $('#shippingFeeInput').val(fee);
     }
 
 </script>

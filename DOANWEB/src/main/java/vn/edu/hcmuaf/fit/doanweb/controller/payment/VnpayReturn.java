@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
+import vn.edu.hcmuaf.fit.doanweb.dao.order.OderDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.order.OderDao_vnpay;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.util.*;
 @WebServlet(name = "VnpayReturn", value = "/VnpayReturn")
 
     public class VnpayReturn extends HttpServlet {
-        OderDao_vnpay orderDao = new OderDao_vnpay();
+        OderDao orderDao = new OderDao();
 
         /**
          * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
