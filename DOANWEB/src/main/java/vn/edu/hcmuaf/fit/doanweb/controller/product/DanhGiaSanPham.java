@@ -4,11 +4,15 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
+import vn.edu.hcmuaf.fit.doanweb.dao.ReviewDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderDetail;
+import vn.edu.hcmuaf.fit.doanweb.dao.reviewAll.ReviewAll;
+import vn.edu.hcmuaf.fit.doanweb.dao.reviews.Review;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "DanhGiaSanPham", value = "/danhgia")
@@ -16,7 +20,8 @@ public class DanhGiaSanPham extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ProductDao dao = new ProductDao();
+        ReviewDao dao = new ReviewDao();
+        ReviewAll reviewAll = new ReviewAll();
         loadCommonData(request); // Gọi phương thức chung nếu có
 
         HttpSession session = request.getSession();
@@ -33,26 +38,38 @@ public class DanhGiaSanPham extends BaseServlet {
             tab = "all"; // Mặc định là tab "Tất cả sản phẩm"
         }
 
-        List<Product> productsToReview = null;
-        List<Product> reviewedProducts = null;
-        List<Product> notReviewedProducts = null;
+        List<ReviewAll> productsToReview = null;
+        List<ReviewAll> reviewedProducts = null;
+      List<Product> notReviewedProducts = null;
 
         switch (tab) {
             case "all":
-                // Lấy tất cả sản phẩm đã mua
-                productsToReview = dao.getProductsPurchased(user.getId());
-//                productsToReview = dao.getAllProductnew();
+                notReviewedProducts = dao.getProductsNotReviewed(user.getId());
+                reviewedProducts = dao.getProductsReviewed(user.getId());
+
+                productsToReview = new ArrayList<>();
+                if (reviewedProducts != null) {
+                    productsToReview.addAll(reviewedProducts);
+                }
+                if (notReviewedProducts != null) {
+                    for (Product p : notReviewedProducts) {
+                        ReviewAll ra = new ReviewAll();
+                        ra.setProduct(p);
+                        ra.setReview(null);  // chưa đánh giá
+                        productsToReview.add(ra);
+                    }
+                }
                 break;
             case "reviewed":
                 // Lấy sản phẩm đã đánh giá
                 reviewedProducts = dao.getProductsReviewed(user.getId());
+                System.out.println("Số sản phẩm đã review: " + (reviewedProducts != null ? reviewedProducts.size() : 0));
                 break;
             case "not-reviewed":
-                // Lấy sản phẩm chưa đánh giá
                 notReviewedProducts = dao.getProductsNotReviewed(user.getId());
                 break;
             default:
-                productsToReview = dao.getProductsPurchased(user.getId());
+//                productsToReview = dao.getProductsPurchased(user.getId());
                 break;
         }
 
@@ -88,6 +105,6 @@ public class DanhGiaSanPham extends BaseServlet {
         }
 
         // Chuyển hướng trở lại trang đánh giá với tab hiện tại
-        response.sendRedirect("danhgia?tab=" + (currentTab != null ? currentTab : "all"));
+        response.sendRedirect("danhgia?" + (currentTab != null ? currentTab : "tab"));
     }
 }
