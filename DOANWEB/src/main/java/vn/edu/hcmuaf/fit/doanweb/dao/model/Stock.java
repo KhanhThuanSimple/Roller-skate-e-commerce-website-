@@ -50,7 +50,7 @@ public class Stock implements Serializable {
     }
 
     public void setQuantity_stock(int quantityStock) {
-        this.quantity_stock = quantity_stock;
+        this.quantity_stock = quantityStock;
     }
 
     public String getImg() {

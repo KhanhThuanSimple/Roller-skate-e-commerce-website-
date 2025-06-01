@@ -81,10 +81,6 @@ public class AuthService {
         ImportDao importDao = new ImportDao();
         return importDao.updateImport(product_id,purchase_price,quantity,id);
     }
-    public boolean deleteImport(int id) throws SQLException {
-        ImportDao importDao = new ImportDao();
-        return importDao.deleteImport(id);
-    }
 
 
     public boolean insertProduct(String name, String img, double price,String title,String description, int cateID,String offer) throws SQLException {

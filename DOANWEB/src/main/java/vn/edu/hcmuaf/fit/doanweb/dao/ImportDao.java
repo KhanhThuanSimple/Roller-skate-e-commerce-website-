@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.fit.doanweb.dao;
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.ExportOrders;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.ImportOrders;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.Stock;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.sql.PreparedStatement;
@@ -167,6 +168,27 @@ System.out.println(pstmt);
 
             return rs==1;
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ImportOrders findById(int uid) throws SQLException {
+        String sql = "SELECT * FROM import_orders WHERE id = ?";
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setInt(1, uid);
+
+            ResultSet rs = pre.executeQuery();
+            if (rs.next()) {
+                ImportOrders importOrders = new ImportOrders();
+                importOrders.setId(rs.getInt("id"));
+                importOrders.setProduct_id(rs.getInt("product_id"));
+                importOrders.setQuantity(rs.getInt("quantity"));
+                return importOrders;
+            }
+            return null;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
