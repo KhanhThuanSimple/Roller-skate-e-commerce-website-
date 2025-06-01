@@ -116,14 +116,20 @@ function calculateFee() {
         data: $('#shippingForm').serialize(),
         success: function(response) {
             if (response.code === 200) {
-                $('#result').html(
+                // $('#result').html(
+                //
+                //     '<p>' + response.data.total + ' VND</p>'
+                //     // '<p class="service_fee">Phí dịch vụ : ' + response.data.service_fee + ' VND</p>' +
+                //     // '<p class="insurance_fee">Phí bảo hiểm: ' + response.data.insurance_fee + ' VND</p>'
+                // );
+                var formattedTotal = response.data.total.toLocaleString('vi-VN') + ' VND';
+                $('#result').html('<p>' + formattedTotal + '</p>');
+                updateShippingFee(response.data.total);
 
-                    '<p>' + response.data.total + ' VND</p>'
-                    // '<p class="service_fee">Phí dịch vụ : ' + response.data.service_fee + ' VND</p>' +
-                    // '<p class="insurance_fee">Phí bảo hiểm: ' + response.data.insurance_fee + ' VND</p>'
-                );
             } else {
                 $('#result').html('<p style="color:red">Cữa hàng chỉ hỗ trợ ship nội thành TP.Hồ Chí Minh </p>');
+                updateShippingFee(32000); // Không tính phí ship nếu không hỗ trợ
+
             }
         },
         error: function(xhr, status, error) {
