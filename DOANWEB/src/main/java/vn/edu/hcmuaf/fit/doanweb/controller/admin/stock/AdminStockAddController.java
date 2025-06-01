@@ -25,7 +25,8 @@ public class AdminStockAddController extends HttpServlet {
             String product_name=request.getParameter("product_name");
             int quantity_stock=Integer.parseInt(request.getParameter("quantity_stock"));
 
-            boolean rs =stockService.insertStock(product_id,product_name,quantity_stock);
+            boolean rs =stockService.insertStock(product_id,quantity_stock);
+
             if(rs) {
                 request.setAttribute("message", "Thêm thành công!");
             }else{

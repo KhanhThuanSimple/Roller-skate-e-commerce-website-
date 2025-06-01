@@ -64,11 +64,10 @@
                         </a>
                         <span id="pageNumber">${page}</span> / <span id="totalPages">${totalPage}</span>
                         <a href="${pageContext.request.contextPath}/admin/stock?page=${page+1}">
-                            <button  id="SauPage" class="button-black"type="button" >Sau</button>
+                        <button  id="SauPage" class="button-black"type="button" >Sau</button>
 
-                        </a>
+                    </a>
                     </div>
-                    <button class="button-orange" onclick="openStockForm()">Thêm sản phẩm</button>
                 </div>
 
             </table>

@@ -28,7 +28,7 @@ public class AdminStockEditController extends HttpServlet {
             int id=Integer.parseInt(request.getParameter("id"));
 
 
-            boolean rs =stockService.updateStock(product_id,product_name,quantity_stock,id);
+            boolean rs =stockService.updateStock(id,quantity_stock);
 
             if(rs) {
                 request.setAttribute("message", "Cập nhật thành công!");
