@@ -20,5 +20,9 @@ public class ImportService {
         return importDao.deleteImport(id);
     }
 
+    public boolean updateImport(int product_id, double purchase_price, int quantity, int id) throws SQLException {
+        ImportDao importDao = new ImportDao();
+        return importDao.updateImport(product_id,purchase_price,quantity,id);
+    }
 
 }

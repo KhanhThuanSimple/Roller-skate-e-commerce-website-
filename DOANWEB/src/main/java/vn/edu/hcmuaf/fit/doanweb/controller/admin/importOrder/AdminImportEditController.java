@@ -3,7 +3,11 @@ package vn.edu.hcmuaf.fit.doanweb.controller.admin.importOrder;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.ImportOrders;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.Stock;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
+import vn.edu.hcmuaf.fit.doanweb.service.ImportService;
+import vn.edu.hcmuaf.fit.doanweb.service.StockService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,7 +21,7 @@ public class AdminImportEditController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        AuthService authService = new AuthService();
+        ImportService importService = new ImportService();
 
         try{
             int product_id=Integer.parseInt(request.getParameter("product_id"));
@@ -26,11 +30,19 @@ public class AdminImportEditController extends HttpServlet {
             int quantity=Integer.parseInt(request.getParameter("quantity"));
             int id=Integer.parseInt(request.getParameter("id"));
 
-            boolean rs =authService.updateImport(product_id,purchase_price,quantity,id);
-            System.out.println("KQs");
+            ImportOrders importOrders = importService.findById(id);
+            boolean rs =importService.updateImport(product_id,purchase_price,quantity,id);
 
-            System.out.println(rs);
             if(rs) {
+                if(importOrders!=null){
+                    StockService stockService = new StockService();
+                    Stock stock = stockService.findProduct(importOrders.getProduct_id());
+
+                    if(stock!=null){
+                        rs =stockService.updateStock(stock.getId(),quantity-importOrders.getQuantity());
+                    }
+                }
+
                 request.setAttribute("message", "Cập nhật thành công!");
             }else{
                 request.setAttribute("message", "Cập nhật không thành công!");
