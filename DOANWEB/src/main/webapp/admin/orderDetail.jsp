@@ -78,9 +78,10 @@
                             <th>Thành Tiền (VNĐ)</th>
                         </tr>
                         </thead>
+                        <tbody>
                         <c:set var="totalAmount" value="0" />
                         <c:forEach var="p" items="${list}">
-                            <tbody>
+
                             <tr>
                                 <td>${p.product.title}</td>
                                 <td>${p.orderItem.quantity}</td>
@@ -89,8 +90,9 @@
                                 <td>${p.orderItem.price * p.orderItem.quantity}</td>
                                 <c:set var="totalAmount" value="${totalAmount + p.orderItem.price * p.orderItem.quantity}" />
                             </tr>
-                            </tbody>
+
                         </c:forEach>
+                        </tbody>
                         <tfoot class="table-light">
                         <tr>
                             <td colspan="4" class="text-end">Tổng Cộng</td>
@@ -157,11 +159,14 @@
                 return;
             }
 
+            console.log(element.querySelector('table').outerHTML)
+
             // Lấy mã đơn hàng
             const orderId = '${list[0].order.id}';
-
+            const   table_data=element.querySelector('table').outerHTML
             // Chuẩn bị nội dung HTML đơn giản hơn
-            const htmlContent = `
+
+            let htmlContent = `
                 <html>
                     <head>
                         <meta charset="UTF-8">
@@ -178,13 +183,47 @@
                             <p><strong>Tên Khách Hàng:</strong> ${list[0].order.name}</p>
                             <p><strong>Trạng Thái:</strong> Đã Giao Hàng</p>
                         </div>
-                        ${element.querySelector('table').outerHTML}
+                         <div class="mt-4">
+                    <h4 class="mb-3">Danh Sách Sản Phẩm</h4>
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Số Lượng</th>
+                            <th>Đơn Giá (VNĐ)</th>
+                            <th>Phương Thức Thanh Toán</th>
+                            <th>Thành Tiền (VNĐ)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:set var="totalAmount" value="0" />
+                        <c:forEach var="p" items="${list}">
+
+                            <tr>
+                                <td>${p.product.title}</td>
+                                <td>${p.orderItem.quantity}</td>
+                                <td>${p.orderItem.price}</td>
+                                <td>${p.order.paymentMethod}</td>
+                                <td>${p.orderItem.price * p.orderItem.quantity}</td>
+                                <c:set var="totalAmount" value="${totalAmount + p.orderItem.price * p.orderItem.quantity}" />
+                            </tr>
+
+                        </c:forEach>
+                        </tbody>
+                        <tfoot class="table-light">
+                        <tr>
+                            <td colspan="4" class="text-end">Tổng Cộng</td>
+                            <td class="total-amount">${totalAmount}</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
                     </body>
                 </html>
             `;
 
             // Chuyển đổi HTML sang Word document
-            console.log('Bắt đầu chuyển đổi HTML sang Word...');
+            console.log('Bắt đầu chuyển đổi HTML sang Word...', htmlContent);
             const converted = htmlDocx.asBlob(htmlContent);
             console.log('Chuyển đổi thành công!');
 

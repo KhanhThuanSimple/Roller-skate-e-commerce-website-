@@ -55,6 +55,7 @@
                             <td>${order.totalAmount}</td>
                             <td>${order.status}</td>
                             <td>${""}</td>
+<%--                            oder.status_export--%>
 
                             <td style="display: flex; gap: 10px">
 
@@ -63,13 +64,17 @@
                                     <i class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
                             </form>
-                                <form action="${pageContext.request.contextPath}/admin/order/export?id=${order.id}" method="post"
-                                      style="display:inline;">
-                                    <button  class="button-orange " type="submit" onclick="return confirm('Xác nhận xuất hàng !')"
-                                           >
-                                        Xuất hàng
-                                    </button>
-                                </form>
+<%--                        test="${order.status_export != 'Đã xuất kho' --%>
+                                <c:if test="${true}">
+                                    <form action="${pageContext.request.contextPath}/admin/order/export?id=${order.id}" method="post"
+                                          style="display:inline;">
+                                        <button  class="button-orange " type="submit" onclick="return confirm('Xác nhận xuất hàng !')"
+                                        >
+                                            Xuất hàng
+                                        </button>
+                                    </form>
+                                </c:if>
+
                             </td>
                         </tr>
                     </c:forEach>

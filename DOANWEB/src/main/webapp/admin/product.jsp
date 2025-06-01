@@ -305,11 +305,23 @@
         // File input change event for Excel file
         const excelFileInput = document.getElementById('excelFile');
         if (excelFileInput) {
-            excelFileInput.addEventListener('change', function() {
-                const fileName = this.value.split('\\').pop();
-                if (fileName) {
-                    // You can add UI feedback here if needed
+            excelFileInput.addEventListener('change', function () {
+                const file = this.files[0]; // Get the selected file
+                if (file) {
+                    const fileName = file.name;
+                    const validExtensions = ['.xlsx', '.xls'];
+                    const extension = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
+
+                    if (!validExtensions.includes(extension)) {
+                        alert('Vui lòng chọn file Excel (.xlsx hoặc .xls).');
+                        this.value = ''; // Clear the input
+                        return;
+                    }
+
                     console.log('Selected file:', fileName);
+                    // Optionally trigger form submission programmatically
+                    // const form = this.closest('form');
+                    // if (form) form.submit();
                 }
             });
         }
