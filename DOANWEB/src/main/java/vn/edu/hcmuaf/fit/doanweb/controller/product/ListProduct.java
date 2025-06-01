@@ -9,6 +9,8 @@ import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.favorite.FavoriteDAO;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
+import vn.edu.hcmuaf.fit.doanweb.cache.ProductCacheManager;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class ListProduct extends BaseServlet {
         if (cateID != null && !cateID.isEmpty()) {
             products = productDao.getAllByCategory(cateID);
         } else {
-            products = productDao.getAll();
+            products = ProductCacheManager.getCachedAllProducts();
         }
         if (cateID != null && sort != null) {
             products=productDao.getProductsByCategoryAndSort(cateID, sort);
