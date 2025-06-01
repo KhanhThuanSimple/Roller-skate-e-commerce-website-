@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "AdminStocListController", value = "/AdminStocListController")
-public class AdminStocListController extends HttpServlet {
+@WebServlet(name = "AdminStocListController", value = "/admin/stock")
+public class AdminStockListController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,8 +31,10 @@ public class AdminStocListController extends HttpServlet {
             if(page_prams!=null){
                 page = Integer.parseInt(page_prams);
             }
+            System.out.println("'page '"+page);
+            System.out.println("'totalPage '"+totalPage);
             if(page<1) page=1;
-            if(page>totalPage) page=totalPage;
+            if(page>totalPage && totalPage>0) page=totalPage;
 
             List<Stock> stocks = stockService.getListStock(page);
             ScreenPermissions permission = userDao.getPerUserScreen(user.id, "kho");

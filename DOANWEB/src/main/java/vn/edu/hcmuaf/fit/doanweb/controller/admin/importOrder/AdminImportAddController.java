@@ -3,7 +3,9 @@ package vn.edu.hcmuaf.fit.doanweb.controller.admin.importOrder;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.Stock;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
+import vn.edu.hcmuaf.fit.doanweb.service.StockService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,11 +28,17 @@ public class AdminImportAddController extends HttpServlet {
             String image = request.getParameter("image");
             double purchase_price =Double.parseDouble(request.getParameter("purchase_price")) ;
             int quantity = Integer.parseInt(request.getParameter("quantity"));
-
-
-
             boolean rs =authService.insertImport(product_id,purchase_price,quantity);
+
             if(rs) {
+                StockService stockService = new StockService();
+                Stock stock = stockService.findProduct(product_id);
+
+                if(stock==null){
+                    rs =stockService.insertStock(product_id,quantity);
+                }else{
+                    rs =stockService.updateStock(stock.getId(),quantity);
+                }
                 request.setAttribute("message", "Thêm thành công!");
             }else{
                 request.setAttribute("message", "Thêm không thành công!");

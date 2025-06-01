@@ -11,6 +11,72 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <style>
+        .excel-import-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .excel-import-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .excel-input-container {
+            position: relative;
+            flex: 1;
+        }
+
+        .excel-file-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .import-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .import-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .import-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .error-details {
+            max-height: 150px;
+            overflow-y: auto;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            font-size: 0.9em;
+        }
+
+        .download-template {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,9 +86,65 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        <!-- Excel Import Section -->
+        <c:if test="${permission.add == 1}">
+            <section class="excel-import-section">
+                <h3>Nhập Sản Phẩm từ Excel</h3>
+
+                <!-- Display import messages if any -->
+                <c:if test="${not empty sessionScope.importSuccess || not empty sessionScope.importErrors}">
+                    <div class="import-message ${sessionScope.importErrors > 0 ? 'import-error' : 'import-success'}">
+                        <c:if test="${not empty sessionScope.importSuccess && sessionScope.importSuccess > 0}">
+                            <p><i class="fas fa-check-circle"></i> Đã nhập thành công ${sessionScope.importSuccess} sản phẩm.</p>
+                        </c:if>
+                        <c:if test="${not empty sessionScope.importErrors && sessionScope.importErrors > 0}">
+                            <p><i class="fas fa-exclamation-triangle"></i> Không thể nhập ${sessionScope.importErrors} sản phẩm.</p>
+                            <c:if test="${not empty sessionScope.importErrorDetails}">
+                                <div class="error-details">
+                                    <ul>
+                                        <c:forEach var="error" items="${sessionScope.importErrorDetails}">
+                                            <li>${error}</li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </c:if>
+                        </c:if>
+                    </div>
+
+                    <%
+                        session.removeAttribute("importSuccess");
+                        session.removeAttribute("importErrors");
+                        session.removeAttribute("importErrorDetails");
+                    %>
+                </c:if>
+
+                <form action="${pageContext.request.contextPath}/admin/product/import-excel" method="post" enctype="multipart/form-data" class="excel-import-form">
+                    <div class="excel-input-container">
+                        <input type="file" name="excelFile" id="excelFile" accept=".xlsx, .xls" class="excel-file-input" required>
+                    </div>
+                    <button type="submit" class="button-orange">
+                        <i class="fas fa-file-import"></i> Nhập Excel
+                    </button>
+                </form>
+
+                <div class="download-template">
+                    <a href="${pageContext.request.contextPath}/templates/product_import_template.xlsx" download>
+                        <i class="fas fa-download"></i> Tải mẫu Excel
+                    </a>
+                </div>
+            </section>
+        </c:if>
+
         <!-- Section: Khách hàng -->
         <section id="customers">
-            <h3>Quản Lý Sản Phẩm</h3>
+            <div class="action-buttons">
+                <h3>Quản Lý Sản Phẩm</h3>
+                <c:if test="${permission.add == 1}">
+                    <button class="button-orange" onclick="openProductForm()">
+                        <i class="fas fa-plus"></i> Thêm Sản Phẩm
+                    </button>
+                </c:if>
+            </div>
 
             <table>
                 <thead>
@@ -30,16 +152,12 @@
                     <th>ID sản phẩm</th>
                     <th>Nhà Sản Xuất</th>
                     <th>Hình ảnh</th>
-
                     <th>Giá</th>
                     <th>Tên Sản Phẩm</th>
-
-
                     <th>Mô tả</th>
                     <th>ID loại sản phâm</th>
                     <th>Quà tặng</th>
                     <th>Thao tác</th>
-
                 </tr>
                 </thead>
                 <tbody>
@@ -47,25 +165,19 @@
                     <tr>
                         <td>${product.id}</td>
                         <td>${product.name}</td>
-
                         <td>
                             <img src="${product.img}" style="width: 50px ; height: 50px ; border-radius: 5px">
                         </td>
-
                         <td>${product.price}</td>
                         <td>${product.title}</td>
                         <td>
                             <div style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">${product.description}</div>
                         </td>
                         <td>${product.cateId}</td>
-
                         <td>
                             <div style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">${product.offer}</div>
                         </td>
-
-
                         <td>
-
                             <c:if test="${permission.edit == 1}">
                                 <button
                                         type="button" onclick="openProductUpdateForm({
@@ -80,8 +192,6 @@
                                     <i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
                             </c:if>
-
-
                             <c:if test="${permission.delete == 1}">
                                 <form action="${pageContext.request.contextPath}/admin/product/delete" method="post" style="display:inline;">
                                     <input type="hidden" name="uid" value="${product.id}">
@@ -94,22 +204,17 @@
                         </td>
                     </tr>
                 </c:forEach>
-
-
                 <!-- Các khách hàng sẽ được hiển thị ở đây -->
                 </tbody>
-                <div class="pagination flex-row">
-                    <div class="flex-1">
-                        <button id="prevPage" class="button-black" type="button">Trước</button>
-                        <span id="pageNumber">1</span> / <span id="totalPages">1</span>
-                        <button id="SauPage" class="button-black" type="button">Sau</button>
-                    </div>
-                    <c:if test="${permission.add == 1}">
-                        <button class="button-orange" onclick="openProductForm()">Thêm Sản Phẩm</button>
-                    </c:if>
-                </div>
-
             </table>
+
+            <div class="pagination flex-row">
+                <div class="flex-1">
+                    <button id="prevPage" class="button-black" type="button">Trước</button>
+                    <span id="pageNumber">1</span> / <span id="totalPages">1</span>
+                    <button id="SauPage" class="button-black" type="button">Sau</button>
+                </div>
+            </div>
         </section>
     </main>
 </div>
@@ -128,7 +233,6 @@
             <div>
                 <input name="price" class="input-common" type="text" placeholder=" Giá ">
             </div>
-
             <div>
                 <input name="title" class="input-common" type="text" placeholder="Tiêu đề">
             </div>
@@ -145,15 +249,12 @@
                 <input name="img" class="input-common" type="text" placeholder="Link ảnh">
             </div>
             <div class="flex-center">
-                <button type="submit" class="button-orange">Lưu sản phẩm
-                    <button>
+                <button type="submit" class="button-orange">Lưu sản phẩm</button>
             </div>
-
-
         </form>
-
     </div>
 </div>
+
 <div id="modal-update-product" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeProductUpdateForm()">&times;</span>
@@ -167,7 +268,6 @@
             <div>
                 <input name="price" class="input-common" type="text" placeholder=" Giá ">
             </div>
-
             <div>
                 <input name="title" class="input-common" type="text" placeholder="Tiêu đề">
             </div>
@@ -184,13 +284,9 @@
                 <input name="img" class="input-common" type="text" placeholder="Link ảnh">
             </div>
             <div class="flex-center">
-                <button type="submit" class="button-orange">Lưu sản phẩm
-                    <button>
+                <button type="submit" class="button-orange">Lưu sản phẩm</button>
             </div>
-
-
         </form>
-
     </div>
 </div>
 
@@ -200,11 +296,36 @@
         const icon = document.querySelector('.fa-image');
         const fileInput = document.getElementById('avatar');
 
-        icon.addEventListener('click', function () {
-            fileInput.click();
-        });
-    });
+        if (icon && fileInput) {
+            icon.addEventListener('click', function () {
+                fileInput.click();
+            });
+        }
 
+        // File input change event for Excel file
+        const excelFileInput = document.getElementById('excelFile');
+        if (excelFileInput) {
+            excelFileInput.addEventListener('change', function () {
+                const file = this.files[0]; // Get the selected file
+                if (file) {
+                    const fileName = file.name;
+                    const validExtensions = ['.xlsx', '.xls'];
+                    const extension = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
+
+                    if (!validExtensions.includes(extension)) {
+                        alert('Vui lòng chọn file Excel (.xlsx hoặc .xls).');
+                        this.value = ''; // Clear the input
+                        return;
+                    }
+
+                    console.log('Selected file:', fileName);
+                    // Optionally trigger form submission programmatically
+                    // const form = this.closest('form');
+                    // if (form) form.submit();
+                }
+            });
+        }
+    });
 
     function openProductForm() {
         document.getElementById("productModal").style.display = "block";
@@ -233,7 +354,6 @@
     function closeProductUpdateForm() {
         document.getElementById("modal-update-product").style.display = "none";
     }
-
 </script>
 </body>
 
