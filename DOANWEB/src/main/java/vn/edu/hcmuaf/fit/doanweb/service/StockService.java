@@ -17,13 +17,18 @@ public class StockService {
         return stocksDao.getPageStock();
     }
 
-    public boolean insertStock (int product_id,String product_name,int quantity_stock ) throws SQLException {
+    public Stock findProduct( int product_id) throws SQLException {
         StocksDao stocksDao = new StocksDao();
-        return stocksDao.insertStock(product_id,product_name,quantity_stock);
+        return stocksDao.findProduct(product_id);
     }
-    public boolean updateStock(int product_id,String product_name,int quantity_stock ,int id) throws SQLException {
+
+    public boolean insertStock (int product_id,int quantity_stock ) throws SQLException {
         StocksDao stocksDao = new StocksDao();
-        return stocksDao.updateStock(product_id, product_name, quantity_stock, id);
+        return stocksDao.insertStock(product_id,quantity_stock);
+    }
+    public boolean updateStock(int id , int quantity_stock) throws SQLException {
+        StocksDao stocksDao = new StocksDao();
+        return stocksDao.updateStock(id,quantity_stock);
     }
     public boolean deleteProduct(int id) throws SQLException {
         StocksDao stocksDao = new StocksDao();

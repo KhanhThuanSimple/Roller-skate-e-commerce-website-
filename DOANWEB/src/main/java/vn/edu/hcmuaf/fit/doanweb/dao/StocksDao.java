@@ -80,15 +80,16 @@ public class StocksDao {
             throw new RuntimeException(e);
         }
     }
-    public boolean insertStock(int product_id,String product_name,int quantity_stock ) throws SQLException {
-        String sql = "insert into stock(product_id,product_name,quantity_stock) values(?,?,?)";
+
+    public boolean insertStock(int product_id,int quantity_stock ) throws SQLException {
+        String sql = "insert into stock(product_id,quantity_stock) values(?,?)";
+
         try {
+
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
             pre.setInt(1, product_id);
-            pre.setString(2, product_name);
-            pre.setInt(3, quantity_stock);
-
+            pre.setInt(2, quantity_stock);
 
             int rs = pre.executeUpdate();
 
@@ -99,16 +100,36 @@ public class StocksDao {
         }
     }
 
-    public boolean updateStock(int product_id,String product_name,int quantity_stock , int id) throws SQLException {
-        String sql = "UPDATE stock SET product_id  = ?,product_name=?, quantity_stock=? WHERE id = ?";
+
+    public Stock findProduct(int uid) throws SQLException {
+        String sql = "SELECT * FROM stock WHERE product_id = ?";
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setInt(1, uid);
+
+            ResultSet rs = pre.executeQuery();
+            if (rs.next()) {
+                Stock stock = new Stock();
+                stock.setId(rs.getInt("id"));
+                stock.setProduct_id(rs.getInt("product_id"));
+                stock.setQuantity_stock(rs.getInt("quantity_stock"));
+                return stock;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean updateStock(int id,int quantity_stock) throws SQLException {
+        String sql = "UPDATE stock SET quantity_stock=quantity_stock+? WHERE id = ?";
 
         try {
             Statement st = DBConnect.getStatement();
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
-            pre.setInt(1, product_id);
-            pre.setString(2, product_name);
-            pre.setInt(3, quantity_stock);
-            pre.setInt(4, id);
+            pre.setInt(1, quantity_stock);
+            pre.setInt(2, id);
 
             int rs = pre.executeUpdate();
 
