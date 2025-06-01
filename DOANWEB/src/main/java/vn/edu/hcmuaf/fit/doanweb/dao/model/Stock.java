@@ -7,12 +7,14 @@ public class Stock implements Serializable {
     public int product_id;
     public String product_name;
     public int quantity_stock;
+    public String img;
 
-    public Stock(int id, int product_id, String product_name, int quantity_stock) {
+    public Stock(int id, int product_id, String product_name, int quantity_stock, String img) {
         this.id = id;
         this.product_id = product_id;
         this.product_name = product_name;
         this.quantity_stock = quantity_stock;
+        this.img = img;
     }
 
     public Stock() {
@@ -49,5 +51,13 @@ public class Stock implements Serializable {
 
     public void setQuantity_stock(int quantityStock) {
         this.quantity_stock = quantity_stock;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

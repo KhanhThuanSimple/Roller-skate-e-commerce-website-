@@ -27,7 +27,7 @@ public class AdminImportListController extends HttpServlet {
                 page = Integer.parseInt(page_prams);
             }
             if(page<1) page=1;
-            if(page>totalPage) page=totalPage;
+            if(page>totalPage && totalPage>0) page=totalPage;
 
             List<ImportOrders> imports = authService.getListImport(page);
 System.out.println(imports);

@@ -17,12 +17,15 @@ public class StocksDao {
         ResultSet rs = null;
         ArrayList<Stock> stocks = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM stock  ORDER BY id LIMIT ?, ?";
+            String sql = "SELECT s.id, s.product_id, p.name, p.img, s.quantity_stock FROM  stock as s LEFT JOIN product as p ON s.product_id = p.id ORDER BY s.id LIMIT ?, ?";
 
             PreparedStatement pstmt = st.getConnection().prepareStatement(sql);
             // Gán giá trị cho type
             pstmt.setInt(1, page-1);      // Gán giá trị cho offset
             pstmt.setInt(2, this.limit);       // Gán giá trị cho limit
+
+
+            System.out.println(pstmt);
 
 
             rs = pstmt.executeQuery();
@@ -31,7 +34,8 @@ public class StocksDao {
                 Stock stock = new Stock();
                 stock.setId(rs.getInt("id"));
                 stock.setProduct_id(rs.getInt("product_id"));
-                stock.setProduct_name(rs.getString("product_name"));
+                stock.setProduct_name(rs.getString("name"));
+                stock.setImg(rs.getString("img"));
                 stock.setQuantity_stock(rs.getInt("quantity_stock"));
 
                 stocks.add(stock);
