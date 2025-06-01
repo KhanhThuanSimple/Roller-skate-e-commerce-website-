@@ -102,5 +102,20 @@ public class OderDao {
 
         return orders; // Trả về danh sách các đơn hàng
     }
+    public boolean updateOrderStatus(Order order) {
+        String sql = "UPDATE [dbo].[Orders]\n"
+                + "   SET [Status] = ?\n"
+                + " WHERE Id = ?";
+        try {
+            Statement statement = DBConnect.getStatement();
+            PreparedStatement st = statement.getConnection().prepareStatement(sql);
+            st.setString(1, order.getStatus());
+            st.setInt(2, order.getId());
+            return st.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return false;
+    }
 
 }
