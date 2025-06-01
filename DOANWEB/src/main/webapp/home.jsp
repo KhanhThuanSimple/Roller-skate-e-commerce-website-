@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="./css/style.css"/>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/sanpham.css">
 </head>
-
 <body>
 <div id="wrapper">
     <jsp:include page="comon/header.jsp"/>
@@ -71,6 +74,11 @@
                                         </c:otherwise>
                                     </c:choose>
 
+
+
+
+
+
                                     <a href="" class="product-thumb">
                                         <img src="${p.img}" alt=""/>
                                     </a>
@@ -83,7 +91,7 @@
                                     <a href="" class="product-cat">${p.name}</a>
                                     <a href="" class="product-name">${p.title}</a>
                                     <div class="product-price">
-                                        <f:formatNumber value="${p.price}" type="number" maxFractionDigits="0" />đ
+                                        <fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0" />đ
                                     </div>
                                 </div>
                             </div>
@@ -95,10 +103,10 @@
         </div>
     </div>
 <script src="js/script.js"></script>
+</div>
+<jsp:include page="comon/footer.jsp"/>
 
-
-    <jsp:include page="comon/footer.jsp"/>
-
+</div>
 </body>
 
 </html>

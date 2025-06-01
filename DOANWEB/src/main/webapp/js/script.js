@@ -45,3 +45,14 @@ function sortProducts(order) {
 function confirmUnfavorite(form) {
     return confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi danh sách yêu thích?");
 }
+    function toggleReviews() {
+    const reviewSection = document.getElementById('review-section');
+    const button = event.target;
+    if (reviewSection.style.display === "none") {
+    reviewSection.style.display = "block";
+    button.textContent = "Ẩn đánh giá";
+} else {
+    reviewSection.style.display = "none";
+    button.textContent = "Xem đánh giá";
+}
+}
