@@ -56,7 +56,7 @@ public class UserDao {
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setName(rs.getString("name"));
-                user.setType(rs.getInt("type"));
+                user.setType(rs.getInt("type"));      
                 user.setPhone(rs.getString("phone_number"));
                 user.setAddress(rs.getString("address"));
                 System.out.println("type");
@@ -100,8 +100,8 @@ public class UserDao {
                 user.setType(rs.getInt("type"));
                 user.setPhone(rs.getString("phone_number"));
                 user.setAddress(rs.getString("address"));
-//                user.setIdPer(rs.getInt("idPer"));
-//                user.setNamePer(rs.getString("perName"));
+                user.setIdPer(rs.getInt("idPer"));
+                user.setNamePer(rs.getString("perName"));
                 users.add(user);
 
             }

@@ -28,25 +28,21 @@ public class ajaxServlet extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String bankCode = request.getParameter("bankCode");
-        Log.info("Bank Code: " + bankCode);
+
 
         if (request.getParameter("totalBill") == null) {
             response.sendRedirect("cart");
-            Log.warn("Total bill is null, redirecting to cart");
             return;
         }
 
         double amountDouble = Double.parseDouble(request.getParameter("totalBill"));
-        Log.info("Total Bill Amount: " + amountDouble);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
         CartP cart = (CartP) session.getAttribute("cart");
         if (user != null) {
             int userId = user.getId(); // Lấy userId từ đối tượng User
             // Sử dụng userId ở đây
-            Log.info("User ID: " + user.getId());
         } else {
-            Log.warn("User is not authenticated, redirecting to login");
             response.sendRedirect("login");
             return;
         }
@@ -86,14 +82,7 @@ public class ajaxServlet extends BaseServlet {
             order.setNote(note);
             order.setTotalAmount(totalAmount);
             order.setPaymentMethod(paymentMethod);
-            if ("Cod".equalsIgnoreCase(paymentMethod)) {
-                order.setStatus("Đã thanh toán");
-            } else if ("Bank".equalsIgnoreCase(paymentMethod)) {
-                order.setStatus("Đã thanh toán"); // Để cập nhật sau khi VNPay trả về
-            } else {
-                order.setStatus("Chưa thanh toán");
-            }
-
+            order.setStatus("Bank".equalsIgnoreCase(paymentMethod) ? "Đã thanh toán" : "Đang xử lí");
             order.setDiscountCode(discountCode);
             order.setShippingFee(shippingFee);
 
@@ -103,9 +92,8 @@ public class ajaxServlet extends BaseServlet {
             orderId =orderDao.insertOrder (order);
             order.setId(orderId);
 
-            Log.info("Order ID inserted: " + orderId);
+
         } catch (SQLException e) {
-            Log.error("SQL Exception while inserting order: " + e.getMessage());
             throw new RuntimeException(e);
         }
 
@@ -122,28 +110,17 @@ public class ajaxServlet extends BaseServlet {
                 orderItemDAO.insertOrderItems(orderItem);
             }
             session.removeAttribute("cart");
-            String paymentMethod1 = request.getParameter("paymentMethod");
-
-            Log.info("Payment method received: " + paymentMethod1);
-
-            if (paymentMethod1 == null) {
-                Log.warn("Payment method is null");
-            } else if (!"Bank".equalsIgnoreCase(paymentMethod1)) {
-                Log.info("Payment method is NOT Bank, redirecting to success page");
+            if (!"Bank".equalsIgnoreCase(paymentMethod)) {
+                // Nếu COD → không đi qua VNPay
                 response.sendRedirect("success.jsp?orderId=" + order.getId());
                 return;
-            } else {
-                Log.info("Payment method is Bank, proceed to VNPay");
             }
 
 
 
-
-            long amount = (long) (amountDouble * 100); // Chuyển đổi sang đơn vị đồng
+        long amount = (long) (amountDouble * 100); // Chuyển đổi sang đơn vị đồng
         String vnp_TxnRef = orderId+"";
         String vnp_IpAddr = Config.getIpAddress(request);
-        Log.info("Preparing VNPay payment - Amount: " + amount +
-                ", OrderID: " + vnp_TxnRef + ", IP: " + vnp_IpAddr);
 
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
@@ -180,12 +157,10 @@ public class ajaxServlet extends BaseServlet {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
         String vnp_CreateDate = formatter.format(cld.getTime());
         vnp_Params.put("vnp_CreateDate", vnp_CreateDate);
-        Log.debug( "Using specific bank code: " + bankCode);
         cld.add(Calendar.MINUTE, 15);
         String vnp_ExpireDate = formatter.format(cld.getTime());
         vnp_Params.put("vnp_ExpireDate", vnp_ExpireDate);
-        Log.debug("Payment created at: " + vnp_CreateDate +
-                ", expires at: " + vnp_ExpireDate);
+
         List fieldNames = new ArrayList(vnp_Params.keySet());
         Collections.sort(fieldNames);
         StringBuilder hashData = new StringBuilder();
@@ -213,7 +188,6 @@ public class ajaxServlet extends BaseServlet {
         String vnp_SecureHash = Config.hmacSHA512(Config.secretKey, hashData.toString());
         queryUrl += "&vnp_SecureHash=" + vnp_SecureHash;
         String paymentUrl = Config.vnp_PayUrl + "?" + queryUrl;
-        Log.info( "Redirecting to VNPay payment URL");
         response.sendRedirect(paymentUrl);
         } catch (Exception e) {
             e.printStackTrace();

@@ -13,37 +13,37 @@
     <h2 style="font-size: 24px !important;">Admin Dashboard</h2>
     <ul style="padding-left: 0 !important;">
         <c:if test="${allowedScreens.contains('tkam')}">
-            <li><a href="${pageContext.request.contextPath}/admin/user">Tài khoản Admin</a></li>
+            <li><a  class="${currentPath.contains('/admin/user') ? 'background-active' : ''}" href="${pageContext.request.contextPath}/admin/user">Tài khoản Admin</a></li>
         </c:if>
         <c:if test="${allowedScreens.contains('dh')}">
            <li ><a class="${currentPath.contains('/admin/order') ? 'background-active' : ''}" href="${pageContext.request.contextPath}/admin/order">Đơn hàng</a></li>
         </c:if>
         <c:if test="${allowedScreens.contains('kh')}">
-            <li><a   href="${pageContext.request.contextPath}/admin/customer">Khách hàng</a></li>
+            <li><a  class="${currentPath.contains('/admin/customer') ? 'background-active' : ''}"  href="${pageContext.request.contextPath}/admin/customer">Khách hàng</a></li>
 
         </c:if>
         <c:if test="${allowedScreens.contains('sanpham')}">
-            <li><a href="${pageContext.request.contextPath}/admin/product">Sản phẩm</a></li>
+            <li><a  class="${currentPath.contains('/admin/product') ? 'background-active' : ''}" href="${pageContext.request.contextPath}/admin/product">Sản phẩm</a></li>
 
         </c:if>
         <c:if test="${allowedScreens.contains('nh')}">
-            <li><a href="${pageContext.request.contextPath}/admin/import">Nhập hàng</a></li>
+            <li><a  class="${currentPath.contains('/admin/import') ? 'background-active' : ''}" href="${pageContext.request.contextPath}/admin/import">Nhập hàng</a></li>
 
         </c:if>
         <c:if test="${allowedScreens.contains('lsp')}">
-            <li><a href="${pageContext.request.contextPath}/admin/category">Loại sản phẩm</a></li>
+            <li><a  class="${currentPath.contains('/admin/category') ? 'background-active' : ''}" href="${pageContext.request.contextPath}/admin/category">Loại sản phẩm</a></li>
 
         </c:if>
         <c:if test="${allowedScreens.contains('kho')}">
-            <li><a href="${pageContext.request.contextPath}/admin/stock">Kho hàng</a></li>
+            <li><a  class="${currentPath.contains('/admin/stock') ? 'background-active' : ''}" href="${pageContext.request.contextPath}/admin/stock">Kho hàng</a></li>
 
         </c:if>
         <c:if test="${allowedScreens.contains('mh')}">
-            <li><a href="${pageContext.request.contextPath}/admin/screen">Màn hình</a></li>
+            <li><a  class="${currentPath.contains('/admin/screen') ? 'background-active' : ''}" href="${pageContext.request.contextPath}/admin/screen">Màn hình</a></li>
 
         </c:if>
         <c:if test="${allowedScreens.contains('quyen')}">
-            <li><a href="${pageContext.request.contextPath}/admin/rights">Quyền</a></li>
+            <li><a  class="${currentPath.contains('/admin/rights') ? 'background-active' : ''}" href="${pageContext.request.contextPath}/admin/rights">Quyền</a></li>
 
         </c:if>
 

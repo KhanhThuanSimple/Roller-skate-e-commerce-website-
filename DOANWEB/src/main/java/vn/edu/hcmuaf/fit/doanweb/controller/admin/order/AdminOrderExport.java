@@ -1,19 +1,18 @@
-package vn.edu.hcmuaf.fit.doanweb.controller.admin.importOrder;
+package vn.edu.hcmuaf.fit.doanweb.controller.admin.order;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.ImportOrders;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Stock;
-import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 import vn.edu.hcmuaf.fit.doanweb.service.ImportService;
 import vn.edu.hcmuaf.fit.doanweb.service.StockService;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "AdminImportDeleteController", value = "/admin/import/delete")
-public class AdminImportDeleteController extends HttpServlet {
+@WebServlet(name = "AdminOrderExport", value = "/admin/order/export")
+public class AdminOrderExport extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,23 +20,12 @@ public class AdminImportDeleteController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ImportService importService = new ImportService();
-        int uid= Integer.parseInt(request.getParameter("uid"));
+        StockService stockService = new StockService(); //
+        int id= Integer.parseInt(request.getParameter("id"));
 
         try {
-            ImportOrders importOrders = importService.findById(uid);
-
-            boolean rs = importService.deleteImport(uid);
-            if(rs) {
-                if(importOrders!=null){
-                    StockService stockService = new StockService();
-                    Stock stock = stockService.findProduct(importOrders.getProduct_id());
-
-                    if(stock!=null){
-                        rs =stockService.updateStock(stock.getId(),-1*importOrders.getQuantity());
-                    }
-                }
-
+            if(id>0) {
+                stockService.exportStockByOrder(id);
                 request.setAttribute("message", "Xóa thành công!");
             }else{
                 request.setAttribute("message", "Xóa không thành công!");
@@ -56,5 +44,4 @@ public class AdminImportDeleteController extends HttpServlet {
 
 
 }
-
 

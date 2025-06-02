@@ -1,6 +1,5 @@
 package vn.edu.hcmuaf.fit.doanweb.dao.order;
 
-
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
 import vn.edu.hcmuaf.fit.doanweb.log.Log;
@@ -11,9 +10,9 @@ import java.util.ArrayList;
 public class OderDao {
 
     public int insertOrder(Order order) throws SQLException {
-        String sql = "INSERT INTO orders (user_id, province, district, ward, address,name, phone, note, " +
+        String sql = "INSERT INTO orders (user_id, province, district, ward, address, name, phone, note, " +
                 "total_amount, payment_method, status, discount_code, shipping_fee, created_at) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, NOW())";
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
         try (Connection conn = DBConnect.getConn();
              PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -32,50 +31,45 @@ public class OderDao {
             pstmt.setString(12, order.getDiscountCode());
             pstmt.setDouble(13, order.getShippingFee());
 
+            Log.info(String.valueOf(order.getUser_id()), "CREATE_ORDER",
+                    String.format("Đang lưu đơn hàng: user_id=%d, tên=%s, tổng tiền=%.2f, mã giảm=%s",
+                            order.getUser_id(), order.getName(), order.getTotalAmount(), order.getDiscountCode()),
+                    "system");
+
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows == 0) {
+                Log.error(String.valueOf(order.getUser_id()), "CREATE_ORDER", "Tạo đơn hàng thất bại: không có dòng nào được thêm", "system");
                 throw new SQLException("Creating order failed, no rows affected.");
             }
 
-            // Lấy ID của đơn hàng vừa tạo
             try (ResultSet rs = pstmt.getGeneratedKeys()) {
                 if (rs.next()) {
-                    int orderId = rs.getInt(1);  // Lấy ID của đơn hàng vừa được tạo
-                    order.setId(orderId);  // Gán lại ID cho đối tượng Order
+                    int orderId = rs.getInt(1);
+                    order.setId(orderId);
+                    Log.info(String.valueOf(order.getUser_id()), "CREATE_ORDER",
+                            String.format("Đơn hàng được tạo thành công! Mã đơn: %d", orderId),
+                            "system");
                     return orderId;
                 } else {
+                    Log.error(String.valueOf(order.getUser_id()), "CREATE_ORDER", "Tạo đơn hàng thất bại: không nhận được ID", "system");
                     throw new SQLException("Creating order failed, no ID obtained.");
                 }
             }
-        }
-    }
 
-
-    private double calculateDiscount(String discountCode) {
-        // Logic để kiểm tra mã giảm giá và tính toán
-        if ("discount10".equalsIgnoreCase(discountCode)) {
-            return 0.1; // Giảm 10
+        } catch (SQLException e) {
+            Log.error(String.valueOf(order.getUser_id()), "CREATE_ORDER", "Lỗi khi tạo đơn hàng: " + e.getMessage(), "system", e);
+            throw e;
         }
-        if ("discount20".equalsIgnoreCase(discountCode)) {
-            return 0.2; // Giảm 10
-        }
-        if ("discount50".equalsIgnoreCase(discountCode)) {
-            return 0.5; // Giảm 10
-        }
-        return 0.0; // Không có giảm giá
     }
 
     public ArrayList<Order> getListOrder() {
-        // Truy vấn SQL để lấy danh sách đơn hàng
-        String sql = "SELECT * FROM orders"; // Hoặc thay đổi theo cấu trúc của bảng 'orders'
+        String sql = "SELECT * FROM orders";
         ArrayList<Order> orders = new ArrayList<>();
 
-        // Sử dụng try-with-resources để tự động đóng tài nguyên
         try (Connection conn = DBConnect.getConn();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
-            // Duyệt qua kết quả trả về từ cơ sở dữ liệu
             while (rs.next()) {
                 Order order = new Order();
                 order.setId(rs.getInt("id"));
@@ -93,15 +87,16 @@ public class OderDao {
                 order.setDiscountCode(rs.getString("discount_code"));
                 order.setShippingFee(rs.getDouble("shipping_fee"));
 
-                // Thêm đơn hàng vào danh sách
                 orders.add(order);
             }
 
+            Log.info("system", "GET_ORDERS", "Lấy danh sách đơn hàng thành công. Tổng: " + orders.size(), "system");
+
         } catch (SQLException e) {
-            e.printStackTrace(); // In lỗi ra nếu có
+            Log.error("system", "GET_ORDERS", "Lỗi khi lấy danh sách đơn hàng: " + e.getMessage(), "system", e);
         }
 
-        return orders; // Trả về danh sách các đơn hàng
+        return orders;
     }
     public boolean updateOrderStatus(Order order) {
         String sql = "UPDATE Orders SET status = ? WHERE id = ?";
@@ -124,4 +119,16 @@ public class OderDao {
     }
 
 
+    private double calculateDiscount(String discountCode) {
+        if ("discount10".equalsIgnoreCase(discountCode)) {
+            return 0.1;
+        }
+        if ("discount20".equalsIgnoreCase(discountCode)) {
+            return 0.2;
+        }
+        if ("discount50".equalsIgnoreCase(discountCode)) {
+            return 0.5;
+        }
+        return 0.0;
+    }
 }

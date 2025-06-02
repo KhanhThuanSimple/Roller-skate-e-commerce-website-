@@ -37,13 +37,13 @@ public class RegisterController extends HttpServlet {
             } else {
                 User user = authService.findByUsername(uname);
                 if (user == null) {
-//                    boolean rs = authService.insert(name, uname, pass,address,phone, 0);
-//                    if(rs){
-//                        response.sendRedirect(request.getContextPath() + "/login");
-//
-//                    }else{
+                    boolean rs = authService.insert(name, uname, pass,address,phone, 0);
+                    if(rs){
+                        response.sendRedirect(request.getContextPath() + "/login");
+
+                    }else{
                         request.getRequestDispatcher("register.jsp").forward(request, response);
-//                    }
+                    }
 
                 } else {
                     response.sendRedirect("register.jsp");

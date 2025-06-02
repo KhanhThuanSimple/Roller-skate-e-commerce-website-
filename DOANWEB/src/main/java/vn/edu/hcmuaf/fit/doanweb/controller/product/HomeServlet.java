@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
-import vn.edu.hcmuaf.fit.doanweb.cache.ProductCacheManager;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,7 +17,7 @@ public class HomeServlet extends BaseServlet {
         ProductDao productDao = new ProductDao();
         loadCommonData(request); // Gọi phương thức chung
 
-        List<Product> productNew = ProductCacheManager.getCachedProductNew();
+        List<Product> productNew = productDao.getAllProductnew();
         request.setAttribute("productNew", productNew);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
