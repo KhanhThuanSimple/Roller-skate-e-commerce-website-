@@ -5,6 +5,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
+import vn.edu.hcmuaf.fit.doanweb.log.Log;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,60 +15,67 @@ public class ChangePasswordServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("doPost");
-        User user = (User) request.getSession().getAttribute("auth");
+        Integer userId = (Integer) request.getSession().getAttribute("user");
+        String clientIP = request.getRemoteAddr();
 
+        if (userId == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+        UserDao userDAO = new UserDao();
+        User user = null;
+        try {
+            user = userDAO.getUserByID(userId);
+        } catch (SQLException e) {
+            Log.error("userId=" + userId, "CHANGE_PASSWORD", "Lỗi truy vấn user: " + e.getMessage(), clientIP, e);
+            e.printStackTrace();
+        }
+
+        if (user == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+        String username = user.getUsername(); // giả sử User có phương thức getUsername()
         String oldPassword = request.getParameter("oldPassword");
         String newPassword = request.getParameter("newPassword");
         String confirmPassword = request.getParameter("confirmPassword");
 
-        UserDao userDAO = new UserDao();
-        System.out.println(oldPassword);
-        System.out.println(newPassword);
-        System.out.println(confirmPassword);
-        System.out.println(user);
-        if (user == null) {
-            // Nếu không có userId trong session, chuyển hướng người dùng đến trang đăng nhập
-            response.sendRedirect("login");
+        if (oldPassword == null || newPassword == null || confirmPassword == null) {
+            Log.warn(username, "CHANGE_PASSWORD_ATTEMPT", "Thiếu thông tin đầu vào.", clientIP);
+            request.setAttribute("error", "Vui lòng nhập đầy đủ thông tin.");
+            request.getRequestDispatcher("doimatkhau.jsp").forward(request, response);
             return;
         }
 
-        String message;
-        // Kiểm tra mật khẩu cũ và xác nhận mật khẩu mới
-        if (user != null && user.getPassword().equals(oldPassword) && newPassword.equals(confirmPassword)) {
-            System.out.println("doPost1");
-
-            try {
-            boolean rs = userDAO.updatePassword(user.getId(), newPassword, oldPassword); // Cập nhật mật khẩu mới
-            if(rs) {
-                message = "Đổi mật khẩu thành công.";
-            }else {
-                message = "Mật khẩu cũ không đúng hoặc không khớp mật khẩu mới.";
-            }
-
-            request.setAttribute("message", message);
-
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            message = "Mật khẩu cũ không đúng hoặc không khớp mật khẩu mới.";
+        if (!newPassword.equals(confirmPassword)) {
+            Log.warn(username, "CHANGE_PASSWORD_ATTEMPT", "Mật khẩu mới và xác nhận không khớp.", clientIP);
+            request.setAttribute("error", "Mật khẩu mới và xác nhận mật khẩu không khớp!");
+            request.getRequestDispatcher("doimatkhau.jsp").forward(request, response);
+            return;
         }
 
-        // Thêm thông báo vào request
-        request.setAttribute("message", message);
+        try {
+            boolean isUpdated = userDAO.updatePassword(user.getId(), newPassword, oldPassword);
+            if (isUpdated) {
+                Log.info(username, "CHANGE_PASSWORD_SUCCESS", "Đổi mật khẩu thành công.", clientIP);
+                request.setAttribute("message", "Đổi mật khẩu thành công!");
+            } else {
+                Log.warn(username, "CHANGE_PASSWORD_FAIL", "Mật khẩu cũ không đúng hoặc lỗi cập nhật.", clientIP);
+                request.setAttribute("error", "Mật khẩu cũ không đúng hoặc lỗi cập nhật.");
+            }
+        } catch (SQLException e) {
+            Log.error(username, "CHANGE_PASSWORD", "Lỗi hệ thống khi đổi mật khẩu: " + e.getMessage(), clientIP, e);
+            e.printStackTrace();
+            request.setAttribute("error", "Lỗi hệ thống, vui lòng thử lại sau.");
+        }
 
-        // Chuyển tiếp về trang hiện tại
         request.getRequestDispatcher("doimatkhau.jsp").forward(request, response);
     }
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/doimatkhau.jsp").forward(request, response);
-
+        request.getRequestDispatcher("doimatkhau.jsp").forward(request, response);
     }
 }
-
-

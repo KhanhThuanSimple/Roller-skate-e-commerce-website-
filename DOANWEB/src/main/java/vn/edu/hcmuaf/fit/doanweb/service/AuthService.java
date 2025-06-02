@@ -1,27 +1,28 @@
 package vn.edu.hcmuaf.fit.doanweb.service;
 
-import vn.edu.hcmuaf.fit.doanweb.dao.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
+import vn.edu.hcmuaf.fit.doanweb.dao.ExportOrdersDao;
+import vn.edu.hcmuaf.fit.doanweb.dao.ImportDao;
+import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
+
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
+
+import vn.edu.hcmuaf.fit.doanweb.utils.PasswordUtil;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AuthService {
 
     public User findByUsername(String username) throws SQLException {
         UserDao userDao = new UserDao();
         User user = userDao.findUserByUserName(username);
-        if (user == null) {
-            return null;
-        }
         return user;
     }
 
     public ArrayList<User> getList(int page, int type) throws SQLException {
         UserDao userDao = new UserDao();
-        ArrayList<User> users = userDao.getList(page, type);
-        return users;
+        return userDao.getList(page, type);
     }
 
     public int getPage(int type) throws SQLException {
@@ -39,10 +40,9 @@ public class AuthService {
         return importDao.getPageImport();
     }
 
-
-    public boolean insert(String name, String email, String pass, String address, String phone, int type) throws SQLException {
+    public boolean insert(String name, String email, String hashedPass, String address, String phone, int type) throws SQLException {
         UserDao userDao = new UserDao();
-        return userDao.insertUser(name, email, pass, address, phone, type);
+        return userDao.insertUser(name, email, hashedPass, address, phone, type);
     }
 
     public boolean update(String name, String email, String address, String phone, int type, int id) throws SQLException {
@@ -62,16 +62,13 @@ public class AuthService {
 
     public ArrayList<ExportOrders> getListExport(int page) throws SQLException {
         ExportOrdersDao exportDao = new ExportOrdersDao();
-        ArrayList<ExportOrders> exports = exportDao.getListExport(page);
-        return exports;
+        return exportDao.getListExport(page);
     }
 
     public ArrayList<ImportOrders> getListImport(int page) throws SQLException {
         ImportDao importDao = new ImportDao();
-        ArrayList<ImportOrders> imports = importDao.getListImport(page);
-        return imports;
+        return importDao.getListImport(page);
     }
-
 
     public boolean insertImport(int product_id, double purchase_price, int quantity) throws SQLException {
         ImportDao importDao = new ImportDao();
@@ -88,7 +85,6 @@ public class AuthService {
         return importDao.deleteImport(id);
     }
 
-
     public boolean insertProduct(String name, String img, double price, String title, String description, int cateID, String offer) throws SQLException {
         ProductDao productDao = new ProductDao();
         return productDao.insertProduct(name, img, price, title, description, cateID, offer);
@@ -104,11 +100,4 @@ public class AuthService {
         return productDao.deleteProduct(id);
     }
 
-
-    public boolean checkPassword(String inputPass, String dbPass) {
-        if (inputPass == null || dbPass == null) {
-            return false;
-        }
-        return inputPass.equals(dbPass);
-    }
 }
