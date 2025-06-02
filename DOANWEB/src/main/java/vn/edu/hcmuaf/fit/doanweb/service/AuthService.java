@@ -75,6 +75,7 @@ public class AuthService {
         return importDao.insertImport(product_id, purchase_price, quantity);
     }
 
+
     public boolean updateImport(int product_id, double purchase_price, int quantity, int id) throws SQLException {
         ImportDao importDao = new ImportDao();
         return importDao.updateImport(product_id, purchase_price, quantity, id);
@@ -86,6 +87,7 @@ public class AuthService {
     }
 
     public boolean insertProduct(String name, String img, double price, String title, String description, int cateID, String offer) throws SQLException {
+
         ProductDao productDao = new ProductDao();
         return productDao.insertProduct(name, img, price, title, description, cateID, offer);
     }

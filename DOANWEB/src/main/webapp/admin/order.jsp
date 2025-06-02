@@ -38,7 +38,8 @@
 
                             <th>Phương Thức Thanh Toán</th>
                             <th>Tổng tiền</th>
-                            <th>Status</th>
+                            <th>Trạng thái</th>
+                            <th>Trạng thái xuất kho</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
@@ -53,14 +54,27 @@
                             <td>${order.paymentMethod}</td>
                             <td>${order.totalAmount}</td>
                             <td>${order.status}</td>
+                            <td>${""}</td>
+<%--                            oder.status_export--%>
 
-                            <td>
+                            <td style="display: flex; gap: 10px">
 
                             <form method="post" action="order-detail?pid=${order.id}">
                                 <button style="border:none;background-color: unset" type="submit">
                                     <i class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
                             </form>
+<%--                        test="${order.status_export != 'Đã xuất kho' --%>
+                                <c:if test="${true}">
+                                    <form action="${pageContext.request.contextPath}/admin/order/export?id=${order.id}" method="post"
+                                          style="display:inline;">
+                                        <button  class="button-orange " type="submit" onclick="return confirm('Xác nhận xuất hàng !')"
+                                        >
+                                            Xuất hàng
+                                        </button>
+                                    </form>
+                                </c:if>
+
                             </td>
                         </tr>
                     </c:forEach>
@@ -119,7 +133,7 @@
                                                 })" style="border:none;background-color: unset"><i class="fa-solid fa-pen-to-square" style="flex:1; padding: 10px; cursor: pointer;"></i></button>
 
 
-                                        <c:if test="${permission.delete == 1}">
+                                        <c:if test="${permission.delete == 1  }">
                                             <form action="${pageContext.request.contextPath}/admin/order/delete" method="post" style="display:inline;">
                                                 <input type="hidden" name="uid" value="${orderDetail.id}">
                                                 <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
