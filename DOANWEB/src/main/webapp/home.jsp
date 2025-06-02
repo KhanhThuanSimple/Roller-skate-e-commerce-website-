@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./css/style.css"/>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/sanpham.css">
+
 </head>
 <body>
 <div id="wrapper">
@@ -57,7 +58,7 @@
                                                 <input type="hidden" name="action" value="remove">
                                                 <button type="submit" style="border: none; background: none; cursor: pointer;">
                                                     <!-- Trái tim đầy (đã yêu thích) -->
-                                                    <i class="fa-solid fa-heart" style="color: #e74c3c; font-size: 20px;padding: 20px;margin-left: 145px"></i>
+                                                    <i class="fa-solid fa-heart" style="color: #e74c3c !important; font-size: 20px; padding: 20px; margin-left: 145px"></i>
                                                 </button>
                                             </form>
                                         </c:when>

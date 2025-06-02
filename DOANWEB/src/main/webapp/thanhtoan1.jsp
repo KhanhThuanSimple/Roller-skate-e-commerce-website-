@@ -173,6 +173,7 @@
                     <div class="summary-card sticky-top" style="top: 20px;">
                         <h5 class="summary-title"><i class="bi bi-receipt"></i> Tóm tắt đơn hàng</h5>
 
+
                         <div class="summary-item">
                             <span>Tạm tính:</span>
                             <span><f:formatNumber value="${sessionScope.cart.getTotal()}" type="currency" currencySymbol="đ"/></span>

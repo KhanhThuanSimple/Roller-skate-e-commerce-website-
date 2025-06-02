@@ -3,7 +3,7 @@ package vn.edu.hcmuaf.fit.doanweb.controller.login;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import vn.edu.hcmuaf.fit.doanweb.dao.login.GoogleAccount;
+import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleAccount;
 
 import java.io.IOException;
 

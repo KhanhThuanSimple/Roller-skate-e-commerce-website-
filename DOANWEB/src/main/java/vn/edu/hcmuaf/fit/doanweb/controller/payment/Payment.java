@@ -7,15 +7,18 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.edu.hcmuaf.fit.doanweb.controller.product.BaseServlet;
+import vn.edu.hcmuaf.fit.doanweb.dao.coupon.CouponDAO;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartP;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartProduct;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.coupon.Coupon;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderItems;
 import vn.edu.hcmuaf.fit.doanweb.dao.order.OderDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.order.OrderItemDAO;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @WebServlet(name = "Payment", value = "/checkout")
@@ -27,7 +30,9 @@ public class Payment extends BaseServlet {
         loadCommonData(request); // Gọi phương thức chung
         User user = (User) session.getAttribute("auth");
         CartP cart = (CartP) session.getAttribute("cart");
-
+        CouponDAO couponDAO = new CouponDAO();
+        List<Coupon> couponList = couponDAO.getActiveCoupons();
+        request.setAttribute("availableCoupons", couponList);
         if (user == null) {
             response.sendRedirect("login");
             return;

@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
     <servlet>
-        <servlet-name>Payment1</servlet-name>
-        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.payment.Payment1</servlet-class>
+        <servlet-name>Payment</servlet-name>
+        <servlet-class>vn.edu.hcmuaf.fit.doanweb.controller.payment.Payment</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Payment1</servlet-name>
-        <url-pattern>/Payment1</url-pattern>
+        <servlet-name>Payment</servlet-name>
+        <url-pattern>/checkout</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ajaxServlet</servlet-name>

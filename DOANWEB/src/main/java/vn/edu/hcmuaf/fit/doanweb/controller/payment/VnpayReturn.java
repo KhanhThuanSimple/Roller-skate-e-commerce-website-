@@ -47,7 +47,6 @@ import java.util.*;
                 if (signValue.equalsIgnoreCase(vnp_SecureHash)) {
                     String vnp_ResponseCode = request.getParameter("vnp_ResponseCode");
                     String orderId = request.getParameter("vnp_TxnRef");
-                    Log.info("VNPay Return: orderId=" + orderId + ", responseCode=" + vnp_ResponseCode);
 
                     Order order = new Order();
                     order.setId(Integer.parseInt(orderId));
@@ -59,9 +58,7 @@ import java.util.*;
                     }
                     try {
                         boolean updated = orderDao.updateOrderStatus(order);
-                        Log.info("Order status updated: " + updated + ", new status: " + order.getStatus() + ", orderId: " + order.getId());
                     } catch (Exception e) {
-                        Log.error("Failed to update order status for orderId: " + order.getId(), e);
                     }
                     // Truyền dữ liệu cần thiết sang JSP
                     request.setAttribute("paymentStatus", order.getStatus());

@@ -7,9 +7,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.edu.hcmuaf.fit.doanweb.controller.product.BaseServlet;
+import vn.edu.hcmuaf.fit.doanweb.dao.coupon.CouponDAO;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartP;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.cart.CartProduct;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.coupon.Coupon;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderItems;
 import vn.edu.hcmuaf.fit.doanweb.dao.order.OderDao;
@@ -24,6 +26,7 @@ import java.util.*;
 @WebServlet(name = "ajaxServlet", value = "/bank-code")
 
 public class ajaxServlet extends BaseServlet {
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

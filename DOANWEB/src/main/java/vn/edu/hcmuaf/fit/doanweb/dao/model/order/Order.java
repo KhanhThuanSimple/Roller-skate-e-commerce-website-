@@ -18,6 +18,46 @@ public class Order {
     private double shippingFee;
     // Thêm getter và setter
 
+    public Order(int id, int user_id, String province, String district, String ward, String address, String name, String phone, String note, double totalAmount, String paymentMethod, String status, String discountCode, double shippingFee) {
+        this.id = id;
+        this.user_id = user_id;
+        this.province = province;
+        this.district = district;
+        this.ward = ward;
+        this.address = address;
+        this.name = name;
+        this.phone = phone;
+        this.note = note;
+        this.totalAmount = totalAmount;
+        this.paymentMethod = paymentMethod;
+        this.status = status;
+        this.discountCode = discountCode;
+        this.shippingFee = shippingFee;
+    }
+
+    public Order() {
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", user_id=" + user_id +
+                ", province='" + province + '\'' +
+                ", district='" + district + '\'' +
+                ", ward='" + ward + '\'' +
+                ", address='" + address + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", note='" + note + '\'' +
+                ", totalAmount=" + totalAmount +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                ", status='" + status + '\'' +
+                ", discountCode='" + discountCode + '\'' +
+                ", shippingFee=" + shippingFee +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
