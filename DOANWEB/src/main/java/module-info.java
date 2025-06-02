@@ -11,7 +11,12 @@ module DOANWEB {
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.databind;
-    requires org.apache.poi.ooxml;
+
+    requires jbcrypt;
+    requires org.json;
+    requires jakarta.mail; // Để sử dụng ObjectMapper
+     requires org.apache.poi.ooxml;
     requires org.apache.logging.log4j; // Để sử dụng ObjectMapper
+
 
 }

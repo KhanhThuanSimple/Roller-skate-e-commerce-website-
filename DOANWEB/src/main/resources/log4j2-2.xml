@@ -4,18 +4,16 @@
         <Console name="LogToConsole" target="SYSTEM_OUT">
             <PatternLayout pattern="[%5level] %d{dd-MM-yyyy HH:mm:ss} [%t] %c{1} - %msg%n" />
         </Console>
-        <File name="LogToFile" fileName="logs/app.xml.log">
-            <PatternLayout pattern="[%5level] %d{dd-MM-yyyy HH:mm:ss} [%t] %c{1} - %msg%n" />
-        </File>
     </Appenders>
 
     <Loggers>
-        <Logger name="webpatin.com" level="debug" additivity="false">
-            <AppenderRef ref="LogToFile"/>
+        <Logger name="org.apache.logging.log4j" level="debug" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        <Logger name="vn.edu.hcmuaf.fit.doanweb" level="debug" additivity="false">
             <AppenderRef ref="LogToConsole"/>
         </Logger>
         <Root level="error">
-            <AppenderRef ref="LogToFile"/>
             <AppenderRef ref="LogToConsole"/>
         </Root>
     </Loggers>

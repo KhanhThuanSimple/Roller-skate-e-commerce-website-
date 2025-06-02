@@ -12,55 +12,48 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Reset Password</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/password.css">
+    <link rel="stylesheet" href="./css/password.css" />
     <script src="./login.js"></script>
 </head>
 
 <body>
 <div id="wrapper"></div>
 
-
-
 <div class="login-container flex-colunm">
-    <img class="img-banner" src="./image/login.jpg">
+    <img class="img-banner" src="./image/login.jpg" alt="banner" />
     <div class="mask"></div>
-    <form action="post" class="flex-colunm">
+    <form action="reset-password" method="post" class="flex-colunm">
         <div class="logo">
-            <img src="./image/logo1.png" alt="logo">
-
+            <img src="./image/logo1.png" alt="logo" />
         </div>
         <div>
             <h2>Nhập lại mật khẩu mới</h2>
         </div>
 
+        <input type="hidden" name="token" value="${param.token != null ? param.token : requestScope.token}" />
+
         <div>
-            <input class="input-common" type="email" placeholder="Mật khẩu mới">
+            <input class="input-common" type="password" name="newPassword" placeholder="Mật khẩu mới" required />
         </div>
         <div>
-            <input class="input-common" type="email" placeholder="Nhập lại mật khẩu mới">
+            <input class="input-common" type="password" name="confirmPassword" placeholder="Nhập lại mật khẩu mới" required />
         </div>
 
         <div class="flex-center">
-
-
-            <button type="button" onclick="window.location.href='login'" class="button-orange">Xác
-                nhận</button>
-
-
+            <button type="submit" class="button-orange">Xác nhận</button>
         </div>
+
         <div class="flex-row">
-
-            <a class="text-link flex-1" href="login"> Trở lại đăng nhập.</a>
-
+            <a class="text-link flex-1" href="login">Trở lại đăng nhập.</a>
         </div>
-
     </form>
+
 </div>
 
 <footer id="footer">
@@ -80,13 +73,11 @@
             <div class="social-link">
                 <p><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></p>
                 <p><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></p>
-                <p><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                </p>
+                <p><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></p>
             </div>
         </div>
     </div>
 </footer>
-</div>
 </body>
 
 </html>

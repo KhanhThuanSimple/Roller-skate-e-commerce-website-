@@ -1,17 +1,23 @@
 package vn.edu.hcmuaf.fit.doanweb.dao.model;
 
-import java.io.Serializable;
+import java.security.Timestamp;
 
-public class User implements Serializable {
+
+public class User {
     public int id;
     private String username;
-
     private String password;
-
-    public String name;
+    private String name;
     private int type;
     private String phone;
     private String address;
+    private String email;
+    private String resetToken;
+    private Timestamp tokenExpiry;
+
+    // Constructors
+
+    public User() {}
 
     public User(int id, String username, String password, String name, int type) {
         this.id = id;
@@ -19,21 +25,51 @@ public class User implements Serializable {
         this.password = password;
         this.name = name;
         this.type = type;
+    }
+
+    public User(int id, String username, String password, String name,
+                int type, String phone, String address, String email) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.type = type;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+    }
+
+    public User(String name, String username, String password, String phone, String address) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
         this.phone = phone;
         this.address = address;
     }
 
-    public User() {
-
-    }
-
     public User(int id, String username, String name, int type, String phone, String address) {
-    }
-
-    public User(String name, String uname, String pass, String phone, String address) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.type = type;
+        this.phone = phone;
+        this.address = address;
     }
 
     public User(String name, String username, String password) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
+
+    // Getters and Setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -56,6 +92,10 @@ public class User implements Serializable {
         return name;
     }
 
+    public String getFullName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -63,28 +103,56 @@ public class User implements Serializable {
     public int getType() {
         return type;
     }
+
     public void setType(int type) {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
     public String getPhone() {
         return phone;
     }
+
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
     public String getAddress() {
         return address;
     }
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public Timestamp getTokenExpiry() {
+        return tokenExpiry;
+    }
+
+    public void setTokenExpiry(Timestamp tokenExpiry) {
+        this.tokenExpiry = tokenExpiry;
+    }
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    // Optional placeholders if needed for future use
+    public void setIdPer(int idPer) {
+        // placeholder
+    }
+
+    public void setNamePer(String perName) {
+        // placeholder
     }
 
     @Override
@@ -92,11 +160,11 @@ public class User implements Serializable {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

@@ -11,6 +11,10 @@ import vn.edu.hcmuaf.fit.doanweb.log.Log;
 
 import java.io.IOException;
 
+/**
+ * Servlet xử lý yêu cầu tính phí vận chuyển dựa trên API Giao Hàng Nhanh (GHN).
+ * URL: /calculateShippingFee
+ */
 @WebServlet("/calculateShippingFee")
 public class ShippingFeeServlet extends HttpServlet {
     // Địa chỉ mặc định của shop
@@ -19,10 +23,21 @@ public class ShippingFeeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            Log.info("Received shipping fee calculation request");
+        // Lấy IP và username cho log
+        String clientIP = request.getRemoteAddr();
+        HttpSession session = request.getSession(false);
+        String username = "Guest";
 
-            // Sử dụng địa chỉ mặc định của shop cho from_district_id và from_w ard_code
+        // Lấy username từ session (giả định auth chứa username)
+        if (session != null) {
+            Object auth = session.getAttribute("auth");
+            username = (auth instanceof String) ? (String) auth : "Guest";
+        }
+
+        try {
+            Log.info(username, "CALCULATE_SHIPPING", "Received shipping fee calculation request", clientIP);
+
+            // Sử dụng địa chỉ mặc định của shop cho from_district_id và from_ward_code
             int toDistrictId = Integer.parseInt(request.getParameter("toDistrictId"));
             String toWardCode = request.getParameter("toWardCode");
             int weight = Integer.parseInt(request.getParameter("weight"));
@@ -40,15 +55,13 @@ public class ShippingFeeServlet extends HttpServlet {
             feeRequest.setWidth(width);
             feeRequest.setHeight(height);
             feeRequest.setInsurance_value(0);
-//            feeRequest.setService_id(53321);  // ID dịch vụ tiêu chuẩn của GHN
-            feeRequest.setService_id(53320);  // ID dịch vụ tiêu chuẩn của GHN
+            feeRequest.setService_id(53320); // ID dịch vụ tiêu chuẩn của GHN
             feeRequest.setService_type_id(2); // Loại dịch vụ (2: Thường)
 
-            Log.info("Shipping parameters: FromDistrict=" + SHOP_DISTRICT_ID +
-                    ", FromWard=" + SHOP_WARD_CODE +
-                    ", ToDistrict=" + toDistrictId +
-                    ", ToWard=" + toWardCode +
-                    ", Weight=" + weight + "g");
+            Log.info(username, "CALCULATE_SHIPPING",
+                    String.format("Shipping parameters: FromDistrict=%d, FromWard=%s, ToDistrict=%d, ToWard=%s, Weight=%dg",
+                            SHOP_DISTRICT_ID, SHOP_WARD_CODE, toDistrictId, toWardCode, weight),
+                    clientIP);
 
             ShippingFeeResponse feeResponse = GHNApiClient.calculateShippingFee(feeRequest);
 
@@ -56,12 +69,20 @@ public class ShippingFeeServlet extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(new Gson().toJson(feeResponse));
 
-            Log.info("Shipping fee calculation completed successfully");
+            Log.info(username, "CALCULATE_SHIPPING", "Shipping fee calculation completed successfully", clientIP);
 
         } catch (Exception e) {
-            Log.error("Error calculating shipping fee: " + e.getMessage());
+            Log.error(username, "CALCULATE_SHIPPING", "Error calculating shipping fee: " + e.getMessage(), clientIP, e);
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            response.getWriter().write("{\"error\": \"" + e.getMessage() + "\"}");
+            response.getWriter().write("{\"error\": \"" + escapeJson(e.getMessage()) + "\"}");
         }
+    }
+
+    /**
+     * Thoát các ký tự đặc biệt trong JSON để tránh lỗi.
+     */
+    private String escapeJson(String input) {
+        if (input == null) return "";
+        return input.replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r");
     }
 }
