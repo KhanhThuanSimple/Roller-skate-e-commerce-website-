@@ -6,6 +6,7 @@ import jakarta.servlet.http.*;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 import vn.edu.hcmuaf.fit.doanweb.log.Log;
+import vn.edu.hcmuaf.fit.doanweb.utils.PasswordUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,6 +14,8 @@ import java.util.concurrent.CompletableFuture;
 
 @WebServlet(name = "LoginController", value = "/login")
 public class LoginController extends HttpServlet {
+
+    private final AuthService authService = new AuthService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,17 +46,26 @@ public class LoginController extends HttpServlet {
             return;
         }
 
-        AuthService authService = new AuthService();
         try {
             User user = authService.findByUsername(username);
-            if (user == null || !vn.edu.hcmuaf.fit.doanweb.utils.PasswordUtil.checkPassword(password, user.getPassword())) {
+            if (user == null || !PasswordUtil.checkPassword(password, user.getPassword())) {
                 Log.warn(username, "LOGIN_ATTEMPT", "Tên đăng nhập hoặc mật khẩu không đúng.", clientIP);
                 request.setAttribute("error", "Tên đăng nhập hoặc mật khẩu không đúng.");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
             }
 
-            // Phần tạo OTP, gửi mail và xử lý session giữ nguyên nhé
+            // Nếu mật khẩu chưa băm, thì băm và cập nhật lại DB
+            if (user.getPassword() != null &&
+                    !(user.getPassword().startsWith("$2a$") ||
+                            user.getPassword().startsWith("$2b$") ||
+                            user.getPassword().startsWith("$2y$"))) {
+                String hashed = PasswordUtil.hashPassword(password);
+                authService.updatePassword(user.getId(), hashed);
+                user.setPassword(hashed);
+            }
+
+            // Tạo OTP và gửi email
             String otp = generateOtp();
 
             HttpSession session = request.getSession(true);
@@ -92,5 +104,4 @@ public class LoginController extends HttpServlet {
         int otp = (int)(Math.random() * 900000) + 100000; // 6 chữ số
         return String.valueOf(otp);
     }
-
 }
