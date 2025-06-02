@@ -19,11 +19,13 @@ public class ApplyCouponServlet extends HttpServlet {
     CouponDAO couponDAO = new CouponDAO();
 
 
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    List<Coupon> availableCoupons = couponDAO.getActiveCoupons();
-    request.setAttribute("availableCoupons", availableCoupons);
-    request.getRequestDispatcher("/thanhtoan1.jsp").forward(request, response);
-}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Coupon> couponList = couponDAO.getActiveCoupons();
+        System.out.println("Coupons size: " + (couponList == null ? "null" : couponList.size()));
+        request.setAttribute("availableCoupons", couponList);
+        request.getRequestDispatcher("/thanhtoan1.jsp").forward(request, response);
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String code = request.getParameter("code");
         BigDecimal orderTotal = new BigDecimal(request.getParameter("total"));

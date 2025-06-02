@@ -133,16 +133,10 @@ public class CouponDAO {
     public static void main(String[] args) {
         CouponDAO dao = new CouponDAO();
         List<Coupon> coupons = dao.getActiveCoupons();
-        System.out.println("Coupons loaded: " + coupons.size());
-
-        for (Coupon coupon : coupons) {
-            // Ví dụ: in thông tin mã giảm giá
-            System.out.println("Code: " + coupon.getCouponCode());
-            System.out.println("Type: " + coupon.getDiscountType());
-            System.out.println("Value: " + coupon.getDiscountValue());
-            System.out.println("Min Order: " + coupon.getMinOrderAmount());
-            System.out.println("Status: " + coupon.getStatus());
-            System.out.println("------------------------");
+        System.out.println("Coupons: " + coupons);
+        for (Coupon c : coupons) {
+            System.out.println(c.getCouponCode());
         }
     }
+
 }
