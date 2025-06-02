@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.doanweb.dao.model;
 
 import java.security.Timestamp;
 
+
 public class User {
     public int id;
     private String username;

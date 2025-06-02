@@ -10,6 +10,8 @@ import vn.edu.hcmuaf.fit.doanweb.utils.PasswordUtil;
 import java.sql.*;
 import java.util.ArrayList;
 
+import static java.sql.DriverManager.getConnection;
+
 public class UserDao {
 
     public int limit = 10;
@@ -370,4 +372,34 @@ public class UserDao {
         }
         return null;
     }
+
+    public User findUserByEmail(String email) throws SQLException {
+        String sql = "SELECT * FROM user WHERE email = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    User user = new User();
+                    user.setId(rs.getInt("id"));
+                    user.setUsername(rs.getString("username"));
+                    user.setPassword(rs.getString("password"));
+                    user.setName(rs.getString("name"));
+                    user.setEmail(rs.getString("email"));
+                    user.setPhone(rs.getString("phone"));
+                    user.setAddress(rs.getString("address"));
+                    user.setType(rs.getInt("type"));
+                    // Gán các trường còn lại nếu có
+                    return user;
+                }
+            }
+        }
+        return null; // không tìm thấy user
+    }
+
+    private Connection getConnection() throws SQLException {
+        return DBConnect.getConn();
+    }
+
+
 }

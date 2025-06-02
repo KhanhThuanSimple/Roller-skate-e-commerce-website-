@@ -100,4 +100,12 @@ public class AuthService {
         return productDao.deleteProduct(id);
     }
 
+    public User findByEmail(String email) throws SQLException {
+        UserDao userDao = new UserDao();
+        return userDao.findUserByEmail(email);
+    }
+
+
+    public void createUser(User user) {
+    }
 }

@@ -47,7 +47,13 @@ public class Add extends HttpServlet {
         if (referer == null || referer.isEmpty()) {
             referer = "product";
         }
-        response.sendRedirect(referer + "?addCart=ok");
+
+        // Nếu đã có tham số ?, nối bằng &, ngược lại nối bằng ?
+        if (referer.contains("?")) {
+            response.sendRedirect(referer + "&addCart=ok");
+        } else {
+            response.sendRedirect(referer + "?addCart=ok");
+        }
     }
 
     @Override

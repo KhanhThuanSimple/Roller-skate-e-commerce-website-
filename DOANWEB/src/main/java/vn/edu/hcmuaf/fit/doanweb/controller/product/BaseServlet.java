@@ -1,33 +1,44 @@
 package vn.edu.hcmuaf.fit.doanweb.controller.product;
 
-import jakarta.servlet.http.HttpServlet; // Để tạo lớp servlet
-import jakarta.servlet.http.HttpServletRequest; // Để xử lý yêu cầu HTTP
-import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao; // Để sử dụng ProductDao
-import vn.edu.hcmuaf.fit.doanweb.dao.model.Category; // Để sử dụng mô hình Category
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.Category;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
 
-import java.util.List; // Để sử dụng danh sách
+import java.util.List;
+
 public class BaseServlet extends HttpServlet {
+
     protected void loadCommonData(HttpServletRequest request) {
         ProductDao productDao = new ProductDao();
         List<Category> listc = productDao.getAllCategory();
         request.setAttribute("listc", listc);
     }
+
     protected void handlePaging(HttpServletRequest request, ProductDao dao) {
         String indexPage = request.getParameter("index");
-        if (indexPage == null) {
-            indexPage = "1"; // Mặc định trang 1 nếu không có tham số
+        int index = 1; // Mặc định trang 1
+        if (indexPage != null) {
+            try {
+                index = Integer.parseInt(indexPage);
+                if (index < 1) {
+                    index = 1; // Không cho index âm hoặc 0
+                }
+            } catch (NumberFormatException e) {
+                index = 1; // Nếu lỗi parse, đặt mặc định 1
+            }
         }
-        int index = Integer.parseInt(indexPage);
+
         int count = dao.getTotalProduct();
-        int endPage = count / 20; // Mỗi trang hiển thị 20 sản phẩm
+        int endPage = count / 20;
         if (count % 20 != 0) {
             endPage++;
         }
-        List<Product> list = dao.pagingProduct(index); // Lấy danh sách sản phẩm theo trang
-        request.setAttribute("products", list);
-        request.setAttribute("endP", endPage); // Tổng số trang
-        request.setAttribute("tag", index); // Trang hiện tại
-    }
 
+        List<Product> list = dao.pagingProduct(index);
+        request.setAttribute("products", list);
+        request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
+    }
 }
