@@ -5,10 +5,13 @@ import vn.edu.hcmuaf.fit.doanweb.dao.ExportOrdersDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.ImportDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 
+import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
 
 import vn.edu.hcmuaf.fit.doanweb.utils.PasswordUtil;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -110,4 +113,19 @@ public class AuthService {
 
     public void createUser(User user) {
     }
-}
+
+    // Hàm cập nhật mật khẩu mới (đã hash sẵn), không kiểm tra mật khẩu cũ
+    public boolean updatePassword(int id, String hashed) throws SQLException {
+        String updateSql = "UPDATE user SET password = ? WHERE id = ?";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
+            updateStmt.setString(1, hashed);
+            updateStmt.setInt(2, id);
+            return updateStmt.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new RuntimeException("Lỗi khi cập nhật mật khẩu", e);
+        }
+    }
+
+
+    }
