@@ -36,6 +36,8 @@
             <h2>Nhập lại mật khẩu mới</h2>
         </div>
 
+        <input type="hidden" name="token" value="${param.token != null ? param.token : requestScope.token}" />
+
         <div>
             <input class="input-common" type="password" name="newPassword" placeholder="Mật khẩu mới" required />
         </div>
@@ -51,6 +53,7 @@
             <a class="text-link flex-1" href="login">Trở lại đăng nhập.</a>
         </div>
     </form>
+
 </div>
 
 <footer id="footer">

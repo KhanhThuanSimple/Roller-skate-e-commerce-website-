@@ -5,81 +5,14 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đổi Mật Khẩu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/canhan.css" />
-    <style>
-        /* Tối ưu thêm cho nút Lưu nếu css doimatkhau.css chưa đủ */
-        .nutLuu {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 25px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 15px;
-            display: inline-block;
-        }
-        .nutLuu:hover {
-            background-color: #0056b3;
-        }
-
-        /* Một số chỉnh form đẹp hơn */
-        .mkGroup {
-            margin-bottom: 15px;
-        }
-        .mkGroup label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #333;
-        }
-        .input-wrapper input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1.5px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        .input-wrapper input:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-        .error-message, .success-message {
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 8px 12px;
-            border-radius: 4px;
-            margin-top: 12px;
-        }
-        .error-message {
-            background-color: #f8d7da;
-            color: #842029;
-        }
-        .success-message {
-            background-color: #d1e7dd;
-            color: #0f5132;
-        }
-
-        /* Responsive nhỏ hơn */
-        @media (max-width: 600px) {
-            .right-cn, .left-cn {
-                width: 100%;
-            }
-            .flex-container {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/doimatkhau.css" /> <!-- giữ css đổi mật khẩu -->
 </head>
 
 <body>
@@ -88,9 +21,9 @@
 
     <main class="container">
         <div id="bodyCN">
-            <div class="flex-container" style="gap:20px;">
+            <div class="flex-container">
                 <!-- Sidebar giống canhan.jsp -->
-                <div class="left-cn" style="min-width: 220px;">
+                <div class="left-cn">
                     <h3><i class="fas fa-user-cog"></i> QUẢN LÝ TÀI KHOẢN</h3>
                     <ul>
                         <li><a href="canhan"><i class="fas fa-user"></i> Hồ Sơ Cá Nhân</a></li>
@@ -110,15 +43,15 @@
                 </div>
 
                 <!-- Nội dung chính -->
-                <div class="right-cn" style="flex-grow:1; max-width: 600px;">
+                <div class="right-cn">
                     <div class="head-rightcn">
                         <p>Đổi mật khẩu</p>
                         <div class="pmk">Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu với người khác</div>
-                        <hr class="nganCachHead" />
+                        <hr class="nganCachHead">
                     </div>
 
                     <div class="bot-rightcn">
-                        <form method="post" action="changePassword" novalidate>
+                        <form method="post" action="changePassword">
                             <div class="mkGroup">
                                 <label for="matKhauCu">Mật khẩu cũ</label>
                                 <div class="input-wrapper">
@@ -139,11 +72,15 @@
                             </div>
 
                             <c:if test="${not empty error}">
-                                <div class="error-message">${error}</div>
+                                <div class="error-message" style="color: red; margin: 10px 0;">
+                                        ${error}
+                                </div>
                             </c:if>
 
                             <c:if test="${not empty success}">
-                                <div class="success-message">${success}</div>
+                                <div class="success-message" style="color: green; margin: 10px 0;">
+                                        ${success}
+                                </div>
                             </c:if>
 
                             <button class="nutLuu" type="submit">Lưu</button>

@@ -5,6 +5,7 @@ import vn.edu.hcmuaf.fit.doanweb.dao.model.ScreenPermissions;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import org.mindrot.jbcrypt.BCrypt;
+import vn.edu.hcmuaf.fit.doanweb.utils.PasswordUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -258,7 +259,8 @@ public class UserDao {
         String updateSql = "UPDATE user SET password = ? WHERE id = ?";
         try (Connection conn = DBConnect.getConn();
              PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
-            String hashedNew = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            String hashedNew = PasswordUtil.hashPassword(newPassword);
+
             updateStmt.setString(1, hashedNew);
             updateStmt.setInt(2, id);
             return updateStmt.executeUpdate() == 1;
