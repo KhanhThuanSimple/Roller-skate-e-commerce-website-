@@ -144,7 +144,7 @@
             </div>
 
             <div class="text-center">
-                <a href="home.jsp" class="btn btn-home">
+                <a href="home" class="btn btn-home">
                     <i class="fas fa-home me-2"></i> Trang chủ
                 </a>
             </div>

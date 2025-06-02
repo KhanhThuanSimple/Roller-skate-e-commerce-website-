@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.fit.doanweb.dao.order;
 
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
+import vn.edu.hcmuaf.fit.doanweb.log.Log;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -103,19 +104,24 @@ public class OderDao {
         return orders; // Trả về danh sách các đơn hàng
     }
     public boolean updateOrderStatus(Order order) {
-        String sql = "UPDATE [dbo].[Orders]\n"
-                + "   SET [Status] = ?\n"
-                + " WHERE Id = ?";
-        try {
-            Statement statement = DBConnect.getStatement();
-            PreparedStatement st = statement.getConnection().prepareStatement(sql);
+        String sql = "UPDATE Orders SET status = ? WHERE id = ?";
+        try (
+                Connection conn = DBConnect.getConn();
+                PreparedStatement st = conn.prepareStatement(sql)
+        ) {
             st.setString(1, order.getStatus());
             st.setInt(2, order.getId());
-            return st.executeUpdate() > 0;
+
+            int rowsUpdated = st.executeUpdate();
+            Log.info("updateOrderStatus - rows affected: "  + ", orderId: " + order.getId() + ", status: " + order.getStatus());
+
+            return rowsUpdated > 0;
         } catch (SQLException ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
         }
         return false;
+
     }
+
 
 }
