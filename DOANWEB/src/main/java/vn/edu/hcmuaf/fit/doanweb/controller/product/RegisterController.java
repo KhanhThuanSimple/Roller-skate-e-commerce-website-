@@ -34,25 +34,34 @@ public class RegisterController extends HttpServlet {
                 Log.warn(uname, "REGISTER", "Mật khẩu không khớp", clientIP);
                 request.setAttribute("errorMessage", "Mật khẩu không khớp!");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
-            } else {
-                User user = authService.findByUsername(uname);
-                if (user == null) {
-                    boolean rs = authService.insert(name, uname, pass, address, phone, 0);
-                    if (rs) {
-                        Log.info(uname, "REGISTER", "Đăng ký thành công", clientIP);
-                        response.sendRedirect(request.getContextPath() + "/login");
-                    } else {
-                        Log.warn(uname, "REGISTER", "Lỗi khi thêm người dùng vào database", clientIP);
-                        request.getRequestDispatcher("register.jsp").forward(request, response);
-                    }
-                } else {
-                    Log.warn(uname, "REGISTER", "Tài khoản đã tồn tại", clientIP);
-                    response.sendRedirect("register.jsp");
-                }
+                return;
             }
+
+            User user = authService.findByUsername(uname);
+            if (user != null) {
+                Log.warn(uname, "REGISTER", "Tài khoản đã tồn tại", clientIP);
+                request.setAttribute("errorMessage", "Tài khoản đã tồn tại!");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+                return;
+            }
+
+            // Hash mật khẩu trước khi lưu
+            String hashedPass = vn.edu.hcmuaf.fit.doanweb.utils.PasswordUtil.hashPassword(pass);
+
+            boolean rs = authService.insert(name, uname, hashedPass, address, phone, 0);
+            if (rs) {
+                Log.info(uname, "REGISTER", "Đăng ký thành công", clientIP);
+                response.sendRedirect(request.getContextPath() + "/login");
+            } else {
+                Log.warn(uname, "REGISTER", "Lỗi khi thêm người dùng vào database", clientIP);
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+            }
+
         } catch (Exception e) {
             Log.error("Guest", "REGISTER", "Lỗi khi đăng ký", clientIP, e);
             e.printStackTrace();
+            request.setAttribute("errorMessage", "Lỗi hệ thống, vui lòng thử lại!");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
         }
     }
 }

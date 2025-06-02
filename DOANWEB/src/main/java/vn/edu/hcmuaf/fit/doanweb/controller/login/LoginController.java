@@ -46,13 +46,14 @@ public class LoginController extends HttpServlet {
         AuthService authService = new AuthService();
         try {
             User user = authService.findByUsername(username);
-            if (user == null || !authService.checkPassword(password, user.getPassword())) {
+            if (user == null || !vn.edu.hcmuaf.fit.doanweb.utils.PasswordUtil.checkPassword(password, user.getPassword())) {
                 Log.warn(username, "LOGIN_ATTEMPT", "Tên đăng nhập hoặc mật khẩu không đúng.", clientIP);
                 request.setAttribute("error", "Tên đăng nhập hoặc mật khẩu không đúng.");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
             }
 
+            // Phần tạo OTP, gửi mail và xử lý session giữ nguyên nhé
             String otp = generateOtp();
 
             HttpSession session = request.getSession(true);
@@ -77,7 +78,6 @@ public class LoginController extends HttpServlet {
 
             Log.info(username, "LOGIN_SUCCESS", "Đăng nhập thành công, chờ xác thực OTP", clientIP);
 
-            // Gửi email thành công → quay lại login.jsp và bật modal OTP
             request.setAttribute("otpModal", true);
             request.setAttribute("emailForOtp", user.getEmail());
             request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -87,6 +87,7 @@ public class LoginController extends HttpServlet {
             throw new ServletException("Lỗi hệ thống, vui lòng thử lại sau.");
         }
     }
+
     private String generateOtp() {
         int otp = (int)(Math.random() * 900000) + 100000; // 6 chữ số
         return String.valueOf(otp);

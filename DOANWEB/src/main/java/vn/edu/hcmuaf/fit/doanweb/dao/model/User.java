@@ -1,5 +1,7 @@
 package vn.edu.hcmuaf.fit.doanweb.dao.model;
 
+import java.security.Timestamp;
+
 public class User {
     public int id;
     private String username;
@@ -9,6 +11,8 @@ public class User {
     private String phone;
     private String address;
     private String email;
+    private String resetToken;
+    private Timestamp tokenExpiry;
 
     // Constructors
 
@@ -114,7 +118,21 @@ public class User {
     public String getAddress() {
         return address;
     }
+    public String getResetToken() {
+        return resetToken;
+    }
 
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public Timestamp getTokenExpiry() {
+        return tokenExpiry;
+    }
+
+    public void setTokenExpiry(Timestamp tokenExpiry) {
+        this.tokenExpiry = tokenExpiry;
+    }
     public void setAddress(String address) {
         this.address = address;
     }

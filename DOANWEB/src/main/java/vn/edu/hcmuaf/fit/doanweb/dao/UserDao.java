@@ -173,7 +173,31 @@ public class UserDao {
             throw new RuntimeException(e);
         }
     }
+    public User findByResetToken(String token) throws SQLException {
+        String sql = "SELECT * FROM user WHERE reset_token = ? AND token_expiry > NOW()";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
+            stmt.setString(1, token);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    User user = new User();
+                    user.setId(rs.getInt("id"));
+                    user.setUsername(rs.getString("username"));
+                    user.setPassword(rs.getString("password"));
+                    user.setName(rs.getString("name"));
+                    user.setType(rs.getInt("type"));
+                    user.setPhone(rs.getString("phone_number"));
+                    user.setAddress(rs.getString("address"));
+                    user.setEmail(rs.getString("username"));
+                    return user;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
     public User getUserByID(int id) throws SQLException {
         String sql = "select * from user where id=?";
         try {
@@ -181,8 +205,16 @@ public class UserDao {
             PreparedStatement pre = st.getConnection().prepareStatement(sql);
             pre.setInt(1, id);
             ResultSet rs = pre.executeQuery();
-            while (rs.next()) {
-                return new User(rs.getString("name"), rs.getString("username"), rs.getString("password"));
+            if (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setType(rs.getInt("type"));
+                user.setPhone(rs.getString("phone_number"));
+                user.setAddress(rs.getString("address"));
+                return user;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -191,30 +223,45 @@ public class UserDao {
     }
 
     public boolean updatePassword(int id, String newPassword, String oldPassword) throws SQLException {
-        // Get current password to verify
         String getSql = "SELECT password FROM user WHERE id = ?";
-        try (Connection conn = DBConnect.getConn();
-             PreparedStatement getStmt = conn.prepareStatement(getSql)) {
-            getStmt.setInt(1, id);
-            ResultSet rs = getStmt.executeQuery();
-            if (rs.next()) {
-                String currentHashed = rs.getString("password");
-                if (!BCrypt.checkpw(oldPassword, currentHashed)) {
-                    return false; // Old password không đúng
-                }
-            } else {
-                return false; // User không tồn tại
-            }
-        }
+        String updateSql = "UPDATE user SET password = ? WHERE id = ?";
 
-        // Update mật khẩu mới
+        try (Connection conn = DBConnect.getConn()) {
+            // Lấy mật khẩu đã hash từ DB
+            try (PreparedStatement getStmt = conn.prepareStatement(getSql)) {
+                getStmt.setInt(1, id);
+                try (ResultSet rs = getStmt.executeQuery()) {
+                    if (rs.next()) {
+                        String currentHashed = rs.getString("password");
+                        if (!BCrypt.checkpw(oldPassword, currentHashed)) {
+                            return false; // Mật khẩu cũ không đúng
+                        }
+                    } else {
+                        return false; // User không tồn tại
+                    }
+                }
+            }
+
+            // Băm mật khẩu mới rồi cập nhật
+            String hashedNew = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            try (PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
+                updateStmt.setString(1, hashedNew);
+                updateStmt.setInt(2, id);
+                return updateStmt.executeUpdate() == 1;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Lỗi khi cập nhật mật khẩu", e);
+        }
+    }
+    public boolean updatePasswordById(int id, String newPassword) throws SQLException {
         String updateSql = "UPDATE user SET password = ? WHERE id = ?";
         try (Connection conn = DBConnect.getConn();
-             PreparedStatement pstmt = conn.prepareStatement(updateSql)) {
-            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
-            pstmt.setString(1, hashedPassword);
-            pstmt.setInt(2, id);
-            return pstmt.executeUpdate() == 1;
+             PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
+            String hashedNew = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            updateStmt.setString(1, hashedNew);
+            updateStmt.setInt(2, id);
+            return updateStmt.executeUpdate() == 1;
         }
     }
 
