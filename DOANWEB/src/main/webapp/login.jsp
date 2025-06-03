@@ -105,7 +105,7 @@
         <div class="divider">hoặc</div>
 
         <div class="social-login">
-            <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/DOANWEB/home&response_type=code&client_id=862213844351-dv5kqbmf8vik0mvbkl27lrqgntgevp91.apps.googleusercontent.com&approval_prompt=force"
+            <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/DOANWEB/loginServlet&response_type=code&client_id=862213844351-dv5kqbmf8vik0mvbkl27lrqgntgevp91.apps.googleusercontent.com&approval_prompt=force"
                class="social-btn google-btn">
                 <i class="fab fa-google"></i>
                 <span>Đăng nhập với Google</span>

@@ -20,8 +20,20 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(true); // không tạo mới
+
+        User user = (session != null) ? (User) session.getAttribute("auth") : null;
+
+        if (user != null) {
+            // Người dùng đã đăng nhập, chuyển đến trang chính
+            response.sendRedirect(request.getContextPath() + "/home");
+            return;
+        }
+
+        // Chưa đăng nhập, hiển thị trang login
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
