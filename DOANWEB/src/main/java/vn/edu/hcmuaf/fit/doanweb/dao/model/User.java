@@ -12,8 +12,9 @@ public class User implements Serializable {
     private int type;
     private String phone;
     private String address;
+    private  int idPer;
 
-    public User(int id, String username, String password, String name, int type) {
+    public User(int id, String username, String password, String name, int type, int idPer) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -21,6 +22,7 @@ public class User implements Serializable {
         this.type = type;
         this.phone = phone;
         this.address = address;
+        this.idPer = idPer;
     }
 
     public User() {
@@ -32,9 +34,13 @@ public class User implements Serializable {
 
     public User(String name, String uname, String pass, String phone, String address) {
     }
+    public User(int id, String username,String pass, String name, int type){
+
+    }
 
     public User(String name, String username, String password) {
     }
+    public  User(String name, String username, String pass, String phone,int type) {}
 
     public String getUsername() {
         return username;
@@ -98,5 +104,19 @@ public class User implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    public void setIdPer(int idPer) {
+    }
+
+    public int getIdPer() {
+        return idPer;
+    }
+
+    public void setNamePer(String perName) {
+    }
+
+    public String getFullName() {
+        return  name;
     }
 }

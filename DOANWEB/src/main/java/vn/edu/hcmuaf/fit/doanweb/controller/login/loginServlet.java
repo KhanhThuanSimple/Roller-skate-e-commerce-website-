@@ -3,7 +3,7 @@ package vn.edu.hcmuaf.fit.doanweb.controller.login;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import vn.edu.hcmuaf.fit.doanweb.dao.login.GoogleAccount;
+import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleAccount;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class loginServlet extends HttpServlet {
     String code = request.getParameter("code");
     GoogleLogin gg = new GoogleLogin();
     String accessToken= gg.getToken(code);
-        GoogleAccount acc = gg.getUserInfo(accessToken);
+    GoogleAccount acc = gg.getUserInfo(accessToken);
     System.out.println(acc);
 
     }

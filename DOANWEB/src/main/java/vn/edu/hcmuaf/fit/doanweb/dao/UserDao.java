@@ -8,6 +8,7 @@ import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleAccount;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserDao {
 
@@ -29,6 +30,7 @@ public class UserDao {
                        rs.getString("password"),
                        rs.getString("name"),
                        rs.getInt("type"));
+
            }
 
         }catch (SQLException e) {
@@ -304,6 +306,7 @@ public class UserDao {
                         rs.getString("password"),
                         rs.getString("name"),
                         rs.getInt("type")
+
                 );
             }
         } catch (SQLException e) {

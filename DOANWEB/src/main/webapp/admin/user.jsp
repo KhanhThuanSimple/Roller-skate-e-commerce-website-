@@ -53,7 +53,8 @@
                         <td>${user.password}</td>
                         <td>${user.phone}</td>
                         <td>${user.address}</td>
-                        <td>${user.namePer}</td>
+                        <td>${user.idPer}</td>
+<%--                        <td>${user.namePer}</td>--%>
                         <td>
 
 <%--                            <c:if test="${permission.edit == 1}">--%>
