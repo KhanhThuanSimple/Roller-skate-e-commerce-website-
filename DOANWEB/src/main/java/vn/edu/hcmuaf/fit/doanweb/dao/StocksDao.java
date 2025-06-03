@@ -155,4 +155,21 @@ public class StocksDao {
             throw new RuntimeException(e);
         }
     }
+    public boolean updateStatusOrder(int id, String status) throws SQLException {
+        String sql = "UPDATE orders SET status_export=? WHERE id = ?";
+
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setString(1, status);
+            pre.setInt(2, id);
+
+            int rs = pre.executeUpdate();
+
+            return rs==1;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
