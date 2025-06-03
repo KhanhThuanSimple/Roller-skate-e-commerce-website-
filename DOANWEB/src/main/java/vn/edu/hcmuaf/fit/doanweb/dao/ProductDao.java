@@ -1,7 +1,9 @@
 package vn.edu.hcmuaf.fit.doanweb.dao;
 
+import vn.edu.hcmuaf.fit.doanweb.dao.coupon.CouponDAO;
 import vn.edu.hcmuaf.fit.doanweb.dao.db.DBConnect;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.*;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.coupon.Coupon;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.Order;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderDetail;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.order.OrderItems;
@@ -484,48 +486,62 @@ public class ProductDao {
 
 
     public List<OrderDetail> getOrderDetails(int userId, int orderId) {
-        List<OrderDetail> orders = new ArrayList<>();
-        String query = "SELECT p.id,p.title,oi.quantity,oi.price,o.id,o.name,o.total_amount,o.status,o.payment_method " +
+        List<OrderDetail> orderDetails = new ArrayList<>();
+
+        String query = "SELECT p.img , p.title, oi.quantity, oi.price, " +
+                "o.id AS order_id, o.name AS customer_name, o.phone, o.total_amount, " +
+                "o.status, o.payment_method, o.address, o.province, o.district, o.ward, " +
+                "o.shipping_fee, o.created_at " +
                 "FROM product p " +
                 "JOIN order_items oi ON p.id = oi.product_id " +
                 "JOIN orders o ON oi.order_id = o.id " +
-                "WHERE   o.user_id = ? AND o.id = ?";
+                "WHERE o.user_id = ? AND o.id = ?";
 
-        try (Connection cons = DBConnect.getConn()) {
-            if (cons == null) {
-                // Xử lý khi không thể kết nối
-            }
-            try (PreparedStatement statement = cons.prepareStatement(query)) {
-                statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị userId
-                statement.setInt(2, orderId);
-                try (ResultSet rs = statement.executeQuery()) {
-                    while (rs.next()) {
-                        Order order = new Order();
-                        order.setId(rs.getInt("id"));
-                        order.setPhone(rs.getString("name"));
-                        order.setTotalAmount(rs.getDouble("total_amount"));
-                        order.setPaymentMethod(rs.getString("payment_method"));
-                        order.setStatus(rs.getString("status"));
-                        Product product = new Product();
-                        product.setId(rs.getInt("id")); // Sửa để lấy đúng giá trị từ cột "id" của sản phẩm
-                        product.setTitle(rs.getString("title")); // Lấy tiêu đề sản phẩm
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
 
-                        OrderItems orderItem = new OrderItems();
-                        orderItem.setQuantity(rs.getInt("quantity"));
-                        orderItem.setPrice(rs.getDouble("price"));
+            stmt.setInt(1, userId);
+            stmt.setInt(2, orderId);
 
-                        OrderDetail detail = new OrderDetail(order, product, orderItem);
-                        orders.add(detail);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    // Product
+                    Product product = new Product();
+                    product.setImg(rs.getString("img"));
+                    product.setTitle(rs.getString("title"));
 
-                    }
+                    // OrderItem
+                    OrderItems item = new OrderItems();
+                    item.setQuantity(rs.getInt("quantity"));
+                    item.setPrice(rs.getDouble("price"));
+
+                    // Order
+                    Order order = new Order();
+                    order.setId(rs.getInt("order_id"));
+                    order.setName(rs.getString("customer_name"));
+                    order.setPhone(rs.getString("phone"));
+                    order.setTotalAmount(rs.getDouble("total_amount"));
+                    order.setStatus(rs.getString("status"));
+                    order.setPaymentMethod(rs.getString("payment_method"));
+                    order.setAddress(rs.getString("address"));
+                    order.setProvince(rs.getString("province"));
+                    order.setDistrict(rs.getString("district"));
+                    order.setWard(rs.getString("ward"));
+                    order.setShippingFee(rs.getDouble("shipping_fee"));
+                    order.setCreatedAt(rs.getTimestamp("created_at"));
+
+                    // Gộp vào detail
+                    OrderDetail detail = new OrderDetail(order, product, item);
+                    orderDetails.add(detail);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return orders;
+        return orderDetails;
     }
+
 
     public static double getDiscountValue(String couponCode) {
         double discount = 0.0;
@@ -613,6 +629,7 @@ public class ProductDao {
 
         return products;
     }
+
     public List<Product> getProductsPurchasedNotReviewed(int userId) {
         List<Product> products = new ArrayList<>();
         String sql = "SELECT p.* FROM product p " +
@@ -664,7 +681,6 @@ public class ProductDao {
     }
 
 
-
     public List<Product> getProductsPurchased(int id) {
         return getProductsPurchasedNotReviewed(id);
     }
@@ -702,7 +718,15 @@ public class ProductDao {
     public List<Product> getProductsNotReviewed(int id) {
         return getProductsPurchasedNotReviewed(id);
     }
+
+
+
+    public static void main(String[] args) {
+        ProductDao dao = new ProductDao();
+        List<OrderDetail> coupons = dao.getOrderDetails(1090,96);
+        System.out.println("Coupons: " + coupons);
+        for (OrderDetail c : coupons) {
+            System.out.println(c);
+        }
+    }
 }
-
-
-

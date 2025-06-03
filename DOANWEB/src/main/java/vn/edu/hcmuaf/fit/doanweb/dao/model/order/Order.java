@@ -1,4 +1,6 @@
 package vn.edu.hcmuaf.fit.doanweb.dao.model.order;
+import java.sql.Timestamp; // Thêm import này ở đầu file
+
 
 public class Order {
     private int id;
@@ -16,9 +18,12 @@ public class Order {
     private String status;
     private String discountCode;
     private double shippingFee;
+    private Timestamp createdAt;
+
     // Thêm getter và setter
 
-    public Order(int id, int user_id, String province, String district, String ward, String address, String name, String phone, String note, double totalAmount, String paymentMethod, String status, String discountCode, double shippingFee) {
+
+    public Order(int id, int user_id, String province, String district, String ward, String address, String name, String phone, String note, double totalAmount, String paymentMethod, String status, String discountCode, double shippingFee, Timestamp createdAt) {
         this.id = id;
         this.user_id = user_id;
         this.province = province;
@@ -33,6 +38,7 @@ public class Order {
         this.status = status;
         this.discountCode = discountCode;
         this.shippingFee = shippingFee;
+        this.createdAt = createdAt;
     }
 
     public Order() {
@@ -55,7 +61,16 @@ public class Order {
                 ", status='" + status + '\'' +
                 ", discountCode='" + discountCode + '\'' +
                 ", shippingFee=" + shippingFee +
+                ", createdAt=" + createdAt +
                 '}';
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getName() {
