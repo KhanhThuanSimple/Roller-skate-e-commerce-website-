@@ -43,10 +43,7 @@ public class AuthService {
         return importDao.getPageImport();
     }
 
-    public boolean insert(String name, String email, String hashedPass, String address, String phone, int type) throws SQLException {
-        UserDao userDao = new UserDao();
-        return userDao.insertUser(name, email, hashedPass, address, phone, type);
-    }
+
 
     public boolean update(String name, String email, String address, String phone, int type, int id) throws SQLException {
         UserDao userDao = new UserDao();
@@ -83,6 +80,20 @@ public class AuthService {
         ImportDao importDao = new ImportDao();
         return importDao.updateImport(product_id, purchase_price, quantity, id);
     }
+    public boolean insertUser(String name, String username, String hashedPass, String address, String phone, int type, String googleId) throws SQLException {
+        String sql = "INSERT INTO user (name, username, password, address, phone_number, type, google_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.setString(2, username);
+            ps.setString(3, hashedPass);
+            ps.setString(4, address);
+            ps.setString(5, phone);
+            ps.setInt(6, type);
+            ps.setString(7, googleId);
+            return ps.executeUpdate() == 1;
+        }
+    }
 
     public boolean deleteImport(int id) throws SQLException {
         ImportDao importDao = new ImportDao();
@@ -110,9 +121,22 @@ public class AuthService {
         return userDao.findUserByEmail(email);
     }
 
-
     public void createUser(User user) {
+        UserDao userDao = new UserDao();
+        try {
+            boolean success = userDao.insertUser(user);
+            if (!success) {
+                System.out.println("Insert user failed");
+                // Xử lý thêm nếu cần
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Xử lý lỗi nếu cần
+        }
     }
+
+
+
 
     // Hàm cập nhật mật khẩu mới (đã hash sẵn), không kiểm tra mật khẩu cũ
     public boolean updatePassword(int id, String hashed) throws SQLException {
@@ -127,5 +151,8 @@ public class AuthService {
         }
     }
 
+    public boolean insert(String name, String email, String hashedPass, String address, String phone, int type) throws SQLException {
+        return insertUser(name, email, hashedPass, address, phone, type, "");
+    }
 
 }

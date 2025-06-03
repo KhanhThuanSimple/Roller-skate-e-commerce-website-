@@ -31,7 +31,7 @@
                 <span class="tooltiptext">Giỏ hàng</span>
             </li>
             <li class="tooltip">
-                <a href="canhan" title="Cá nhân"><i class="fa-solid fa-user"></i></a>
+                <a href="information" title="Cá nhân"><i class="fa-solid fa-user"></i></a>
                 <span class="tooltiptext">Cá nhân</span>
             </li>
         </ul>

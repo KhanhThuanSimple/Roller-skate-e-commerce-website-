@@ -1,15 +1,17 @@
 package vn.edu.hcmuaf.fit.doanweb.controller.login;
 
-import com.google.gson.Gson;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.fluent.Request;
-import vn.edu.hcmuaf.fit.doanweb.constant.Iconstant;
-
-import java.io.IOException;
-
 public class GoogleAccount {
-    private String  id, email, name, first_name, given_name, family_name, picture;
-    private boolean verified_email ;
+    private String id;
+    private String email;
+    private String name;
+    private String first_name;
+    private String given_name;
+    private String family_name;
+    private String picture;
+    private boolean verified_email;
+
+    public GoogleAccount() {
+    }
 
     public GoogleAccount(String id, String email, String name, String first_name, String given_name, String family_name, String picture, boolean verified_email) {
         this.id = id;
@@ -22,6 +24,7 @@ public class GoogleAccount {
         this.verified_email = verified_email;
     }
 
+    // Getter và Setter đầy đủ
     public String getId() {
         return id;
     }
@@ -70,20 +73,20 @@ public class GoogleAccount {
         this.family_name = family_name;
     }
 
-    public boolean isVerified_email() {
-        return verified_email;
-    }
-
-    public void setVerified_email(boolean verified_email) {
-        this.verified_email = verified_email;
-    }
-
     public String getPicture() {
         return picture;
     }
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public boolean isVerified_email() {
+        return verified_email;
+    }
+
+    public void setVerified_email(boolean verified_email) {
+        this.verified_email = verified_email;
     }
 
     @Override
@@ -98,17 +101,5 @@ public class GoogleAccount {
                 ", picture='" + picture + '\'' +
                 ", verified_email=" + verified_email +
                 '}';
-    }
-
-    public static GoogleAccount getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
-
-        String link = Iconstant.GOOGLE_LINK_GET_USER_INFO + accessToken;
-
-        String response = Request.Get(link).execute().returnContent().asString();
-
-        GoogleAccount googlePojo = new Gson().fromJson(response, GoogleAccount.class);
-
-        return googlePojo;
-
     }
 }

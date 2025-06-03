@@ -1,7 +1,6 @@
 package vn.edu.hcmuaf.fit.doanweb.dao.model;
 
-import java.security.Timestamp;
-
+import java.sql.Timestamp;
 
 public class User {
     public int id;
@@ -14,21 +13,13 @@ public class User {
     private String email;
     private String resetToken;
     private Timestamp tokenExpiry;
+    private String googleId;
 
     // Constructors
 
     public User() {}
 
-    public User(int id, String username, String password, String name, int type) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.type = type;
-    }
-
-    public User(int id, String username, String password, String name,
-                int type, String phone, String address, String email) {
+    public User(int id, String username, String password, String name, int type, String phone, String address, String email, String resetToken, Timestamp tokenExpiry, String googleId) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -37,32 +28,10 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.email = email;
+        this.resetToken = resetToken;
+        this.tokenExpiry = tokenExpiry;
+        this.googleId = googleId;
     }
-
-    public User(String name, String username, String password, String phone, String address) {
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.address = address;
-    }
-
-    public User(int id, String username, String name, int type, String phone, String address) {
-        this.id = id;
-        this.username = username;
-        this.name = name;
-        this.type = type;
-        this.phone = phone;
-        this.address = address;
-    }
-
-    public User(String name, String username, String password) {
-        this.name = name;
-        this.username = username;
-        this.password = password;
-    }
-
-    // Getters and Setters
 
     public int getId() {
         return id;
@@ -92,10 +61,6 @@ public class User {
         return name;
     }
 
-    public String getFullName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -119,6 +84,19 @@ public class User {
     public String getAddress() {
         return address;
     }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getResetToken() {
         return resetToken;
     }
@@ -134,25 +112,13 @@ public class User {
     public void setTokenExpiry(Timestamp tokenExpiry) {
         this.tokenExpiry = tokenExpiry;
     }
-    public void setAddress(String address) {
-        this.address = address;
+
+    public String getGoogleId() {
+        return googleId;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    // Optional placeholders if needed for future use
-    public void setIdPer(int idPer) {
-        // placeholder
-    }
-
-    public void setNamePer(String perName) {
-        // placeholder
+    public void setGoogleId(String googleId) {
+        this.googleId = googleId;
     }
 
     @Override
@@ -160,11 +126,15 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
+                ", resetToken='" + resetToken + '\'' +
+                ", tokenExpiry=" + tokenExpiry +
+                ", googleId='" + googleId + '\'' +
                 '}';
     }
 }
