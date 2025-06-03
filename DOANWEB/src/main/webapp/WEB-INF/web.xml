@@ -198,7 +198,7 @@
 
     <servlet-mapping>
         <servlet-name>VnpayReturn</servlet-name>
-        <url-pattern>/vnpayReturn</url-pattern>
+        <url-pattern>/vnpay_Return</url-pattern>
     </servlet-mapping>
 
 

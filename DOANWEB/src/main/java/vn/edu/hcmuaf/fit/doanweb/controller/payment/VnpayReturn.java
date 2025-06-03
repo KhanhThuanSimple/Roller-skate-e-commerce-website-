@@ -14,7 +14,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-@WebServlet(name = "VnpayReturn", value = "/vnpayReturn")
+@WebServlet(name = "VnpayReturn", value = "/vnpay_Return")
 
     public class VnpayReturn extends HttpServlet {
         OderDao orderDao = new OderDao();
@@ -64,7 +64,7 @@ import java.util.*;
                     request.setAttribute("paymentStatus", order.getStatus());
                     request.setAttribute("params", new HashMap<>(fields)); // truyền toàn bộ params
 
-                    request.getRequestDispatcher("paymentResult.jsp").forward(request, response);
+                    request.getRequestDispatcher("vnpay_return.jsp").forward(request, response);
                 } else {
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid signature");
                 }

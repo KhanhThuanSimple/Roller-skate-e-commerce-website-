@@ -7,6 +7,7 @@ import vn.edu.hcmuaf.fit.doanweb.log.Log;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class OderDao {
 
@@ -90,6 +91,8 @@ public class OderDao {
         return orders;
     }
     public boolean updateOrderStatus(Order order) {
+        if (order == null || order.getStatus() == null) return false;
+
         String sql = "UPDATE Orders SET status = ? WHERE id = ?";
         try (
                 Connection conn = DBConnect.getConn();
@@ -99,13 +102,12 @@ public class OderDao {
             st.setInt(2, order.getId());
 
             int rowsUpdated = st.executeUpdate();
-
             return rowsUpdated > 0;
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println("Lỗi khi cập nhật trạng thái đơn hàng: " + ex.getMessage());
+            ex.printStackTrace(); // In chi tiết lỗi nếu cần
         }
         return false;
-
     }
 
 
