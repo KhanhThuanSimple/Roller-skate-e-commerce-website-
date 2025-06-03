@@ -4,6 +4,9 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleAccount;
+import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
+import vn.edu.hcmuaf.fit.doanweb.log.Log;
+import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 
 import java.io.IOException;
 
@@ -75,5 +78,4 @@ public class loginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }
-
 

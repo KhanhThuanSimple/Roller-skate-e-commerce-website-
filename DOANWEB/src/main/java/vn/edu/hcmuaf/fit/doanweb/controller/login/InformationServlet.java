@@ -7,6 +7,7 @@ import vn.edu.hcmuaf.fit.doanweb.dao.UserDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "Information", value = "/information")
 public class InformationServlet extends HttpServlet {
@@ -23,16 +24,26 @@ public class InformationServlet extends HttpServlet {
 
         int userId = user.getId(); // Lấy ID từ session
         UserDao userDAO = new UserDao();
-        User fullUser = userDAO.getUserById(userId); // Lấy đầy đủ thông tin từ DB
 
-        request.setAttribute("user", fullUser); // Gửi đến JSP để hiển thị
-        request.getRequestDispatcher("canhan.jsp").forward(request, response);
+        try {
+            User fullUser = userDAO.getUserByID(userId); // Lấy đầy đủ thông tin từ DB
+            request.setAttribute("user", fullUser); // Gửi đến JSP để hiển thị
+            request.getRequestDispatcher("canhan.jsp").forward(request, response);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Có thể trả về trang lỗi hoặc gửi lỗi cho client
+            response.sendError(500, "Lỗi truy vấn dữ liệu: " + e.getMessage());
+        }
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }
+
+
+
+
+
 
 

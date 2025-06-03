@@ -128,10 +128,10 @@ public class AdminProductImportExcelController extends HttpServlet {
                 return String.valueOf(cell.getNumericCellValue());
             case BOOLEAN:
                 return String.valueOf(cell.getBooleanCellValue());
-//            case FORMULA:
-//                FormulaEvaluator evaluator = cell.getSheet().getWorkbook().getCreationHelper().createFormulaEvaluator();
-//                CellValue cellValue = evaluator.evaluate(cell);
-//                return cellValue.formatAsString();
+            case FORMULA:
+                FormulaEvaluator evaluator = cell.getSheet().getWorkbook().getCreationHelper().createFormulaEvaluator();
+               CellValue cellValue = evaluator.evaluate(cell);
+               return cellValue.formatAsString();
             default:
                 return "";
         }

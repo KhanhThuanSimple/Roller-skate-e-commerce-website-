@@ -29,7 +29,10 @@ public class AdminUserListController extends HttpServlet  {
         UserDao userDao = new UserDao();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("auth");
-
+if( user == null ) {
+    response.sendRedirect(request.getContextPath() + "/login");
+    return;
+}
         int page = 1;
         String page_prams= request.getParameter("page");
         try {

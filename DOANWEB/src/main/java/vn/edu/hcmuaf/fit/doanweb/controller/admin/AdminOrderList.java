@@ -31,7 +31,7 @@ public class AdminOrderList extends HttpServlet {
 //            return;
 //        }
         // Lấy danh sách đơn hàng từ DAO
-        List<Order> list = dao.getOrdersWithProducts(0);
+        List<Order> list = dao.getOrdersWithProducts1(0);
         ScreenPermissions permission = null;
         try {
             permission = userDao.getPerUserScreen(user.id, "dh");
@@ -58,4 +58,3 @@ public class AdminOrderList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }
-

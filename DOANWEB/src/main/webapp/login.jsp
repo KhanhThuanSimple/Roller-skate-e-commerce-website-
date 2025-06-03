@@ -123,32 +123,32 @@
     </form>
 </div>
 
-<!-- Modal OTP -->
-<div id="otpModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Nhập mã OTP</h2>
-        <p>Mã OTP đã được gửi đến email của bạn</p>
+<%--<!-- Modal OTP -->--%>
+<%--<div id="otpModal" class="modal">--%>
+<%--    <div class="modal-content">--%>
+<%--        <span class="close">&times;</span>--%>
+<%--        <h2>Nhập mã OTP</h2>--%>
+<%--        <p>Mã OTP đã được gửi đến email của bạn</p>--%>
 
-        <form id="otpForm" method="post" action="verify-otp">
-            <div class="otp-inputs">
-                <input type="text" maxlength="1" pattern="[0-9]" required autofocus />
-                <input type="text" maxlength="1" pattern="[0-9]" required />
-                <input type="text" maxlength="1" pattern="[0-9]" required />
-                <input type="text" maxlength="1" pattern="[0-9]" required />
-                <input type="text" maxlength="1" pattern="[0-9]" required />
-                <input type="text" maxlength="1" pattern="[0-9]" required />
-            </div>
-            <input type="hidden" name="email" id="otpEmail" value="<%=emailOtp%>" />
-            <button type="submit" class="button-orange">Xác nhận</button>
-        </form>
+<%--        <form id="otpForm" method="post" action="verify-otp">--%>
+<%--            <div class="otp-inputs">--%>
+<%--                <input type="text" maxlength="1" pattern="[0-9]" required autofocus />--%>
+<%--                <input type="text" maxlength="1" pattern="[0-9]" required />--%>
+<%--                <input type="text" maxlength="1" pattern="[0-9]" required />--%>
+<%--                <input type="text" maxlength="1" pattern="[0-9]" required />--%>
+<%--                <input type="text" maxlength="1" pattern="[0-9]" required />--%>
+<%--                <input type="text" maxlength="1" pattern="[0-9]" required />--%>
+<%--            </div>--%>
+<%--            <input type="hidden" name="email" id="otpEmail" value="<%=emailOtp%>" />--%>
+<%--            <button type="submit" class="button-orange">Xác nhận</button>--%>
+<%--        </form>--%>
 
-        <div class="resend">
-            <button id="resendOtpBtn" class="text-link">Gửi lại mã OTP</button>
-            <div id="countdown">Bạn có thể gửi lại sau <span id="timer">60</span> giây</div>
-        </div>
-    </div>
-</div>
+<%--        <div class="resend">--%>
+<%--            <button id="resendOtpBtn" class="text-link">Gửi lại mã OTP</button>--%>
+<%--            <div id="countdown">Bạn có thể gửi lại sau <span id="timer">60</span> giây</div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 <footer id="footer">
     <div class="footer-container">
@@ -172,41 +172,41 @@
             }
         });
     });
-
-    // Modal
-    const otpModal = document.getElementById('otpModal');
-    const closeBtn = document.querySelector('.close');
-
-    closeBtn.onclick = function () {
-        otpModal.style.display = 'none';
-    }
-    window.onclick = function (event) {
-        if (event.target === otpModal) {
-            otpModal.style.display = 'none';
-        }
-    }
-
-    // Gửi lại OTP
-    let countdown;
-    const resendBtn = document.getElementById('resendOtpBtn');
-    const countdownEl = document.getElementById('countdown');
-    const timerEl = document.getElementById('timer');
-
-    function startCountdown() {
-        let timeLeft = 60;
-        countdownEl.style.display = 'block';
-        resendBtn.style.display = 'none';
-
-        countdown = setInterval(() => {
-            timeLeft--;
-            timerEl.textContent = timeLeft;
-            if (timeLeft <= 0) {
-                clearInterval(countdown);
-                countdownEl.style.display = 'none';
-                resendBtn.style.display = 'block';
-            }
-        }, 1000);
-    }
+    //
+    // // Modal
+    // const otpModal = document.getElementById('otpModal');
+    // const closeBtn = document.querySelector('.close');
+    //
+    // closeBtn.onclick = function () {
+    //     otpModal.style.display = 'none';
+    // }
+    // window.onclick = function (event) {
+    //     if (event.target === otpModal) {
+    //         otpModal.style.display = 'none';
+    //     }
+    // }
+    //
+    // // Gửi lại OTP
+    // let countdown;
+    // const resendBtn = document.getElementById('resendOtpBtn');
+    // const countdownEl = document.getElementById('countdown');
+    // const timerEl = document.getElementById('timer');
+    //
+    // function startCountdown() {
+    //     let timeLeft = 60;
+    //     countdownEl.style.display = 'block';
+    //     resendBtn.style.display = 'none';
+    //
+    //     countdown = setInterval(() => {
+    //         timeLeft--;
+    //         timerEl.textContent = timeLeft;
+    //         if (timeLeft <= 0) {
+    //             clearInterval(countdown);
+    //             countdownEl.style.display = 'none';
+    //             resendBtn.style.display = 'block';
+    //         }
+    //     }, 1000);
+    // }
 
     resendBtn.addEventListener('click', function () {
         const email = document.getElementById('otpEmail').value;

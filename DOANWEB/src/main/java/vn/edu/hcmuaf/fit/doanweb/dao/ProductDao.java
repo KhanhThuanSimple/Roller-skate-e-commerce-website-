@@ -453,7 +453,8 @@ public class ProductDao {
                 // Xử lý khi không thể kết nối
             }
             try (PreparedStatement statement = cons.prepareStatement(queryOrders)) {
-                statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị userId
+                statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị
+
                 try (ResultSet rs = statement.executeQuery()) {
                     System.out.println(statement);
                     while (rs.next()) {
@@ -474,6 +475,55 @@ public class ProductDao {
                         order.setShippingFee(rs.getDouble("shipping_fee"));
                         // Ví dụ: order.addProduct(product, orderItem);
                         orders.add(order); // Thêm đơn hàng vào danh sách
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orders;
+    }
+    public List<Order> getOrdersWithProducts1(int userId) {
+        List<Order> orders = new ArrayList<>();
+        String queryOrders;
+
+        if (userId == 0) {
+            // Admin: lấy tất cả đơn hàng
+            queryOrders = "SELECT * FROM orders";
+        } else {
+            // Người dùng: lấy đơn hàng theo user_id
+            queryOrders = "SELECT * FROM orders WHERE user_id = ?";
+        }
+
+        try (Connection cons = DBConnect.getConn()) {
+            if (cons == null) {
+                return orders; // hoặc throw lỗi nếu cần
+            }
+
+            try (PreparedStatement statement = userId == 0 ? cons.prepareStatement(queryOrders) : cons.prepareStatement(queryOrders)) {
+                if (userId != 0) {
+                    statement.setInt(1, userId);
+                }
+
+                try (ResultSet rs = statement.executeQuery()) {
+                    while (rs.next()) {
+                        Order order = new Order();
+                        order.setId(rs.getInt("id"));
+                        order.setUser_id(rs.getInt("user_id"));
+                        order.setProvince(rs.getString("province"));
+                        order.setDistrict(rs.getString("district"));
+                        order.setWard(rs.getString("ward"));
+                        order.setAddress(rs.getString("address"));
+                        order.setName(rs.getString("name"));
+                        order.setPhone(rs.getString("phone"));
+                        order.setNote(rs.getString("note"));
+                        order.setTotalAmount(rs.getDouble("total_amount"));
+                        order.setPaymentMethod(rs.getString("payment_method"));
+                        order.setStatus(rs.getString("status"));
+                        order.setDiscountCode(rs.getString("discount_code"));
+                        order.setShippingFee(rs.getDouble("shipping_fee"));
+                        orders.add(order);
                     }
                 }
             }

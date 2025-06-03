@@ -14,12 +14,14 @@ public class User {
     private String resetToken;
     private Timestamp tokenExpiry;
     private String googleId;
+    private int idPer;
+    private int role;
+    private String namePer;
 
-    // Constructors
+    public User() {
+    }
 
-    public User() {}
-
-    public User(int id, String username, String password, String name, int type, String phone, String address, String email, String resetToken, Timestamp tokenExpiry, String googleId) {
+    public User(int id, String username, String password, String name, int type, String phone, String address, String email, String resetToken, Timestamp tokenExpiry, String googleId, int idPer, int role, String namePer) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -31,6 +33,9 @@ public class User {
         this.resetToken = resetToken;
         this.tokenExpiry = tokenExpiry;
         this.googleId = googleId;
+        this.idPer = idPer;
+        this.role = role;
+        this.namePer = namePer;
     }
 
     public int getId() {
@@ -121,6 +126,30 @@ public class User {
         this.googleId = googleId;
     }
 
+    public int getIdPer() {
+        return idPer;
+    }
+
+    public void setIdPer(int idPer) {
+        this.idPer = idPer;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public String getNamePer() {
+        return namePer;
+    }
+
+    public void setNamePer(String namePer) {
+        this.namePer = namePer;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -135,6 +164,9 @@ public class User {
                 ", resetToken='" + resetToken + '\'' +
                 ", tokenExpiry=" + tokenExpiry +
                 ", googleId='" + googleId + '\'' +
+                ", idPer=" + idPer +
+                ", role=" + role +
+                ", namePer='" + namePer + '\'' +
                 '}';
     }
 }

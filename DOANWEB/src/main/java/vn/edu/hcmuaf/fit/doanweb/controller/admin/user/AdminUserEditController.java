@@ -29,7 +29,9 @@ public class AdminUserEditController extends HttpServlet {
             int id=Integer.parseInt(request.getParameter("id"));
             int role= Integer.parseInt(request.getParameter("role"));
 
-            boolean rs = authService.update(name, username, address, phone, role, id);
+//            boolean rs = authService.update(name, username, address, phone, role, id);
+            boolean rs = authService.update(name, username, address, phone, role, id, role);
+
             System.out.println("KQs");
 
             System.out.println(rs);

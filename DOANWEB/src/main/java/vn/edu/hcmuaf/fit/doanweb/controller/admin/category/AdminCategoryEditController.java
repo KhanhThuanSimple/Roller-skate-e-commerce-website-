@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "AdminCategoryEditController", value = "/admin/category/update")
-public class AdminCategoryEditController extends HttpServlet {
+public class   AdminCategoryEditController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

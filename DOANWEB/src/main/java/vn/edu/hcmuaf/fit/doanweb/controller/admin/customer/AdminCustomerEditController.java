@@ -23,13 +23,22 @@ public class AdminCustomerEditController extends HttpServlet {
         AuthService authService = new AuthService();
 
         try{
-            String name=request.getParameter("name");
-            String username=request.getParameter("username");
-            String phone=request.getParameter("phone");
-            String address=request.getParameter("address");
-            int id=Integer.parseInt(request.getParameter("id"));
+//            String name=request.getParameter("name");
+//            String username=request.getParameter("username");
+//            String phone=request.getParameter("phone");
+//            String address=request.getParameter("address");
+//            int id=Integer.parseInt(request.getParameter("id"));
+//
+//            boolean rs = authService.update(name, username, address, phone, 0, id);
+            String name = request.getParameter("name");
+            String username = request.getParameter("username");
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            int id = Integer.parseInt(request.getParameter("id"));
+            int type = 0;  // ví dụ mặc định nếu bạn không lấy từ form
+            int role = 0;  // cũng có thể lấy từ request nếu có
 
-            boolean rs = authService.update(name, username, address, phone, 0, id);
+            boolean rs = authService.update(name, username, address, phone, type, id, role);
 
             System.out.println("KQs");
 
