@@ -39,7 +39,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             // Gửi email
             String resetLink = request.getRequestURL().toString().replace("forgot-password", "forgot-password-new.jsp") + "?token=" + token;
             String subject = "Yêu cầu đặt lại mật khẩu";
-            String content = "Xin chào " + user.getFullName() + ",\n\n"
+            String content = "Xin chào " + user.getUsername() + ",\n\n"
                     + "Bạn đã yêu cầu đặt lại mật khẩu. Nhấp vào liên kết sau để thực hiện:\n"
                     + resetLink + "\n\n"
                     + "Lưu ý: Liên kết sẽ hết hạn sau 15 phút.";

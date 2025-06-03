@@ -13,19 +13,22 @@ public class InformationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("auth");
 
-        User user = (User) request.getSession().getAttribute("auth");
+        if (user == null) {
+            response.sendRedirect("login");
+            return;
+        }
+
+        int userId = user.getId(); // Lấy ID từ session
         UserDao userDAO = new UserDao();
+        User fullUser = userDAO.getUserById(userId); // Lấy đầy đủ thông tin từ DB
 
-//        try {
-//         //   User user = userDao.findUserByUserName(username);
-//
-//            request.setAttribute("user", user);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+        request.setAttribute("user", fullUser); // Gửi đến JSP để hiển thị
         request.getRequestDispatcher("canhan.jsp").forward(request, response);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

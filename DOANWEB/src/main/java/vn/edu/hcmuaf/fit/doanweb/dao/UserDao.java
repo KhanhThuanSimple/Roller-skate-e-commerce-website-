@@ -17,11 +17,13 @@ public class UserDao {
     public int limit = 10;
 
     // ĐĂNG NHẬP
+
     public User login1(String username, String password) throws SQLException {
         String sql = "SELECT * FROM user WHERE username=?";
-        try {
-            Statement st = DBConnect.getStatement();
-            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+        try (
+                Statement st = DBConnect.getStatement();
+                PreparedStatement pre = st.getConnection().prepareStatement(sql);
+        ) {
             pre.setString(1, username);
             ResultSet rs = pre.executeQuery();
             if (rs.next()) {
@@ -30,17 +32,24 @@ public class UserDao {
                     return new User(
                             rs.getInt("id"),
                             rs.getString("username"),
-                            hashedPassword,
+                            rs.getString("password"),
                             rs.getString("name"),
-                            rs.getInt("type")
+                            rs.getInt("type"),
+                            rs.getString("phone_number"),
+                            rs.getString("address"),
+                            rs.getString("username"), // dùng username làm email
+                            rs.getString("reset_token"),
+                            rs.getTimestamp("token_expiry"),
+                            rs.getString("google_id")
                     );
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error during login1", e);
         }
         return null;
     }
+
 
     public User findUserByUserName(String username) throws SQLException {
         String sql = "select * from user where username = ?";
@@ -89,6 +98,7 @@ public class UserDao {
                 user.setType(rs.getInt("type"));
                 user.setPhone(rs.getString("phone_number"));
                 user.setAddress(rs.getString("address"));
+                user.setEmail(rs.getString("username"));
                 users.add(user);
             }
             pstmt.close();
@@ -123,28 +133,29 @@ public class UserDao {
     }
 
     // ĐĂNG KÝ
-    public boolean insertUser(String name, String email, String pass, String address, String phone, int type) throws SQLException {
-        String sql = "insert into user(username,password,name,phone_number,address, type) values(?,?,?,?,?,?)";
-        try {
-            Statement st = DBConnect.getStatement();
-            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+    // Trong UserDao.java
 
-            // Băm mật khẩu bằng BCrypt
-            String hashedPassword = BCrypt.hashpw(pass, BCrypt.gensalt());
+    // Thêm hàm insertUser có googleId
+    public boolean insertUser(User user) throws SQLException {
+        String sql = "INSERT INTO user (name, username, password, address, phone_number, type, google_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            pre.setString(1, email);
-            pre.setString(2, hashedPassword);
-            pre.setString(3, name);
-            pre.setString(4, phone);
-            pre.setString(5, address);
-            pre.setInt(6, type);
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getUsername());
+            ps.setString(3, user.getPassword());
+            ps.setString(4, user.getAddress());
+            ps.setString(5, user.getPhone());
+            ps.setInt(6, user.getType());
+            ps.setString(7, user.getGoogleId());
 
-            int rs = pre.executeUpdate();
-            return rs == 1;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return ps.executeUpdate() == 1;
         }
     }
+
+
+
+
 
     public boolean updateUser(String name, String email, String address, String phone, int type, int id) throws SQLException {
         String sql = "UPDATE user SET username = ?, name = ?, phone_number = ?, address = ?, type = ? WHERE id = ?";
@@ -268,7 +279,19 @@ public class UserDao {
             return updateStmt.executeUpdate() == 1;
         }
     }
-
+    public void savePasswordResetToken(int userId, String token, Timestamp expiryTime) throws SQLException {
+        String sql = "UPDATE user SET reset_token = ?, token_expiry = ? WHERE id = ?";
+        try {
+            Statement st = DBConnect.getStatement();
+            PreparedStatement pre = st.getConnection().prepareStatement(sql);
+            pre.setString(1, token);
+            pre.setTimestamp(2, expiryTime);
+            pre.setInt(3, userId);
+            pre.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public User findByEmail(String email) throws SQLException {
         String sql = "SELECT * FROM user WHERE username = ?";
         try {
@@ -294,19 +317,39 @@ public class UserDao {
         return null;
     }
 
-    public void savePasswordResetToken(int userId, String token, Timestamp expiryTime) throws SQLException {
-        String sql = "UPDATE user SET reset_token = ?, token_expiry = ? WHERE id = ?";
-        try {
-            Statement st = DBConnect.getStatement();
-            PreparedStatement pre = st.getConnection().prepareStatement(sql);
-            pre.setString(1, token);
-            pre.setTimestamp(2, expiryTime);
-            pre.setInt(3, userId);
-            pre.executeUpdate();
+    public User saveGoogleUserIfNotExists(String email, String name, String googleId) {
+        User user = getUserByEmail(email);
+        if (user != null) return user;
+
+        String sql = "INSERT INTO user(username,password,name,phone_number,address,type, google_id) VALUES(?, '', ?, '', '', 0, ?)";
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, email);
+            ps.setString(2, name);
+            ps.setString(3, googleId);
+            ps.executeUpdate();
+            try (ResultSet keys = ps.getGeneratedKeys()) {
+                if (keys.next()) {
+                    return new User(
+                            keys.getInt(1), // id
+                            email,
+                            "",             // password
+                            name,
+                            0,              // type
+                            "",             // phone
+                            "",             // address
+                            email,          // email
+                            null,           // resetToken
+                            null,           // tokenExpiry
+                            googleId
+                    );                }
+            }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return null;
     }
+
 
     public User getUserByEmail(String email) {
         String sql = "SELECT * FROM user WHERE username=?";
@@ -318,10 +361,15 @@ public class UserDao {
                     return new User(
                             rs.getInt("id"),
                             rs.getString("username"),
+                            rs.getString("password"),
                             rs.getString("name"),
                             rs.getInt("type"),
                             rs.getString("phone_number"),
-                            rs.getString("address")
+                            rs.getString("address"),
+                            rs.getString("username"), // gán username làm email
+                            rs.getString("reset_token"),
+                            rs.getTimestamp("token_expiry"),
+                            rs.getString("google_id")
                     );
                 }
             }
@@ -331,26 +379,7 @@ public class UserDao {
         return null;
     }
 
-    public User saveGoogleUserIfNotExists(String email, String name) {
-        User user = getUserByEmail(email);
-        if (user != null) return user;
 
-        String sql = "INSERT INTO user(username,password,name,phone_number,address,type) VALUES(?,'',?, '', '', 0)";
-        try (Connection conn = DBConnect.getConn();
-             PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, email);
-            ps.setString(2, name);
-            ps.executeUpdate();
-            try (ResultSet keys = ps.getGeneratedKeys()) {
-                if (keys.next()) {
-                    return new User(keys.getInt(1), email, name, 0, "", "");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     public ScreenPermissions getPerUserScreen(int user_id, String code) throws SQLException {
         String sql = "SELECT sp.* FROM user u JOIN screen_permissions sp ON u.idPer = sp.idRights JOIN screen s ON sp.idScreen = s.id WHERE u.id = ? AND s.code = ?";
@@ -395,6 +424,31 @@ public class UserDao {
             }
         }
         return null; // không tìm thấy user
+    }
+    public User getUserById(int id) {
+        User user = null;
+        String sql = "SELECT username, name, phone_number, address FROM user WHERE id = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                user = new User();
+                user.setId(id);
+                user.setUsername(rs.getString("username"));
+                user.setName(rs.getString("name"));
+                user.setPhone(rs.getString("phone_number"));
+                user.setAddress(rs.getString("address"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return user;
     }
 
     private Connection getConnection() throws SQLException {

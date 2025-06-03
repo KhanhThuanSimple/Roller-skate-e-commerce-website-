@@ -42,7 +42,8 @@ public class AdminUserListController extends HttpServlet  {
             if(page>totalPage) page=totalPage;
 
             List<User>  users = authService.getList(page, 1);
-            ScreenPermissions permission = userDao.getPerUserScreen(user.id, "tkam");
+            ScreenPermissions permission = userDao.getPerUserScreen(user.getId(), "tkam");
+
             if(permission==null || permission.read!=1) {
                 request.getRequestDispatcher("/admin/dashboard.jsp").forward(request, response);
             }
