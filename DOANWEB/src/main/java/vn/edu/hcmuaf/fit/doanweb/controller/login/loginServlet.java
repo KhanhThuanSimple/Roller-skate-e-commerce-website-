@@ -1,16 +1,9 @@
 package vn.edu.hcmuaf.fit.doanweb.controller.login;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleAccount;
-import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleLogin;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
-import vn.edu.hcmuaf.fit.doanweb.log.Log;
-import vn.edu.hcmuaf.fit.doanweb.service.AuthService;
 
 import java.io.IOException;
 
@@ -19,6 +12,7 @@ public class loginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false); // Không tạo mới
 
@@ -74,9 +68,12 @@ public class loginServlet extends HttpServlet {
             request.setAttribute("error", "Lỗi hệ thống, vui lòng thử lại sau.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }
+
+

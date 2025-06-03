@@ -18,6 +18,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.sql.JDBCType.BOOLEAN;
+import static java.sql.JDBCType.NUMERIC;
+import static javax.management.openmbean.SimpleType.STRING;
+
 @WebServlet(name = "AdminProductImportExcelController", value = "/admin/product/import-excel")
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024,  // 1 MB
@@ -124,10 +128,10 @@ public class AdminProductImportExcelController extends HttpServlet {
                 return String.valueOf(cell.getNumericCellValue());
             case BOOLEAN:
                 return String.valueOf(cell.getBooleanCellValue());
-            case FORMULA:
-                FormulaEvaluator evaluator = cell.getSheet().getWorkbook().getCreationHelper().createFormulaEvaluator();
-                CellValue cellValue = evaluator.evaluate(cell);
-                return cellValue.formatAsString();
+//            case FORMULA:
+//                FormulaEvaluator evaluator = cell.getSheet().getWorkbook().getCreationHelper().createFormulaEvaluator();
+//                CellValue cellValue = evaluator.evaluate(cell);
+//                return cellValue.formatAsString();
             default:
                 return "";
         }

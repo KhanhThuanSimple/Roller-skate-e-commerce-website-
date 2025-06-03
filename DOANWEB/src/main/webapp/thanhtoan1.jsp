@@ -163,13 +163,7 @@
                                 </label>
                             </div>
 
-<%--                            <div id="bankInfo" class="mt-3 p-3 bg-light rounded" style="display: none;">--%>
-<%--                                <h6>Thông tin chuyển khoản:</h6>--%>
-<%--                                <p>Ngân hàng: Vietcombank</p>--%>
-<%--                                <p>Số tài khoản: 123456789</p>--%>
-<%--                                <p>Chủ tài khoản: Công ty TNHH Your Store</p>--%>
-<%--                                <p>Nội dung chuyển khoản: Mã đơn hàng của bạn</p>--%>
-<%--                            </div>--%>
+
                         </div>
                     </div>
                 </div>
@@ -178,6 +172,7 @@
                 <div class="col-lg-4">
                     <div class="summary-card sticky-top" style="top: 20px;">
                         <h5 class="summary-title"><i class="bi bi-receipt"></i> Tóm tắt đơn hàng</h5>
+
 
                         <div class="summary-item">
                             <span>Tạm tính:</span>
@@ -211,10 +206,65 @@
                             <span id="discountAmount">0đ</span>
                         </div>
 
+                        <!-- Thay thế phần nhập mã giảm giá cũ bằng đoạn code này -->
                         <div class="summary-item">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="couponCode" placeholder="Mã giảm giá">
-                                <button class="btn btn-outline-secondary" type="button" id="applyCoupon">Áp dụng</button>
+                            <div class="mb-3">
+                                <label class="form-label">Mã giảm giá</label>
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" id="couponCode" placeholder="Nhập mã hoặc chọn bên dưới">
+                                    <button class="btn btn-outline-primary" type="button" id="applyCoupon">Áp dụng</button>
+                                </div>
+
+                                <!-- Danh sách mã giảm giá dạng dropdown -->
+                                <div class="coupon-dropdown mb-3">
+                                    <button class="btn btn-sm btn-link p-0 text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#couponList">
+                                        <i class="bi bi-tag-fill me-1"></i> Chọn từ mã giảm giá khả dụng
+                                    </button>
+
+                                    <div class="collapse mt-2" id="couponList">
+                                        <div class="card card-body p-2">
+                                            <div class="coupon-list">
+                                                <c:forEach var="coupon" items="${availableCoupons}">
+                                                    <div class="coupon-item mb-2 p-2 border rounded"
+                                                         data-code="${coupon.couponCode}"
+                                                         data-type="${coupon.discountType}"
+                                                         data-value="${coupon.discountValue}"
+                                                         data-min="${coupon.minOrderAmount}">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div>
+                                        <span class="badge ${coupon.discountType == 'FIXED' ? 'bg-primary' : 'bg-success'} me-2">
+                                                ${coupon.discountType == 'FIXED' ? 'Giảm tiền' : 'Giảm %'}
+                                        </span>
+                                                                <strong>${coupon.couponCode}</strong>
+                                                            </div>
+                                                            <button type="button" class="btn btn-sm btn-outline-primary apply-coupon-btn">Chọn</button>
+                                                        </div>
+                                                        <div class="coupon-details mt-1 small text-muted">
+                                                            Giảm
+                                                            <c:choose>
+                                                                <c:when test="${coupon.discountType == 'FIXED'}">
+                                                                    <f:formatNumber value="${coupon.discountValue}" type="currency" currencySymbol="đ"/>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    ${coupon.discountValue}%
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                            <c:if test="${coupon.minOrderAmount > 0}">
+                                                                | Đơn tối thiểu: <f:formatNumber value="${coupon.minOrderAmount}" type="currency" currencySymbol="đ"/>
+                                                            </c:if>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+
+                                                <c:if test="${empty availableCoupons}">
+                                                    <div class="text-center py-2 text-muted">
+                                                        Hiện không có mã giảm giá khả dụng
+                                                    </div>
+                                                </c:if>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -334,26 +384,90 @@
             fee = resultText ? parseInt(resultText.replace(/[^\d]/g, '')) : 0;
         }
 
-        // Hiển thị phí ship
-        $('#shippingFee').text(fee.toLocaleString('vi-VN') + 'đ');
+        // Hiển thị phí vận chuyển
+        $('#result').text(fee.toLocaleString('vi-VN') + 'đ');
 
-        // Lấy tổng ban đầu
+        // Lấy tổng ban đầu từ JSP
         const originalTotal = ${sessionScope.cart.getTotal()};
 
-        // Lấy giảm giá
+        // Lấy giảm giá nếu có
         const discountText = $('#discountAmount').text();
-        const discount = discountText === '0đ' ? 0 : parseInt(discountText.replace(/[^\d]/g, ''));
+        const discount = discountText ? parseInt(discountText.replace(/[^\d]/g, '')) : 0;
 
-        // Tính tổng mới: tổng đơn + phí ship - giảm giá
+        // Tính tổng mới
         const newTotal = originalTotal + fee - discount;
 
-        // Đảm bảo không âm
-        const finalTotal = newTotal >= 0 ? newTotal : 0;
+        // Cập nhật giao diện
+        $('#totalAmount').text(newTotal.toLocaleString('vi-VN') + 'đ');
 
-        // Cập nhật tổng cộng
-        $('#totalAmount').text(finalTotal.toLocaleString('vi-VN') + 'đ');
+        // Cập nhật vào input ẩn để submit
+        $('#shippingFeeInput').val(fee);
     }
+    $('#applyCoupon').click(function () {
+        const code = $('#couponCode').val().trim();
+        const total = ${sessionScope.cart.getTotal()};
+        if (!code) {
+            alert("Vui lòng nhập mã giảm giá.");
+            return;
+        }
 
+        $.post(contextPath + '/apply-coupon', { code, total }, function (res) {
+            if (res.success) {
+                $('#discountAmount').text(res.discount.toLocaleString('vi-VN') + 'đ');
+                const newTotal = total - res.discount;
+                $('#totalAmount').text(newTotal.toLocaleString('vi-VN') + 'đ');
+                $('#discountCodeInput').val(res.code); // lưu vào form
+            } else {
+                alert(res.message);
+            }
+        });
+    });
+    // Thêm vào script hiện có
+    $(document).ready(function() {
+        // Xử lý khi chọn mã từ danh sách
+        $('.apply-coupon-btn').click(function() {
+            const couponItem = $(this).closest('.coupon-item');
+            const code = couponItem.data('code');
+
+            $('#couponCode').val(code);
+            $('#applyCoupon').click(); // Kích hoạt áp dụng
+
+            // Đóng dropdown
+            $('#couponList').collapse('hide');
+        });
+
+        // Tự động áp dụng khi nhập mã khớp
+        $('#couponCode').on('input', function() {
+            const inputCode = $(this).val().trim().toUpperCase();
+            $('.coupon-item').each(function() {
+                const couponCode = $(this).data('code');
+                if (couponCode === inputCode) {
+                    $(this).find('.apply-coupon-btn').click();
+                }
+            });
+        });
+
+        // Đánh dấu mã nào có thể áp dụng
+        function highlightApplicableCoupons() {
+            const cartTotal = ${sessionScope.cart.getTotal()};
+            $('.coupon-item').each(function() {
+                const minAmount = $(this).data('min');
+                const isApplicable = cartTotal >= minAmount;
+
+                $(this).toggleClass('bg-light', !isApplicable);
+                $(this).find('.apply-coupon-btn')
+                    .toggleClass('btn-outline-primary', isApplicable)
+                    .toggleClass('btn-outline-secondary', !isApplicable)
+                    .prop('disabled', !isApplicable);
+
+                if (!isApplicable) {
+                    $(this).append('<div class="text-danger small mt-1">Yêu cầu đơn tối thiểu: <f:formatNumber value="${minAmount}" type="currency" currencySymbol="đ"/></div>');
+                }
+            });
+        }
+
+        highlightApplicableCoupons();
+    });
 </script>
 <%--<script src="./js/shipping.js"></script>--%>
 

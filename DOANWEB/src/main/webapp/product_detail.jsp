@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>--%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +14,8 @@
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="./css/style.css"/>
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/sanpham.css">
+<%--    <link rel="stylesheet" href="./css/index.css">--%>
+<%--    <link rel="stylesheet" href="./css/sanpham.css">--%>
     <link rel="stylesheet" href="./css/chitietsanpham.css">
 </head>
 
@@ -88,6 +89,31 @@
 
                         </a>
                     </div>
+                    <div class="product-review">
+                        <h2>Đánh giá sản phẩm:</h2>
+                        <button class="btn btn-outline" onclick="toggleReviews()">Xem đánh giá</button>
+                        <div id="review-section" style="display: none; margin-top: 1rem;">
+                            <c:if test="${empty reviews}">
+                                <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+                            </c:if>
+                            <c:forEach var="r" items="${reviews}">
+                                <div class="review-item">
+                                    <small>${r.createdAt}</small>  <!-- In trực tiếp String -->
+
+                                    <strong>${r.userName}</strong>
+
+                                    <div class="rating-stars">
+                                        <c:forEach var="i" begin="1" end="5">
+                                            <i class="fa-star ${i <= r.rating ? 'fas' : 'far'}"></i>
+                                        </c:forEach>
+                                    </div>
+                                    <p>${r.comment}</p>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+
+
 
 
                 </div>

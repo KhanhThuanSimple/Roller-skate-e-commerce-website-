@@ -663,23 +663,41 @@ public class ProductDao {
         }
     }
 
-//    public static void main(String[] args) {
-//        ProductDao dao = new ProductDao();
-//        List<Product> products = dao.getProductsByCategoryAndSort("1","ASC");
-//        for (Product product : products) {
-//            System.out.println(product);
-//        }
-//
-//
-//    }
+
 
     public List<Product> getProductsPurchased(int id) {
         return getProductsPurchasedNotReviewed(id);
     }
+//    public List<Product> getProductsReviewed(int userId) {
+//        List<Product> reviewedProducts = new ArrayList<>();
+//        String sql = "SELECT p.img, r.comment, r.rating, p.title " +
+//                "FROM reviews r " +
+//                "JOIN product p ON p.id = r.product_id " +
+//                "WHERE r.user_id = ? AND r.comment IS NOT NULL AND TRIM(r.comment) != ''";
+//
+//        try (Connection conn = DBConnect.getConn();
+//             PreparedStatement ps = conn.prepareStatement(sql)) {
+//
+//            ps.setInt(1, userId);
+//            ResultSet rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//                Product p = new Product();
+//                p.setImg(rs.getString("img"));
+//                p.setTitle(rs.getString("title"));
+//                p.setRating(rs.getInt("rating"));
+//                p.setComment(rs.getString("comment"));
+//
+//                reviewedProducts.add(p);
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace(); // Hoặc log lỗi
+//        }
+//
+//        return reviewedProducts;
+//    }
 
-    public List<Product> getProductsReviewed(int id) {
-        return getProductsPurchasedNotReviewed(id);
-    }
 
     public List<Product> getProductsNotReviewed(int id) {
         return getProductsPurchasedNotReviewed(id);

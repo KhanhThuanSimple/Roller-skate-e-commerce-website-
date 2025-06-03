@@ -4,20 +4,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleAccount;
-import vn.edu.hcmuaf.fit.doanweb.controller.login.GoogleLogin;
 import vn.edu.hcmuaf.fit.doanweb.dao.ProductDao;
 import vn.edu.hcmuaf.fit.doanweb.dao.model.Product;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-import vn.edu.hcmuaf.fit.doanweb.dao.UserDao ;
-import vn.edu.hcmuaf.fit.doanweb.dao.model.User;
 
-@WebServlet(name = "HomeServlet", urlPatterns = "/home")
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet(name = "HomeServlet", value = "/home")
 public class HomeServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,6 +21,7 @@ public class HomeServlet extends BaseServlet {
         request.setAttribute("productNew", productNew);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
@@ -73,4 +67,5 @@ public class HomeServlet extends BaseServlet {
 
     }
 }
+
 

@@ -52,7 +52,67 @@
                 </c:forEach>
             </div>
         </div>
+        <!-- Thay thế phần nhập mã giảm giá cũ bằng đoạn code này -->
+        <div class="summary-item">
+            <div class="mb-3">
+                <label class="form-label">Mã giảm giá</label>
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="" placeholder="Nhập mã hoặc chọn bên dưới">
+                    <button class="btn btn-outline-primary" type="button" id="applyCoupon">Áp dụng</button>
+                </div>
 
+                <!-- Danh sách mã giảm giá dạng dropdown -->
+                <div class="coupon-dropdown mb-3">
+                    <button class="btn btn-sm btn-link p-0 text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#couponList">
+                        <i class="bi bi-tag-fill me-1"></i> Chọn từ mã giảm giá khả dụng
+                    </button>
+
+                    <div class="collapse mt-2" id="couponList">
+                        <div class="card card-body p-2">
+                            <div class="coupon-list">
+                                <c:forEach var="coupon" items="${availableCoupons}">
+                                    <div class="coupon-item mb-2 p-2 border rounded"
+                                         data-code="${coupon.couponCode}"
+                                         data-type="${coupon.discountType}"
+                                         data-value="${coupon.discountValue}"
+                                         data-min="${coupon.minOrderAmount}">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                        <span class="badge ${coupon.discountType == 'FIXED' ? 'bg-primary' : 'bg-success'} me-2">
+                                                ${coupon.discountType == 'FIXED' ? 'Giảm tiền' : 'Giảm %'}
+                                        </span>
+                                                <strong>${coupon.couponCode}</strong>
+                                            </div>
+                                            <button type="button" class="btn btn-sm btn-outline-primary apply-coupon-btn">Chọn</button>
+                                        </div>
+                                        <div class="coupon-details mt-1 small text-muted">
+                                            Giảm
+                                            <c:choose>
+                                                <c:when test="${coupon.discountType == 'FIXED'}">
+                                                    <f:formatNumber value="${coupon.discountValue}" type="currency" currencySymbol="đ"/>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    ${coupon.discountValue}%
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <c:if test="${coupon.minOrderAmount > 0}">
+                                                | Đơn tối thiểu: <f:formatNumber value="${coupon.minOrderAmount}" type="currency" currencySymbol="đ"/>
+                                            </c:if>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+
+                                <c:if test="${empty availableCoupons}">
+                                    <div class="text-center py-2 text-muted">
+                                        Hiện không có mã giảm giá khả dụng
+                                    </div>
+                                </c:if>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Thông tin vận chuyển -->
         <div class="card mb-4 shadow-sm">
             <div class="card-header bg-success text-white">

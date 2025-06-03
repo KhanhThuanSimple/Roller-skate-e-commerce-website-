@@ -92,51 +92,77 @@
             <c:choose>
                 <c:when test="${not empty productsToReview}">
                     <div class="row">
-                        <c:forEach items="${productsToReview}" var="product">
+                        <c:forEach items="${productsToReview}" var="item">
                             <div class="col-md-6">
                                 <div class="product-card">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <img src="${product.img}" alt="${product.name}" class="product-img">
+                                            <img src="${item.product.img}" alt="${item.product.title}" class="product-img">
                                         </div>
                                         <div class="col-md-8">
-                                            <h4>${product.title}</h4>
+                                            <h4>${item.product.title}</h4>
                                             <p class="text-danger fw-bold">
-                                                <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="₫"/>
+                                                <fmt:formatNumber value="${item.product.price}" type="currency" currencySymbol="₫"/>
                                             </p>
 
-                                            <form action="danhgia" method="post" class="review-form">
-                                                <input type="hidden" name="productId" value="${product.id}">
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">Đánh giá của bạn:</label>
-                                                    <div class="rating-stars">
-                                                        <input type="radio" id="star5-${product.id}" name="rating" value="1" required>
-                                                        <label for="star5-${product.id}"><i class="fas fa-star"></i></label>
-                                                        <input type="radio" id="star4-${product.id}" name="rating" value="2">
-                                                        <label for="star4-${product.id}"><i class="fas fa-star"></i></label>
-                                                        <input type="radio" id="star3-${product.id}" name="rating" value="3">
-                                                        <label for="star3-${product.id}"><i class="fas fa-star"></i></label>
-                                                        <input type="radio" id="star2-${product.id}" name="rating" value="4">
-                                                        <label for="star2-${product.id}"><i class="fas fa-star"></i></label>
-                                                        <input type="radio" id="star1-${product.id}" name="rating" value="5">
-                                                        <label for="star1-${product.id}"><i class="fas fa-star"></i></label>
+                                            <c:choose>
+                                                <c:when test="${item.review != null}">
+                                                    <!-- Hiển thị đánh giá đã có -->
+                                                    <div class="mb-3">
+                                <span class="rating-stars">
+                                    <c:forEach begin="1" end="5" var="i">
+                                        <i class="fas fa-star${i <= item.review.rating ? '' : '-half-alt'}"></i>
+                                    </c:forEach>
+                                    <span class="ms-2">${item.review.rating} sao</span>
+                                </span>
                                                     </div>
-                                                </div>
+                                                    <c:if test="${not empty item.review.comment}">
+                                                        <div class="mb-3">
+                                                            <p><strong>Nhận xét:</strong></p>
+                                                            <p>${item.review.comment}</p>
+                                                        </div>
+                                                    </c:if>
+                                                    <div class="text-muted small">
+                                                        Đánh giá ngày: ${item.review.createdAt}
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <!-- Hiển thị form đánh giá cho sản phẩm chưa đánh giá -->
+                                                    <form action="danhgia" method="post" class="review-form">
+                                                        <input type="hidden" name="productId" value="${item.product.id}">
+                                                        <input type="hidden" name="currentTab" value="all">
 
-                                                <div class="mb-3">
-                                                    <label for="comment-${product.id}" class="form-label">Nhận xét:</label>
-                                                    <textarea class="form-control" id="comment-${product.id}"
-                                                              name="comment" rows="3" required></textarea>
-                                                </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Đánh giá của bạn:</label>
+                                                            <div class="rating-stars">
+                                                                <input type="radio" id="star5-${item.product.id}" name="rating" value="5" required>
+                                                                <label for="star5-${item.product.id}"><i class="fas fa-star"></i></label>
+                                                                <input type="radio" id="star4-${item.product.id}" name="rating" value="4">
+                                                                <label for="star4-${item.product.id}"><i class="fas fa-star"></i></label>
+                                                                <input type="radio" id="star3-${item.product.id}" name="rating" value="3">
+                                                                <label for="star3-${item.product.id}"><i class="fas fa-star"></i></label>
+                                                                <input type="radio" id="star2-${item.product.id}" name="rating" value="2">
+                                                                <label for="star2-${item.product.id}"><i class="fas fa-star"></i></label>
+                                                                <input type="radio" id="star1-${item.product.id}" name="rating" value="1">
+                                                                <label for="star1-${item.product.id}"><i class="fas fa-star"></i></label>
+                                                            </div>
+                                                        </div>
 
-                                                <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
-                                            </form>
+                                                        <div class="mb-3">
+                                                            <label for="comment-${item.product.id}" class="form-label">Nhận xét:</label>
+                                                            <textarea class="form-control" id="comment-${item.product.id}" name="comment" rows="3" required></textarea>
+                                                        </div>
+
+                                                        <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                                                    </form>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </c:forEach>
+
                     </div>
                 </c:when>
                 <c:otherwise>
@@ -151,11 +177,40 @@
         </div>
 
         <div class="tab-pane fade" id="reviewed" role="tabpanel" aria-labelledby="reviewed-tab">
-            <!-- Content for reviewed products -->
             <c:choose>
                 <c:when test="${not empty reviewedProducts}">
                     <div class="row">
-                        <!-- Display reviewed products here -->
+                        <c:forEach items="${reviewedProducts}" var="review">
+                            <div class="col-md-6 mb-4">
+                                <div class="product-card">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="${review.product.img}" alt="${review.product.title}" class="product-img">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h4>${review.product.title}</h4>
+                                            <div class="mb-3">
+                                <span class="rating-stars">
+                                    <c:forEach begin="1" end="5" var="i">
+                                        <i class="fas fa-star${i <= review.review.rating ? '' : '-half-alt'}"></i>
+                                    </c:forEach>
+                                    <span class="ms-2">${review.review.rating} sao</span>
+                                </span>
+                                            </div>
+                                            <c:if test="${not empty review.review.comment}">
+                                                <div class="mb-3">
+                                                    <p class="mb-1"><strong>Nhận xét:</strong></p>
+                                                    <p>${review.review.comment}</p>
+                                                </div>
+                                            </c:if>
+                                            <div class="text-muted small">
+                                                Đánh giá ngày: ${review.review.createdAt}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
                 </c:when>
                 <c:otherwise>
@@ -169,11 +224,51 @@
         </div>
 
         <div class="tab-pane fade" id="not-reviewed" role="tabpanel" aria-labelledby="not-reviewed-tab">
-            <!-- Content for not reviewed products -->
             <c:choose>
                 <c:when test="${not empty notReviewedProducts}">
                     <div class="row">
-                        <!-- Display not reviewed products here -->
+                        <c:forEach items="${notReviewedProducts}" var="product">
+                            <div class="col-md-6">
+                                <div class="product-card">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="${product.img}" alt="${product.title}" class="product-img">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h4>${product.title}</h4>
+                                            <!-- Form đánh giá -->
+                                            <form action="danhgia" method="post" class="review-form">
+                                                <input type="hidden" name="productId" value="${product.id}">
+                                                <input type="hidden" name="currentTab" value="not-reviewed">
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">Đánh giá của bạn:</label>
+                                                    <div class="rating-stars">
+                                                        <input type="radio" id="star5-${product.id}" name="rating" value="5" required>
+                                                        <label for="star5-${product.id}"><i class="fas fa-star"></i></label>
+                                                        <input type="radio" id="star4-${product.id}" name="rating" value="4">
+                                                        <label for="star4-${product.id}"><i class="fas fa-star"></i></label>
+                                                        <input type="radio" id="star3-${product.id}" name="rating" value="3">
+                                                        <label for="star3-${product.id}"><i class="fas fa-star"></i></label>
+                                                        <input type="radio" id="star2-${product.id}" name="rating" value="2">
+                                                        <label for="star2-${product.id}"><i class="fas fa-star"></i></label>
+                                                        <input type="radio" id="star1-${product.id}" name="rating" value="1">
+                                                        <label for="star1-${product.id}"><i class="fas fa-star"></i></label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="comment-${product.id}" class="form-label">Nhận xét:</label>
+                                                    <textarea class="form-control" id="comment-${product.id}" name="comment" rows="3" required></textarea>
+                                                </div>
+
+                                                <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
                 </c:when>
                 <c:otherwise>

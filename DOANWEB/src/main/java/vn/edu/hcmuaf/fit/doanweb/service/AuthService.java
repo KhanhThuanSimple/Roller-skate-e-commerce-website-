@@ -155,4 +155,4 @@ public class AuthService {
         return insertUser(name, email, hashedPass, address, phone, type, "");
     }
 
-    }
+}
