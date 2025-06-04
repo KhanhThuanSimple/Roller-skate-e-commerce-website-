@@ -15,6 +15,27 @@ public class AdminOrderDetailList extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ProductDao dao = new ProductDao();
+
+        String id = request.getParameter("pid");
+        HttpSession session = request.getSession();
+        User user = (User)  session.getAttribute("auth");
+
+        System.out.println(id);
+
+        // Lấy danh sách đơn hàng từ DAO
+        List<OrderDetail> list = dao.getOrderDetails(0,Integer.parseInt(id));
+
+        // Kiểm tra nếu không có đơn hàng nào
+        if (list == null || list.isEmpty()) {
+            request.setAttribute("message", "Không có đơn hàng nào.");
+        }
+
+        // Đặt danh sách đơn hàng vào request để chuyển sang JSP
+
+        request.setAttribute("list", list);
+        // Chuyển tiếp đến trang JSP hiển thị chi tiết đơn hàng
+        request.getRequestDispatcher("/admin/orderDetail.jsp").forward(request, response);
 
     }
 
@@ -29,7 +50,7 @@ public class AdminOrderDetailList extends HttpServlet {
         System.out.println(id);
 
         // Lấy danh sách đơn hàng từ DAO
-        List<OrderDetail> list = dao.getOrderDetails(0,Integer.parseInt(id));
+        List<OrderDetail> list = dao.getOrderDetails1(Integer.parseInt(id));
 
         // Kiểm tra nếu không có đơn hàng nào
         if (list == null || list.isEmpty()) {

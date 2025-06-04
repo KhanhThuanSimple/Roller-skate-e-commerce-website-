@@ -5,10 +5,12 @@
     <title>Quản lý mã giảm giá</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+<%--    <link rel="stylesheet" href="admin.css">--%>
+
     <style>
         .coupon-card {
             transition: all 0.3s ease;
-        }
+         }
         .coupon-card:hover {
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
         }
@@ -31,16 +33,19 @@
         .action-btns {
             min-width: 120px;
         }
+
     </style>
 </head>
 <body class="bg-light">
+<%--<%@ include file="sidebar.jsp" %>--%>
+
 <div class="container py-4">
     <div class="row mb-4">
         <div class="col">
             <h2 class="fw-bold text-primary"><i class="bi bi-tag-fill"></i> Quản lý mã giảm giá</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/admin/user">Trang chủ</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Mã giảm giá</li>
                 </ol>
             </nav>

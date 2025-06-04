@@ -278,7 +278,7 @@
                             <input type="hidden" name="province" id="provinceInput">
                             <input type="hidden" name="district" id="districtInput">
                             <input type="hidden" name="ward" id="wardInput">
-                            <input type="hidden" name="totalBill" value="${sessionScope.cart.getTotal()}">
+                            <input type="hidden" name="totalBill" id="totalBillInput">
                             <input type="hidden" name="paymentMethod" id="paymentMethodInput" value="COD">
                             <input type="hidden" name="discountCode" id="discountCodeInput">
                             <input type="hidden" name="shippingAddress" id="shippingAddressInput">
@@ -287,8 +287,19 @@
                             <input type="hidden" name="note" id="noteInput">
                             <input type="hidden" name="shippingFee" id="shippingFeeInput">
 
-                            <button type="submit" class="btn btn-primary w-100 mt-3 py-3">
+<%--                            <button type="submit" class="btn btn-primary w-100 mt-3 py-3">--%>
+<%--                                <i class="bi bi-check-circle"></i> ĐẶT HÀNG NGAY--%>
+<%--                            </button>--%>
+<%--                            <!-- In the right column - Order Summary section -->--%>
+<%--                            <button type="button" class="btn btn-outline-danger w-100 mt-2 py-2" id="cancelOrderBtn">--%>
+<%--                                <i class="bi bi-x-circle"></i> HỦY ĐƠN HÀNG--%>
+<%--                            </button>--%>
+                            <button type="submit" class="btn btn-primary w-100 mt-3 py-3" name="action" value="confirm">
                                 <i class="bi bi-check-circle"></i> ĐẶT HÀNG NGAY
+                            </button>
+                            <!-- In the right column - Order Summary section -->
+                            <button type="submit" class="btn btn-outline-danger w-100 mt-2 py-2" value="cancle" name="action" id="cancelOrderBtn">
+                                <i class="bi bi-x-circle"></i> HỦY ĐƠN HÀNG
                             </button>
                         </form>
 
@@ -365,6 +376,8 @@
 
             // Tạo địa chỉ đầy đủ
             const fullAddress = addressDetail + ', ' + wardText + ', ' + districtText + ', ' + provinceText;
+            $('#addressText').text(fullAddress);
+            $('#selectedAddress').show();
 
             // Cập nhật giá trị vào các trường ẩn
             $('#provinceInput').val(provinceText);
@@ -377,6 +390,21 @@
             $('#paymentMethodInput').val(paymentMethod);
             $('#shippingFeeInput').val(shippingFee || '0');
         }); });
+    function updateAddressDisplay() {
+        const provinceText = $('#province option:selected').text();
+        const districtText = $('#district option:selected').text();
+        const wardText = $('#ward option:selected').text();
+        const addressDetail = $('#addressDetail').val();
+
+        if (provinceText && districtText && wardText && addressDetail) {
+            const fullAddress = addressDetail + ', ' + wardText + ', ' + districtText + ', ' + provinceText;
+            $('#addressText').text(fullAddress);
+            $('#selectedAddress').show();
+        }
+    }
+
+    // Gán sự kiện cho các trường nhập liệu
+    $('#province, #district, #ward, #addressDetail').on('change', updateAddressDisplay);
     function updateShippingFee(fee) {
         // Nếu không truyền fee, lấy từ div #result
         if (fee === undefined) {
@@ -399,6 +427,7 @@
 
         // Cập nhật giao diện
         $('#totalAmount').text(newTotal.toLocaleString('vi-VN') + 'đ');
+        $('#totalBillInput').val(newTotal);  // <--- THÊM DÒNG NÀY
 
         // Cập nhật vào input ẩn để submit
         $('#shippingFeeInput').val(fee);
@@ -468,6 +497,7 @@
 
         highlightApplicableCoupons();
     });
+
 </script>
 <%--<script src="./js/shipping.js"></script>--%>
 

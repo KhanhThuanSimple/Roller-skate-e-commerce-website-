@@ -44,6 +44,9 @@
         .export-buttons button {
             margin-left: 10px;
         }
+        thead.table-light th {
+            color: #000 !important;
+        }
     </style>
 </head>
 <body>
@@ -70,11 +73,14 @@
                     <h4 class="mb-3">Danh Sách Sản Phẩm</h4>
                     <table class="table table-bordered">
                         <thead class="table-light">
-                        <tr>
+                        <tr >
                             <th>Tên Sản Phẩm</th>
                             <th>Số Lượng</th>
                             <th>Đơn Giá (VNĐ)</th>
                             <th>Phương Thức Thanh Toán</th>
+                            <th>Ngày đặt hàng</th>
+                            <th>Địa chỉ</th>
+
                             <th>Thành Tiền (VNĐ)</th>
                         </tr>
                         </thead>
@@ -87,6 +93,11 @@
                                 <td>${p.orderItem.quantity}</td>
                                 <td>${p.orderItem.price}</td>
                                 <td>${p.order.paymentMethod}</td>
+                                <td>                                    <f:formatDate value="${list[0].order.createdAt}" pattern="dd/MM/yyyy HH:mm"/>
+                                </td>
+                                <td> ${list[0].order.address}, ${list[0].order.ward},
+                                        ${list[0].order.district}, ${list[0].order.province}</td>
+
                                 <td>${p.orderItem.price * p.orderItem.quantity}</td>
                                 <c:set var="totalAmount" value="${totalAmount + p.orderItem.price * p.orderItem.quantity}" />
                             </tr>

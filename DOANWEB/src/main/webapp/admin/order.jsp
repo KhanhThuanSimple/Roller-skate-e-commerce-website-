@@ -59,8 +59,10 @@
 
                             <td style="display: flex; gap: 10px">
 
-                            <form method="post" action="order-detail?pid=${order.id}">
-                                <button style="border:none;background-color: unset" type="submit">
+                           <form  action="${pageContext.request.contextPath}/admin/order-detail?pid=${order.id}" method="POST">
+
+
+                               <button style="border:none;background-color: unset" type="submit">
                                     <i class="fa-regular fa-eye" style="flex:1; padding: 10px; cursor: pointer;"></i>
                                 </button>
                             </form>
@@ -189,7 +191,7 @@
                                    style="visibility: hidden;" />
                         </div>
                         <div class="flex-center">
-                            <button type="submit" class="button-orange">Lưu sản phẩm<button>
+                            <button type="submit" class="button-orange">Lưu sản phẩm</button>
                         </div>
 
                     </form>

@@ -320,8 +320,8 @@
                         <i class="fas fa-home me-2"></i> Về trang chủ
                     </a>
                     <% if (isSuccess) { %>
-                    <a href="order-detail?id=<%= params.get("vnp_TxnRef") %>" class="btn btn-outline-secondary btn-action">
-                        <i class="fas fa-file-invoice me-2"></i> Xem đơn hàng
+                    <a href="lichsu" class="btn btn-outline-secondary btn-action">
+                        <i class="fas fa-file-invoice me-2"></i> Xem đơn hàng đã đặt
                     </a>
                     <% } else { %>
                     <a href="checkout" class="btn btn-outline-secondary btn-action">

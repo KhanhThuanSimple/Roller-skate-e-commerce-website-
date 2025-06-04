@@ -484,6 +484,47 @@ public class ProductDao {
 
         return orders;
     }
+    public List<Order> getOrdersWithProductDaHuys(int userId) {
+        List<Order> orders = new ArrayList<>();
+        String queryOrders = "SELECT * FROM falseorder WHERE  user_id = ?";
+
+
+        try (Connection cons = DBConnect.getConn()) {
+            if (cons == null) {
+                // Xử lý khi không thể kết nối
+            }
+            try (PreparedStatement statement = cons.prepareStatement(queryOrders)) {
+                statement.setInt(1, userId); // Sửa ở đây để truyền đúng giá trị
+
+                try (ResultSet rs = statement.executeQuery()) {
+                    System.out.println(statement);
+                    while (rs.next()) {
+                        Order order = new Order();
+                        order.setId(rs.getInt("id"));
+                        order.setUser_id(rs.getInt("user_id"));
+                        order.setProvince(rs.getString("province"));
+                        order.setDistrict(rs.getString("district"));
+                        order.setWard(rs.getString("ward"));
+                        order.setAddress(rs.getString("address"));
+                        order.setName(rs.getString("name"));
+                        order.setPhone(rs.getString("phone"));
+                        order.setNote(rs.getString("note"));
+                        order.setTotalAmount(rs.getDouble("total_amount"));
+                        order.setPaymentMethod(rs.getString("payment_method"));
+                        order.setStatus(rs.getString("status"));
+                        order.setDiscountCode(rs.getString("discount_code"));
+                        order.setShippingFee(rs.getDouble("shipping_fee"));
+                        // Ví dụ: order.addProduct(product, orderItem);
+                        orders.add(order); // Thêm đơn hàng vào danh sách
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orders;
+    }
     public List<Order> getOrdersWithProducts1(int userId) {
         List<Order> orders = new ArrayList<>();
         String queryOrders;
@@ -532,6 +573,57 @@ public class ProductDao {
         }
 
         return orders;
+    }
+    public List<OrderDetail> getOrderDetails1(int orderId) {
+        List<OrderDetail> orderDetails = new ArrayList<>();
+
+        String query = "SELECT p.img, p.title, oi.quantity, oi.price, " +
+                "o.id AS order_id, o.name AS customer_name, o.phone, o.total_amount, " +
+                "o.status, o.payment_method, o.address, o.province, o.district, o.ward, " +
+                "o.shipping_fee, o.created_at " +
+                "FROM product p " +
+                "JOIN order_items oi ON p.id = oi.product_id " +
+                "JOIN orders o ON oi.order_id = o.id " +
+                "WHERE o.id = ?";
+
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, orderId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Product product = new Product();
+                    product.setImg(rs.getString("img"));
+                    product.setTitle(rs.getString("title"));
+
+                    OrderItems item = new OrderItems();
+                    item.setQuantity(rs.getInt("quantity"));
+                    item.setPrice(rs.getDouble("price"));
+
+                    Order order = new Order();
+                    order.setId(rs.getInt("order_id"));
+                    order.setName(rs.getString("customer_name"));
+                    order.setPhone(rs.getString("phone"));
+                    order.setTotalAmount(rs.getDouble("total_amount"));
+                    order.setStatus(rs.getString("status"));
+                    order.setPaymentMethod(rs.getString("payment_method"));
+                    order.setAddress(rs.getString("address"));
+                    order.setProvince(rs.getString("province"));
+                    order.setDistrict(rs.getString("district"));
+                    order.setWard(rs.getString("ward"));
+                    order.setShippingFee(rs.getDouble("shipping_fee"));
+                    order.setCreatedAt(rs.getTimestamp("created_at"));
+
+                    OrderDetail detail = new OrderDetail(order, product, item);
+                    orderDetails.add(detail);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orderDetails;
     }
 
 
@@ -592,6 +684,63 @@ public class ProductDao {
         return orderDetails;
     }
 
+
+    public List<OrderDetail> getOrderDetailsDaHuy(int userId, int orderId) {
+        List<OrderDetail> orderDetails = new ArrayList<>();
+
+        String query = "SELECT p.img , p.title, oi.quantity, oi.price, " +
+                "o.id AS order_id, o.name AS customer_name, o.phone, o.total_amount, " +
+                "o.status, o.payment_method, o.address, o.province, o.district, o.ward, " +
+                "o.shipping_fee, o.created_at " +
+                "FROM product p " +
+                "JOIN order_items oi ON p.id = oi.product_id " +
+                "JOIN falseorder o ON oi.order_id = o.id " +
+                "WHERE o.user_id = ? AND o.id = ?";
+
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, userId);
+            stmt.setInt(2, orderId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    // Product
+                    Product product = new Product();
+                    product.setImg(rs.getString("img"));
+                    product.setTitle(rs.getString("title"));
+
+                    // OrderItem
+                    OrderItems item = new OrderItems();
+                    item.setQuantity(rs.getInt("quantity"));
+                    item.setPrice(rs.getDouble("price"));
+
+                    // Order
+                    Order order = new Order();
+                    order.setId(rs.getInt("order_id"));
+                    order.setName(rs.getString("customer_name"));
+                    order.setPhone(rs.getString("phone"));
+                    order.setTotalAmount(rs.getDouble("total_amount"));
+                    order.setStatus(rs.getString("status"));
+                    order.setPaymentMethod(rs.getString("payment_method"));
+                    order.setAddress(rs.getString("address"));
+                    order.setProvince(rs.getString("province"));
+                    order.setDistrict(rs.getString("district"));
+                    order.setWard(rs.getString("ward"));
+                    order.setShippingFee(rs.getDouble("shipping_fee"));
+                    order.setCreatedAt(rs.getTimestamp("created_at"));
+
+                    // Gộp vào detail
+                    OrderDetail detail = new OrderDetail(order, product, item);
+                    orderDetails.add(detail);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orderDetails;
+    }
 
     public static double getDiscountValue(String couponCode) {
         double discount = 0.0;

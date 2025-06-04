@@ -25,4 +25,19 @@ public class OrderItemDAO {
 
 
     }
+    public void insertOrderItemsDahuy(OrderItems orderItems) throws SQLException {
+
+        Statement statement = DBConnect.getStatement();
+        String sql = "INSERT INTO order_itemsdahuy (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)";
+
+
+        PreparedStatement stmt = statement.getConnection().prepareStatement(sql);
+        stmt.setInt(1, orderItems.getOrder_id());
+        stmt.setInt(2, orderItems.getProduct_id());
+        stmt.setInt(3, orderItems.getQuantity());
+        stmt.setDouble(4, orderItems.getPrice());
+        stmt.executeUpdate();
+
+
+    }
 }

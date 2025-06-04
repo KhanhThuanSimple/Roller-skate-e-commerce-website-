@@ -55,6 +55,50 @@ public class OderDao {
             throw e;
         }
     }
+    public int insertFalseOrder(Order order) throws SQLException {
+        String sql = "INSERT INTO falseorder (user_id, province, district, ward, address, name, phone, note, " +
+                "total_amount, payment_method, status, discount_code, shipping_fee, created_at) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+
+        try (Connection conn = DBConnect.getConn();
+             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            pstmt.setInt(1, order.getUser_id());
+            pstmt.setString(2, order.getProvince());
+            pstmt.setString(3, order.getDistrict());
+            pstmt.setString(4, order.getWard());
+            pstmt.setString(5, order.getAddress());
+            pstmt.setString(6, order.getName());
+            pstmt.setString(7, order.getPhone());
+            pstmt.setString(8, order.getNote());
+            pstmt.setDouble(9, order.getTotalAmount());
+            pstmt.setString(10, order.getPaymentMethod());
+            pstmt.setString(11, order.getStatus());
+            pstmt.setString(12, order.getDiscountCode());
+            pstmt.setDouble(13, order.getShippingFee());
+
+
+
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating order failed, no rows affected.");
+            }
+
+            try (ResultSet rs = pstmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    int orderId = rs.getInt(1);
+                    order.setId(orderId);
+
+                    return orderId;
+                } else {
+                    throw new SQLException("Creating order failed, no ID obtained.");
+                }
+            }
+
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 
     public ArrayList<Order> getListOrder() {
         String sql = "SELECT * FROM orders";

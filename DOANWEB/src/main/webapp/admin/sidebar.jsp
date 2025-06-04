@@ -47,6 +47,11 @@
 
         </c:if>
 
+        <c:if test="${allowedScreens.contains('kho')}">
+            <li><a  href="${pageContext.request.contextPath}/admin/coupons">Mã giảm giá </a></li>
+
+        </c:if>
+
 
 <%--        <li><a href="${pageContext.request.contextPath}/admin/export">Xuất hàng</a></li>--%>
 

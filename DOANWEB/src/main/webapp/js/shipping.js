@@ -128,7 +128,7 @@ function calculateFee() {
 
             } else {
                 $('#result').html('<p style="color:red">Cữa hàng chỉ hỗ trợ ship nội thành TP.Hồ Chí Minh </p>');
-                updateShippingFee(32000); // Không tính phí ship nếu không hỗ trợ
+                updateShippingFee(45000); // Không tính phí ship nếu không hỗ trợ
 
             }
         },
